@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>BBA - Consultoria Estratégica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <style>
+    /* Reset & Typography */
+    :root {
+      --font-primary: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background-color: #000; /* Fallback before video loads */
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Hero Section */
+    .bba-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0 24px 80px 24px;
+    }
+
+    /* Background Video */
+    .bba-hero__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* Overlay */
+    .bba-hero__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.55) 60%,
+        rgba(0,0,0,0.75) 100%
+      );
+      z-index: 1;
+    }
+
+    /* Content Container */
+    .bba-hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+    }
+
+    /* Typography */
+    .bba-hero__headline {
+      font-size: clamp(34px, 3.8vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .bba-hero__subheadline {
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 400;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* CTA Button area */
+    .bba-hero__cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .bba-hero__button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1d1d1f;
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    }
+
+    .bba-hero__button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .bba-hero__microcopy {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    /* Animation on load */
+    .slide-up-fade {
+      animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideUpFade {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .bba-hero__headline {
+        font-size: clamp(30px, 8vw, 36px);
+      }
+      .bba-hero__content {
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="bba-hero">
+    <!-- Background Video -->
+    <video 
+      class="bba-hero__video" 
+      autoplay 
+      muted 
+      loop 
+      playsinline
+    >
+      <source src="./Materia Prima/BBA Hero.mp4" type="video/mp4">
+    </video>
+
+    <!-- Overlay Gradient -->
+    <div class="bba-hero__overlay"></div>
+
+    <!-- Content -->
+    <div class="bba-hero__content slide-up-fade">
+      <h1 class="bba-hero__headline">
+        Clareza estratégica para transformar crescimento em resultado
+      </h1>
+      
+      <p class="bba-hero__subheadline">
+        Seu parceiro na organização financeira e na estrutura da empresa para sustentar um crescimento sólido e inteligente.
+      </p>
+
+      <div class="bba-hero__cta-group">
+        <a href="#" class="bba-hero__button">Fale com a BBA</a>
+        <span class="bba-hero__microcopy">Diagnóstico inicial sem compromisso.</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en-US" class="js progressive-image no-reduced-motion">
+<head>
+  <meta charset="utf-8">
+  <title>BBA Creative Design System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  
+  <!-- Apple-inspired typography & layouts -->
+  <link href="./fonts_861a2ff04d8a.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./main_0cd286fbb449.css" rel="stylesheet" type="text/css"/>
+  <link href="./globalheader_d08709482e48.css" rel="stylesheet" type="text/css"/>
+
+  <!-- External assets from provided templates -->
+  <script src="https://unpkg.com/lucide@0.260.0/dist/lucide.min.js"></script>
+
+  <style>
+    :root {
+      /* Typography */
+      --font-primary: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-fallback: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      
+      /* Colors */
+      --color-white: #ffffff;
+      --color-black: #000000;
+      --color-primary-text: #1d1d1f;
+      --color-secondary-text: #86868b;
+      --color-accent-blue: #0066cc;
+      --color-accent-teal: #14b8a6;
+      --color-accent-orange: #f97316;
+      
+      --color-surface-light: #f5f5f7;
+      --color-surface-hover: #e8e8ed;
+      --color-surface-dark: #1c1c1e;
+      
+      /* Glow & Effects */
+      --glow-teal: rgba(20, 184, 166, 0.4);
+      --glow-orange: rgba(249, 115, 22, 0.4);
+      --glow-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.05);
+
+      /* Layout */
+      --container-max-width: 1200px;
+    }
+
+    body {
+      background-color: var(--color-white);
+      color: var(--color-primary-text);
+      font-family: var(--font-primary);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    /* Ambient Backgrounds */
+    .ambient-light, .ambient-light-2, .ambient-light-3 {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 0;
+      pointer-events: none;
+      animation: ambientFloat 15s infinite alternate ease-in-out;
+      opacity: 0.6;
+    }
+    .ambient-light { top: -10%; left: 0; width: 600px; height: 600px; background: radial-gradient(circle, rgba(20, 184, 166, 0.08), transparent 70%); }
+    .ambient-light-2 { bottom: -10%; right: 10%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(249, 115, 22, 0.05), transparent 70%); animation-delay: -5s; }
+    .ambient-light-3 { top: 40%; left: 30%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0, 102, 204, 0.05), transparent 70%); animation-duration: 20s; }
+    
+    @keyframes ambientFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, -50px) scale(1.1); }
+    }
+
+    /* Container */
+    .ds-container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 100px 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Typography */
+    .ds-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    
+    .text-transparent-bg {
+      background: linear-gradient(135deg, #000 0%, #333 40%, var(--color-accent-teal) 80%, var(--color-accent-blue) 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: gradientShift 6s ease infinite;
+    }
+    @keyframes gradientShift { 
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .ds-headline { font-size: 48px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.1; margin-bottom: 16px; }
+    .ds-subhead { font-size: 24px; font-weight: 400; line-height: 1.3; color: var(--color-secondary-text); margin-bottom: 32px; }
+    .ds-body-lg { font-size: 19px; line-height: 1.4; color: var(--color-primary-text); }
+    .ds-body { font-size: 17px; line-height: 1.47; color: var(--color-primary-text); }
+    .ds-caption { font-size: 12px; line-height: 1.3; color: var(--color-secondary-text); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Entry Animations */
+    .slide-up-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(8px);
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .slide-up-fade.in-view {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    /* Glass & Glow Cards */
+    .glow-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .glow-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02), 0 0 40px var(--glow-teal);
+    }
+
+    /* Buttons */
+    .ds-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 980px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .ds-btn-primary {
+      background-color: var(--color-primary-text);
+      color: var(--color-white);
+    }
+    .ds-btn-primary:hover {
+      background-color: #000;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      transform: scale(1.03);
+    }
+    .ds-btn-glow {
+      background: linear-gradient(135deg, var(--color-accent-teal), #06b6d4);
+      color: var(--color-white);
+      border: none;
+    }
+    .ds-btn-glow:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 10px 30px var(--glow-teal);
+    }
+    .ds-btn-outline {
+      background: transparent;
+      color: var(--color-primary-text);
+      border: 1px solid var(--color-primary-text);
+    }
+    .ds-btn-outline:hover {
+      background: var(--color-primary-text);
+      color: var(--color-white);
+    }
+
+    /* Grid Layout */
+    .ds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    /* Section Styling */
+    .ds-section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+      margin: 80px 0;
+    }
+
+    /* Inputs */
+    .ds-input {
+      background: var(--color-white);
+      border: 1px solid #d2d2d7;
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 17px;
+      width: 100%;
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    .ds-input:focus {
+      border-color: var(--color-accent-teal);
+      box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Badges */
+    .ds-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      background: rgba(20, 184, 166, 0.1);
+      color: var(--color-accent-teal);
+      border: 1px solid rgba(20, 184, 166, 0.2);
+    }
+
+    /* Modals */
+    .ds-modal-preview {
+      position: relative;
+      height: 250px;
+      background: var(--color-surface-light);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .ds-modal {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(40px);
+      border-radius: 24px;
+      padding: 32px;
+      width: 340px;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.15);
+      transform: scale(0.95);
+      opacity: 0.8;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ds-modal-preview:hover .ds-modal {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    /* Tooltip */
+    .ds-tooltip-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    .ds-tooltip {
+      position: absolute;
+      top: -45px;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--color-surface-dark);
+      color: var(--color-white);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+    }
+    .ds-tooltip::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid var(--color-surface-dark);
+    }
+    .ds-tooltip-wrapper:hover .ds-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Navbar Preview */
+    .ds-navbar {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 100px;
+      margin: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    /* Color Swatch */
+    .color-swatch {
+      width: 100%;
+      height: 120px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .color-card:hover .color-swatch {
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background Ambient Lights -->
+  <div class="ambient-light"></div>
+  <div class="ambient-light-2"></div>
+  <div class="ambient-light-3"></div>
+
+  <!-- Hero Section -->
+  <section class="ds-container" style="min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div class="slide-up-fade" style="max-width: 900px;">
+      <h1 class="ds-title text-transparent-bg">Design system. <br>Beyond the horizon.</h1>
+      <p class="ds-subhead" style="font-size: 28px; max-width: 700px; margin: 0 auto 40px auto;">
+        An elegant blend of white space, transparent lettering, dynamic glassmorphism, and seamless interactions.
+      </p>
+      <div style="display: flex; gap: 20px; justify-content: center;">
+        <a href="#typography" class="ds-btn ds-btn-primary">Explore Typography</a>
+        <a href="#components" class="ds-btn ds-btn-glow">View Components</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section id="typography" class="ds-container slide-up-fade">
+    <div class="ds-section-divider"></div>
+    <span class="ds-caption">1. Typography</span>
+    <h2 class="ds-headline">Clarity, legibility, and elegance.</h2>
+    <p class="ds-subhead">System fonts ensure native performance while providing a clean tracking and readable structure.</p>
+    
+    <div class="glow-card" style="margin-top: 40px;">
+      <div style="margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <p class="ds-caption" style="margin-bottom: 8px;">Hero Title (H1)</p>
+        <div class="ds-title" style="margin: 0; font-size: 56px;">Inter / SF Pro Display — 56px</div>
+        <p class="ds-body" style="color: var(--color-secondary-text); margin-top: 8px;">Font: --font-primary | Weight: 700 | Tracking: -0.02em</p>
+      </div>
+
+      <div style="margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <p class="ds-caption" style="margin-bottom: 8px;">Headline (H2)</p>
+        <div class="ds-headline" style="margin: 0;">Clarity in Every Detail</div>
+        <p class="ds-body" style="color: var(--color-secondary-text); margin-top: 8px;">Size: 48px | Weight: 600 | Leading: 1.1</p>
+      </div>
+
+      <div style="margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <p class="ds-caption" style="margin-bottom: 8px;">Body Large / Subhead (H3)</p>
+        <div class="ds-subhead" style="margin: 0; color: var(--color-primary-text);">A refined reading experience for introductory paragraphs.</div>
+        <p class="ds-body" style="color: var(--color-secondary-text); margin-top: 8px;">Size: 24px | Weight: 400 | Leading: 1.3</p>
+      </div>
+
+      <div>
+        <p class="ds-caption" style="margin-bottom: 8px;">Paragraph (P)</p>
+        <div class="ds-body">The core text style used across the majority of the interface, delivering a comfortable reading density for long-form content and UI descriptions.</div>
+        <p class="ds-caption" style="margin-top: 16px;">Caption</p>
+        <div class="ds-caption" style="text-transform: none;">Helper text, metadata, and labels. Size: 12px.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color System -->
+  <section id="colors" class="ds-container slide-up-fade">
+    <div class="ds-section-divider"></div>
+    <span class="ds-caption">2. Color System</span>
+    <h2 class="ds-headline">Subtle backgrounds, striking accents.</h2>
+    <p class="ds-subhead">A stark white foundation heavily inspired by Apple, elevated by energetic gradient glows.</p>
+
+    <div class="ds-grid">
+      <!-- Swatch 1 -->
+      <div class="color-card">
+        <div class="glow-card" style="padding: 24px;">
+          <div class="color-swatch" style="background-color: var(--color-white);"></div>
+          <p style="font-weight: 600; margin: 0 0 4px 0;">Surface Primary</p>
+          <p class="ds-caption" style="margin:0;">HEX: #FFFFFF <br>Role: Backgrounds</p>
+        </div>
+      </div>
+      <!-- Swatch 2 -->
+      <div class="color-card">
+        <div class="glow-card" style="padding: 24px;">
+          <div class="color-swatch" style="background-color: var(--color-surface-light);"></div>
+          <p style="font-weight: 600; margin: 0 0 4px 0;">Surface Secondary</p>
+          <p class="ds-caption" style="margin:0;">HEX: #F5F5F7 <br>Role: Cards & Menus</p>
+        </div>
+      </div>
+      <!-- Swatch 3 -->
+      <div class="color-card">
+        <div class="glow-card" style="padding: 24px;">
+          <div class="color-swatch" style="background-color: var(--color-primary-text);"></div>
+          <p style="font-weight: 600; margin: 0 0 4px 0;">Text Primary</p>
+          <p class="ds-caption" style="margin:0;">HEX: #1D1D1F <br>Role: Main Content</p>
+        </div>
+      </div>
+      <!-- Swatch 4 -->
+      <div class="color-card">
+        <div class="glow-card" style="padding: 24px;">
+          <div class="color-swatch" style="background: linear-gradient(135deg, var(--color-accent-teal), #06b6d4);"></div>
+          <p style="font-weight: 600; margin: 0 0 4px 0;">Teal Glow</p>
+          <p class="ds-caption" style="margin:0;">HEX: #14B8A6 <br>Role: Call to Actions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UI Components -->
+  <section id="components" class="ds-container slide-up-fade">
+    <div class="ds-section-divider"></div>
+    <span class="ds-caption">3. UI Components</span>
+    <h2 class="ds-headline">Interactive elements.</h2>
+    <p class="ds-subhead">Glow effects, micro-animations, and pristine structures.</p>
+
+    <!-- Buttons & Badges -->
+    <div class="ds-grid" style="margin-bottom: 32px;">
+      <div class="glow-card">
+        <h3 class="ds-body-lg" style="font-weight: 600; margin-bottom: 24px;">Buttons & Badges</h3>
+        <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+          <div class="ds-tooltip-wrapper">
+             <button class="ds-btn ds-btn-primary">Primary Button</button>
+             <span class="ds-tooltip">Default Action</span>
+          </div>
+          <div class="ds-tooltip-wrapper">
+             <button class="ds-btn ds-btn-glow">Glow Action</button>
+             <span class="ds-tooltip">High Emphasis</span>
+          </div>
+          <button class="ds-btn ds-btn-outline">Outline Button</button>
+          
+          <div style="margin-top: 16px;">
+            <span class="ds-badge"><i data-lucide="sparkles" style="width: 14px; height: 14px; margin-right: 6px;"></i> Trend AI</span>
+            <span class="ds-badge" style="background: rgba(249, 115, 22, 0.1); color: var(--color-accent-orange); border-color: rgba(249, 115, 22, 0.2); margin-left: 8px;">
+               <i data-lucide="zap" style="width: 14px; height: 14px; margin-right: 6px;"></i> Velocity
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inputs & Forms -->
+      <div class="glow-card">
+        <h3 class="ds-body-lg" style="font-weight: 600; margin-bottom: 24px;">Inputs & Forms</h3>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div>
+            <label class="ds-caption" style="margin-bottom: 8px; display: block;">Email Address</label>
+            <input type="email" class="ds-input" placeholder="name@company.com">
+          </div>
+          <div>
+             <label class="ds-caption" style="margin-bottom: 8px; display: block;">Search Analytics</label>
+             <div style="position: relative;">
+               <i data-lucide="search" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--color-secondary-text); width: 20px;"></i>
+               <input type="text" class="ds-input" style="padding-left: 48px;" placeholder="Search trends...">
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modals & Navigation -->
+    <div class="ds-grid">
+      <!-- Navbar Prototype -->
+      <div class="glow-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="padding: 32px 32px 0 32px;">
+           <h3 class="ds-body-lg" style="font-weight: 600; margin: 0;">Glass Navbar</h3>
+           <p class="ds-body" style="color: var(--color-secondary-text); margin-top: 8px;">Sticky header simulation with heavy blur drop.</p>
+        </div>
+        <div style="flex-grow: 1; background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80') center/cover; position: relative; margin-top: 24px; min-height: 200px;">
+           <div class="ds-navbar">
+              <span style="font-weight: 700; font-size: 18px;">Logo.</span>
+              <div style="display: flex; gap: 16px;">
+                 <a href="#" style="color: var(--color-primary-text); text-decoration: none; font-size: 14px; font-weight: 500;">Home</a>
+                 <a href="#" style="color: var(--color-secondary-text); text-decoration: none; font-size: 14px; font-weight: 500;">Features</a>
+              </div>
+           </div>
+        </div>
+      </div>
+
+      <!-- Modal Prototype -->
+      <div class="glow-card" style="padding: 32px;">
+        <h3 class="ds-body-lg" style="font-weight: 600; margin-bottom: 8px;">Floating Modals</h3>
+        <p class="ds-body" style="color: var(--color-secondary-text); margin-bottom: 24px;">Hover map to trigger dialog interaction.</p>
+        
+        <div class="ds-modal-preview">
+           <div class="ds-modal">
+             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+               <div style="display: flex; align-items: center; gap: 12px;">
+                  <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(20, 184, 166, 0.1); display: flex; align-items: center; justify-content: center; color: var(--color-accent-teal);">
+                     <i data-lucide="shield-check"></i>
+                  </div>
+                  <div>
+                    <h4 style="margin: 0; font-size: 17px; font-weight: 600;">Security Validated</h4>
+                    <p class="ds-caption" style="margin: 0;">2 min ago</p>
+                  </div>
+               </div>
+               <i data-lucide="x" style="color: var(--color-secondary-text); cursor: pointer; width: 18px;"></i>
+             </div>
+             <p class="ds-body" style="margin-bottom: 24px; font-size: 15px;">All automated system workflows have successfully executed without active threats.</p>
+             <button class="ds-btn ds-btn-primary" style="width: 100%; padding: 10px;">Acknowledge</button>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Icons -->
+  <section id="icons" class="ds-container slide-up-fade">
+    <div class="ds-section-divider"></div>
+    <span class="ds-caption">4. Iconography</span>
+    <h2 class="ds-headline">Crisp, scalable vector icons.</h2>
+    <p class="ds-subhead">Integrating Lucide line icons tailored for a modern interface.</p>
+    
+    <div class="glow-card">
+      <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+        
+        <div style="text-align: center;">
+           <div style="width: 64px; height: 64px; border-radius: 20px; background: var(--color-surface-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-primary-text)'; this.style.color='var(--color-white)'" onmouseout="this.style.background='var(--color-surface-light)'; this.style.color='inherit'">
+             <i data-lucide="zap" style="width: 28px; height: 28px;"></i>
+           </div>
+           <span class="ds-caption">Action</span>
+        </div>
+
+        <div style="text-align: center;">
+           <div style="width: 64px; height: 64px; border-radius: 20px; background: var(--color-surface-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-primary-text)'; this.style.color='var(--color-white)'" onmouseout="this.style.background='var(--color-surface-light)'; this.style.color='inherit'">
+             <i data-lucide="layout-grid" style="width: 28px; height: 28px;"></i>
+           </div>
+           <span class="ds-caption">Layout</span>
+        </div>
+
+        <div style="text-align: center;">
+           <div style="width: 64px; height: 64px; border-radius: 20px; background: var(--color-surface-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-primary-text)'; this.style.color='var(--color-white)'" onmouseout="this.style.background='var(--color-surface-light)'; this.style.color='inherit'">
+             <i data-lucide="trending-up" style="width: 28px; height: 28px;"></i>
+           </div>
+           <span class="ds-caption">Analytics</span>
+        </div>
+
+        <div style="text-align: center;">
+           <div style="width: 64px; height: 64px; border-radius: 20px; background: var(--color-surface-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(20, 184, 166, 0.1)'; this.style.color='var(--color-accent-teal)'" onmouseout="this.style.background='var(--color-surface-light)'; this.style.color='inherit'">
+             <i data-lucide="terminal" style="width: 28px; height: 28px;"></i>
+           </div>
+           <span class="ds-caption">System</span>
+        </div>
+
+        <div style="text-align: center;">
+           <div style="width: 64px; height: 64px; border-radius: 20px; background: var(--color-surface-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(249, 115, 22, 0.1)'; this.style.color='var(--color-accent-orange)'" onmouseout="this.style.background='var(--color-surface-light)'; this.style.color='inherit'">
+             <i data-lucide="flame" style="width: 28px; height: 28px;"></i>
+           </div>
+           <span class="ds-caption">Hot/Trend</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Animations Review -->
+  <section id="animations" class="ds-container slide-up-fade" style="padding-bottom: 120px;">
+    <div class="ds-section-divider"></div>
+    <span class="ds-caption">5. Motion Design</span>
+    <h2 class="ds-headline">Smooth interactions.</h2>
+    <p class="ds-subhead">Hover over elements across this page to experience the 3D transforms, glowing shadows, gradient shifts, and blur states.</p>
+  </section>
+
+  <script>
+    // Initialize Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Select all elements that need to animate in
+      const animatedElements = document.querySelectorAll('.slide-up-fade');
+      animatedElements.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
