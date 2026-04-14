@@ -1082,7 +1082,7 @@
                     exposicao_estimada:    currentState.exposicaoEstimada,
                     status_diagnostico:    statusEl ? statusEl.innerText          : '',
                     headline_diagnostico:  headlineEl ? headlineEl.innerText      : '',
-                    descricao_diagnostico: document.getElementById('final-description') ? document.getElementById('final-description').innerText : '',
+                    descricao_diagnostico: currentState.priorityFocus,
                     origem:                'site-bba-radar',
                     cta_selecionado:       ''
                 };
