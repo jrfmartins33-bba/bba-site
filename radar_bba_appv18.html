@@ -758,6 +758,7 @@
         let currentState = {
             score: 100,
             baseRevenue: 0,
+            exposicaoEstimada: 0,
             priorityFocus: '',
             findings: {
                 noFinanceControl: false,
@@ -1078,7 +1079,7 @@
                     email:                 '',
                     foco_principal:        currentState.priorityFocus,
                     score_final:           scoreEl  ? Number(scoreEl.innerText)   : currentState.score,
-                    exposicao_estimada:    lossEl   ? lossEl.innerText            : '',
+                    exposicao_estimada:    currentState.exposicaoEstimada,
                     status_diagnostico:    statusEl ? statusEl.innerText          : '',
                     headline_diagnostico:  headlineEl ? headlineEl.innerText      : '',
                     descricao_diagnostico: document.getElementById('final-description') ? document.getElementById('final-description').innerText : '',
@@ -1114,6 +1115,7 @@
 
             let rev = currentState.baseRevenue || 1200000;
             let annualLossMax = rev * lossMultiplier;
+            currentState.exposicaoEstimada = annualLossMax;
             let formattedLoss = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(annualLossMax);
 
             // Logic matching for specific user pain texts
