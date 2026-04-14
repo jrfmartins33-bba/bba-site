@@ -141,7 +141,7 @@
                     <p>Integramos Finanças, Tecnologia e Pessoas — para transformar crescimento
                         em Resultado Real.</p>
 
-                    <a href="#bba-finale" class="bba-hero__button" style="margin-top: 40px;">
+                    <a href="#" id="btn-raiox" class="bba-hero__button" style="margin-top: 40px;">
                         Fazer Raio-X da minha Empresa
                         <svg viewBox="0 0 24 24">
                             <polyline points="9 18 15 12 9 6"></polyline>
@@ -763,6 +763,19 @@
     </section>
 
     <script src="./assets/js/main.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const botaoRaioX = document.getElementById('btn-raiox');
+        
+          if (botaoRaioX) {
+            botaoRaioX.addEventListener('click', function (event) {
+              event.preventDefault();
+              alert('Botão funcionando');
+            });
+          }
+        });
+        </script>
 </body>
 
 </html>
