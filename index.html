@@ -766,16 +766,39 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-          const botaoRaioX = document.getElementById('btn-raiox');
-        
-          if (botaoRaioX) {
-            botaoRaioX.addEventListener('click', function (event) {
-              event.preventDefault();
-              alert('Botão funcionando');
-            });
-          }
+    const botaoRaioX = document.getElementById('btn-raiox');
+
+    if (botaoRaioX) {
+        botaoRaioX.addEventListener('click', async function (event) {
+            event.preventDefault();
+
+            try {
+                const response = await fetch('https://default5c49dbb5136849ddbf341087c823a8.8f.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/8d5c892b03bb4fb5848eb10ff69f41d2/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=sgewG6MC_Nk-UWtJeSGLx82yn5HZL6mhHM28KhD67Qo', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        origem: 'site-bba',
+                        tipo: 'raio-x',
+                        data: new Date().toISOString()
+                    })
+                });
+
+                if (response.ok) {
+                    alert('Solicitação enviada com sucesso!');
+                } else {
+                    alert('Erro ao enviar. Verifique o Power Automate.');
+                    console.error('Status HTTP:', response.status);
+                }
+
+            } catch (error) {
+                console.error('Erro de conexão:', error);
+                alert('Erro de conexão.');
+            }
         });
-        </script>
+    }
+});
 </body>
 
 </html>
