@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".link-list sup a[href], .link-list sub a[href]").forEach(function(a){a.addEventListener("click",function(b){b.stopPropagation()})})});

@@ -1,0 +1,2 @@
+// For license information, see `https://assets.adobedtm.com/27570ec65b69/ad0ea22f24a0/bf1e1cc719af/RC35551099e17243018f8b850f1cc51083-source.js`.
+_satellite.__registerScript('https://assets.adobedtm.com/27570ec65b69/ad0ea22f24a0/bf1e1cc719af/RC35551099e17243018f8b850f1cc51083-source.min.js', "document.querySelector(\"body\").classList.add(\"has-trustarc-banner\");");

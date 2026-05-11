@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Financeiro BBA | Engine de Diagnóstico Refinado</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bba: {
+                            blue: '#003A70',
+                            deep: '#001A33',
+                            gold: '#D4AF37',
+                            bg: '#EBECEF',
+                            surface: '#FFFFFF',
+                            surfaceHover: '#F4F4F5',
+                            neutral: '#D4D4D8',
+                            border: '#A1A1AA',
+                            text: '#09090B',
+                            muted: '#3F3F46',
+                            red: '#B91C1C',
+                            redDark: '#7F1D1D',
+                            redSoft: '#FEF2F2',
+                            redBorder: '#FECACA',
+                            green: '#15803D',
+                            greenSoft: '#F0FDF4',
+                            amber: '#B45309',
+                            amberSoft: '#FFFBEB'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        display: ['DM Serif Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'level-1': '0 2px 4px rgba(0, 26, 51, 0.04), 0 1px 2px rgba(0, 26, 51, 0.06)',
+                        'level-2': '0 12px 24px rgba(0, 26, 51, 0.08), 0 4px 12px rgba(0, 26, 51, 0.06)',
+                        'level-3': '0 24px 48px rgba(0, 26, 51, 0.12), 0 8px 24px rgba(0, 26, 51, 0.08)',
+                        'inner-intense': 'inset 0 4px 12px rgba(0, 0, 0, 0.15)',
+                        'glow-red': '0 0 32px rgba(185, 28, 28, 0.25)',
+                        'glow-amber': '0 0 32px rgba(180, 83, 9, 0.20)',
+                        'glow-green': '0 0 32px rgba(21, 128, 61, 0.20)',
+                        'alert-ring': '0 0 0 4px rgba(185, 28, 28, 0.1)',
+                    },
+                    backgroundImage: {
+                        'ambient-layer': 'radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.12) 0%, transparent 40%), radial-gradient(circle at 80% 20%, rgba(0, 58, 112, 0.08) 0%, transparent 50%), radial-gradient(circle at 50% 90%, rgba(185, 28, 28, 0.05) 0%, transparent 60%), linear-gradient(180deg, #EBECEF 0%, #DFE1E5 100%)',
+                        'noise': 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.06%22/%3E%3C/svg%3E")',
+                        'danger-stripes': 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(185,28,28,0.04) 10px, rgba(185,28,28,0.04) 20px)',
+                        'gold-shine': 'linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.2) 50%, transparent 100%)',
+                    },
+                    animation: {
+                        'pulse-urgent': 'pulseUrgent 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow-breathe': 'glowBreathe 3s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'shine-sweep': 'shineSweep 3s infinite',
+                        'float-slow': 'floatSlow 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseUrgent: {
+                            '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+                            '50%': { opacity: 0.5, transform: 'scale(1.05)' },
+                        },
+                        glowBreathe: {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.12)' },
+                        },
+                        fadeIn: {
+                            from: { opacity: 0, filter: 'blur(4px)' },
+                            to: { opacity: 1, filter: 'blur(0)' }
+                        },
+                        slideUp: {
+                            from: { opacity: 0, transform: 'translateY(32px) scale(0.98)', filter: 'blur(4px)' },
+                            to: { opacity: 1, transform: 'translateY(0) scale(1)', filter: 'blur(0)' }
+                        },
+                        shineSweep: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        floatSlow: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: var(--tw-gradient-stops);
+            background-color: #EBECEF;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.06%22/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .app-screen {
+            display: none;
+            opacity: 0;
+            position: relative;
+            width: 100%;
+            min-height: calc(100vh - 80px);
+            flex-direction: column;
+        }
+
+        .app-screen.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .panel-solid {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow:
+                0 24px 48px -12px rgba(0, 26, 51, 0.15),
+                0 4px 24px rgba(0, 26, 51, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-bba {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateZ(0);
+        }
+
+        .btn-bba::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .btn-bba:hover::after {
+            transform: translateX(100%);
+        }
+
+        .btn-bba:active {
+            transform: translateY(2px) scale(0.98);
+        }
+
+        .input-bba {
+            background: #FFFFFF;
+            border: 1px solid #D4D4D8;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .input-bba:focus-within {
+            border-color: #001A33;
+            box-shadow: 0 0 0 3px rgba(0, 26, 51, 0.1), inset 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .option-card {
+            background: #FFFFFF;
+            border: 2px solid #D4D4D8;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+        }
+
+        .option-card:hover {
+            border-color: #A1A1AA;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0, 26, 51, 0.04), 0 1px 2px rgba(0, 26, 51, 0.06);
+        }
+
+        .option-card.selected {
+            background: #F4F4F5;
+            border-color: #003A70;
+            box-shadow: 0 0 0 4px rgba(0, 58, 112, 0.1);
+        }
+
+        .option-card.selected .radio-btn {
+            background: #003A70;
+            border-color: #003A70;
+        }
+
+        .option-card.selected .radio-btn::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .gauge-ring {
+            background: conic-gradient(var(--gauge-color) calc(var(--score) * 1%), #D4D4D8 0deg);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .gauge-ring::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            background: var(--gauge-bg, #FFFFFF);
+            border-radius: 50%;
+            box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            border-radius: 2px;
+            font-size: 0.70rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(0, 26, 51, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .typo-editorial {
+            letter-spacing: -0.03em;
+        }
+
+        .typo-data {
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.02em;
+        }
+
+        .loader-line {
+            width: 100%;
+            height: 2px;
+            background: #D4D4D8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 50%;
+            height: 100%;
+            background: #D4AF37;
+            animation: moveLoader 1.5s infinite ease-in-out;
+        }
+
+        @keyframes moveLoader {
+            0% {
+                left: -50%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        #micro-feedback {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 100;
+        }
+
+        #micro-feedback.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+        }
+
+        .step-transition {
+            animation: slideUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+    </style>
+</head>
+
+<body class="text-bba-text bg-ambient-layer">
+
+    <!-- GLOBAL NAVBAR -->
+    <nav
+        class="nav-glass w-full h-auto py-2 md:py-3 flex items-center px-6 md:px-10 justify-between flex-shrink-0 relative z-50">
+        <div class="flex items-center gap-5 md:gap-8">
+            <img src="../materia-prima/bba-logo.png" alt="BBA"
+                class="h-24 md:h-[100px] lg:h-[120px] w-auto object-contain pointer-events-none">
+            <div class="h-12 md:h-16 w-[2px] bg-bba-border opacity-50"></div>
+            <span
+                class="font-bold text-bba-deep tracking-tight text-sm md:text-base uppercase hidden sm:block leading-snug pt-1">Produção
+                de<br>Diagnóstico
+            </span>
+        </div>
+        <div id="nav-system-status" class="hidden items-center gap-3 text-bba-muted font-medium text-xs">
+            <span class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 bg-bba-amber rounded-full animate-pulse-urgent"></div>
+                <span id="nav-dynamic-msg">Análise de Risco Ativa</span>
+            </span>
+        </div>
+    </nav>
+
+    <main
+        class="relative flex-1 flex flex-col justify-start items-center w-full min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-80px)] overflow-auto pt-1 md:pt-2">
+
+        <!-- MICRO FEEDBACK TOAST -->
+        <div id="micro-feedback"
+            class="bg-bba-deep text-white px-5 py-3 rounded shadow-level-3 flex items-center gap-3 border border-bba-border/40">
+            <svg class="w-4 h-4 text-bba-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                </path>
+            </svg>
+            <span id="feedback-text" class="text-xs font-bold tracking-widest uppercase">Dado computado</span>
+        </div>
+
+        <!-- SCREEN: ENTRY -->
+        <div id="screen-entry" class="app-screen justify-center items-center p-6 pb-20 active">
+            <div class="max-w-3xl w-full text-center animate-slide-up">
+                <div
+                    class="inline-flex items-center gap-2 mb-6 bg-white px-4 py-1.5 rounded-full border border-bba-border shadow-sm">
+                    <div class="w-2 h-2 bg-bba-deep rounded-full"></div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-bba-deep">Access Gateway</span>
+                </div>
+
+                <h1 class="font-serif text-5xl md:text-6xl text-bba-deep typo-editorial font-bold leading-tight mb-6">
+                    Diagnóstico Estratégico da <br /><span class="text-bba-gold italic">Estrutura Empresarial</span>
+                </h1>
+
+                <p class="text-bba-muted text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto mb-10">
+                    Descubra os vazamentos financeiros silenciosos que estão consumindo sua margem de lucro e avalie sua
+                    verdadeira exposição a riscos judiciais cruzados.
+                </p>
+
+                <button onclick="startDiagnostic()"
+                    class="btn-bba inline-flex items-center gap-3 px-8 py-4 bg-bba-deep text-white text-sm font-bold uppercase tracking-widest rounded shadow-level-2 hover:shadow-level-3 hover:bg-bba-blue transition-all border-b-4 border-bba-blue">
+                    Iniciar Diagnóstico
+                    <svg class="w-5 h-5 text-bba-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </button>
+
+                <div class="mt-8 text-xs text-bba-border font-mono relative z-10">
+                    SECURE ENGINE • END-TO-END ENCRYPTED
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN: DYNAMIC QUESTION FLOW -->
+        <div id="screen-question" class="app-screen justify-center items-center p-4 md:p-6 pb-20 md:pb-6">
+            <div
+                class="panel-solid rounded-xl max-w-2xl w-full mx-auto overflow-hidden shadow-level-3 border-t-4 border-t-bba-deep flex flex-col h-auto max-h-[90vh]">
+                <!-- Header -->
+                <div
+                    class="bg-bba-surfaceHover border-b border-bba-neutral p-3 md:p-4 flex items-center justify-between shrink-0">
+                    <span class="text-[10px] text-bba-muted uppercase tracking-widest font-bold"
+                        id="q-category">Analisando dimensão...</span>
+                    <div class="flex items-center gap-3 w-1/3">
+                        <div class="w-full bg-bba-border h-1.5 rounded-full overflow-hidden">
+                            <div id="q-progress-bar"
+                                class="bg-bba-blue h-full rounded-full w-[0%] transition-all duration-500"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Body -->
+                <div class="p-4 md:p-5 step-transition overflow-y-auto flex-1" id="q-body">
+                    <h2 id="q-title"
+                        class="font-serif text-lg md:text-xl font-bold text-bba-deep mb-4 md:mb-5 leading-snug">
+                        Question
+                        Title</h2>
+                    <div id="q-options" class="flex flex-col gap-2">
+                        <!-- Options injected here -->
+                    </div>
+                </div>
+                <!-- Footer -->
+                <div
+                    class="bg-gray-50 border-t border-bba-neutral p-3 md:p-4 flex justify-between items-center shrink-0">
+                    <button onclick="prevQuestion()"
+                        class="text-bba-muted text-xs font-bold uppercase tracking-widest hover:text-bba-deep">Voltar</button>
+                    <button onclick="nextQuestion()"
+                        class="btn-bba bg-bba-deep text-white px-8 py-3 rounded shadow-level-1 hover:shadow-level-2 hover:bg-bba-blue font-bold text-sm tracking-widest uppercase flex items-center gap-3 disabled:opacity-50"
+                        id="btn-next-question" disabled>
+                        Avançar <svg class="w-4 h-4 text-bba-gold" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN: PROCESSING -->
+        <div id="screen-processing" class="app-screen justify-center items-center p-6 bg-bba-deep text-white">
+            <div class="max-w-md w-full text-center flex flex-col items-center">
+                <!-- Radar Pulse -->
+                <div class="relative w-24 h-24 flex items-center justify-center mb-10">
+                    <div
+                        class="absolute inset-0 border-2 border-bba-gold rounded-full opacity-0 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]">
+                    </div>
+                    <div
+                        class="absolute inset-4 border-2 border-bba-gold/50 rounded-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite_0.5s]">
+                    </div>
+                    <svg class="w-8 h-8 text-bba-gold relative z-10" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                        </path>
+                    </svg>
+                </div>
+                <h2 class="font-serif text-3xl font-bold text-white mb-6">Produção de Diagnóstico</h2>
+                <div class="w-full h-1 bg-white/10 rounded mb-4 overflow-hidden">
+                    <div class="h-full bg-bba-gold w-1/2 rounded loader-line"></div>
+                </div>
+                <div class="h-10 text-sm font-bold uppercase tracking-widest text-bba-gold" id="processing-text">
+                    Consolidando arquitetura financeira...
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN: LEAD CAPTURE -->
+        <div id="screen-lead" class="app-screen justify-start items-center p-6 pb-40 overflow-y-auto">
+            <div
+                class="panel-solid my-10 shrink-0 rounded-xl max-w-lg w-full mx-auto overflow-hidden shadow-level-3 border-t-4 border-t-bba-amber/80 text-center p-10 animate-slide-up bg-white relative">
+                <div class="absolute inset-0 bg-bba-gold/5 pointer-events-none"></div>
+                <div class="relative z-10">
+                    <div
+                        class="w-16 h-16 bg-bba-redSoft border border-bba-red/20 text-bba-red rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow-red animate-pulse-urgent">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h2 class="font-serif text-3xl font-bold text-bba-deep mb-3 leading-snug">Diagnóstico Calculado.
+                    </h2>
+                    <p class="text-bba-muted text-sm font-medium leading-relaxed mb-6">
+                        Identificamos <strong>problemas relevantes que estão pressionando o desempenho financeiro da sua empresa</strong>.
+                        A BBA já identificou os impactos na sua margem.
+                        Identifique-se de forma segura para validar os resultados.
+                    </p>
+
+                    <!-- PREVIEW PARCIAL DO DIAGNÓSTICO -->
+                    <div class="flex flex-col gap-2 mb-7 text-left">
+                        <!-- Card 1: Nível -->
+                        <div
+                            class="flex items-center justify-between bg-bba-surfaceHover border border-bba-neutral rounded px-4 py-3 shadow-level-1">
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-bba-muted">Nível preliminar
+                                detectado</span>
+                            <span id="lead-preview-level"
+                                class="font-serif text-sm font-bold text-bba-deep tracking-tight">Em análise</span>
+                        </div>
+                        <!-- Card 2: Vetores -->
+                        <div
+                            class="flex items-center justify-between bg-bba-surfaceHover border border-bba-neutral rounded px-4 py-3 shadow-level-1">
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-bba-muted">Problemas
+                                identificados</span>
+                            <span id="lead-preview-vectors"
+                                class="font-serif text-sm font-bold text-bba-deep tracking-tight">Em análise</span>
+                        </div>
+                        <!-- Card 3: Exposição -->
+                        <div
+                            class="flex items-center justify-between bg-bba-redSoft border border-bba-red/20 rounded px-4 py-3 shadow-level-1">
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-bba-redDark">Exposição
+                                preliminar estimada</span>
+                            <span id="lead-preview-loss"
+                                class="font-serif text-sm font-bold text-bba-red tracking-tight">Calculando</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 text-left">
+                        <div class="flex flex-col">
+                            <label class="text-[10px] font-bold uppercase text-bba-deep tracking-wider mb-1">Nome
+                                Completo</label>
+                            <input type="text" id="lead-name"
+                                class="input-bba w-full p-3 rounded text-sm text-bba-deep font-bold outline-none"
+                                placeholder="Ex: João Silva">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[10px] font-bold uppercase text-bba-deep tracking-wider mb-1">Telefone
+                                WhatsApp</label>
+                            <input type="tel" id="lead-phone"
+                                class="input-bba w-full p-3 rounded text-sm text-bba-deep font-bold outline-none"
+                                placeholder="Ex: (**) 9XXXX-XXXX"
+                                oninput="this.value = this.value.replace(/\D/g, '').replace(/^(\d{2})(\d)/g, '($1) $2').replace(/(\d)(\d{4})$/, '$1-$2').substring(0, 15)">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-[10px] font-bold uppercase text-bba-deep tracking-wider mb-1">Principal foco da sua preocupação hoje</label>
+                            <select id="lead-priority"
+                                class="input-bba w-full p-3 rounded text-sm text-bba-deep font-bold outline-none appearance-none cursor-pointer">
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="cash">Caixa e lucratividade</option>
+                                <option value="tax">Carga tributária</option>
+                                <option value="legal">Passivo trabalhista ou fiscal</option>
+                                <option value="asset">Proteção patrimonial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="unlockReport()"
+                        class="btn-bba w-full mt-8 bg-bba-deep text-white py-4 rounded shadow-level-2 hover:shadow-level-3 font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 border-b-4 border-bba-blue transition-all"
+                        id="btn-unlock">
+                        Desbloquear Parecer Executivo
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mt-4 text-[9px] text-bba-muted font-bold tracking-widest uppercase">Sigilo Absoluto e
+                        Criptografia Ponta a Ponta.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN: DYNAMIC RESULT REPORT -->
+        <div id="screen-result" class="app-screen items-center p-6 pb-24 relative overflow-x-hidden">
+            <img src="../materia prima/BBA Logo fundo vazio.png" class="watermark" alt="Watermark BBA">
+
+            <div class="max-w-5xl w-full mx-auto relative z-10 pt-8 animate-slide-up">
+                <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-8">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span id="final-alert-badge"
+                                class="text-[11px] font-bold uppercase text-bba-red tracking-widest flex items-center gap-2 bg-white px-2 py-1 rounded shadow-sm border border-bba-red/20">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                    </path>
+                                </svg>
+                                Alerta Direcionado
+                            </span>
+                        </div>
+                        <h1
+                            class="font-serif text-5xl text-bba-deep typo-editorial font-bold bg-white/50 backdrop-blur inline-block pr-6 rounded-r">
+                            Parecer Executivo</h1>
+                    </div>
+                </div>
+
+                <!-- Report Card -->
+                <div id="final-card"
+                    class="panel-solid rounded border-t-4 border-t-bba-red p-8 md:p-12 shadow-level-3 flex flex-col justify-between relative overflow-hidden bg-white">
+                    <div id="final-glow"
+                        class="absolute -top-32 -left-32 w-80 h-80 bg-bba-red/10 rounded-full blur-[80px] pointer-events-none animate-glow-breathe">
+                    </div>
+
+                    <div class="relative z-10 flex flex-col lg:flex-row gap-12 items-start">
+                        <!-- Score Display -->
+                        <div class="flex flex-col items-center shrink-0 w-64 mt-4">
+                            <h4 class="text-[10px] uppercase font-bold text-bba-deep tracking-widest mb-4">Maturidade
+                                Corporativa</h4>
+
+                            <div id="final-gauge"
+                                class="gauge-ring w-52 h-52 shadow-inner-intense flex flex-col items-center justify-center mb-5 relative bg-white transition-all duration-1000"
+                                style="--score: 0; --gauge-color: #B91C1C; --gauge-bg: #FFFFFF;">
+                                <div id="final-gauge-pulse"
+                                    class="absolute inset-0 rounded-full shadow-glow-red opacity-60 pointer-events-none animate-pulse-urgent">
+                                </div>
+                                <div class="flex flex-col items-center justify-center z-10">
+                                    <span id="final-score"
+                                        class="font-serif text-7xl text-bba-red leading-none typo-data mb-1 font-bold">0</span>
+                                    <span class="text-xs font-bold text-bba-muted tracking-wide">/ 100</span>
+                                </div>
+                            </div>
+
+                            <div id="final-status"
+                                class="status-badge bg-bba-redSoft border border-bba-red text-bba-red shadow-alert-ring w-full justify-center text-[10px] py-3 mb-4 text-center">
+                                Veredito
+                            </div>
+
+                            <!-- Financial Consequence -->
+                            <div id="final-loss-box"
+                                class="w-full bg-bba-redSoft/70 border border-bba-red/50 rounded p-4 text-center relative overflow-hidden shadow-inner font-mono">
+                                <div class="absolute inset-0 bg-danger-stripes opacity-20 pointer-events-none"></div>
+                                <span
+                                    class="text-[10px] font-bold text-bba-redDark uppercase tracking-widest block mb-1 relative z-10">Estimativa
+                                    Preliminar de Exposição Financeira</span>
+                                <span id="final-loss-value"
+                                    class="text-xl font-bold text-bba-red relative z-10 tracking-tighter">R$ 0</span>
+                                <span
+                                    class="block text-[8px] text-bba-redDark/80 font-sans mt-2 relative z-10 leading-snug">Estimativa
+                                    preliminar baseada na faixa de faturamento e nos sinais de risco identificados no
+                                    diagnóstico.</span>
+                            </div>
+                        </div>
+
+                        <!-- Interpretation text -->
+                        <div class="flex-1 flex flex-col">
+                            <h3 id="final-headline"
+                                class="font-serif text-3xl font-bold text-bba-deep mb-4 leading-tight">Calculando...
+                            </h3>
+                            <p id="final-description"
+                                class="text-bba-deep/80 text-base leading-relaxed mb-6 font-medium">Aguardando
+                                parecer...
+                            </p>
+
+                            <!-- Radar Metric Chart -->
+                            <div class="mb-6 w-full">
+                                <h4
+                                    class="text-[10px] uppercase font-bold text-bba-muted tracking-widest mb-3 flex items-center gap-2">
+                                    <div class="w-1.5 h-3 bg-bba-border rounded"></div>
+                                    Métricas de Fundamentação BBA
+                                </h4>
+                                <div class="flex flex-col gap-4 p-5 bg-bba-surfaceHover border border-bba-border/40 rounded shadow-sm"
+                                    id="radar-chart-container">
+                                    <!-- Bars will be injected here -->
+                                </div>
+                            </div>
+
+                            <!-- Dynamic Problem / Opportunity -->
+                            <div class="flex flex-col gap-4 mt-auto">
+                                <div id="final-problem-box"
+                                    class="bg-white border-2 border-bba-red shadow-alert-ring rounded p-5 relative">
+                                    <div class="flex items-start gap-4 mb-3">
+                                        <div
+                                            class="p-2 bg-bba-red rounded flex-shrink-0 animate-pulse-urgent text-white">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span
+                                                class="text-xs font-bold text-bba-red uppercase tracking-widest block mb-1">Ponto
+                                                Cego Crítico Mapeado</span>
+                                            <span id="final-problem-title"
+                                                class="font-serif text-xl font-bold text-bba-deep leading-none">-</span>
+                                        </div>
+                                    </div>
+                                    <span id="final-problem-text"
+                                        class="text-sm text-bba-redDark font-semibold leading-relaxed block pl-[52px]">-</span>
+                                </div>
+
+                                <div class="bg-bba-surfaceHover border border-bba-green/60 rounded p-5 mt-2">
+                                    <div class="flex items-start gap-3 mb-3">
+                                        <div class="p-2 bg-bba-green rounded text-white shadow-sm">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span
+                                                class="text-[10px] font-bold text-bba-green uppercase tracking-widest block mb-1">Intervenção
+                                                BBA Sugerida</span>
+                                            <span id="final-opp-title"
+                                                class="font-serif text-base font-bold text-bba-deep leading-none">Ação
+                                                de Choque Estrutural</span>
+                                        </div>
+                                    </div>
+                                    <span id="final-opp-text"
+                                        class="text-xs text-bba-deep font-bold leading-relaxed block pl-[48px]">Somente
+                                        uma reavaliação societária aliada à governança ativa travará a sangria atual
+                                        constatada.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Call to Action Block -->
+                <div
+                    class="mt-8 panel-solid rounded border-t-4 border-t-bba-deep p-10 bg-gradient-to-r from-bba-bg to-white shadow-level-3">
+                    <h3
+                        class="text-center font-serif text-3xl font-bold text-bba-deep mb-8 border-b border-bba-neutral pb-6">
+                        Consequência Operacional</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <button id="final-cta-primary-button"
+                            class="btn-bba bg-bba-red text-white py-5 px-6 rounded shadow-level-3 hover:shadow-glow-red hover:bg-bba-redDark font-bold text-sm tracking-widest uppercase flex flex-col items-center justify-center gap-2 border-b-4 border-bba-redDark transition-colors group">
+                            <span id="final-cta-primary-title" class="block">Estancar o Vazamento de Caixa</span>
+                            <span id="final-cta-primary-subtitle"
+                                class="text-[10px] font-medium text-white/80 normal-case tracking-normal group-hover:text-white transition-colors">Agendar
+                                Defesa Executiva Imediata com BBA</span>
+                        </button>
+                        <button id="final-cta-secondary-button"
+                            class="btn-bba bg-bba-deep text-white py-5 px-6 rounded shadow-level-2 hover:bg-bba-blue font-bold text-sm tracking-widest uppercase flex flex-col items-center justify-center gap-2 border-b-4 border-bba-surface transition-colors group">
+                            <span id="final-cta-secondary-title" class="block">Revisar Arquitetura Tributária</span>
+                            <span id="final-cta-secondary-subtitle"
+                                class="text-[10px] font-medium text-white/80 normal-case tracking-normal group-hover:text-white transition-colors">Solicitar
+                                Reunião com Sócios</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- DIAGNOSTIC ENGINE JS - ADAPTIVE LOGIC -->
+    <script>
+        let currentState = {
+            score: 100,
+            baseRevenue: 0,
+            exposicaoEstimada: 0,
+            priorityFocus: '',
+            findings: {
+                noFinanceControl: false,
+                cashBurn: false,
+                taxDoubt: false,
+                taxExposed: false,
+                legalRisk: false,
+                assetsMixed: false,
+                veilPiercing: false
+            }
+        };
+
+        const allQuestions = [
+            {
+                id: 'q_structure',
+                category: 'Estruturação Básica',
+                title: 'Qual é o arranjo societário que sustenta sua principal fonte de faturamento hoje?',
+                condition: () => true,
+                options: [
+                    { text: 'MEI / Empresa Individual', scoreOffset: -5, baseRevMax: 360000, fb: 'Risco pessoal iminente', trigger: [] },
+                    { text: 'Sociedade Limitada (Ltda)', scoreOffset: 0, fb: 'Padrão jurídico mínimo viável', trigger: [] },
+                    { text: 'Um emaranhado de múltiplos CNPJs', scoreOffset: -10, fb: 'Alerta: Ineficiência de grupo de fato', trigger: ['taxExposed'] },
+                    { text: 'Operação super mista, conta PF paga PJ', scoreOffset: -20, fb: 'Quebra do princípio jurídico primário', trigger: ['assetsMixed', 'noFinanceControl'] }
+                ]
+            },
+            {
+                id: 'q_revenue',
+                category: 'Métrica de Tamanho',
+                title: 'De quanto dinheiro estamos falando? Qual sua faixa de faturamento bruto anual?',
+                condition: () => true,
+                options: [
+                    { text: 'Ainda escalando: Abaixo de R$ 360 mil', scoreOffset: 0, baseRevenue: 300000, fb: 'Faixa teto do microempreendedor', trigger: [] },
+                    { text: 'Zona crítica: R$ 360 mil a R$ 4,8 milhões', scoreOffset: -5, baseRevenue: 3000000, fb: 'Barreira perigosa do Simples Nacional', trigger: [] },
+                    { text: 'Médias operações: R$ 5 Milhões a R$ 50 Milhões', scoreOffset: -15, baseRevenue: 25000000, fb: 'Lucro desprotegido detectado', trigger: ['taxDoubt'] },
+                    { text: 'Heavy players: Acima de R$ 50 Milhões', scoreOffset: -20, baseRevenue: 80000000, fb: 'Revisão profunda imperativa requerida', trigger: ['taxExposed'] }
+                ]
+            },
+            {
+                id: 'q_finance_control',
+                category: 'Clareza de Margem',
+                title: 'Seja sincero com o negócio: Você confia 100% que sabe o lucro exato e o fluxo de caixa no dia a dia?',
+                condition: () => true,
+                options: [
+                    { text: 'Sim, visibilidade total via C-Level e DREs impecáveis', scoreOffset: 10, fb: 'Domínio numérico ativo', trigger: [] },
+                    { text: 'Eu tenho "uma ideia". Controlo via planilhas e olho a conta.', scoreOffset: -10, fb: 'Gestão empírica com margem perigosa', trigger: ['noFinanceControl'] },
+                    { text: 'Zero clareza. O controle é torcer pra ter saldo pra pagar a próxima fatura.', scoreOffset: -25, fb: 'Alerta Vermelho: Navegando às cegas', trigger: ['noFinanceControl'] }
+                ]
+            },
+            {
+                id: 'q_finance_surprise',
+                category: 'Estresse Financeiro',
+                title: 'Com que frequência você é nocauteado por faltas de caixa inesperadas e surpresas para fechar o mês?',
+                condition: (state) => state.findings.noFinanceControl,
+                options: [
+                    { text: 'Raramente tenho esse nível de sobressalto.', scoreOffset: 0, fb: 'Ciclo operacional suportando os erros', trigger: [] },
+                    { text: 'Constantemente. O dinheiro some e eu não sei para onde.', scoreOffset: -20, fb: 'Drenagem de curto prazo severa', trigger: ['cashBurn'] }
+                ]
+            },
+            {
+                id: 'q_tax_perception',
+                category: 'Pressão Tributária',
+                title: 'Existe a sensação latente na empresa de que vocês pagam muito mais impostos do que o devido?',
+                condition: () => true,
+                options: [
+                    { text: 'Sim. A carga tributária atual parece sufocar a margem da empresa.', scoreOffset: -15, fb: 'Possível enquadramento vicioso', trigger: ['taxDoubt'] },
+                    { text: 'Não sei. Simplesmente pago as guias que o contador manda.', scoreOffset: -20, fb: 'Desconexão do principal passivo do país', trigger: ['taxDoubt'] },
+                    { text: 'Não. Tivemos otimização profissional dedicada no último ano.', scoreOffset: 10, fb: 'Blindagem fiscal confirmada', trigger: [] }
+                ]
+            },
+            {
+                id: 'q_tax_review',
+                category: 'Risco Fiscal',
+                title: 'Saindo do achismo: Quando foi a última vez que um expert independente revisou pesado os seus impostos?',
+                condition: (state) => state.findings.taxDoubt,
+                options: [
+                    { text: 'Nos últimos 12 meses', scoreOffset: 5, fb: 'Atitude reativa, porém válida', trigger: [] },
+                    { text: 'Faz anos que ninguém checa a fundo.', scoreOffset: -10, fb: 'Potencial restituição perdida', trigger: ['taxExposed'] },
+                    { text: 'Nunca foi feito. Pura inércia.', scoreOffset: -25, fb: 'Exposição de margem monumental', trigger: ['taxExposed'] }
+                ]
+            },
+            {
+                id: 'q_legal_risk',
+                category: 'Tensão Judicial',
+                title: 'Vamos falar de dor real: Processos trabalhistas pesados ou multas fiscais já bateram na sua porta?',
+                condition: () => true,
+                options: [
+                    { text: 'Sim, e é um pesadelo recorrente destruindo nosso fluxo.', scoreOffset: -30, fb: 'Vazamento jurídico esmagador', trigger: ['legalRisk'] },
+                    { text: 'Alguns isolados, já provisionados no pior cenário.', scoreOffset: -10, fb: 'Passivo adormecido detectado', trigger: ['legalRisk'] },
+                    { text: 'Por enquanto, não temos histórico com essas frentes.', scoreOffset: 5, fb: 'Balanço preservado limpo', trigger: [] }
+                ]
+            },
+            {
+                id: 'q_governance',
+                category: 'Ameaça Pessoal',
+                title: 'Se o CNPJ for processado duramente e explodir amanhã, o patrimônio da sua família (casas, carros) está à prova de balas?',
+                condition: () => true,
+                options: [
+                    { text: 'Sim. Uso uma Holding Patrimonial inquebrável por advogados comuns.', scoreOffset: 15, fb: 'Barreira protetora verificada', trigger: [] },
+                    { text: 'Acho que sim, as casas estão no meu nome corporativo ou da esposa.', scoreOffset: -15, fb: 'Risco ingênuo de execução solidária', trigger: ['assetsMixed'] },
+                    { text: 'Não. Se o juiz bloquear as contas da firma, bloqueia quem eu sou.', scoreOffset: -30, fb: 'ALERTA DE DESASTRE PATRIMONIAL', trigger: ['assetsMixed'] }
+                ]
+            },
+            {
+                id: 'q_asset_protection',
+                category: 'Quebra de Identidade',
+                title: 'Seu nível de proteção hoje: Você ou seus sócios pagam o cartão de crédito pessoal, escola do filho, com a conta da firma?',
+                condition: (state) => state.findings.assetsMixed,
+                options: [
+                    { text: 'Infelizmente misturamos bastante por comodidade...', scoreOffset: -25, fb: 'Desconsideração de personalidade jurídica facilitada', trigger: ['veilPiercing'] },
+                    { text: 'Não, somos muito radicais nas retiradas formais.', scoreOffset: -5, fb: 'Distância básica respeitada', trigger: [] }
+                ]
+            }
+        ];
+
+        let displayFlow = []; // Array of question data to ask
+        let currentFlowIndex = 0;
+        let selectedOptionData = null;
+
+        function buildFlow() {
+            displayFlow = [];
+            allQuestions.forEach(q => {
+                if (q.condition(currentState)) {
+                    displayFlow.push(q);
+                }
+            });
+        }
+
+        function switchAppScreen(screenId) {
+            document.querySelectorAll('.app-screen').forEach(el => el.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startDiagnostic() {
+            document.getElementById('nav-system-status').classList.remove('hidden');
+            document.getElementById('nav-system-status').classList.add('flex');
+            currentState.score = 100;
+            currentState.baseRevenue = 0;
+            currentState.priorityFocus = '';
+            Object.keys(currentState.findings).forEach(k => currentState.findings[k] = false);
+
+            buildFlow();
+            currentFlowIndex = 0;
+
+            renderQuestion();
+            switchAppScreen('screen-question');
+        }
+
+        function renderQuestion() {
+            selectedOptionData = null;
+            document.getElementById('btn-next-question').disabled = true;
+
+            const q = displayFlow[currentFlowIndex];
+
+            document.getElementById('q-category').innerText = `Matriz: ${q.category}`;
+            let pct = ((currentFlowIndex) / displayFlow.length) * 100;
+            document.getElementById('q-progress-bar').style.width = pct + '%';
+
+            const body = document.getElementById('q-body');
+            body.classList.remove('step-transition');
+            void body.offsetWidth;
+            body.classList.add('step-transition');
+
+            document.getElementById('q-title').innerText = q.title;
+
+            const opsContainer = document.getElementById('q-options');
+            opsContainer.innerHTML = '';
+
+            q.options.forEach(opt => {
+                const card = document.createElement('div');
+                card.className = 'option-card p-3 rounded-lg flex items-center gap-3';
+                card.onclick = () => selectDynamicOption(card, opt);
+
+                card.innerHTML = `
+                    <div class="mt-0 relative">
+                        <div class="w-4 h-4 rounded-full border-2 border-bba-border flex items-center justify-center radio-btn transition-colors"></div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[14px] font-bold text-bba-deep mb-0 leading-tight">${opt.text}</span>
+                    </div>
+                `;
+                opsContainer.appendChild(card);
+            });
+        }
+
+        function selectDynamicOption(cardElement, optData) {
+            const opsContainer = document.getElementById('q-options');
+            opsContainer.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+            cardElement.classList.add('selected');
+            selectedOptionData = optData;
+            document.getElementById('btn-next-question').disabled = false;
+            showMicroFeedback(optData.fb);
+        }
+
+        function showMicroFeedback(msg) {
+            const fb = document.getElementById('micro-feedback');
+            document.getElementById('feedback-text').innerText = msg;
+            fb.classList.add('show');
+            if (window.fbTimeout) clearTimeout(window.fbTimeout);
+            window.fbTimeout = setTimeout(() => { fb.classList.remove('show'); }, 2000);
+        }
+
+        function nextQuestion() {
+            if (!selectedOptionData) return;
+
+            currentState.score += selectedOptionData.scoreOffset;
+            if (selectedOptionData.baseRevenue) currentState.baseRevenue = selectedOptionData.baseRevenue;
+            if (selectedOptionData.trigger) {
+                selectedOptionData.trigger.forEach(t => currentState.findings[t] = true);
+            }
+
+            // Rebuild flow to catch new conditionals triggered just now
+            buildFlow();
+
+            if (currentFlowIndex < displayFlow.length - 1) {
+                currentFlowIndex++;
+                renderQuestion();
+            } else {
+                beginProcessing();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentFlowIndex > 0) {
+                currentFlowIndex--;
+                renderQuestion();
+            } else {
+                document.getElementById('nav-system-status').classList.remove('flex');
+                document.getElementById('nav-system-status').classList.add('hidden');
+                switchAppScreen('screen-entry');
+            }
+        }
+
+        function beginProcessing() {
+            switchAppScreen('screen-processing');
+            const messages = [
+                "Extraindo dor legal das respostas...",
+                "Identificando os principais pontos de perda...",
+                "Desmontando ineficiência tributária mapeada...",
+                "Construindo o Dossiê Final BBA..."
+            ];
+            let i = 0;
+            const textEl = document.getElementById('processing-text');
+            const interval = setInterval(() => {
+                i++;
+                if (i < messages.length) {
+                    textEl.style.opacity = '0';
+                    setTimeout(() => {
+                        textEl.innerText = messages[i];
+                        textEl.style.opacity = '1';
+                    }, 200);
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => { updateLeadPreview(); switchAppScreen('screen-lead'); }, 600);
+                }
+            }, 1800);
+        }
+
+        function updateLeadPreview() {
+            let s = currentState.score;
+            if (s > 100) s = 100;
+            if (s < 1) s = 10;
+
+            // Nível preliminar
+            let level;
+            if (s <= 49) level = 'Exposição crítica';
+            else if (s <= 74) level = 'Atenção prioritária';
+            else level = 'Estrutura relativamente estável';
+
+            // Contagem de problemas
+            const findingCount = Object.values(currentState.findings).filter(v => v === true).length;
+            let vectors;
+            if (findingCount === 1) vectors = '1 problema';
+            else if (findingCount > 1) vectors = findingCount + ' problemas';
+            else vectors = '0 problemas';
+
+            // Exposição financeira
+            let lossMultiplier = 0.05;
+            if (currentState.findings.cashBurn)    lossMultiplier += 0.10;
+            if (currentState.findings.taxExposed)  lossMultiplier += 0.12;
+            if (currentState.findings.legalRisk)   lossMultiplier += 0.15;
+            if (currentState.findings.assetsMixed) lossMultiplier += 0.10;
+            if (currentState.findings.veilPiercing) lossMultiplier += 0.08;
+            const rev = currentState.baseRevenue || 1200000;
+            const lossValue = rev * lossMultiplier;
+            const formattedLoss = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(lossValue);
+
+            // Atualizar elementos
+            document.getElementById('lead-preview-level').innerText   = level;
+            document.getElementById('lead-preview-vectors').innerText = vectors;
+            document.getElementById('lead-preview-loss').innerText    = formattedLoss;
+        }
+
+        async function unlockReport() {
+            const btn = document.getElementById('btn-unlock');
+            let n = document.getElementById('lead-name').value;
+            let phone = document.getElementById('lead-phone').value;
+            if (!n || !phone) { showMicroFeedback('Nome e Telefone são obrigatórios e confidenciais.'); return; }
+            let priority = document.getElementById('lead-priority').value;
+            if (!priority) { showMicroFeedback('Selecione sua principal preocupação.'); return; }
+            currentState.priorityFocus = priority;
+
+            btn.innerHTML = 'Travando Diagnóstico <svg class="w-4 h-4 ml-1 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v1m0 14v1m8-8h-1M5 12H4M18.364 18.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"></path></svg>';
+
+            setTimeout(async () => {
+                document.getElementById('nav-dynamic-msg').innerText = "Veredito Executivo Disponível";
+                calculateFinalReport();
+
+                // === INTEGRAÇÃO POWER AUTOMATE ===
+                const scoreEl   = document.getElementById('final-score');
+                const statusEl  = document.getElementById('final-status');
+                const headlineEl = document.getElementById('final-headline');
+                const lossEl    = document.getElementById('final-loss-value');
+
+                const payloadLead = {
+                    nome:                  n,
+                    telefone:              phone,
+                    email:                 '',
+                    foco_principal:        currentState.priorityFocus,
+                    score_final:           scoreEl  ? Number(scoreEl.innerText)   : currentState.score,
+                    exposicao_estimada:    currentState.exposicaoEstimada,
+                    status_diagnostico:    statusEl ? statusEl.innerText          : '',
+                    headline_diagnostico:  headlineEl ? headlineEl.innerText      : '',
+                    descricao_diagnostico: currentState.priorityFocus,
+                    origem:                'site-bba-radar',
+                    cta_selecionado:       ''
+                };
+
+                try {
+                    await enviarLeadParaPowerAutomate(payloadLead);
+                } catch (e) {
+                    // Falha silenciosa: não bloqueia o fluxo do usuário
+                    console.error('[BBA] Falha ao enviar lead para Power Automate:', e);
+                }
+                // ================================
+
+                switchAppScreen('screen-result');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1200);
+        }
+
+        function calculateFinalReport() {
+            let s = currentState.score;
+            if (s > 100) s = 100;
+            if (s < 1) s = 10;
+
+            // Brutal Loss Calculation
+            let lossMultiplier = 0.05;
+            if (currentState.findings.cashBurn) lossMultiplier += 0.10;
+            if (currentState.findings.taxExposed) lossMultiplier += 0.12;
+            if (currentState.findings.legalRisk) lossMultiplier += 0.15;
+            if (currentState.findings.assetsMixed) lossMultiplier += 0.10;
+            if (currentState.findings.veilPiercing) lossMultiplier += 0.08;
+
+            let rev = currentState.baseRevenue || 1200000;
+            let annualLossMax = rev * lossMultiplier;
+            currentState.exposicaoEstimada = annualLossMax;
+            let formattedLoss = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(annualLossMax);
+
+            // Logic matching for specific user pain texts
+            let mainPainRaw = [];
+            if (currentState.findings.veilPiercing) mainPainRaw.push("mistura inadequada de patrimônio entre sócios e pessoa jurídica");
+            if (currentState.findings.taxExposed) mainPainRaw.push("ineficiência e alta exposição na malha tributária");
+            if (currentState.findings.legalRisk) mainPainRaw.push("passivo legal exposto corroendo a rentabilidade");
+            if (currentState.findings.cashBurn) mainPainRaw.push("baixa previsibilidade e queima não mapeada de fluxo de caixa");
+
+            let unifiedPain = '';
+            if (mainPainRaw.length === 1) {
+                unifiedPain = mainPainRaw[0];
+            } else if (mainPainRaw.length > 1) {
+                const last = mainPainRaw.pop();
+                unifiedPain = mainPainRaw.join(", ") + " e " + last;
+            } else {
+                unifiedPain = "desalinhamentos estratégicos na operação";
+            }
+
+            let colorHex, colorTailwind, statusName, alertBadge, description, problemTitle, problemText;
+
+            if (s <= 49) {
+                colorHex = '#B91C1C'; colorTailwind = 'red';
+                statusName = 'Contingência Imediata'; alertBadge = 'Risco Catastrófico';
+                description = `Foram identificados sinais críticos de fragilidade na estrutura atual. O modelo apresenta alta vulnerabilidade, agravada especificamente por <strong>${unifiedPain}</strong>. A ausência de mecanismos adequados de proteção patrimonial amplia o risco de execuções sólidas que ultrapassem a pessoa jurídica.`;
+                problemTitle = 'Vazamento Incontrolável';
+                problemText = 'Diante de uma possível execução judicial ou bloqueio fiscal corporativo, todo o patrimônio pessoal dos sócios encontra-se exposto pela falta de uma governança isoladora (Holding Patrimonial). Essa ineficiência drástica compromete sistematicamente sua geração real de caixa.';
+            } else if (s <= 74) {
+                colorHex = '#B45309'; colorTailwind = 'amber';
+                statusName = 'Subótimo / Estagnado'; alertBadge = 'Prejuízo Invisível';
+                description = `O negócio apresenta sólida capacidade produtiva, porém existem lacunas corporativas severas. Identificamos forte ligação com <strong>${unifiedPain}</strong>. Há indícios claros de ineficiência financeira e recolhimento excedente de impostos, minando a robustez do fluxo financeiro livre.`;
+                problemTitle = 'Ocultação de Margem Real';
+                problemText = 'Embora a empresa mantenha fluxo de caixa para sobrevivência imediata, a excessiva exposição fiscal somada a processos de tesouraria vagos impossibilita o escalonamento seguro. Estimamos que a operação perca anualmente grandes volumes de rentabilidade marginal sem sequer registrar o fato (vide valor estimado à esquerda).';
+            } else {
+                colorHex = '#15803D'; colorTailwind = 'green';
+                statusName = 'Base Blindada Estável'; alertBadge = 'Maturidade Verificada';
+                description = `A estrutura corporativa avaliada atende aos critérios essenciais de compliance e inteligência financeira. A arquitetura organizacional isola de forma razoável as contaminações patrimoniais óbvias que frequentemente prejudicam empresas do mesmo porte.`;
+                problemTitle = 'Alavancas Táticas (Próximos Passos)';
+                problemText = 'Com uma matriz estrutural blindada em nível de gestão, direcionamos a ação primária para a elaboração de M&As (fusões e aquisições), consolidações via Family Office de alto ticket ou teses exclusivas de recuperação e planejamento tributário avançado e customizado.';
+            }
+
+            // === PERSONALIZAÇÃO POR FOCO DO CLIENTE ===
+
+            if (currentState.priorityFocus === 'tax') {
+                description += ' Existe evidência clara de ineficiência tributária e possível pagamento acima do necessário.';
+                problemTitle = 'Ineficiência Tributária Estrutural';
+                problemText = 'A estrutura atual indica potencial pagamento excessivo de impostos e ausência de revisão estratégica. Isso impacta diretamente sua margem operacional.';
+                document.getElementById('final-opp-title').innerText = 'Revisão Tributária Estratégica';
+                document.getElementById('final-opp-text').innerText = 'Revisão completa do enquadramento fiscal, identificação de créditos e reestruturação tributária para recuperação imediata de margem.';
+            }
+
+            if (currentState.priorityFocus === 'asset') {
+                description += ' Há forte indício de exposição patrimonial indevida e risco de contaminação entre pessoa física e jurídica.';
+                problemTitle = 'Exposição Patrimonial Crítica';
+                problemText = 'A ausência de segregação patrimonial adequada expõe bens pessoais a riscos jurídicos e financeiros da operação empresarial.';
+                document.getElementById('final-opp-title').innerText = 'Blindagem Patrimonial Estruturada';
+                document.getElementById('final-opp-text').innerText = 'Implementação de holding patrimonial e separação formal PF/PJ para proteção contra riscos de execução.';
+            }
+
+            if (currentState.priorityFocus === 'cash') {
+                description += ' O comportamento financeiro indica instabilidade de caixa e baixa previsibilidade operacional.';
+                problemTitle = 'Drenagem de Caixa Não Controlada';
+                problemText = 'A operação apresenta sinais de falta de controle financeiro e possíveis vazamentos de caixa não monitorados.';
+                document.getElementById('final-opp-title').innerText = 'Reestruturação Financeira Imediata';
+                document.getElementById('final-opp-text').innerText = 'Implantação de controle de caixa, previsibilidade financeira e disciplina de margem para estabilização da operação.';
+            }
+
+            if (currentState.priorityFocus === 'legal') {
+                description += ' Foram identificados riscos relevantes relacionados a passivos trabalhistas e fiscais.';
+                problemTitle = 'Passivo Jurídico Relevante';
+                problemText = 'A operação apresenta exposição a contingências que podem comprometer fluxo de caixa e continuidade do negócio.';
+                document.getElementById('final-opp-title').innerText = 'Mitigação de Risco Legal';
+                document.getElementById('final-opp-text').innerText = 'Mapeamento de contingências, revisão de passivos e estruturação preventiva para proteção da operação.';
+            }
+
+            // === PERSONALIZAÇÃO DO CTA POR FOCO DO CLIENTE ===
+            if (currentState.priorityFocus) {
+                const ctaMap = {
+                    tax:   { pt: 'Revisar Estrutura Tributária',   ps: 'Solicitar diagnóstico fiscal estratégico',  st: 'Recuperar Margem Tributária',  ss: 'Avaliar créditos e enquadramento' },
+                    asset: { pt: 'Proteger Patrimônio Agora',       ps: 'Estruturar blindagem patrimonial',           st: 'Separar PF e PJ',              ss: 'Reduzir risco de execução' },
+                    cash:  { pt: 'Organizar Caixa Imediatamente',   ps: 'Implantar previsibilidade financeira',       st: 'Recuperar Lucratividade',      ss: 'Corrigir vazamentos de margem' },
+                    legal: { pt: 'Reduzir Passivo Imediatamente',   ps: 'Mapear contingências críticas',              st: 'Proteger a Operação',          ss: 'Estruturar resposta preventiva' }
+                };
+                const cta = ctaMap[currentState.priorityFocus];
+                if (cta) {
+                    document.getElementById('final-cta-primary-title').innerText    = cta.pt;
+                    document.getElementById('final-cta-primary-subtitle').innerText  = cta.ps;
+                    document.getElementById('final-cta-secondary-title').innerText   = cta.st;
+                    document.getElementById('final-cta-secondary-subtitle').innerText = cta.ss;
+                }
+            }
+
+            // === CONFIGURAR MAILTO NOS BOTÕES FINAIS ===
+            const mailtoEmail = 'contato@bbabrazil.com.br';
+            const mailtoMap = {
+                tax: {
+                    primarySubject: 'Solicitação de Revisão Tributária Estratégica - Diagnóstico BBA',
+                    primaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de avançar com uma revisão tributária estratégica.',
+                    secondarySubject: 'Solicitação de Recuperação de Margem Tributária - Diagnóstico BBA',
+                    secondaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de avaliar oportunidades de recuperação de margem tributária.'
+                },
+                asset: {
+                    primarySubject: 'Solicitação de Blindagem Patrimonial - Diagnóstico BBA',
+                    primaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de avançar com a estruturação de proteção patrimonial.',
+                    secondarySubject: 'Solicitação de Separação PF e PJ - Diagnóstico BBA',
+                    secondaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de revisar a separação patrimonial entre pessoa física e jurídica.'
+                },
+                cash: {
+                    primarySubject: 'Solicitação de Reorganização de Caixa - Diagnóstico BBA',
+                    primaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de avançar com uma reorganização financeira imediata.',
+                    secondarySubject: 'Solicitação de Recuperação de Lucratividade - Diagnóstico BBA',
+                    secondaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de avaliar ações para recuperar margem e lucratividade.'
+                },
+                legal: {
+                    primarySubject: 'Solicitação de Redução de Passivo - Diagnóstico BBA',
+                    primaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de avançar com o mapeamento e mitigação de passivos.',
+                    secondarySubject: 'Solicitação de Proteção da Operação - Diagnóstico BBA',
+                    secondaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de estruturar uma resposta preventiva para proteção da operação.'
+                }
+            };
+
+            const mailData = mailtoMap[currentState.priorityFocus] || {
+                primarySubject: 'Solicitação de Contato Executivo - Diagnóstico BBA',
+                primaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de agendar um contato executivo.',
+                secondarySubject: 'Solicitação de Reunião Estratégica - Diagnóstico BBA',
+                secondaryBody: 'Olá, finalizei o diagnóstico da BBA e gostaria de agendar uma reunião estratégica.'
+            };
+
+            document.getElementById('final-cta-primary-button').onclick = function() {
+                window.location.href = `mailto:${mailtoEmail}?subject=${encodeURIComponent(mailData.primarySubject)}&body=${encodeURIComponent(mailData.primaryBody)}`;
+            };
+            document.getElementById('final-cta-secondary-button').onclick = function() {
+                window.location.href = `mailto:${mailtoEmail}?subject=${encodeURIComponent(mailData.secondarySubject)}&body=${encodeURIComponent(mailData.secondaryBody)}`;
+            };
+
+            // === PERSONALIZAÇÃO DO HEADLINE E BADGE POR FOCO DO CLIENTE ===
+            if (currentState.priorityFocus) {
+                const headlineMap = {
+                    tax:   { headline: 'Veredito Oficial BBA: Pressão Tributária Relevante',     badge: 'Foco Tributário'   },
+                    asset: { headline: 'Veredito Oficial BBA: Exposição Patrimonial Relevante',  badge: 'Foco Patrimonial'  },
+                    cash:  { headline: 'Veredito Oficial BBA: Instabilidade de Caixa',           badge: 'Foco Financeiro'   },
+                    legal: { headline: 'Veredito Oficial BBA: Contingência Jurídica Relevante',  badge: 'Foco Contingencial' }
+                };
+                const hd = headlineMap[currentState.priorityFocus];
+                if (hd) {
+                    document.getElementById('final-headline').innerText    = hd.headline;
+                    document.getElementById('final-alert-badge').innerText = hd.badge;
+                }
+            }
+
+            // Visual Metrics Chart
+            let p1 = 85, p2 = 85, p3 = 85, p4 = 85;
+
+            if (currentState.findings.veilPiercing || currentState.findings.assetsMixed) p1 = 20;
+            else if (s < 70) p1 = 55;
+
+            if (currentState.findings.noFinanceControl || currentState.findings.cashBurn) p2 = 25;
+            else if (s < 80) p2 = 60;
+
+            if (currentState.findings.taxExposed || currentState.findings.taxDoubt) p3 = 30;
+            else if (s < 75) p3 = 50;
+
+            if (currentState.findings.legalRisk) p4 = 30;
+            else if (s < 85) p4 = 65;
+
+            p1 = Math.max(10, Math.min(100, Math.floor(p1)));
+            p2 = Math.max(10, Math.min(100, Math.floor(p2)));
+            p3 = Math.max(10, Math.min(100, Math.floor(p3)));
+            p4 = Math.max(10, Math.min(100, Math.floor(p4)));
+
+            const pillars = [
+                { name: 'Estrutura Societária', val: p1 },
+                { name: 'Controle Financeiro', val: p2 },
+                { name: 'Eficiência Tributária', val: p3 },
+                { name: 'Proteção Patrimonial', val: p4 }
+            ];
+
+            const chartContainer = document.getElementById('radar-chart-container');
+            chartContainer.innerHTML = '';
+
+            pillars.forEach(p => {
+                let barColor = 'bg-bba-green';
+                if (p.val <= 49) barColor = 'bg-bba-red';
+                else if (p.val <= 74) barColor = 'bg-bba-amber';
+
+                chartContainer.innerHTML += `
+                    <div>
+                        <div class="flex justify-between items-end mb-1.5">
+                            <span class="text-xs font-bold text-bba-deep tracking-tight">${p.name}</span>
+                            <span class="text-[10px] text-bba-deep font-mono font-bold">${p.val}%</span>
+                        </div>
+                        <div class="w-full bg-bba-border/40 h-2 rounded-full overflow-hidden">
+                            <div class="h-full ${barColor} transition-all duration-[1500ms] ease-out" style="width: 0%" data-target-width="${p.val}%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            setTimeout(() => {
+                const bars = chartContainer.querySelectorAll('.transition-all');
+                bars.forEach(b => {
+                    b.style.width = b.getAttribute('data-target-width');
+                });
+            }, 150);
+
+            // Patch UI Elements
+            document.getElementById('final-score').innerText = s;
+            document.getElementById('final-score').className = `font-serif text-7xl text-bba-${colorTailwind} leading-none typo-data mb-1 font-bold`;
+            document.getElementById('final-gauge').style.setProperty('--score', s);
+            document.getElementById('final-gauge').style.setProperty('--gauge-color', colorHex);
+
+            document.getElementById('final-gauge-pulse').className = `absolute inset-0 rounded-full opacity-60 pointer-events-none animate-pulse-urgent shadow-glow-${colorTailwind}`;
+            document.getElementById('final-glow').className = `absolute -top-32 -left-32 w-80 h-80 rounded-full blur-[80px] pointer-events-none animate-glow-breathe bg-bba-${colorTailwind}/10`;
+
+            const sBadge = document.getElementById('final-status');
+            sBadge.className = `status-badge bg-bba-${colorTailwind}Soft border border-bba-${colorTailwind} text-bba-${colorTailwind} shadow-alert-ring w-full justify-center text-[10px] py-3 mb-4 text-center`;
+            sBadge.innerText = statusName;
+
+            document.getElementById('final-alert-badge').className = `text-[11px] font-bold uppercase text-bba-${colorTailwind} tracking-widest flex items-center gap-2 bg-white px-2 py-1 rounded shadow-sm border border-bba-${colorTailwind}/20`;
+            document.getElementById('final-loss-box').className = `w-full bg-bba-${colorTailwind}Soft/70 border border-bba-${colorTailwind}/50 rounded p-4 text-center relative overflow-hidden shadow-inner font-mono`;
+            document.getElementById('final-loss-value').innerText = formattedLoss;
+            document.getElementById('final-loss-value').className = `text-2xl font-bold relative z-10 tracking-tighter text-bba-${colorTailwind}`;
+
+            document.getElementById('final-card').className = `panel-solid rounded border-t-4 border-t-bba-${colorTailwind} p-8 md:p-12 shadow-level-3 flex flex-col justify-between relative overflow-hidden bg-white`;
+
+            if (!currentState.priorityFocus) {
+                document.getElementById('final-headline').innerText = `Veredito Oficial BBA: ${statusName}`;
+            }
+            document.getElementById('final-description').innerHTML = description;
+
+            const pBox = document.getElementById('final-problem-box');
+            pBox.className = `bg-white border-2 border-bba-${colorTailwind} shadow-alert-ring rounded p-5 relative`;
+            pBox.querySelector('div').className = `p-2 bg-bba-${colorTailwind} rounded flex-shrink-0 animate-pulse-urgent text-white`;
+            pBox.querySelector('span').className = `text-xs font-bold text-bba-${colorTailwind} uppercase tracking-widest block mb-1`;
+
+            document.getElementById('final-problem-title').innerText = problemTitle;
+            document.getElementById('final-problem-text').innerText = problemText;
+            document.getElementById('final-problem-text').className = `text-sm text-bba-${colorTailwind}Dark font-semibold leading-relaxed block pl-[52px]`;
+        }
+
+        // === FUNÇÃO DE ENVIO PARA POWER AUTOMATE ===
+        async function enviarLeadParaPowerAutomate(payload) {
+            const PA_URL = 'https://default5c49dbb5136849ddbf341087c823a8.8f.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/8d5c892b03bb4fb5848eb10ff69f41d2/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=sgewG6MC_Nk-UWtJeSGLx82yn5HZL6mhHM28KhD67Qo';
+            const response = await fetch(PA_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!response.ok) {
+                throw new Error(`Power Automate retornou status ${response.status}`);
+            }
+            return response;
+        }
+        // ============================================
+    </script>
+</body>
+
+</html>
