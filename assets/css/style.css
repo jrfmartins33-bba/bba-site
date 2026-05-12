@@ -434,11 +434,12 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 48px 6%;
+            padding: 14px 6% 0;
             box-sizing: border-box;
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            gap: 32px;
             z-index: 10;
             animation: bbaHeaderFadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
         }
@@ -459,6 +460,45 @@
             display: flex;
             gap: 48px;
             align-items: center;
+            justify-content: flex-end;
+            background: none !important;
+        }
+
+        .bba-hero__header::before,
+        .bba-hero__header::after,
+        .bba-hero__nav::before,
+        .bba-hero__nav::after {
+            content: none !important;
+            display: none !important;
+        }
+
+        .bba-hero__header img:not(.bba-hero__brand-logo),
+        .bba-hero__header [class*="logo"]:not(.bba-hero__brand):not(.bba-hero__brand-logo),
+        .bba-hero__header [class*="brand"]:not(.bba-hero__brand):not(.bba-hero__brand-logo) {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .bba-hero__header [class*="logo"]::before,
+        .bba-hero__header [class*="logo"]::after,
+        .bba-hero__header [class*="brand"]::before,
+        .bba-hero__header [class*="brand"]::after {
+            content: none !important;
+            display: none !important;
+            background: none !important;
+            background-image: none !important;
+        }
+
+        .bba-hero__nav .bba-hero__brand,
+        .bba-hero__nav img {
+            display: none !important;
+        }
+
+        .bba-hero__brand,
+        .bba-hero__brand-logo {
+            display: none !important;
         }
 
         .bba-hero__nav-link {
@@ -646,13 +686,15 @@
             }
 
             .bba-hero__header {
-                padding: 32px 24px;
-                justify-content: center;
+                top: 0;
+                padding: 10px 24px 0;
+                justify-content: flex-end;
+                gap: 14px;
             }
 
             .bba-hero__nav {
-                gap: 24px;
-                justify-content: center;
+                gap: 20px;
+                justify-content: flex-end;
                 flex-wrap: wrap;
             }
 
@@ -3846,4 +3888,62 @@
                 top: 14px;
                 opacity: 0.06;
             }
+        }
+
+        /* ===== BBA Dropdown Menu ===== */
+        .bba-dropdown {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .bba-dropdown-content {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            min-width: 340px;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(-8px);
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+            z-index: 9999;
+        }
+
+        .bba-dropdown-content::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -12px;
+            height: 12px;
+        }
+
+        .bba-dropdown-content a {
+            display: block;
+            padding: 14px 22px;
+            color: #003A70;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            text-shadow: 0 1px 8px rgba(255, 255, 255, 0.85);
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        .bba-dropdown-content a:hover {
+            background: transparent;
+            color: #D4AF37;
+        }
+
+        .bba-dropdown:hover .bba-dropdown-content,
+        .bba-dropdown:focus-within .bba-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
         }
