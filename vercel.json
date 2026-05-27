@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/bba-tech",
+      "destination": "/bba-tech.html"
+    }
+  ]
+}
