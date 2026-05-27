@@ -261,6 +261,24 @@
       filter: none;
     }
 
+    .hero video,
+    .pain-header__media video,
+    .method-video video,
+    .impact-video video {
+      pointer-events: none;
+    }
+
+    .hero video::-webkit-media-controls,
+    .hero video::-webkit-media-controls-enclosure,
+    .pain-header__media video::-webkit-media-controls,
+    .pain-header__media video::-webkit-media-controls-enclosure,
+    .method-video video::-webkit-media-controls,
+    .method-video video::-webkit-media-controls-enclosure,
+    .impact-video video::-webkit-media-controls,
+    .impact-video video::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+
     .hero__inner {
       width: min(720px, calc(100vw - 48px));
       margin: 0 auto 0 clamp(28px, 8vw, 156px);
@@ -2473,7 +2491,7 @@
       </a>
 
       <div class="hero__video-bg" aria-hidden="true">
-        <video class="hero__video" autoplay muted playsinline preload="auto" poster="../media/bba-tech7-hero-poster.jpg">
+        <video class="hero__video" autoplay muted playsinline preload="auto" poster="../media/bba-tech7-hero-poster.jpg" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture disableremoteplayback>
           <source src="../media/bba-tech7-hero-web.mp4" type="video/mp4">
         </video>
       </div>
@@ -2514,7 +2532,7 @@
             <p class="section-copy">A BBA não implanta software. Organizamos processos, integramos sistemas e eliminamos o atrito operacional que custa tempo e dinheiro todo dia.</p>
           </header>
           <div class="pain-header__note pain-header__media" aria-hidden="true" data-animate-on-scroll>
-            <video data-src="../media/bba-tech7-microprocessor-web.mp4" poster="../media/bba-tech7-microprocessor-poster.jpg" autoplay muted loop playsinline preload="none" data-playback-rate="0.7"></video>
+            <video data-src="../media/bba-tech7-microprocessor-web.mp4" poster="../media/bba-tech7-microprocessor-poster.jpg" autoplay muted loop playsinline preload="none" data-playback-rate="0.7" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture disableremoteplayback></video>
           </div>
         </div>
 
@@ -2672,7 +2690,7 @@
           </header>
 
           <div class="method-video" aria-hidden="true" data-animate-on-scroll>
-            <video data-src="../media/bba-tech7-globe-web.mp4" poster="../media/bba-tech7-globe-poster.jpg" autoplay muted loop playsinline preload="none" data-playback-rate="0.55"></video>
+            <video data-src="../media/bba-tech7-globe-web.mp4" poster="../media/bba-tech7-globe-poster.jpg" autoplay muted loop playsinline preload="none" data-playback-rate="0.55" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture disableremoteplayback></video>
           </div>
         </div>
 
@@ -2739,7 +2757,7 @@
           </header>
 
           <div class="impact-video" aria-hidden="true" data-animate-on-scroll>
-            <video data-src="../media/bba-tech7-impact-hologram-web.mp4" poster="../media/bba-tech7-impact-hologram-poster.jpg" autoplay muted loop playsinline preload="none" data-playback-rate="0.7"></video>
+            <video data-src="../media/bba-tech7-impact-hologram-web.mp4" poster="../media/bba-tech7-impact-hologram-poster.jpg" autoplay muted loop playsinline preload="none" data-playback-rate="0.7" controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" disablepictureinpicture disableremoteplayback></video>
           </div>
         </div>
 
