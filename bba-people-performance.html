@@ -1,0 +1,3480 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BBA People & Performance · Gestão de Pessoas e Equipes para MEIs e PMEs</title>
+  <meta name="description" content="BBA People & Performance: estruturação organizacional, departamento pessoal, metas, KPIs e governança de equipes para MEIs e PMEs.">
+
+  <style>
+    @font-face {
+      font-family: "Henderson BCG Sans";
+      src: url("../templates-ti/bcg.com_capabilities_digital_technolog/assets/ae1b06e7e1938b04_BCGHenSansRegular_latin-extend.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Henderson BCG Sans";
+      src: url("../templates-ti/bcg.com_capabilities_digital_technolog/assets/a2e94445b4274a4f_BCGHenSansLight_latin-extended.woff2") format("woff2");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Henderson BCG Sans";
+      src: url("../templates-ti/bcg.com_capabilities_digital_technolog/assets/1962a4e42f9ad9e2_BCGHenSansBold_latin-extended-.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      color-scheme: light;
+      --bba-font-sans: "Henderson BCG Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --bba-white: #ffffff;
+      --bba-paper: #f8f6f1;
+      --bba-porcelain: #f1eeea;
+      --bba-line: #dcd5ce;
+      --bba-muted: #696969;
+      --bba-ink: #212427;
+      --bba-navy: #0c1f3f;
+      --bba-navy-2: #12315f;
+      --bba-amber: #2a1f0e;
+      --bba-amber-2: #1c160a;
+      --bba-gold: #b9954f;
+      --bba-gold-soft: #e3d2ad;
+      --bba-gradient-hero: linear-gradient(120deg, rgba(255,255,255,.96), rgba(248,246,241,.9) 44%, rgba(227,210,173,.36));
+      --bba-gradient-navy: linear-gradient(135deg, #0c1f3f, #12315f);
+      --bba-ease: cubic-bezier(.16, 1, .3, 1);
+      --bba-fast: .25s;
+      --bba-medium: .35s;
+      --bba-slow: .8s;
+      --bba-container: min(1180px, calc(100vw - 48px));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--bba-ink);
+      background: var(--bba-white);
+      font-family: var(--bba-font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    svg { display: block; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0;
+      margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 40;
+      border-bottom: 1px solid rgba(220,213,206,.82);
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(18px);
+    }
+    .site-nav__inner {
+      width: var(--bba-container);
+      min-height: 68px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .site-nav__brand {
+      display: grid; gap: 2px; color: var(--bba-navy);
+      font-size: 13px; font-weight: 700;
+      line-height: 1.1; text-transform: uppercase;
+    }
+    .site-nav__brand span {
+      color: var(--bba-muted); font-size: 11px;
+      font-weight: 400; letter-spacing: .08em;
+    }
+    .site-nav__links {
+      display: flex; flex-wrap: wrap;
+      justify-content: flex-end; gap: 8px 18px;
+      color: var(--bba-ink); font-size: 13px; line-height: 1;
+    }
+    .site-nav__links a {
+      position: relative; padding: 10px 0;
+      transition: color var(--bba-fast) ease-out;
+    }
+    .site-nav__links a::after {
+      content: ""; position: absolute;
+      left: 0; right: 0; bottom: 4px; height: 1px;
+      background: var(--bba-gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--bba-medium) var(--bba-ease);
+    }
+    .site-nav__links a:hover { color: var(--bba-navy); outline: none; }
+    .site-nav__links a:hover::after { transform: scaleX(1); }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      color: var(--bba-gold);
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .12em; line-height: 1;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      align-items: stretch;
+      isolation: isolate;
+      color: var(--bba-white);
+      background: var(--bba-navy);
+    }
+
+    .bba-home-link {
+      position: absolute;
+      top: clamp(20px, 3vw, 34px);
+      left: clamp(18px, 3vw, 48px);
+      z-index: 6;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      background: rgba(5, 12, 24, 0.42);
+      border: 1px solid rgba(212, 175, 55, 0.28);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      transition: all 0.3s ease;
+    }
+
+    .bba-home-link:hover,
+    .bba-home-link:focus-visible {
+      background: rgba(212,175,55,0.18);
+      border-color: rgba(212,175,55,0.55);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    /* Deep navy with a restrained executive finish */
+    .hero__bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 62% 58% at 73% 42%, rgba(185,149,79,.11), transparent 67%),
+        linear-gradient(115deg, rgba(185,149,79,.13), transparent 38%),
+        linear-gradient(160deg, #050d1d 0%, #0c1f3f 44%, #07162d 100%);
+    }
+
+    /* Org-chart SVG overlay — full chart visible, clear of the copy block */
+    .hero__org-canvas {
+      position: absolute;
+      top: clamp(68px, 8vh, 104px);
+      right: clamp(18px, 2.6vw, 48px);
+      bottom: clamp(88px, 12vh, 128px);
+      left: clamp(360px, 29vw, 460px);
+      z-index: 1;
+      overflow: visible;
+      pointer-events: none;
+      filter:
+        drop-shadow(0 34px 84px rgba(0,0,0,.32))
+        drop-shadow(0 0 28px rgba(185,149,79,.08));
+    }
+    .hero__org-canvas svg {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+    }
+
+    .hero__brand-mark {
+      position: absolute;
+      top: clamp(28px, 5.2vh, 58px);
+      right: clamp(34px, 5.4vw, 92px);
+      z-index: 3;
+      width: clamp(96px, 8.4vw, 148px);
+      height: auto;
+      opacity: .9;
+      pointer-events: none;
+      filter:
+        drop-shadow(0 18px 38px rgba(0,0,0,.28))
+        drop-shadow(0 0 18px rgba(185,149,79,.12));
+    }
+
+    .hero__overlay {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background:
+        linear-gradient(90deg,
+          rgba(5,13,29,.82)  0%,
+          rgba(5,13,29,.72)  20%,
+          rgba(5,13,29,.38)  32%,
+          rgba(5,13,29,.14)  44%,
+          rgba(5,13,29,.03)  58%,
+          rgba(5,13,29,0) 100%),
+        linear-gradient(180deg, rgba(5,13,29,.05) 0%, transparent 46%, rgba(5,13,29,.28) 100%);
+    }
+
+    .hero__inner {
+      width: min(360px, calc(100vw - 48px));
+      margin: 0 auto 0 clamp(28px, 4vw, 72px);
+      position: relative; z-index: 3;
+      display: grid; align-items: start; align-self: start;
+      padding: clamp(92px, 14vh, 138px) 0 0;
+    }
+
+    .hero__content {
+      position: relative;
+      display: grid; gap: 13px; max-width: 360px;
+      padding-left: 18px;
+      transition: opacity .65s var(--bba-ease), transform .65s var(--bba-ease);
+    }
+    .hero__content::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 2px; bottom: 4px;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(185,149,79,.98), rgba(185,149,79,.08));
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: var(--bba-white);
+      font-size: clamp(25px, 2.55vw, 38px);
+      font-weight: 300;
+      line-height: 1.05;
+      text-wrap: balance;
+      text-shadow: 0 24px 70px rgba(0,0,0,.48);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--bba-gold-soft);
+    }
+
+    .hero p {
+      max-width: 316px; margin: 0;
+      color: rgba(255,255,255,.78);
+      font-size: clamp(12.5px, 1vw, 14.5px);
+      font-weight: 300; line-height: 1.45;
+      text-shadow: 0 8px 28px rgba(0,0,0,.4);
+    }
+
+    .hero__actions {
+      display: flex; flex-wrap: wrap;
+      gap: 14px; align-items: center;
+      padding-top: clamp(22px, 3.4vh, 38px);
+    }
+
+    /* ── BUTTONS ── */
+    .bba-btn {
+      position: relative; min-height: 52px;
+      display: inline-flex; align-items: center;
+      justify-content: center; gap: 12px;
+      padding: 0 26px;
+      border: 1px solid var(--bba-navy);
+      color: var(--bba-white);
+      background: var(--bba-navy);
+      cursor: pointer; font-size: 14px;
+      font-weight: 700; letter-spacing: .04em;
+      line-height: 1;
+      transition:
+        background var(--bba-medium) var(--bba-ease),
+        border-color var(--bba-medium) var(--bba-ease),
+        color var(--bba-medium) var(--bba-ease),
+        transform var(--bba-medium) var(--bba-ease),
+        box-shadow var(--bba-medium) var(--bba-ease);
+    }
+    .bba-btn svg { width: 17px; height: 17px; flex-shrink: 0; transition: transform var(--bba-medium) var(--bba-ease); }
+    .bba-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(12,31,63,.14); background: var(--bba-gold); border-color: var(--bba-gold); color: var(--bba-navy); }
+    .bba-btn:hover svg { transform: translateX(4px); }
+
+    .bba-btn--ghost {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.38);
+      color: var(--bba-white);
+      backdrop-filter: blur(12px);
+    }
+    .bba-btn--ghost:hover { background: var(--bba-gold); border-color: var(--bba-gold); color: var(--bba-navy); }
+
+    .hero .bba-btn--primary {
+      background: rgba(255,255,255,.92);
+      border-color: rgba(255,255,255,.92);
+      color: var(--bba-navy);
+      box-shadow: 0 18px 48px rgba(0,0,0,.18);
+    }
+    .hero .bba-btn--primary:hover { background: var(--bba-gold); border-color: var(--bba-gold); color: var(--bba-navy); }
+
+    /* Hero bottom rail */
+    .hero__rail {
+      position: relative; z-index: 3;
+      width: var(--bba-container); margin: 0 auto;
+      padding: 0 0 32px;
+      display: flex; flex-wrap: wrap;
+      gap: 10px 24px; align-items: center;
+    }
+    .hero__stat {
+      display: flex; align-items: baseline; gap: 8px;
+      color: rgba(255,255,255,.62);
+      font-size: 11px; letter-spacing: .12em;
+      text-transform: uppercase; line-height: 1;
+    }
+    .hero__stat strong {
+      color: var(--bba-gold-soft); font-size: 22px;
+      font-weight: 300; letter-spacing: 0;
+    }
+    .hero__stat + .hero__stat::before {
+      content: ""; width: 4px; height: 4px;
+      background: var(--bba-gold); display: inline-block; margin-right: 16px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 96px 0;
+      border-bottom: 1px solid rgba(220,213,206,.58);
+    }
+    .section--paper { background: var(--bba-paper); }
+    .section--navy {
+      color: var(--bba-white);
+      background: var(--bba-gradient-navy);
+    }
+    .section--amber {
+      color: var(--bba-white);
+      background: linear-gradient(135deg, rgba(42,31,14,.98), rgba(28,22,10,1) 58%, #120f08);
+    }
+    .section__inner { width: var(--bba-container); margin: 0 auto; }
+
+    .benefits-section {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: #050d1d;
+    }
+    .benefits-section::before,
+    .benefits-section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .benefits-section::before {
+      z-index: 1;
+      background:
+        linear-gradient(135deg, rgba(5,13,29,.82), rgba(5,13,29,.75) 46%, rgba(9,11,18,.84)),
+        radial-gradient(68% 88% at 74% 16%, rgba(185,149,79,.16), transparent 58%),
+        radial-gradient(78% 92% at 8% 100%, rgba(12,31,63,.34), transparent 62%);
+    }
+    .benefits-section::after {
+      z-index: 2;
+      background:
+        linear-gradient(180deg, rgba(5,13,29,.18), transparent 28%, rgba(5,13,29,.32)),
+        radial-gradient(56% 72% at 50% 50%, transparent 42%, rgba(5,13,29,.28));
+      mix-blend-mode: multiply;
+      opacity: .82;
+    }
+    .benefits-bg-video {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      opacity: 1;
+    }
+    .benefits-section .section__inner {
+      position: relative;
+      z-index: 3;
+    }
+
+    .section-header { display: grid; gap: 16px; max-width: 760px; margin-bottom: 52px; }
+    .section-title { margin: 0; font-weight: 300; letter-spacing: 0; color: var(--bba-navy); font-size: clamp(38px, 4.8vw, 70px); line-height: 1; }
+    .section-copy { margin: 0; color: var(--bba-muted); font-size: clamp(17px, 1.8vw, 21px); font-weight: 300; line-height: 1.38; }
+    .section--navy .section-title,
+    .section--navy .section-copy { color: var(--bba-white); }
+    .section--navy .section-copy { opacity: .78; }
+    .section--amber .section-title,
+    .section--amber .section-copy { color: var(--bba-white); }
+    .section--amber .section-copy { opacity: .72; }
+
+    /* ── BLOCO 02 — PROBLEMA ── */
+    .problem-intro {
+      display: grid;
+      grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
+      gap: clamp(40px, 5vw, 80px);
+      align-items: center;
+      margin-bottom: 56px;
+    }
+    .problem-intro__visual {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 320px;
+    }
+    .problem-intro__chart-shell {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+    }
+    .problem-intro__chart-shell::before {
+      content: "";
+      position: absolute;
+      inset: 18px 18px 10px;
+      background:
+        radial-gradient(ellipse 70% 46% at 72% 60%, rgba(185,149,79,.18), transparent 68%),
+        radial-gradient(ellipse 54% 40% at 34% 36%, rgba(12,31,63,.08), transparent 70%);
+      filter: blur(18px);
+      pointer-events: none;
+    }
+    .problem-intro__visual svg {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      overflow: visible;
+      filter: drop-shadow(0 22px 48px rgba(12,31,63,.12));
+    }
+    #complexity-chart .chart-bba-glow {
+      animation: bbaChartPulse 2.8s var(--bba-ease) infinite;
+      transform-origin: center;
+    }
+    #complexity-chart .chart-bba-callout {
+      animation: bbaCalloutLift 3.4s var(--bba-ease) infinite;
+    }
+    #complexity-chart .chart-bba-arrow {
+      animation: bbaArrowPulse 2.4s var(--bba-ease) infinite;
+    }
+    @keyframes bbaChartPulse {
+      0%, 100% { opacity: .26; stroke-width: 7; }
+      50% { opacity: .62; stroke-width: 10; }
+    }
+    @keyframes bbaCalloutLift {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    @keyframes bbaArrowPulse {
+      0%, 100% { opacity: .58; }
+      50% { opacity: 1; }
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0;
+    }
+
+    .problem-card {
+      position: relative;
+      padding: 32px 28px 28px;
+      border: 1px solid rgba(220,213,206,.9);
+      border-right: none;
+      background: var(--bba-white);
+      transition:
+        background var(--bba-medium) var(--bba-ease),
+        border-color var(--bba-medium) var(--bba-ease),
+        transform var(--bba-medium) var(--bba-ease);
+    }
+    .problem-card:last-child { border-right: 1px solid rgba(220,213,206,.9); }
+    .problem-card + .problem-card { border-left: none; }
+
+    .problem-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--bba-gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--bba-medium) var(--bba-ease);
+    }
+    .problem-card:hover::before { transform: scaleX(1); }
+    .problem-card:hover { background: #fdfcf9; border-color: rgba(185,149,79,.38); transform: translateY(-3px); z-index: 1; }
+
+    .problem-card__num {
+      display: block; margin-bottom: 18px;
+      color: rgba(185,149,79,.38);
+      font-size: 36px; font-weight: 300; line-height: 1;
+    }
+    .problem-card__icon {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      border: 1px solid rgba(185,149,79,.28);
+      background: rgba(185,149,79,.07);
+      color: var(--bba-gold);
+    }
+    .problem-card__icon svg { width: 18px; height: 18px; stroke: var(--bba-gold); stroke-width: 1.6; fill: none; }
+    .problem-card h3 {
+      margin: 0 0 10px;
+      color: var(--bba-navy);
+      font-size: clamp(17px, 1.6vw, 20px);
+      font-weight: 400; line-height: 1.15;
+    }
+    .problem-card p { margin: 0; color: var(--bba-muted); font-size: 13.5px; line-height: 1.55; }
+    .problem-card__tag {
+      display: inline-block; margin-top: 16px;
+      padding: 4px 10px;
+      border: 1px solid rgba(185,149,79,.28);
+      background: rgba(185,149,79,.06);
+      color: var(--bba-navy);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+
+    /* second row of problem cards spans full width */
+    .problem-grid--row2 {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      border-top: none;
+    }
+    .problem-grid--row2 .problem-card { border-top: none; }
+    .problem-grid--row2 .problem-card:last-child { border-right: 1px solid rgba(220,213,206,.9); }
+
+    /* ── BLOCO 03 — ABORDAGEM DUAL ── */
+    .dual-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--bba-paper);
+    }
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .dual-panel {
+      position: relative;
+      padding: clamp(40px, 5vw, 64px);
+      overflow: hidden;
+    }
+    .dual-panel--left {
+      border-right: 1px solid rgba(220,213,206,.6);
+      background: var(--bba-white);
+    }
+    .dual-panel--right {
+      background: var(--bba-gradient-navy);
+      color: var(--bba-white);
+    }
+    .dual-panel--right::before {
+      content: "";
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(185,149,79,.06) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(185,149,79,.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .dual-panel--right > * { position: relative; z-index: 1; }
+    .dual-panel__badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-bottom: 22px;
+      padding: 6px 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    }
+    .dual-panel--left .dual-panel__badge {
+      border: 1px solid rgba(185,149,79,.38);
+      color: var(--bba-navy); background: rgba(185,149,79,.08);
+    }
+    .dual-panel--right .dual-panel__badge {
+      border: 1px solid rgba(185,149,79,.44);
+      color: var(--bba-gold-soft); background: rgba(185,149,79,.14);
+    }
+    .dual-panel__label {
+      display: block; margin-bottom: 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      opacity: .52;
+    }
+    .dual-panel--left .dual-panel__label { color: var(--bba-navy); }
+    .dual-panel--right .dual-panel__label { color: var(--bba-gold-soft); }
+    .dual-panel h2 {
+      margin: 0 0 14px;
+      font-size: clamp(26px, 2.8vw, 40px);
+      font-weight: 300; line-height: 1.08;
+    }
+    .dual-panel--left h2 { color: var(--bba-navy); }
+    .dual-panel--right h2 { color: var(--bba-white); }
+    .dual-panel > p {
+      margin: 0 0 28px;
+      font-size: 15px; line-height: 1.55;
+    }
+    .dual-panel--left > p { color: var(--bba-muted); }
+    .dual-panel--right > p { color: rgba(255,255,255,.7); }
+    .dual-list {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; gap: 10px;
+    }
+    .dual-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; line-height: 1.4;
+    }
+    .dual-panel--left .dual-list li { color: var(--bba-ink); }
+    .dual-panel--right .dual-list li { color: rgba(255,255,255,.82); }
+    .dual-list li::before {
+      content: "";
+      display: block; width: 5px; height: 5px;
+      margin-top: 5px; border-radius: 50%;
+      flex-shrink: 0; background: var(--bba-gold);
+    }
+
+    /* ── BLOCO 04 — SOLUÇÕES ── */
+    #solucoes { scroll-margin-top: 82px; }
+
+    .solutions-header {
+      display: grid;
+      grid-template-columns: minmax(430px, 40%) minmax(0, 1fr);
+      gap: clamp(38px, 4.2vw, 64px);
+      align-items: start;
+      margin-bottom: 58px;
+    }
+    .solutions-copy-stack {
+      display: grid;
+      gap: clamp(26px, 3vw, 34px);
+      align-content: start;
+      max-width: 500px;
+    }
+    .solutions-header .section-header {
+      margin-bottom: 0;
+      max-width: 410px;
+    }
+    .solutions-copy .section-title { font-size: clamp(36px, 4.2vw, 58px); }
+    .solutions-flow-panel {
+      position: relative;
+      isolation: isolate;
+      width: min(100%, 492px);
+      max-width: 492px;
+      aspect-ratio: 4 / 5;
+      border-radius: 28px;
+      border: 1px solid rgba(185,149,79,.38);
+      background:
+        radial-gradient(circle at 82% 16%, rgba(227,210,173,.14), transparent 34%),
+        radial-gradient(circle at 16% 88%, rgba(185,149,79,.13), transparent 38%),
+        linear-gradient(135deg, rgba(7,18,36,.99), rgba(12,31,63,.99) 58%, rgba(8,22,45,.98));
+      box-shadow:
+        0 26px 64px rgba(12,31,63,.145),
+        0 0 0 6px rgba(185,149,79,.035),
+        inset 0 1px 0 rgba(255,255,255,.12),
+        inset 0 -28px 54px rgba(0,0,0,.12);
+      overflow: visible;
+      transition-delay: .12s;
+    }
+    .solutions-flow-panel::before {
+      content: "";
+      position: absolute; inset: 0; z-index: 0;
+      border-radius: inherit;
+      background:
+        linear-gradient(90deg, rgba(227,210,173,.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(227,210,173,.038) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: .56;
+      pointer-events: none;
+    }
+    .solutions-flow-panel::after {
+      content: "";
+      position: absolute;
+      left: calc(100% + 1px);
+      top: 50%;
+      width: clamp(88px, 8vw, 112px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(185,149,79,.72) 14%, rgba(185,149,79,.62) 66%, transparent);
+      box-shadow: 0 0 12px rgba(185,149,79,.18);
+      pointer-events: none;
+    }
+    .solutions-flow-svg {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      overflow: hidden;
+    }
+    .flow-link {
+      fill: none;
+      stroke: rgba(227,210,173,.25);
+      stroke-width: 1.1;
+      stroke-linecap: round;
+      stroke-dasharray: 9 13;
+      animation: flowLinePulse 8.8s ease-in-out infinite;
+    }
+    .flow-link--gold { stroke: rgba(185,149,79,.45); }
+    .flow-mover {
+      fill: none;
+      stroke: rgba(227,210,173,.95);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 1 138;
+      filter: drop-shadow(0 0 8px rgba(185,149,79,.5));
+      animation: flowMover 10.5s linear infinite;
+    }
+    .flow-mover--2 { animation-delay: -2.2s; }
+    .flow-mover--3 { animation-delay: -4.6s; }
+    .flow-mover--4 { animation-delay: -6.4s; }
+    .flow-mover--5 { animation-delay: -7.8s; }
+    .flow-spine {
+      stroke: rgba(185,149,79,.46);
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-dasharray: 5 8;
+      animation: flowLinePulse 8.8s ease-in-out infinite;
+    }
+    .flow-highlight {
+      fill: none;
+      stroke: rgba(227,210,173,.28);
+      stroke-width: 7;
+      stroke-linecap: round;
+      stroke-dasharray: 22 214;
+      opacity: .18;
+      filter: drop-shadow(0 0 8px rgba(185,149,79,.28));
+      animation: flowHighlight 11.5s linear infinite;
+    }
+    .flow-node rect,
+    .flow-core rect,
+    .flow-kpi rect {
+      fill: rgba(255,255,255,.035);
+      stroke: rgba(227,210,173,.26);
+      stroke-width: 1;
+    }
+    .flow-node text,
+    .flow-core text,
+    .flow-kpi text {
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .flow-node__num { fill: rgba(185,149,79,.86); font-size: 7px; font-weight: 800; }
+    .flow-node__label { fill: rgba(227,210,173,.9); font-size: 8px; font-weight: 800; }
+    .flow-node__meta { fill: rgba(255,255,255,.66); font-size: 6.5px; font-weight: 600; letter-spacing: .045em; }
+    .flow-core rect {
+      fill: rgba(8,18,35,.88);
+      stroke: rgba(185,149,79,.66);
+      filter: drop-shadow(0 0 12px rgba(185,149,79,.18));
+      animation: flowCoreGlow 6.8s ease-in-out infinite;
+    }
+    .flow-core text {
+      fill: rgba(255,255,255,.9);
+    }
+    .flow-core .flow-core__brand {
+      fill: rgba(227,210,173,.96);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .22em;
+    }
+    .flow-core .flow-core__main { font-size: 13px; font-weight: 700; }
+    .flow-core__meta { fill: rgba(255,255,255,.64); font-size: 6.5px; font-weight: 700; letter-spacing: .12em; text-anchor: middle; }
+    .flow-core__arrow { fill: rgba(185,149,79,.78); font-size: 8px; font-weight: 700; text-anchor: middle; }
+    .flow-stage line { stroke: rgba(227,210,173,.14); stroke-width: 1; stroke-linecap: round; }
+    .flow-stage circle { fill: rgba(185,149,79,.72); filter: drop-shadow(0 0 5px rgba(185,149,79,.28)); }
+    .flow-stage text {
+      font-family: Arial, Helvetica, sans-serif;
+      fill: rgba(255,255,255,.44);
+      font-size: 5.6px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-anchor: middle;
+    }
+    .flow-kpi__label { fill: rgba(227,210,173,.85); font-size: 7px; font-weight: 800; }
+    .flow-kpi__value { fill: rgba(255,255,255,.88); font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+    .flow-progress { stroke: rgba(255,255,255,.12); stroke-width: 3; stroke-linecap: round; }
+    .flow-progress__fill {
+      stroke: rgba(185,149,79,.82);
+      stroke-width: 3;
+      stroke-linecap: round;
+      transform-box: fill-box;
+      transform-origin: left center;
+      animation: flowKpiGlow 5.8s ease-in-out infinite;
+    }
+    .solutions-timeline[data-animate-on-scroll] { transition-delay: .24s; }
+
+    .solutions-timeline {
+      position: relative;
+      isolation: isolate;
+      min-height: 540px;
+      padding: 46px 34px 42px;
+      border-radius: 26px;
+      border: 1px solid rgba(12,31,63,.07);
+      background:
+        radial-gradient(circle at 82% 18%, rgba(12,31,63,.08), transparent 38%),
+        radial-gradient(circle at 16% 90%, rgba(185,149,79,.14), transparent 44%),
+        linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(246,244,239,.96) 100%);
+      box-shadow:
+        0 34px 90px rgba(12,31,63,.11),
+        inset 0 1px 0 rgba(255,255,255,1);
+      overflow: hidden;
+    }
+    .solutions-timeline::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background:
+        radial-gradient(circle at 68% 28%, rgba(185,149,79,.08), transparent 30%),
+        radial-gradient(circle at 26% 72%, rgba(12,31,63,.045), transparent 34%);
+      pointer-events: none;
+    }
+    .solutions-timeline__path {
+      position: absolute;
+      top: 62px;
+      bottom: 72px;
+      left: 42px;
+      width: 2px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(12,31,63,.12), rgba(185,149,79,.46), rgba(12,31,63,.7));
+      z-index: 1;
+    }
+    .solutions-timeline__droplet {
+      position: absolute;
+      top: -42px;
+      left: -2px;
+      width: 6px;
+      height: 52px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, transparent, rgba(0,58,112,.95), rgba(185,149,79,.82), transparent);
+      filter: blur(.8px);
+      animation: solutionDropletFlow 5.2s cubic-bezier(.25,1,.5,1) infinite;
+    }
+    .solutions-timeline__nodes {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .solutions-step {
+      display: grid;
+      grid-template-columns: 34px minmax(0,1fr);
+      gap: 22px;
+      align-items: start;
+      transition: transform var(--bba-medium) var(--bba-ease);
+    }
+    .solutions-step:hover { transform: translateX(4px); }
+    .solutions-step__dot {
+      width: 16px; height: 16px;
+      margin: 21px auto 0;
+      border-radius: 50%;
+      background: var(--bba-white);
+      border: 3px solid var(--bba-navy);
+      box-shadow: 0 0 0 8px rgba(12,31,63,.055);
+      animation: solutionDotPulse 5.2s cubic-bezier(.16,1,.3,1) infinite;
+    }
+    .solutions-step__card {
+      position: relative;
+      min-height: 104px;
+      padding: 22px 24px 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(12,31,63,.06);
+      background: rgba(255,255,255,.66);
+      box-shadow: 0 14px 38px rgba(12,31,63,.045);
+      transition:
+        border-color var(--bba-medium) var(--bba-ease),
+        background var(--bba-medium) var(--bba-ease),
+        box-shadow var(--bba-medium) var(--bba-ease),
+        transform var(--bba-medium) var(--bba-ease);
+      animation: solutionCardGlow 5.2s cubic-bezier(.16,1,.3,1) infinite;
+    }
+    .solutions-step__card:hover {
+      background: rgba(255,255,255,.96) !important;
+      border-color: rgba(12,31,63,.16) !important;
+      transform: scale(1.018) !important;
+    }
+    .solutions-step__num {
+      display: block;
+      margin-bottom: 8px;
+      color: rgba(12,31,63,.55);
+      font-size: 12px; font-weight: 800;
+      letter-spacing: .12em; line-height: 1;
+    }
+    .solutions-step h3 {
+      margin: 0 0 8px;
+      color: var(--bba-navy);
+      font-size: clamp(18px, 1.6vw, 23px);
+      font-weight: 700;
+      line-height: 1.05;
+    }
+    .solutions-step p {
+      margin: 0;
+      color: rgba(12,31,63,.64);
+      font-size: 15.5px;
+      line-height: 1.48;
+    }
+    .solutions-step:nth-child(1) .solutions-step__card {
+      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(242,247,252,.96));
+      border-color: rgba(12,31,63,.16);
+      box-shadow: 0 18px 46px rgba(12,31,63,.07);
+    }
+    .solutions-step:nth-child(4) .solutions-step__dot {
+      border-color: var(--bba-gold);
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 0 0 10px rgba(185,149,79,.18);
+      animation-name: solutionImpactDotPulse;
+    }
+    .solutions-step:nth-child(4) .solutions-step__card {
+      background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(252,248,238,.92));
+      border-color: rgba(185,149,79,.36);
+      box-shadow: 0 18px 48px rgba(185,149,79,.1);
+      animation-name: solutionImpactCardGlow;
+    }
+    .solutions-step:nth-child(4) .solutions-step__num,
+    .solutions-step:nth-child(4) h3 { color: var(--bba-gold); }
+    .solutions-step:nth-child(1) .solutions-step__dot,
+    .solutions-step:nth-child(1) .solutions-step__card { animation-delay: .2s; }
+    .solutions-step:nth-child(2) .solutions-step__dot,
+    .solutions-step:nth-child(2) .solutions-step__card { animation-delay: 1.35s; }
+    .solutions-step:nth-child(3) .solutions-step__dot,
+    .solutions-step:nth-child(3) .solutions-step__card { animation-delay: 2.5s; }
+    .solutions-step:nth-child(4) .solutions-step__dot,
+    .solutions-step:nth-child(4) .solutions-step__card { animation-delay: 3.65s; }
+
+    @keyframes solutionDropletFlow {
+      0% { top: -46px; opacity: 0; }
+      11%, 78% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+    @keyframes solutionDotPulse {
+      0%, 100% {
+        transform: scale(1);
+        background: var(--bba-white);
+        border-color: var(--bba-navy);
+        box-shadow: 0 0 0 8px rgba(12,31,63,.055);
+      }
+      45%, 56% {
+        transform: scale(1.32);
+        background: var(--bba-navy);
+        border-color: var(--bba-navy);
+        box-shadow: 0 0 0 13px rgba(12,31,63,.12), 0 0 22px rgba(12,31,63,.24);
+      }
+    }
+    @keyframes solutionImpactDotPulse {
+      0%, 100% {
+        transform: scale(1.08);
+        background: rgba(255,255,255,.96);
+        border-color: var(--bba-gold);
+        box-shadow: 0 0 0 10px rgba(185,149,79,.16);
+      }
+      45%, 56% {
+        transform: scale(1.48);
+        background: var(--bba-navy);
+        border-color: var(--bba-gold);
+        box-shadow: 0 0 0 16px rgba(185,149,79,.24), 0 0 28px rgba(185,149,79,.46);
+      }
+    }
+    @keyframes solutionCardGlow {
+      0%, 100% {
+        border-color: rgba(12,31,63,.06);
+        background: rgba(255,255,255,.66);
+        box-shadow: 0 14px 38px rgba(12,31,63,.045);
+        transform: scale(1);
+      }
+      45%, 56% {
+        border-color: rgba(12,31,63,.18);
+        background: linear-gradient(135deg, rgba(255,255,255,1), rgba(245,248,252,1));
+        box-shadow: 0 20px 54px rgba(12,31,63,.09);
+        transform: scale(1.018);
+      }
+    }
+    @keyframes solutionImpactCardGlow {
+      0%, 100% {
+        border-color: rgba(185,149,79,.28);
+        background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(252,248,238,.92));
+        box-shadow: 0 18px 48px rgba(185,149,79,.1);
+        transform: scale(1);
+      }
+      45%, 56% {
+        border-color: rgba(185,149,79,.62);
+        background: linear-gradient(135deg, rgba(255,255,255,1), rgba(255,251,241,1));
+        box-shadow: 0 22px 62px rgba(185,149,79,.18), inset 0 0 0 1px rgba(185,149,79,.08);
+        transform: scale(1.025);
+      }
+    }
+    @keyframes flowLinePulse {
+      0%, 100% { opacity: .5; stroke-dashoffset: 0; }
+      50% { opacity: .88; stroke-dashoffset: -22; }
+    }
+    @keyframes flowMover {
+      0% { stroke-dashoffset: 0; opacity: 0; }
+      10%, 82% { opacity: .95; }
+      100% { stroke-dashoffset: -286; opacity: 0; }
+    }
+    @keyframes flowHighlight {
+      0% { stroke-dashoffset: 0; opacity: 0; }
+      14%, 62% { opacity: .18; }
+      100% { stroke-dashoffset: -310; opacity: 0; }
+    }
+    @keyframes flowCoreGlow {
+      0%, 100% { stroke-opacity: .58; }
+      50% { stroke-opacity: .95; }
+    }
+    @keyframes flowKpiGlow {
+      0%, 100% { opacity: .62; transform: scaleX(.82); }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 22px;
+    }
+
+    .sol-card {
+      position: relative;
+      isolation: isolate;
+      display: grid; align-content: start;
+      gap: 0; padding: 0;
+      border: 1px solid rgba(185,149,79,.28);
+      background:
+        radial-gradient(circle at 88% 0%, rgba(227,210,173,.17), transparent 34%),
+        linear-gradient(135deg, rgba(12,31,63,.99), rgba(17,47,89,.98) 56%, rgba(8,20,39,.99));
+      box-shadow: 0 26px 72px rgba(12,31,63,.16);
+      overflow: hidden;
+      transition:
+        transform var(--bba-medium) var(--bba-ease),
+        border-color var(--bba-medium) var(--bba-ease),
+        box-shadow var(--bba-medium) var(--bba-ease);
+    }
+    .sol-card::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(227,210,173,.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(227,210,173,.038) 1px, transparent 1px);
+      background-size: 52px 52px;
+      opacity: .68;
+      pointer-events: none;
+    }
+    .sol-card::after {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--bba-gold), rgba(227,210,173,.94), rgba(185,149,79,.18));
+      transform: scaleX(.46);
+      transform-origin: left;
+      transition: transform var(--bba-medium) var(--bba-ease);
+    }
+    .sol-card:nth-child(even) {
+      background:
+        radial-gradient(circle at 12% 0%, rgba(227,210,173,.15), transparent 34%),
+        linear-gradient(135deg, rgba(9,22,44,.99), rgba(18,52,96,.98) 58%, rgba(12,31,63,.99));
+    }
+    .sol-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(227,210,173,.58);
+      box-shadow: 0 30px 82px rgba(12,31,63,.24);
+    }
+    .sol-card:hover::after { transform: scaleX(1); }
+    .sol-card__head {
+      padding: 28px 28px 22px;
+      border-bottom: 1px solid rgba(227,210,173,.16);
+      display: grid; gap: 14px;
+    }
+    .sol-card__icon {
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(227,210,173,.38);
+      background: rgba(227,210,173,.08);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.035), 0 12px 28px rgba(0,0,0,.14);
+    }
+    .sol-card__icon svg { width: 20px; height: 20px; stroke: var(--bba-gold-soft); stroke-width: 1.5; fill: none; }
+    .sol-card h3 {
+      margin: 0; color: var(--bba-white);
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 300; line-height: 1.1;
+    }
+    .sol-card__body { padding: 22px 28px 26px; display: grid; gap: 18px; }
+    .sol-card__what {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--bba-gold-soft); margin-bottom: 8px; display: block;
+    }
+    .sol-card__list {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; gap: 7px;
+    }
+    .sol-card__list li {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13.5px; color: rgba(255,255,255,.78); line-height: 1.4;
+    }
+    .sol-card__list li::before {
+      content: ""; width: 4px; height: 4px;
+      margin-top: 6px; border-radius: 50%;
+      background: var(--bba-gold-soft);
+      box-shadow: 0 0 0 4px rgba(227,210,173,.1);
+      flex-shrink: 0;
+    }
+    .sol-card__result {
+      padding: 14px 16px;
+      border-top: 1px solid rgba(227,210,173,.18);
+      background: rgba(255,255,255,.06);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .sol-card__result-icon {
+      width: 18px; height: 18px;
+      flex-shrink: 0; margin-top: 1px;
+      color: var(--bba-gold-soft);
+    }
+    .sol-card__result-icon svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.5; fill: none; }
+    .sol-card__result p {
+      margin: 0; font-size: 12.5px; color: rgba(255,255,255,.84);
+      font-weight: 400; line-height: 1.45;
+    }
+    .sol-card__result strong { font-weight: 700; display: block; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 3px; color: var(--bba-gold-soft); }
+    .sol-card__delivery {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 6px;
+      padding: 4px 10px;
+      border: 1px solid rgba(227,210,173,.3);
+      background: rgba(255,255,255,.035);
+      color: rgba(227,210,173,.82);
+      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    }
+
+    /* ── BLOCO 05 — JORNADA ── */
+    .journey-section {
+      position: relative; overflow: hidden;
+      color: var(--bba-white);
+      background: linear-gradient(135deg, rgba(42,31,14,.98), rgba(28,22,10,1) 58%, #120f08);
+    }
+    .journey-section::before {
+      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(227,210,173,.07) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(227,210,173,.05) 1px, transparent 1px);
+      background-size: 96px 96px;
+    }
+    .journey-section .section__inner { position: relative; z-index: 1; }
+
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 0;
+      margin-top: 52px;
+    }
+    .journey-step {
+      position: relative;
+      padding: clamp(24px, 2.4vw, 32px);
+      border: 1px solid rgba(227,210,173,.2);
+      border-left-width: 0;
+      background: rgba(255,255,255,.055);
+      transition:
+        transform var(--bba-medium) var(--bba-ease),
+        border-color var(--bba-medium) var(--bba-ease),
+        background var(--bba-medium) var(--bba-ease);
+    }
+    .journey-step:first-child { border-left-width: 1px; }
+    .journey-step:hover { transform: translateY(-4px); border-color: rgba(227,210,173,.42); background: rgba(255,255,255,.08); }
+    .journey-step__num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      border: 1px solid rgba(227,210,173,.6);
+      color: var(--bba-gold-soft);
+      background: rgba(42,31,14,.9);
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      margin-bottom: 20px;
+    }
+    .journey-step__phase {
+      display: block; margin-bottom: 8px;
+      color: var(--bba-gold-soft); font-size: 10px;
+      font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    }
+    .journey-step h3 {
+      margin: 0 0 12px; color: var(--bba-white);
+      font-size: clamp(20px, 2.2vw, 28px); font-weight: 300; line-height: 1.1;
+    }
+    .journey-step p { margin: 0; color: rgba(255,255,255,.65); font-size: 14px; line-height: 1.52; }
+    .journey-step__delivery {
+      margin-top: 20px; padding-top: 18px;
+      border-top: 1px solid rgba(227,210,173,.18);
+      display: grid; gap: 6px;
+    }
+    .journey-step__delivery span {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--bba-gold-soft);
+    }
+    .journey-step__delivery strong {
+      font-size: 14px; font-weight: 400; color: rgba(255,255,255,.9); line-height: 1.4;
+    }
+
+    /* ── BLOCO 06 — PARA QUEM É ── */
+    .profiles-split {
+      display: grid;
+      grid-template-columns: minmax(260px,.42fr) minmax(0,1.58fr);
+      gap: clamp(38px, 5vw, 78px);
+      align-items: stretch;
+    }
+    .profiles-copy {
+      display: flex;
+      flex-direction: column;
+      padding-top: clamp(18px, 2.2vw, 32px);
+      min-height: 100%;
+    }
+    .profiles-selector {
+      display: grid;
+      grid-template-rows: repeat(3, minmax(82px, 1fr));
+      flex: 1 1 auto;
+      position: sticky;
+      top: 88px;
+      border: 1px solid rgba(220,213,206,.82);
+      background: rgba(255,255,255,.66);
+      box-shadow: 0 20px 58px rgba(12,31,63,.055);
+    }
+    .profiles-selector__btn {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      border: 0;
+      border-bottom: 1px solid rgba(220,213,206,.74);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      transition:
+        background var(--bba-medium) var(--bba-ease),
+        box-shadow var(--bba-medium) var(--bba-ease);
+    }
+    .profiles-selector__btn:last-child { border-bottom: 0; }
+    .profiles-selector__btn::before {
+      content: "";
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--bba-gold), rgba(185,149,79,.28));
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform var(--bba-medium) var(--bba-ease);
+    }
+    .profiles-selector__btn.is-active {
+      background:
+        linear-gradient(135deg, rgba(12,31,63,.98), rgba(18,48,91,.96));
+      box-shadow: 0 16px 38px rgba(12,31,63,.18);
+    }
+    .profiles-selector__btn.is-active::before { transform: scaleY(1); }
+    .profiles-selector__btn:hover:not(.is-active) { background: rgba(185,149,79,.065); }
+    .profiles-selector__btn:focus-visible {
+      outline: 2px solid rgba(185,149,79,.72);
+      outline-offset: -2px;
+      z-index: 2;
+    }
+    .profiles-selector__num {
+      color: rgba(185,149,79,.62);
+      font-size: 11px; font-weight: 800;
+      letter-spacing: .12em;
+      transition: color var(--bba-medium) var(--bba-ease);
+    }
+    .profiles-selector__btn.is-active .profiles-selector__num { color: rgba(227,210,173,.92); }
+    .profiles-selector__label { display: grid; gap: 3px; }
+    .profiles-selector__label strong {
+      color: var(--bba-navy);
+      font-size: 14px; font-weight: 800;
+      letter-spacing: .03em;
+      transition: color var(--bba-medium) var(--bba-ease);
+    }
+    .profiles-selector__label span {
+      color: var(--bba-muted);
+      font-size: 11px; letter-spacing: .04em;
+      transition: color var(--bba-medium) var(--bba-ease);
+    }
+    .profiles-selector__btn.is-active .profiles-selector__label strong { color: var(--bba-white); }
+    .profiles-selector__btn.is-active .profiles-selector__label span { color: rgba(255,255,255,.52); }
+    .profiles-selector__arrow {
+      width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--bba-gold);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition:
+        opacity var(--bba-medium) var(--bba-ease),
+        transform var(--bba-medium) var(--bba-ease);
+    }
+    .profiles-selector__btn.is-active .profiles-selector__arrow { opacity: 1; transform: translateX(2px); }
+    .profiles-selector__arrow svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+    .profiles-panels { position: relative; }
+    .profiles-panel {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateY(18px);
+      pointer-events: none;
+      transition:
+        opacity .42s var(--bba-ease),
+        transform .42s var(--bba-ease);
+    }
+    .profiles-panel.is-active {
+      position: relative;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .profiles-panel__inner {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      border: 1px solid rgba(220,213,206,.86);
+      background: var(--bba-white);
+      overflow: hidden;
+      box-shadow: 0 28px 78px rgba(12,31,63,.075);
+    }
+    .profiles-panel__left {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: clamp(34px, 3.2vw, 48px);
+      border-right: 1px solid rgba(185,149,79,.18);
+      color: var(--bba-white);
+      background:
+        radial-gradient(circle at 84% 18%, rgba(185,149,79,.16), transparent 34%),
+        linear-gradient(135deg, rgba(12,31,63,1), rgba(20,54,101,.96));
+    }
+    .profiles-panel__left::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(227,210,173,.055) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(227,210,173,.052) 1px, transparent 1px);
+      background-size: 31px 31px;
+      pointer-events: none;
+    }
+    .profiles-panel__left > * { position: relative; z-index: 1; }
+    .profiles-panel__badge {
+      display: inline-flex; align-items: center;
+      margin-bottom: 20px;
+      padding: 7px 14px;
+      border: 1px solid rgba(227,210,173,.42);
+      background: rgba(185,149,79,.1);
+      color: var(--bba-gold-soft);
+      font-size: 9px; font-weight: 800;
+      letter-spacing: .18em; text-transform: uppercase;
+    }
+    .profiles-panel__scenario {
+      position: relative;
+      margin: 0 0 28px;
+      padding-top: 14px;
+      color: rgba(255,255,255,.94);
+      font-size: clamp(22px, 2.35vw, 33px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.28;
+    }
+    .profiles-panel__scenario::before {
+      content: "\201C";
+      position: absolute;
+      top: -6px;
+      left: 0;
+      color: rgba(227,210,173,.42);
+      font-size: 46px;
+      font-style: normal;
+      line-height: .7;
+    }
+    .profiles-panel__who {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: auto;
+      padding-top: 22px;
+      border-top: 1px solid rgba(227,210,173,.2);
+    }
+    .profiles-panel__who-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--bba-gold);
+      box-shadow: 0 0 0 7px rgba(185,149,79,.12);
+      flex-shrink: 0;
+    }
+    .profiles-panel__who span {
+      color: rgba(255,255,255,.62);
+      font-size: 12.5px; letter-spacing: .06em;
+    }
+    .profiles-panel__right {
+      padding: clamp(34px, 3.2vw, 48px);
+      background:
+        radial-gradient(circle at 88% 0%, rgba(185,149,79,.07), transparent 32%),
+        var(--bba-white);
+    }
+    .profiles-panel__problem {
+      margin-bottom: 30px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid rgba(220,213,206,.72);
+    }
+    .profiles-panel__problem-label,
+    .profiles-panel__solution-label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 9.5px; font-weight: 800;
+      letter-spacing: .2em; text-transform: uppercase;
+    }
+    .profiles-panel__problem-label { color: rgba(185,74,74,.82); }
+    .profiles-panel__solution-label { color: var(--bba-gold); }
+    .profiles-panel__problem h3 {
+      margin: 0 0 12px;
+      color: var(--bba-navy);
+      font-size: clamp(21px, 2vw, 30px);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+    .profiles-panel__problem p {
+      margin: 0;
+      color: var(--bba-muted);
+      font-size: 14.5px;
+      line-height: 1.62;
+    }
+    .profiles-panel__delivers {
+      list-style: none; margin: 0 0 28px; padding: 0;
+      display: grid; gap: 12px;
+    }
+    .profiles-panel__delivers li {
+      display: flex; align-items: flex-start; gap: 12px;
+      color: var(--bba-ink);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .profiles-panel__delivers li::before {
+      content: "";
+      width: 18px; height: 18px; flex-shrink: 0;
+      margin-top: 1px;
+      border-radius: 50%;
+      border: 1px solid rgba(185,149,79,.42);
+      background:
+        rgba(185,149,79,.1)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M5 9l3 3 5-6' stroke='%23b9954f' stroke-width='1.55' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+        center / cover no-repeat;
+    }
+    .profiles-panel__cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 16px 24px;
+      border: 1px solid var(--bba-navy);
+      background: var(--bba-navy);
+      color: var(--bba-white);
+      font-size: 11px; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase;
+      transition:
+        background var(--bba-fast) var(--bba-ease),
+        border-color var(--bba-fast) var(--bba-ease),
+        color var(--bba-fast) var(--bba-ease),
+        box-shadow var(--bba-fast) var(--bba-ease),
+        transform var(--bba-fast) var(--bba-ease);
+    }
+    .profiles-panel__cta:hover {
+      transform: translateY(-2px);
+      background: var(--bba-gold);
+      border-color: var(--bba-gold);
+      color: var(--bba-navy);
+      box-shadow: 0 14px 34px rgba(185,149,79,.24);
+    }
+    .profiles-panel__cta svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+    /* ── BLOCO 07 — DIFERENCIAL ── */
+    .diff-split {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(440px,1.08fr);
+      gap: clamp(36px, 4.4vw, 68px);
+      align-items: center;
+    }
+    .diff-list {
+      list-style: none; margin: 0 0 36px; padding: 0;
+      display: grid; gap: 18px;
+    }
+    .diff-list li {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 16px; align-items: start;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255,255,255,.18);
+    }
+    .diff-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .diff-list__icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(185,149,79,.46);
+      background: rgba(185,149,79,.12);
+    }
+    .diff-list__icon svg { width: 16px; height: 16px; stroke: var(--bba-gold-soft); stroke-width: 1.6; fill: none; }
+    .diff-list__text strong {
+      display: block;
+      color: var(--bba-white);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      text-shadow: 0 12px 32px rgba(0,0,0,.26);
+    }
+    .diff-list__text span {
+      color: rgba(255,255,255,.72);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .diff-visual {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      min-height: clamp(500px, 46vw, 590px);
+    }
+    .diff-visual svg { width: 100%; max-width: 540px; height: auto; }
+
+    /* ── BLOCO 08 — BENEFÍCIOS ── */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0;
+    }
+    .benefit-item {
+      padding: 32px 28px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-right: none; border-top: none;
+      background: rgba(255,255,255,.06);
+      transition:
+        background var(--bba-medium) var(--bba-ease),
+        border-color var(--bba-medium) var(--bba-ease);
+    }
+    .benefits-grid .benefit-item:nth-child(3n) { border-right: 1px solid rgba(255,255,255,.15); }
+    .benefits-grid .benefit-item:nth-child(-n+3) { border-top: 1px solid rgba(255,255,255,.15); }
+    .benefit-item:hover { background: rgba(255,255,255,.1); border-color: rgba(185,149,79,.3); }
+    .benefits-section .benefit-item {
+      position: relative;
+      background: rgba(5,13,29,.42);
+      border-color: rgba(255,255,255,.16);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 22px 54px rgba(0,0,0,.12);
+    }
+    .benefits-section .benefits-grid .benefit-item:nth-child(3n) { border-right-color: rgba(255,255,255,.16); }
+    .benefits-section .benefits-grid .benefit-item:nth-child(-n+3) { border-top-color: rgba(255,255,255,.16); }
+    .benefits-section .benefit-item:hover {
+      background: rgba(8,22,44,.52);
+      border-color: rgba(185,149,79,.32);
+    }
+    .benefit-item__icon {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(185,149,79,.38);
+      background: rgba(185,149,79,.1);
+      margin-bottom: 16px;
+    }
+    .benefit-item__icon svg { width: 18px; height: 18px; stroke: var(--bba-gold-soft); stroke-width: 1.5; fill: none; }
+    .benefit-item h3 {
+      margin: 0 0 8px; color: var(--bba-white);
+      font-size: clamp(17px, 1.7vw, 21px); font-weight: 400; line-height: 1.15;
+    }
+    .benefit-item p { margin: 0; color: rgba(255,255,255,.62); font-size: 13.5px; line-height: 1.52; }
+
+    /* ── BLOCO 09 — TICKER ── */
+    .ticker-band {
+      position: relative;
+      overflow: hidden;
+      padding: 22px 0;
+      border-top: 1px solid rgba(185,149,79,.18);
+      border-bottom: 1px solid rgba(185,149,79,.18);
+      background:
+        linear-gradient(90deg, rgba(28,22,10,.98), rgba(12,31,63,.96) 48%, rgba(28,22,10,.98)),
+        radial-gradient(70% 160% at 50% 0%, rgba(185,149,79,.22), transparent 62%);
+    }
+    .ticker-band::before, .ticker-band::after {
+      content: ""; position: absolute; top: 0; bottom: 0; z-index: 2;
+      width: min(16vw, 200px); pointer-events: none;
+    }
+    .ticker-band::before { left: 0; background: linear-gradient(90deg, rgba(28,22,10,1), transparent); }
+    .ticker-band::after { right: 0; background: linear-gradient(270deg, rgba(28,22,10,1), transparent); }
+    .ticker-track {
+      display: flex; align-items: center;
+      width: max-content;
+      animation: tickerLoop 36s linear infinite;
+      transform: translateZ(0); will-change: transform;
+    }
+    .ticker-band:hover .ticker-track { animation-play-state: paused; }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 14px;
+      margin-right: 48px;
+      color: rgba(255,255,255,.8); font-size: 13px;
+      font-weight: 700; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap;
+    }
+    .ticker-item span { color: var(--bba-gold-soft); letter-spacing: .06em; }
+    @keyframes tickerLoop {
+      from { transform: translate3d(0,0,0); }
+      to { transform: translate3d(-50%,0,0); }
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      position: relative; overflow: hidden;
+      background: var(--bba-paper);
+      border-top: 1px solid rgba(185,149,79,.18);
+      border-bottom: none;
+    }
+    .cta-final::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(185,149,79,.4) 20%, rgba(185,149,79,.85) 50%, rgba(185,149,79,.4) 80%, transparent);
+    }
+    .cta-final .section__inner { position: relative; z-index: 1; }
+
+    .cta-split {
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr);
+      gap: clamp(48px, 6vw, 88px);
+      align-items: center;
+    }
+    .cta-line {
+      display: block; margin-bottom: 24px;
+      color: var(--bba-navy); font-size: 11px;
+      font-weight: 700; letter-spacing: .22em; text-transform: uppercase; opacity: .38;
+    }
+    .cta-headline {
+      margin: 0 0 18px; color: var(--bba-navy);
+      font-size: clamp(28px, 3.4vw, 50px); font-weight: 300; line-height: 1.06;
+    }
+    .cta-headline em { font-style: normal; color: var(--bba-gold); }
+    .cta-sub { margin: 0 0 34px; color: var(--bba-muted); font-size: 15px; line-height: 1.6; max-width: 460px; }
+    .cta-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+
+    .cta-btn-primary {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 17px 28px;
+      background: var(--bba-navy); color: var(--bba-white);
+      font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      border: 1px solid var(--bba-navy);
+      transition: background var(--bba-fast) var(--bba-ease), border-color var(--bba-fast) var(--bba-ease), box-shadow var(--bba-fast) var(--bba-ease);
+    }
+    .cta-btn-primary:hover { background: #0a1a34; border-color: rgba(185,149,79,.55); box-shadow: 0 14px 44px rgba(12,31,63,.18); }
+    .cta-btn-primary svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .cta-btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 20px;
+      background: transparent; color: var(--bba-navy);
+      font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      border: 1px solid rgba(12,31,63,.18);
+      transition: border-color var(--bba-fast) var(--bba-ease), color var(--bba-fast) var(--bba-ease), background var(--bba-fast) var(--bba-ease);
+    }
+    .cta-btn-secondary:hover { border-color: rgba(185,149,79,.5); color: var(--bba-gold); background: rgba(185,149,79,.05); }
+    .cta-btn-secondary svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.8; fill: none; }
+
+    .cta-note {
+      margin-top: 12px; color: var(--bba-muted);
+      font-size: 11px; letter-spacing: .06em;
+    }
+
+    .cta-contact {
+      padding: 36px 32px;
+      border: 1px solid rgba(185,149,79,.22);
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(8px);
+    }
+    .cta-contact__label {
+      display: block; margin-bottom: 20px;
+      color: var(--bba-gold); font-size: 10px;
+      font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+    }
+    .cta-contact__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+    .cta-contact__list li { display: grid; gap: 4px; }
+    .cta-contact__list small { color: var(--bba-muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .cta-contact__list a, .cta-contact__list span { color: var(--bba-navy); font-size: 15px; line-height: 1.3; transition: color var(--bba-fast) ease; }
+    .cta-contact__list a:hover { color: var(--bba-gold); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid rgba(185,149,79,.13);
+      padding: clamp(22px, 3vw, 34px) 0;
+      background: var(--bba-paper);
+    }
+    .site-footer__inner {
+      width: var(--bba-container); margin: 0 auto;
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: center; gap: 24px;
+    }
+    .site-footer__brand { display: grid; gap: 3px; }
+    .site-footer__brand strong { color: var(--bba-navy); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .site-footer__brand span { color: var(--bba-muted); font-size: 10.5px; letter-spacing: .06em; }
+    .site-footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; }
+    .site-footer__links a { color: var(--bba-muted); font-size: 11.5px; transition: color var(--bba-fast) ease; }
+    .site-footer__links a:hover { color: var(--bba-gold); }
+    .site-footer__legal { color: var(--bba-muted); font-size: 10.5px; text-align: right; }
+
+    /* ── ANIMATE ON SCROLL ── */
+    [data-animate-on-scroll] {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity var(--bba-slow) var(--bba-ease), transform var(--bba-slow) var(--bba-ease);
+    }
+    [data-animate-on-scroll].is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .hero { min-height: 860px; }
+      .hero__org-canvas {
+        top: 118px;
+        right: 22px;
+        bottom: 156px;
+        left: clamp(330px, 37vw, 410px);
+      }
+      .hero__brand-mark {
+        top: 28px;
+        right: 30px;
+        width: 104px;
+      }
+      .hero__inner {
+        width: min(320px, calc(100vw - 48px));
+        padding-top: 118px;
+      }
+      .hero h1 { font-size: clamp(24px, 2.7vw, 34px); }
+      .hero p { font-size: 13px; }
+    }
+
+    @media (max-width: 960px) {
+      .dual-grid,
+      .diff-split,
+      .cta-split,
+      .profiles-split,
+      .problem-intro {
+        grid-template-columns: 1fr;
+      }
+      .problem-intro__visual { display: none; }
+      .solutions-header {
+        grid-template-columns: minmax(250px, 34%) minmax(0, 1fr);
+        gap: 34px;
+      }
+      .solutions-copy-stack {
+        max-width: 330px;
+        gap: 24px;
+      }
+      .solutions-header .section-header {
+        max-width: 330px;
+        padding-top: 0;
+      }
+      .solutions-flow-panel { width: min(100%, 360px); }
+      .solutions-flow-panel::after { width: 40px; }
+      .solutions-timeline { min-height: auto; }
+      .profiles-split { align-items: start; }
+      .profiles-copy {
+        display: block;
+        min-height: 0;
+        padding-top: 0;
+      }
+      .profiles-selector {
+        grid-template-rows: none;
+        flex: none;
+        position: static;
+      }
+      .profiles-panels { min-height: 0; }
+      .profiles-panel__inner { min-height: 0; }
+      .diff-visual { display: none; }
+      .journey-grid { grid-template-columns: 1fr 1fr; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .benefits-grid .benefit-item:nth-child(3n) { border-right: none; }
+      .benefits-grid .benefit-item:nth-child(2n) { border-right: 1px solid rgba(255,255,255,.15); }
+      .benefits-grid .benefit-item:nth-child(-n+2) { border-top: 1px solid rgba(255,255,255,.15); }
+      .cta-contact { margin-top: 0; }
+      .site-footer__inner { grid-template-columns: 1fr; text-align: center; gap: 14px; }
+      .site-footer__links { justify-content: center; }
+      .site-footer__legal { text-align: center; }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        padding-top: 72px;
+      }
+      .hero__org-canvas {
+        position: relative;
+        inset: auto;
+        width: min(360px, calc(100vw - 28px));
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+        margin: 0 auto 22px;
+        overflow: hidden;
+        align-self: center;
+        filter: drop-shadow(0 22px 56px rgba(0,0,0,.32));
+      }
+      .hero__org-canvas svg {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+      .hero__brand-mark {
+        top: 18px;
+        right: auto;
+        left: 18px;
+        width: 78px;
+        opacity: .76;
+      }
+      .hero__overlay {
+        background:
+          linear-gradient(180deg, rgba(5,13,29,.2) 0%, rgba(5,13,29,.42) 50%, rgba(5,13,29,.86) 100%),
+          linear-gradient(90deg, rgba(5,13,29,.74), rgba(5,13,29,.18));
+      }
+      .hero__inner {
+        width: min(360px, calc(100vw - 28px));
+        margin: 0 auto;
+        padding: 0 0 30px;
+      }
+      .hero__content {
+        max-width: 560px;
+      }
+      .hero h1 { font-size: clamp(28px, 7vw, 36px); line-height: 1.08; }
+      .hero p { max-width: 340px; font-size: 14px; }
+      .hero__rail {
+        width: min(360px, calc(100vw - 28px));
+        padding-bottom: 28px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .problem-grid { grid-template-columns: 1fr; }
+      .problem-grid .problem-card { border-right: 1px solid rgba(220,213,206,.9) !important; border-top: none; }
+      .problem-grid .problem-card:first-child { border-top: 1px solid rgba(220,213,206,.9); }
+      .problem-grid--row2 { grid-template-columns: 1fr; }
+      .profiles-panel__inner { grid-template-columns: 1fr; }
+      .profiles-panel__left {
+        border-right: none;
+        border-bottom: 1px solid rgba(185,149,79,.22);
+      }
+      .profiles-panel__scenario { font-size: clamp(20px, 6vw, 27px); }
+      .profiles-panel__right { padding: 30px 24px; }
+      .solutions-header {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+      .solutions-copy-stack {
+        max-width: 100%;
+        gap: 24px;
+      }
+      .solutions-flow-panel {
+        width: min(380px, 100%);
+        max-width: none;
+        justify-self: start;
+      }
+      .solutions-flow-panel::after {
+        left: 50%;
+        top: calc(100% + 1px);
+        width: 1px;
+        height: 34px;
+        background: linear-gradient(180deg, rgba(185,149,79,.72), rgba(12,31,63,.28), transparent);
+        transform: translateX(-50%);
+      }
+      .solutions-timeline { padding: 34px 20px 32px; border-radius: 22px; }
+      .solutions-timeline__path { left: 28px; top: 48px; bottom: 56px; }
+      .solutions-timeline__nodes { gap: 22px; }
+      .solutions-step { grid-template-columns: 24px minmax(0,1fr); gap: 16px; }
+      .solutions-step__card { padding: 20px 18px 18px; min-height: auto; }
+      .solutions-step p { font-size: 14px; }
+      .solutions-grid { grid-template-columns: 1fr; }
+      .journey-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .benefits-grid .benefit-item { border-right: 1px solid rgba(255,255,255,.15) !important; }
+      .section { padding: 72px 0; }
+    }
+
+    @media (max-width: 620px) {
+      :root { --bba-container: min(100% - 28px, 1180px); }
+      .site-nav__inner { min-height: auto; padding: 14px 0; align-items: flex-start; flex-direction: column; }
+      .site-nav__links { justify-content: flex-start; }
+      .hero { min-height: auto; padding-top: 80px; }
+      .bba-home-link {
+        top: 16px;
+        left: 14px;
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+      .hero__org-canvas,
+      .hero__inner,
+      .hero__rail {
+        width: min(310px, calc(100vw - 28px));
+      }
+      .hero__inner { margin: 0 auto; }
+      .hero h1 { font-size: clamp(26px, 7.5vw, 31px); }
+      .hero p { max-width: 292px; font-size: 13px; }
+      .hero__actions { flex-direction: column; align-items: stretch; }
+      .bba-btn { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+      .ticker-track { animation: none !important; }
+      .flow-spine,
+      .flow-link,
+      .flow-highlight,
+      .flow-mover,
+      .flow-core rect,
+      .flow-progress__fill,
+      .solutions-timeline__droplet,
+      .solutions-step__dot,
+      .solutions-step__card { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav class="site-nav" aria-label="Navegação principal">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="https://www.bbabrazil.com.br">
+        BBA Brazil
+        <span>Consultoria · Contabilidade · Tecnologia</span>
+      </a>
+      <div class="site-nav__links">
+        <a href="#problema">Problema</a>
+        <a href="#abordagem">Abordagem</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#metodo">Método</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ══════════════════════════════════
+         BLOCO 01 — HERO
+         ══════════════════════════════════ -->
+    <section class="hero" aria-label="Início">
+
+      <a href="index.html" class="bba-home-link">
+        ← BBA Home
+      </a>
+
+      <div class="hero__bg" aria-hidden="true"></div>
+      <img
+        class="hero__brand-mark"
+        src="BBA-LOGO-branco%20-%20Seta%20Dourada%20-%20Fundo%20Transparente.png"
+        alt=""
+        aria-hidden="true"
+      >
+
+      <!-- Org-chart SVG — clean, visible connectors, premium node styling -->
+      <div class="hero__org-canvas" aria-hidden="true">
+        <svg viewBox="0 0 980 560" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="glow-node" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="5" result="blur"/>
+              <feColorMatrix in="blur" type="matrix" values="1 0.8 0.2 0 0  0.8 0.6 0.1 0 0  0.1 0.1 0 0 0  0 0 0 0.45 0" result="c"/>
+              <feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <linearGradient id="ng-root" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(14,36,72,0.98)"/>
+              <stop offset="100%" stop-color="rgba(20,52,100,0.95)"/>
+            </linearGradient>
+            <linearGradient id="ng-l2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(15,37,75,0.98)"/>
+              <stop offset="100%" stop-color="rgba(20,52,98,0.96)"/>
+            </linearGradient>
+            <linearGradient id="ng-l3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(11,27,56,0.96)"/>
+              <stop offset="100%" stop-color="rgba(15,35,72,0.93)"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Background grid -->
+          <g stroke="rgba(185,149,79,.055)" stroke-width="1">
+            <line x1="0" y1="100" x2="980" y2="100"/><line x1="0" y1="200" x2="980" y2="200"/>
+            <line x1="0" y1="300" x2="980" y2="300"/><line x1="0" y1="400" x2="980" y2="400"/>
+            <line x1="0" y1="500" x2="980" y2="500"/>
+            <line x1="98"  y1="0" x2="98"  y2="560"/><line x1="196" y1="0" x2="196" y2="560"/>
+            <line x1="294" y1="0" x2="294" y2="560"/><line x1="392" y1="0" x2="392" y2="560"/>
+            <line x1="490" y1="0" x2="490" y2="560"/><line x1="588" y1="0" x2="588" y2="560"/>
+            <line x1="686" y1="0" x2="686" y2="560"/><line x1="784" y1="0" x2="784" y2="560"/>
+            <line x1="882" y1="0" x2="882" y2="560"/>
+          </g>
+
+          <!--
+            LAYOUT — viewBox 980×560, 20px left padding so left nodes are never clipped
+            ROOT   rect(390,20,200,70)  cx=490  bottom=90
+            L2     y=140  h=80  gap=10 between nodes, width=170 each
+              RH        x=10   cx=95
+              FINANÇAS  x=200  cx=285
+              OPERAÇÕES x=390  cx=475  (highlighted)
+              TI        x=580  cx=665
+              GOVERNANÇA x=770 cx=855
+            L3     y=270  h=40  width=150 each
+              DP·FOLHA     x=10   cx=85
+              PERFORMANCE  x=170  cx=245
+              CONTABILIDADE x=200 cx=285    (under FINANÇAS)
+              CONTROLADORIA x=360 cx=435
+              PROCESSOS    x=400  cx=475    (under OPERAÇÕES)
+              AUTOMAÇÃO    x=580  cx=655
+              DADOS        x=740  cx=815
+              COMPLIANCE   x=760  cx=835   (under GOVERNANÇA)
+              CONTROLES    x=850  cx=920 (too tight — merge GOV to 2 children properly)
+
+            Revised L3 layout to avoid overlap:
+            Under RH(cx=95):
+              DP·FOLHA     x=8    cx=83
+              PERFORMANCE  x=163  cx=238
+            Under FINANÇAS(cx=285):
+              CONTABILIDADE x=203 cx=278
+              CONTROLADORIA x=358 cx=433  ← slight overlap check: 358+150=508 vs OPERAÇÕES L3 start 395 — OK
+            Under OPERAÇÕES(cx=475):
+              PROCESSOS    x=398  cx=473
+            Under TI(cx=665):
+              AUTOMAÇÃO    x=583  cx=658
+              DADOS        x=738  cx=813
+            Under GOVERNANÇA(cx=855):
+              COMPLIANCE   x=760  cx=835
+              CONTROLES    x=815  cx=890  ← overlaps COMPLIANCE end(760+150=910)... fix:
+              Use single child CONTROLES x=773 cx=848 instead and combine
+            FINAL CLEAN L3:
+              RH:         DP·FOLHA x=8 cx=83  |  PERFORMANCE x=168 cx=243
+              FINANÇAS:   CONTABILIDADE x=200 cx=275  |  CONTROLADORIA x=355 cx=430
+              OPERAÇÕES:  PROCESSOS x=395 cx=470
+              TI:         AUTOMAÇÃO x=578 cx=653  |  DADOS x=733 cx=808
+              GOVERNANÇA: COMPLIANCE x=760 cx=835  |  (single, centred)
+          -->
+
+          <!-- ══ CONNECTOR LINES (drawn first, nodes on top) ══ -->
+
+          <!-- Root bottom → rail -->
+          <line x1="490" y1="90"  x2="490" y2="132" stroke="rgba(185,149,79,.82)" stroke-width="1.5"/>
+          <!-- Horizontal rail -->
+          <line x1="95"  y1="132" x2="855" y2="132" stroke="rgba(185,149,79,.72)" stroke-width="1.1"/>
+          <!-- Rail → L2 nodes -->
+          <line x1="95"  y1="132" x2="95"  y2="140" stroke="rgba(185,149,79,.72)" stroke-width="1"/>
+          <line x1="285" y1="132" x2="285" y2="140" stroke="rgba(185,149,79,.72)" stroke-width="1"/>
+          <line x1="475" y1="132" x2="475" y2="140" stroke="rgba(185,149,79,.72)" stroke-width="1"/>
+          <line x1="665" y1="132" x2="665" y2="140" stroke="rgba(185,149,79,.72)" stroke-width="1"/>
+          <line x1="855" y1="132" x2="855" y2="140" stroke="rgba(185,149,79,.72)" stroke-width="1"/>
+
+          <!-- L2 → L3: RH (cx=95) → children cx=83, cx=243 -->
+          <line x1="95"  y1="220" x2="95"  y2="332" stroke="rgba(185,149,79,.58)" stroke-width="1"/>
+
+          <!-- L2 → L3: FINANÇAS (cx=285) → children cx=275, cx=430 -->
+          <line x1="285" y1="220" x2="285" y2="332" stroke="rgba(185,149,79,.58)" stroke-width="1"/>
+
+          <!-- L2 → L3: OPERAÇÕES (cx=475) → single child cx=470 -->
+          <line x1="475" y1="220" x2="475" y2="304" stroke="rgba(185,149,79,.58)" stroke-width="1"/>
+
+          <!-- L2 → L3: TI (cx=665) → children cx=653, cx=808 -->
+          <line x1="665" y1="220" x2="665" y2="332" stroke="rgba(185,149,79,.58)" stroke-width="1"/>
+
+          <!-- L2 → L3: GOVERNANÇA (cx=855) → single child cx=855 -->
+          <line x1="855" y1="220" x2="855" y2="304" stroke="rgba(185,149,79,.58)" stroke-width="1"/>
+
+          <!-- ══ ANIMATED DOTS — 3 clean dots, v1 style ══ -->
+          <g fill="rgba(185,149,79,.85)">
+            <circle r="3.5" opacity="0">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="0s"   path="M 490 20 L 490 132"/>
+              <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="0s"/>
+            </circle>
+            <circle r="3.5" opacity="0">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin=".8s"  path="M 490 132 L 95 132 L 95 140"/>
+              <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin=".8s"/>
+            </circle>
+            <circle r="3.5" opacity="0">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s" path="M 490 132 L 855 132 L 855 140"/>
+              <animate attributeName="opacity" values="0;1;1;0" dur="2.4s" repeatCount="indefinite" begin="1.6s"/>
+            </circle>
+          </g>
+
+          <!-- ══ ROOT NODE  rect(390,20,200,70)  cx=490 ══ -->
+          <rect x="390" y="20" width="200" height="70" fill="url(#ng-root)" stroke="rgba(185,149,79,.9)" stroke-width="1.5" filter="url(#glow-node)"/>
+          <rect x="390" y="20" width="200" height="3"  fill="rgba(185,149,79,.95)"/>
+          <path d="M390 20 L406 20 M390 20 L390 34"   stroke="rgba(185,149,79,1)"  stroke-width="2"/>
+          <path d="M590 20 L574 20 M590 20 L590 34"   stroke="rgba(185,149,79,1)"  stroke-width="2"/>
+          <path d="M390 90 L406 90 M390 90 L390 76"   stroke="rgba(185,149,79,.6)" stroke-width="1.2"/>
+          <path d="M590 90 L574 90 M590 90 L590 76"   stroke="rgba(185,149,79,.6)" stroke-width="1.2"/>
+          <text x="490" y="46"  text-anchor="middle" fill="rgba(185,149,79,.95)" font-size="11"  font-family="Helvetica" font-weight="700" letter-spacing="2.5">DIREÇÃO</text>
+          <text x="490" y="67"  text-anchor="middle" fill="rgba(255,255,255,.95)" font-size="15"  font-family="Helvetica" font-weight="300">CEO · Sócio</text>
+          <text x="490" y="83"  text-anchor="middle" fill="rgba(255,255,255,.42)" font-size="10"  font-family="Helvetica">Decisão estratégica</text>
+          <circle cx="571" cy="34" r="5" fill="rgba(100,210,120,.9)">
+            <animate attributeName="opacity" values="0.55;1;0.55" dur="2s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- ══ L2 NODES  y=140  h=80 ══ -->
+
+          <!-- RH & PESSOAS  x=10 w=170 cx=95 -->
+          <rect x="10"  y="140" width="170" height="80" fill="url(#ng-l2)" stroke="rgba(185,149,79,.66)" stroke-width="1.2"/>
+          <rect x="10"  y="140" width="170" height="3"   fill="rgba(185,149,79,.88)"/>
+          <text x="95"  y="163" text-anchor="middle" fill="rgba(185,149,79,.9)"  font-size="10"  font-family="Helvetica" font-weight="700" letter-spacing="1.5">RH &amp; PESSOAS</text>
+          <text x="95"  y="185" text-anchor="middle" fill="rgba(255,255,255,.9)"  font-size="13"  font-family="Helvetica" font-weight="300">People</text>
+          <text x="95"  y="203" text-anchor="middle" fill="rgba(255,255,255,.62)" font-size="9.5" font-family="Helvetica">Folha · eSocial · DP</text>
+
+          <!-- FINANÇAS  x=200 w=170 cx=285 -->
+          <rect x="200" y="140" width="170" height="80" fill="url(#ng-l2)" stroke="rgba(185,149,79,.66)" stroke-width="1.2"/>
+          <rect x="200" y="140" width="170" height="3"   fill="rgba(185,149,79,.88)"/>
+          <text x="285" y="163" text-anchor="middle" fill="rgba(185,149,79,.9)"  font-size="10"  font-family="Helvetica" font-weight="700" letter-spacing="1.5">FINANÇAS</text>
+          <text x="285" y="185" text-anchor="middle" fill="rgba(255,255,255,.9)"  font-size="13"  font-family="Helvetica" font-weight="300">CFO · Gestor</text>
+          <text x="285" y="203" text-anchor="middle" fill="rgba(255,255,255,.62)" font-size="9.5" font-family="Helvetica">DRE · Caixa · Margem</text>
+
+          <!-- OPERAÇÕES  x=390 w=170 cx=475  HIGHLIGHTED -->
+          <rect x="390" y="140" width="170" height="80" fill="url(#ng-l2)" stroke="rgba(185,149,79,.82)" stroke-width="2"   filter="url(#glow-node)"/>
+          <rect x="390" y="140" width="170" height="3"   fill="rgba(185,149,79,.95)"/>
+          <rect x="388" y="138" width="174" height="84"  fill="none" stroke="rgba(185,149,79,.28)" stroke-width="1">
+            <animate attributeName="stroke-opacity" values="0.1;0.45;0.1" dur="3.2s" repeatCount="indefinite"/>
+          </rect>
+          <text x="475" y="163" text-anchor="middle" fill="rgba(185,149,79,.98)" font-size="10"  font-family="Helvetica" font-weight="700" letter-spacing="1.5">OPERAÇÕES</text>
+          <text x="475" y="185" text-anchor="middle" fill="rgba(255,255,255,.98)" font-size="13"  font-family="Helvetica" font-weight="300">COO · Gerente</text>
+          <text x="475" y="203" text-anchor="middle" fill="rgba(255,255,255,.68)" font-size="9.5" font-family="Helvetica">Processos · Eficiência</text>
+
+          <!-- TI & TECNOLOGIA  x=580 w=170 cx=665 -->
+          <rect x="580" y="140" width="170" height="80" fill="url(#ng-l2)" stroke="rgba(185,149,79,.66)" stroke-width="1.2"/>
+          <rect x="580" y="140" width="170" height="3"   fill="rgba(185,149,79,.88)"/>
+          <text x="665" y="163" text-anchor="middle" fill="rgba(185,149,79,.9)"  font-size="10"  font-family="Helvetica" font-weight="700" letter-spacing="1.5">TI &amp; TECNOLOGIA</text>
+          <text x="665" y="185" text-anchor="middle" fill="rgba(255,255,255,.9)"  font-size="13"  font-family="Helvetica" font-weight="300">CTO · Tech Lead</text>
+          <text x="665" y="203" text-anchor="middle" fill="rgba(255,255,255,.62)" font-size="9.5" font-family="Helvetica">Automação · Sistemas</text>
+
+          <!-- GOVERNANÇA  x=770 w=170 cx=855 -->
+          <rect x="770" y="140" width="170" height="80" fill="url(#ng-l2)" stroke="rgba(185,149,79,.66)" stroke-width="1.2"/>
+          <rect x="770" y="140" width="170" height="3"   fill="rgba(185,149,79,.88)"/>
+          <text x="855" y="163" text-anchor="middle" fill="rgba(185,149,79,.9)"  font-size="10"  font-family="Helvetica" font-weight="700" letter-spacing="1.5">GOVERNANÇA</text>
+          <text x="855" y="185" text-anchor="middle" fill="rgba(255,255,255,.9)"  font-size="13"  font-family="Helvetica" font-weight="300">Compliance · Risco</text>
+          <text x="855" y="203" text-anchor="middle" fill="rgba(255,255,255,.62)" font-size="9.5" font-family="Helvetica">Controles · Políticas</text>
+
+          <!-- ══ L3 NODES  y=270  h=42 ══ -->
+
+          <!-- RH: DP·FOLHA -->
+          <rect x="20"  y="258" width="150" height="42" fill="url(#ng-l3)" stroke="rgba(185,149,79,.42)" stroke-width="1"/>
+          <text x="95"  y="275" text-anchor="middle" fill="rgba(185,149,79,.88)" font-size="9.5" font-family="Helvetica" font-weight="700" letter-spacing=".8">DP · FOLHA</text>
+          <text x="95"  y="291" text-anchor="middle" fill="rgba(255,255,255,.72)" font-size="9"   font-family="Helvetica">Admissão · eSocial</text>
+
+          <!-- RH: PERFORMANCE -->
+          <rect x="20"  y="310" width="150" height="42" fill="url(#ng-l3)" stroke="rgba(185,149,79,.42)" stroke-width="1"/>
+          <text x="95"  y="327" text-anchor="middle" fill="rgba(185,149,79,.88)" font-size="9.5" font-family="Helvetica" font-weight="700" letter-spacing=".8">PERFORMANCE</text>
+          <text x="95"  y="343" text-anchor="middle" fill="rgba(255,255,255,.72)" font-size="9"   font-family="Helvetica">Metas · Incentivos</text>
+
+          <!-- FINANÇAS: CONTABILIDADE -->
+          <rect x="210" y="258" width="150" height="42" fill="url(#ng-l3)" stroke="rgba(185,149,79,.42)" stroke-width="1"/>
+          <text x="285" y="275" text-anchor="middle" fill="rgba(185,149,79,.88)" font-size="9.5" font-family="Helvetica" font-weight="700" letter-spacing=".8">CONTABILIDADE</text>
+          <text x="285" y="291" text-anchor="middle" fill="rgba(255,255,255,.72)" font-size="9"   font-family="Helvetica">DRE · Orçamento</text>
+
+          <!-- FINANÇAS: CONTROLADORIA -->
+          <rect x="210" y="310" width="150" height="42" fill="url(#ng-l3)" stroke="rgba(185,149,79,.42)" stroke-width="1"/>
+          <text x="285" y="327" text-anchor="middle" fill="rgba(185,149,79,.88)" font-size="9.5" font-family="Helvetica" font-weight="700" letter-spacing=".8">CONTROLADORIA</text>
+          <text x="285" y="343" text-anchor="middle" fill="rgba(255,255,255,.72)" font-size="9"   font-family="Helvetica">NF · Tributos</text>
+
+          <!-- OPERAÇÕES: PROCESSOS -->
+          <rect x="400" y="284" width="150" height="42" fill="url(#ng-l3)" stroke="rgba(185,149,79,.42)" stroke-width="1"/>
+          <text x="475" y="301" text-anchor="middle" fill="rgba(185,149,79,.88)" font-size="9.5" font-family="Helvetica" font-weight="700" letter-spacing=".8">PROCESSOS</text>
+          <text x="475" y="317" text-anchor="middle" fill="rgba(255,255,255,.72)" font-size="9"   font-family="Helvetica">Fluxos · Qualidade</text>
+
+          <!-- TI: AUTOMAÇÃO -->
+          <rect x="590" y="258" width="150" height="42" fill="url(#ng-l3)" stroke="rgba(185,149,79,.42)" stroke-width="1"/>
+          <text x="665" y="275" text-anchor="middle" fill="rgba(185,149,79,.88)" font-size="9.5" font-family="Helvetica" font-weight="700" letter-spacing=".8">AUTOMAÇÃO</text>
+          <text x="665" y="291" text-anchor="middle" fill="rgba(255,255,255,.72)" font-size="9"   font-family="Helvetica">IA · Integração</text>
+
+          <!-- TI: DADOS -->
+          <rect x="590" y="310" width="150" height="42" fill="url(#ng-l3)" stroke="rgba(185,149,79,.42)" stroke-width="1"/>
+          <text x="665" y="327" text-anchor="middle" fill="rgba(185,149,79,.88)" font-size="9.5" font-family="Helvetica" font-weight="700" letter-spacing=".8">DADOS</text>
+          <text x="665" y="343" text-anchor="middle" fill="rgba(255,255,255,.72)" font-size="9"   font-family="Helvetica">BI · Analytics</text>
+
+          <!-- GOVERNANÇA: COMPLIANCE -->
+          <rect x="780" y="284" width="150" height="42" fill="url(#ng-l3)" stroke="rgba(185,149,79,.42)" stroke-width="1"/>
+          <text x="855" y="301" text-anchor="middle" fill="rgba(185,149,79,.88)" font-size="9.5" font-family="Helvetica" font-weight="700" letter-spacing=".8">COMPLIANCE</text>
+          <text x="855" y="317" text-anchor="middle" fill="rgba(255,255,255,.72)" font-size="8.6" font-family="Helvetica">CLT · LGPD · Políticas</text>
+
+          <g transform="translate(0,28)">
+          <!-- ══ KPI CARDS  y=386 ══ -->
+          <!-- Card 1 — META MENSAL  x=10 -->
+          <rect x="10"  y="358" width="155" height="80" fill="rgba(14,33,66,.97)" stroke="rgba(185,149,79,.62)" stroke-width="1"/>
+          <rect x="10"  y="356" width="38"  height="2.5" fill="rgba(185,149,79,.95)"/>
+          <text x="26"  y="377" fill="rgba(185,149,79,.94)" font-size="9"  font-family="Helvetica" font-weight="700" letter-spacing="1.5">META MENSAL</text>
+          <text x="26"  y="408" fill="rgba(255,255,255,.98)" font-size="28" font-family="Helvetica" font-weight="200">94%</text>
+          <text x="26"  y="425" fill="rgba(255,255,255,.66)" font-size="8.5" font-family="Helvetica">atingimento de equipe</text>
+          <rect x="26"  y="430" width="118" height="1.5" fill="rgba(255,255,255,.18)"/>
+          <rect x="26"  y="430" width="111" height="1.5" fill="rgba(185,149,79,.82)">
+            <animate attributeName="width" values="0;111" dur="1.8s" begin="0.6s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/>
+          </rect>
+
+          <!-- Card 2 — TURNOVER  x=393 -->
+          <rect x="393" y="358" width="155" height="80" fill="rgba(14,33,66,.97)" stroke="rgba(185,149,79,.62)" stroke-width="1"/>
+          <rect x="393" y="356" width="38"  height="2.5" fill="rgba(185,149,79,.95)"/>
+          <text x="409" y="377" fill="rgba(185,149,79,.94)" font-size="9"  font-family="Helvetica" font-weight="700" letter-spacing="1.5">TURNOVER</text>
+          <text x="409" y="408" fill="rgba(255,255,255,.98)" font-size="28" font-family="Helvetica" font-weight="200">↓ 4%</text>
+          <text x="409" y="425" fill="rgba(255,255,255,.66)" font-size="8.5" font-family="Helvetica">vs. período anterior</text>
+          <rect x="409" y="430" width="118" height="1.5" fill="rgba(255,255,255,.18)"/>
+          <rect x="409" y="430" width="30"  height="1.5" fill="rgba(100,210,135,.82)">
+            <animate attributeName="width" values="0;30" dur="2s" begin="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/>
+          </rect>
+
+          <!-- Card 3 — HEADCOUNT  x=810 -->
+          <rect x="810" y="358" width="155" height="80" fill="rgba(14,33,66,.97)" stroke="rgba(185,149,79,.62)" stroke-width="1"/>
+          <rect x="810" y="356" width="38"  height="2.5" fill="rgba(185,149,79,.95)"/>
+          <text x="826" y="377" fill="rgba(185,149,79,.94)" font-size="9"  font-family="Helvetica" font-weight="700" letter-spacing="1.5">HEADCOUNT</text>
+          <text x="826" y="408" fill="rgba(255,255,255,.98)" font-size="28" font-family="Helvetica" font-weight="200">18</text>
+          <text x="826" y="425" fill="rgba(255,255,255,.66)" font-size="8.5" font-family="Helvetica">colaboradores ativos</text>
+          <rect x="826" y="430" width="118" height="1.5" fill="rgba(255,255,255,.18)"/>
+          <rect x="826" y="430" width="88"  height="1.5" fill="rgba(185,149,79,.76)">
+            <animate attributeName="width" values="0;88" dur="2.2s" begin="1.2s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/>
+          </rect>
+
+          <!-- Progress bars — centre -->
+          <g opacity=".94">
+            <text x="200" y="372" fill="rgba(255,255,255,.62)" font-size="8.5" font-family="Helvetica" letter-spacing=".5">FOLHA DE PAGAMENTO</text>
+            <rect x="200" y="379" width="140" height="1.5" fill="rgba(255,255,255,.18)"/>
+            <rect x="200" y="379" width="111" height="1.5" fill="rgba(185,149,79,.84)">
+              <animate attributeName="width" values="0;111" dur="1.6s" begin="0.8s" fill="freeze"/>
+            </rect>
+            <text x="345" y="386" fill="rgba(185,149,79,.9)" font-size="8.5" font-family="Helvetica" font-weight="700">79%</text>
+
+            <text x="200" y="402" fill="rgba(255,255,255,.62)" font-size="8.5" font-family="Helvetica" letter-spacing=".5">METAS INDIVIDUAIS</text>
+            <rect x="200" y="409" width="140" height="1.5" fill="rgba(255,255,255,.18)"/>
+            <rect x="200" y="409" width="126" height="1.5" fill="rgba(185,149,79,.84)">
+              <animate attributeName="width" values="0;126" dur="1.9s" begin="1.0s" fill="freeze"/>
+            </rect>
+            <text x="345" y="416" fill="rgba(185,149,79,.9)" font-size="8.5" font-family="Helvetica" font-weight="700">90%</text>
+
+            <text x="200" y="432" fill="rgba(255,255,255,.62)" font-size="8.5" font-family="Helvetica" letter-spacing=".5">CLIMA ORGANIZACIONAL</text>
+            <rect x="200" y="439" width="140" height="1.5" fill="rgba(255,255,255,.18)"/>
+            <rect x="200" y="439" width="94"  height="1.5" fill="rgba(185,149,79,.84)">
+              <animate attributeName="width" values="0;94" dur="2.1s" begin="1.2s" fill="freeze"/>
+            </rect>
+            <text x="345" y="446" fill="rgba(185,149,79,.9)" font-size="8.5" font-family="Helvetica" font-weight="700">67%</text>
+
+            <text x="200" y="462" fill="rgba(255,255,255,.62)" font-size="8.5" font-family="Helvetica" letter-spacing=".5">COMPLIANCE TRABALHISTA</text>
+            <rect x="200" y="469" width="140" height="1.5" fill="rgba(255,255,255,.18)"/>
+            <rect x="200" y="469" width="134" height="1.5" fill="rgba(100,210,135,.78)">
+              <animate attributeName="width" values="0;134" dur="2.3s" begin="1.4s" fill="freeze"/>
+            </rect>
+            <text x="345" y="476" fill="rgba(100,220,145,.9)" font-size="8.5" font-family="Helvetica" font-weight="700">96%</text>
+          </g>
+          </g>
+
+        </svg>
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <div class="hero__content">
+          <span class="eyebrow">BBA · People &amp; Performance</span>
+          <h1>Equipe organizada.<br><em>Operação que escala.</em></h1>
+          <p>Da Folha de pagamento à estruturação organizacional: Conectamos Pessoas aos Resultados do negócio - do MEI a PMEs em crescimento.</p>
+          <div class="hero__actions">
+            <a class="bba-btn bba-btn--primary" href="#contato">
+              Fale com a BBA
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+            </a>
+            <a class="bba-btn bba-btn--ghost" href="#solucoes">Ver soluções</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__rail">
+        <div class="hero__stat">
+          <strong>25+</strong> anos de experiência executiva
+        </div>
+        <div class="hero__stat">
+          <strong>4</strong> frentes integradas: RH · Finanças · TI · Governança
+        </div>
+        <div class="hero__stat">
+          <strong>MEI → PME</strong> crescimento com estrutura
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════
+         TICKER
+         ══════════════════════════════════ -->
+    <div class="ticker-band" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-item"><span>//</span> Gestão de pessoas sem improviso</div>
+        <div class="ticker-item"><span>//</span> RH que conversa com o financeiro</div>
+        <div class="ticker-item"><span>//</span> Metas conectadas à margem do negócio</div>
+        <div class="ticker-item"><span>//</span> Estrutura para crescer sem contratar só mais pessoas</div>
+        <div class="ticker-item"><span>//</span> Compliance trabalhista</div>
+        <div class="ticker-item"><span>//</span> Descisões descentralizadas. Controle preservado</div>
+        <div class="ticker-item"><span>//</span> Gestão de pessoas sem improviso</div>
+        <div class="ticker-item"><span>//</span> RH que conversa com o financeiro</div>
+        <div class="ticker-item"><span>//</span> Metas conectadas à margem do negócio</div>
+        <div class="ticker-item"><span>//</span> Estrutura para crescer sem contratar só mais pessoas</div>
+        <div class="ticker-item"><span>//</span> Compliance trabalhista</div>
+        <div class="ticker-item"><span>//</span> Descisões descentralizadas. Controle preservado</div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         BLOCO 02 — O PROBLEMA
+         ══════════════════════════════════ -->
+    <section id="problema" class="section section--paper">
+      <div class="section__inner">
+
+        <div class="problem-intro" data-animate-on-scroll>
+          <header class="section-header" style="margin-bottom:0">
+            <span class="eyebrow">O diagnóstico real</span>
+            <h2 class="section-title">Sua empresa cresceu. A gestão das pessoas acompanhou?</h2>
+            <p class="section-copy">Na maioria das PMEs, o time cresce mas a estrutura não. O resultado é uma operação refém da memória do dono — e cada novo contratado aumenta a complexidade em vez de resolver.</p>
+          </header>
+          <div class="problem-intro__visual" aria-hidden="true">
+            <!-- Animated Complexity vs Structure Chart -->
+            <div class="problem-intro__chart-shell">
+              <svg id="complexity-chart" viewBox="0 0 480 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+                <defs>
+                  <filter id="chart-glow">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <filter id="chart-soft-shadow" x="-12%" y="-12%" width="124%" height="124%">
+                    <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#0c1f3f" flood-opacity=".13"/>
+                  </filter>
+                  <filter id="chart-gold-halo" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="7" result="goldBlur"/>
+                    <feColorMatrix in="goldBlur" type="matrix" values="0.72 0 0 0 0.45  0 0.58 0 0 0.34  0 0 0.28 0 0.12  0 0 0 0.8 0" result="gold"/>
+                    <feMerge><feMergeNode in="gold"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <linearGradient id="chaos-fill" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="rgba(200,70,70,0)"/>
+                    <stop offset="100%" stop-color="rgba(200,70,70,0.18)"/>
+                  </linearGradient>
+                  <linearGradient id="bba-fill" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="rgba(185,149,79,0)"/>
+                    <stop offset="64%" stop-color="rgba(185,149,79,0.1)"/>
+                    <stop offset="100%" stop-color="rgba(185,149,79,0.2)"/>
+                  </linearGradient>
+                  <linearGradient id="chart-panel" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(255,255,255,.94)"/>
+                    <stop offset="100%" stop-color="rgba(248,246,241,.72)"/>
+                  </linearGradient>
+                  <linearGradient id="bba-line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="rgba(185,149,79,.62)"/>
+                    <stop offset="55%" stop-color="rgba(201,168,95,.96)"/>
+                    <stop offset="100%" stop-color="rgba(185,149,79,1)"/>
+                  </linearGradient>
+                  <linearGradient id="bba-arrow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(231,204,142,1)"/>
+                    <stop offset="48%" stop-color="rgba(185,149,79,1)"/>
+                    <stop offset="100%" stop-color="rgba(137,101,43,1)"/>
+                  </linearGradient>
+                  <clipPath id="chart-clip">
+                    <rect x="62" y="22" width="396" height="248"/>
+                  </clipPath>
+                  <marker id="arrow-gold" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 Z" fill="rgba(185,149,79,.86)"/>
+                  </marker>
+                  <marker id="arrow-bba" markerWidth="18" markerHeight="14" refX="16" refY="7" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 18 14" overflow="visible">
+                    <path d="M1 1.4 L17 7 L1 12.6 L5.2 7 Z" fill="url(#bba-arrow-gradient)" stroke="rgba(118,82,30,.28)" stroke-width=".45"/>
+                    <path d="M4.1 4.3 L13.7 7 L4.1 9.7 L6.1 7 Z" fill="rgba(255,255,255,.22)"/>
+                  </marker>
+                  <marker id="arrow-red" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 Z" fill="rgba(200,70,70,.72)"/>
+                  </marker>
+                </defs>
+
+                <!-- Background -->
+                <rect x="0" y="0" width="480" height="340" rx="4" fill="url(#chart-panel)" stroke="rgba(185,149,79,.24)" stroke-width="1" filter="url(#chart-soft-shadow)"/>
+                <rect x="0" y="0" width="480" height="3.5" rx="1.7" fill="rgba(185,149,79,.72)"/>
+                <rect x="62" y="22" width="396" height="248" fill="rgba(255,255,255,.28)" stroke="rgba(185,149,79,.08)" stroke-width="1"/>
+
+                <!-- Grid lines -->
+                <g stroke="rgba(185,149,79,.09)" stroke-width="1" clip-path="url(#chart-clip)">
+                  <line x1="62" y1="70" x2="458" y2="70"/>
+                  <line x1="62" y1="122" x2="458" y2="122"/>
+                  <line x1="62" y1="174" x2="458" y2="174"/>
+                  <line x1="62" y1="222" x2="458" y2="222"/>
+                  <line x1="161" y1="22" x2="161" y2="270"/>
+                  <line x1="260" y1="22" x2="260" y2="270"/>
+                  <line x1="359" y1="22" x2="359" y2="270"/>
+                </g>
+
+                <!-- Axes -->
+                <line x1="62" y1="270" x2="460" y2="270" stroke="rgba(185,149,79,.48)" stroke-width="1.5" marker-end="url(#arrow-gold)"/>
+                <line x1="62" y1="270" x2="62" y2="22" stroke="rgba(185,149,79,.48)" stroke-width="1.5" marker-end="url(#arrow-gold)"/>
+
+                <!-- Axis labels -->
+                <text x="261" y="298" text-anchor="middle" fill="rgba(33,36,39,.68)" font-size="10" font-family="Helvetica" font-weight="700" letter-spacing=".5">CRESCIMENTO DA EMPRESA</text>
+                <text x="18" y="150" fill="rgba(33,36,39,.68)" font-size="10" font-family="Helvetica" font-weight="700" text-anchor="middle" letter-spacing=".5" transform="rotate(-90, 18, 150)">COMPLEXIDADE</text>
+
+                <!-- X axis ticks -->
+                <text x="62" y="283" text-anchor="middle" fill="rgba(185,149,79,.65)" font-size="8.5" font-family="Helvetica" font-weight="700">MEI</text>
+                <text x="161" y="283" text-anchor="middle" fill="rgba(33,36,39,.4)" font-size="8.5" font-family="Helvetica">2–5</text>
+                <text x="260" y="283" text-anchor="middle" fill="rgba(33,36,39,.4)" font-size="8.5" font-family="Helvetica">5–15</text>
+                <text x="359" y="283" text-anchor="middle" fill="rgba(33,36,39,.4)" font-size="8.5" font-family="Helvetica">15–30</text>
+                <text x="450" y="283" text-anchor="middle" fill="rgba(185,149,79,.65)" font-size="8.5" font-family="Helvetica" font-weight="700">PME</text>
+
+                <!-- CHAOS ZONE fill -->
+                <path d="M 62 258 Q 160 242 240 210 Q 320 170 450 60 L 450 270 L 62 270 Z"
+                  fill="url(#chaos-fill)" clip-path="url(#chart-clip)"/>
+
+                <!-- BBA ZONE fill -->
+                <path d="M 62 258 Q 140 254 220 245 Q 310 232 450 198 L 450 270 L 62 270 Z"
+                  fill="url(#bba-fill)" clip-path="url(#chart-clip)"/>
+
+                <!-- CHAOS CURVE — unmanaged growth gets visibly expensive -->
+                <path id="chaos-path" d="M 62 258 Q 160 242 240 210 Q 320 170 450 60"
+                  stroke="rgba(200,70,70,.68)" stroke-width="2.5" fill="none"
+                  stroke-dasharray="7,5" stroke-dashoffset="0" clip-path="url(#chart-clip)" marker-end="url(#arrow-red)">
+                  <animate attributeName="stroke-dashoffset" values="180;0" dur="2.2s" begin="0.2s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/>
+                  <animate attributeName="stroke-opacity" values=".52;.82;.52" dur="3.6s" begin="2s" repeatCount="indefinite"/>
+                </path>
+
+                <!-- BBA CURVE — controlled scale, highlighted as the premium path -->
+                <path class="chart-bba-glow" d="M 62 258 Q 140 254 220 245 Q 310 232 450 198"
+                  stroke="rgba(185,149,79,.64)" stroke-width="8" stroke-linecap="round" fill="none"
+                  clip-path="url(#chart-clip)" opacity=".32" filter="url(#chart-gold-halo)"/>
+                <path id="bba-path" d="M 62 258 Q 140 254 220 245 Q 310 232 450 198"
+                  stroke="url(#bba-line-gradient)" stroke-width="4" stroke-linecap="round" fill="none"
+                  clip-path="url(#chart-clip)" stroke-dasharray="600" stroke-dashoffset="600" filter="url(#chart-glow)" marker-end="url(#arrow-bba)">
+                  <animate attributeName="stroke-dashoffset" values="600;0" dur="2.3s" begin=".9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/>
+                </path>
+                <path class="chart-bba-arrow" d="M 310 232 Q 372 218 450 198"
+                  stroke="rgba(255,255,255,.52)" stroke-width="1.15" stroke-linecap="round" fill="none"
+                  stroke-dasharray="4,7" clip-path="url(#chart-clip)">
+                  <animate attributeName="stroke-dashoffset" values="44;0" dur="1.5s" repeatCount="indefinite"/>
+                </path>
+
+                <!-- GAP ARROW indicating value captured by structure -->
+                <line class="chart-bba-arrow" x1="390" y1="96" x2="390" y2="210" stroke="rgba(185,149,79,.62)" stroke-width="1.2" stroke-dasharray="3,4" marker-end="url(#arrow-gold)" marker-start="url(#arrow-gold)">
+                  <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2.2s" fill="freeze"/>
+                  <animate attributeName="stroke-dashoffset" values="42;0" dur="1.7s" begin="2.2s" repeatCount="indefinite"/>
+                </line>
+                <text x="398" y="154" fill="rgba(185,149,79,.82)" font-size="7.5" font-family="Helvetica" font-weight="700">
+                  <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2.2s" fill="freeze"/>
+                  GAP EVITADO
+                </text>
+                <text x="398" y="166" fill="rgba(33,36,39,.56)" font-size="7.5" font-family="Helvetica" font-weight="700">
+                  <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2.2s" fill="freeze"/>
+                  pela estrutura BBA
+                </text>
+
+                <!-- LABELS with fade-in -->
+                <!-- Chaos label -->
+                <g>
+                  <rect x="292" y="52" width="122" height="34" rx="2" fill="rgba(255,255,255,.94)" stroke="rgba(200,70,70,.48)" stroke-width="1" filter="url(#chart-soft-shadow)"/>
+                  <rect x="292" y="52" width="32" height="2.5" rx="1.2" fill="rgba(200,70,70,.8)"/>
+                  <text x="304" y="68" fill="rgba(200,70,70,.82)" font-size="8" font-family="Helvetica" font-weight="700">SEM ESTRUTURA</text>
+                  <text x="304" y="80" fill="rgba(200,70,70,.62)" font-size="7.5" font-family="Helvetica">Complexidade acelera</text>
+                </g>
+
+                <!-- BBA label -->
+                <g class="chart-bba-callout">
+                  <rect x="300" y="192" width="112" height="34" rx="2" fill="rgba(255,255,255,.96)" stroke="rgba(185,149,79,.72)" stroke-width="1.15" filter="url(#chart-soft-shadow)"/>
+                  <rect x="300" y="192" width="34" height="2.7" rx="1.3" fill="rgba(185,149,79,1)"/>
+                  <text x="312" y="208" fill="rgba(185,149,79,.98)" font-size="8" font-family="Helvetica" font-weight="700">COM BBA</text>
+                  <text x="312" y="220" fill="rgba(33,36,39,.64)" font-size="7.5" font-family="Helvetica">Escala com controle</text>
+                </g>
+
+                <!-- Dot on chaos path (animated position) -->
+                <circle r="5" fill="rgba(200,70,70,.8)" stroke="rgba(255,255,255,.6)" stroke-width="1.5" clip-path="url(#chart-clip)">
+                  <animateMotion dur="4s" repeatCount="indefinite" begin="2s" path="M 62 258 Q 160 242 240 210 Q 320 170 450 60"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0.4;1;1;0" dur="4s" repeatCount="indefinite" begin="2s"/>
+                </circle>
+
+                <!-- Dot on BBA path (animated position) -->
+                <circle r="9" fill="none" stroke="rgba(185,149,79,.46)" stroke-width="1.4" filter="url(#chart-gold-halo)" clip-path="url(#chart-clip)">
+                  <animateMotion dur="4.5s" repeatCount="indefinite" begin="2.2s" path="M 62 258 Q 140 254 220 245 Q 310 232 450 198"/>
+                  <animate attributeName="r" values="5;11;5" dur="1.8s" repeatCount="indefinite" begin="2.2s"/>
+                  <animate attributeName="opacity" values="0;0;1;.18;1;0" dur="4.5s" repeatCount="indefinite" begin="2.2s"/>
+                </circle>
+                <circle r="5.5" fill="rgba(185,149,79,.98)" stroke="rgba(255,255,255,.82)" stroke-width="1.5" filter="url(#chart-glow)" clip-path="url(#chart-clip)">
+                  <animateMotion dur="4.5s" repeatCount="indefinite" begin="2.8s" path="M 62 258 Q 140 254 220 245 Q 310 232 450 198"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0.4;1;1;0" dur="4.5s" repeatCount="indefinite" begin="2.8s"/>
+                </circle>
+
+                <!-- Legend -->
+                <g>
+                  <line x1="72" y1="316" x2="96" y2="316" stroke="rgba(200,70,70,.6)" stroke-width="2.5" stroke-dasharray="5,3"/>
+                  <text x="102" y="320" fill="rgba(33,36,39,.5)" font-size="9" font-family="Helvetica">Sem estrutura organizacional</text>
+                  <line x1="280" y1="316" x2="304" y2="316" stroke="rgba(185,149,79,.9)" stroke-width="2.5"/>
+                  <text x="310" y="320" fill="rgba(185,149,79,.8)" font-size="9" font-family="Helvetica" font-weight="700">Com estrutura BBA</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="problem-grid" data-animate-on-scroll>
+          <article class="problem-card">
+            <div class="problem-card__icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3>Centralização de todas as decisões</h3>
+            <p>A empresa só funciona quando o sócio está presente. Delegar é arriscado porque não há processo, não há padrão.</p>
+            <span class="problem-card__tag">Risco de execução</span>
+          </article>
+          <article class="problem-card">
+            <div class="problem-card__icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3>Equipe ocupada, mas sem metas claras</h3>
+            <p>Todos trabalham, mas ninguém sabe exatamente o que é prioridade. Resultado: esforço alto, impacto difuso.</p>
+            <span class="problem-card__tag">Perda de produtividade</span>
+          </article>
+          <article class="problem-card">
+            <div class="problem-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Processos que vivem na cabeça das pessoas</h3>
+            <p>Quando alguém sai, o conhecimento vai junto. Não existe documentação, não existe padrão de execução.</p>
+            <span class="problem-card__tag">Risco operacional</span>
+          </article>
+        </div>
+
+        <div class="problem-grid problem-grid--row2" data-animate-on-scroll>
+          <article class="problem-card">
+            <div class="problem-card__icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3>Riscos trabalhistas acumulando silenciosamente</h3>
+            <p>Erros em admissão, férias, rescisão e eSocial se transformam em passivo trabalhista. A multa só aparece quando já é tarde.</p>
+            <span class="problem-card__tag">Risco fiscal e legal</span>
+          </article>
+          <article class="problem-card">
+            <div class="problem-card__icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Crescimento por headcount, não por eficiência</h3>
+            <p>A empresa cresce contratando mais, mas a produtividade por pessoa não melhora. Resultado: custo sobe mais que receita.</p>
+            <span class="problem-card__tag">Risco de margem</span>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         BLOCO 03 — DUAS FRENTES
+         ══════════════════════════════════ -->
+    <section id="abordagem" class="section dual-section" style="padding:0; border-bottom: 1px solid rgba(220,213,206,.58);">
+      <div class="section__inner" style="width:100%; max-width:100%; padding:0;">
+        <div class="dual-grid" data-animate-on-scroll>
+
+          <!-- PAINEL ESQUERDO — Operacional -->
+          <div class="dual-panel dual-panel--left">
+            <div class="dual-panel__badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Frente Operacional
+            </div>
+            <span class="dual-panel__label">RH &amp; Departamento Pessoal</span>
+            <h2>Conformidade trabalhista</h2>
+            <p>Cuidamos da base legal e operacional da sua relação com colaboradores — do primeiro contrato ao eSocial — para que sua empresa cresça sem acumular passivo.</p>
+            <ul class="dual-list">
+              <li>Folha de pagamento e pró-labore</li>
+              <li>eSocial e obrigações acessórias</li>
+              <li>Admissões e rescisões corretamente estruturadas</li>
+              <li>Controle de férias e 13º salário</li>
+              <li>Benefícios e convenções coletivas</li>
+              <li>Orientação em processos disciplinares</li>
+            </ul>
+          </div>
+
+          <!-- PAINEL DIREITO — Estratégico -->
+          <div class="dual-panel dual-panel--right">
+            <div class="dual-panel__badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Frente Estratégica
+            </div>
+            <span class="dual-panel__label">People &amp; Performance</span>
+            <h2>Equipes alinhadas ao resultado</h2>
+            <p>Estruturamos organização, metas e governança para que sua empresa funcione com clareza — Sem depender de improvisação.</p>
+            <ul class="dual-list">
+              <li>Estrutura organizacional e organograma funcional</li>
+              <li>Definição de KPIs e indicadores por área</li>
+              <li>Metas individuais e de equipe conectadas à margem</li>
+              <li>Programas de incentivo e reconhecimento</li>
+              <li>Matriz de responsabilidades e aprovações</li>
+              <li>Governança operacional e políticas internas</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         BLOCO 04 — SOLUÇÕES
+         ══════════════════════════════════ -->
+    <section id="solucoes" class="section">
+      <div class="section__inner">
+
+        <div class="solutions-header">
+          <div class="solutions-copy-stack">
+            <header class="section-header solutions-copy" style="margin-bottom:0" data-animate-on-scroll>
+              <span class="eyebrow">Soluções BBA</span>
+              <h2 class="section-title">O que entregamos na prática.</h2>
+            </header>
+
+            <div class="solutions-flow-panel" data-animate-on-scroll aria-hidden="true">
+              <svg class="solutions-flow-svg" viewBox="0 0 360 450" focusable="false">
+                <defs>
+                  <filter id="solutions-flow-glow" x="-35%" y="-35%" width="170%" height="170%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.82  0 1 0 0 0.58  0 0 1 0 0.25  0 0 0 .58 0" result="gold"/>
+                    <feMerge><feMergeNode in="gold"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+
+                <rect x="1" y="1" width="358" height="448" rx="26" fill="transparent"/>
+
+                <g class="flow-core" filter="url(#solutions-flow-glow)" transform="translate(26 28)">
+                  <rect width="308" height="78" rx="12"/>
+                  <text class="flow-core__brand" x="20" y="26">BBA</text>
+                  <text class="flow-core__main" x="20" y="49">Método operacional</text>
+                  <line x1="192" y1="18" x2="192" y2="60" stroke="rgba(227,210,173,.18)" stroke-width="1"/>
+                  <text class="flow-core__meta" x="254" y="24">diagnosticar</text>
+                  <text class="flow-core__arrow" x="254" y="35">↓</text>
+                  <text class="flow-core__meta" x="254" y="47">estruturar</text>
+                  <text class="flow-core__arrow" x="254" y="58">↓</text>
+                  <text class="flow-core__meta" x="254" y="70">executar</text>
+                </g>
+
+                <g class="flow-stage">
+                  <text x="52" y="116">diagnóstico</text>
+                  <text x="132" y="116">metas</text>
+                  <text x="214" y="116">estrutura</text>
+                  <text x="294" y="116">implantação</text>
+                  <line x1="52" y1="126" x2="294" y2="126"/>
+                  <circle cx="52" cy="126" r="2.6"/>
+                  <circle cx="132" cy="126" r="2.6"/>
+                  <circle cx="214" cy="126" r="2.6"/>
+                  <circle cx="294" cy="126" r="2.6"/>
+                </g>
+
+                <line class="flow-spine" x1="62" y1="158" x2="62" y2="350"/>
+
+                <path class="flow-link flow-link--gold" d="M62 166 H104"/>
+                <path class="flow-link" d="M62 212 H104"/>
+                <path class="flow-link" d="M62 258 H104"/>
+                <path class="flow-link" d="M62 304 H104"/>
+                <path class="flow-link flow-link--gold" d="M62 350 H104"/>
+
+                <path class="flow-highlight" d="M62 166 H104"/>
+                <path class="flow-highlight" d="M62 258 H104"/>
+                <path class="flow-highlight" d="M62 350 H104"/>
+
+                <path class="flow-mover" d="M62 166 H104"/>
+                <path class="flow-mover flow-mover--2" d="M62 212 H104"/>
+                <path class="flow-mover flow-mover--3" d="M62 258 H104"/>
+                <path class="flow-mover flow-mover--4" d="M62 304 H104"/>
+                <path class="flow-mover flow-mover--5" d="M62 350 H104"/>
+
+                <circle cx="62" cy="166" r="4" fill="rgba(185,149,79,.88)"/>
+                <circle cx="62" cy="212" r="4" fill="rgba(227,210,173,.58)"/>
+                <circle cx="62" cy="258" r="4" fill="rgba(227,210,173,.58)"/>
+                <circle cx="62" cy="304" r="4" fill="rgba(227,210,173,.58)"/>
+                <circle cx="62" cy="350" r="4" fill="rgba(185,149,79,.88)"/>
+
+                <g class="flow-node" transform="translate(104 146)">
+                  <rect width="218" height="40" rx="8"/>
+                  <text class="flow-node__num" x="14" y="17">01</text>
+                  <text class="flow-node__label" x="42" y="17">Pessoal</text>
+                  <text class="flow-node__meta" x="42" y="31">Folha, admissão e metas</text>
+                  <line class="flow-progress" x1="174" y1="17" x2="204" y2="17"/>
+                  <line class="flow-progress__fill" x1="174" y1="17" x2="198" y2="17"/>
+                </g>
+
+                <g class="flow-node" transform="translate(104 192)">
+                  <rect width="218" height="40" rx="8"/>
+                  <text class="flow-node__num" x="14" y="17">02</text>
+                  <text class="flow-node__label" x="42" y="17">Finanças</text>
+                  <text class="flow-node__meta" x="42" y="31">DRE, caixa e margem</text>
+                  <line class="flow-progress" x1="174" y1="17" x2="204" y2="17"/>
+                  <line class="flow-progress__fill" x1="174" y1="17" x2="193" y2="17"/>
+                </g>
+
+                <g class="flow-node" transform="translate(104 238)">
+                  <rect width="218" height="40" rx="8"/>
+                  <text class="flow-node__num" x="14" y="17">03</text>
+                  <text class="flow-node__label" x="42" y="17">Operações</text>
+                  <text class="flow-node__meta" x="42" y="31">Processos e governança</text>
+                  <line class="flow-progress" x1="174" y1="17" x2="204" y2="17"/>
+                  <line class="flow-progress__fill" x1="174" y1="17" x2="201" y2="17"/>
+                </g>
+
+                <g class="flow-node" transform="translate(104 284)">
+                  <rect width="218" height="40" rx="8"/>
+                  <text class="flow-node__num" x="14" y="17">04</text>
+                  <text class="flow-node__label" x="42" y="17">Tecnologia</text>
+                  <text class="flow-node__meta" x="42" y="31">Dados, automação e IA</text>
+                  <line class="flow-progress" x1="174" y1="17" x2="204" y2="17"/>
+                  <line class="flow-progress__fill" x1="174" y1="17" x2="189" y2="17"/>
+                </g>
+
+                <g class="flow-node" transform="translate(104 330)">
+                  <rect width="218" height="40" rx="8"/>
+                  <text class="flow-node__num" x="14" y="17">05</text>
+                  <text class="flow-node__label" x="42" y="17">Governança</text>
+                  <text class="flow-node__meta" x="42" y="31">Compliance, risco e decisão</text>
+                  <line class="flow-progress" x1="174" y1="17" x2="204" y2="17"/>
+                  <line class="flow-progress__fill" x1="174" y1="17" x2="197" y2="17"/>
+                </g>
+
+                <g class="flow-kpi" transform="translate(32 392)">
+                  <rect width="86" height="46" rx="8"/>
+                  <text class="flow-kpi__label" x="14" y="17">META</text>
+                  <text class="flow-kpi__value" x="14" y="33">94%</text>
+                  <line class="flow-progress" x1="48" y1="33" x2="76" y2="33"/>
+                  <line class="flow-progress__fill" x1="48" y1="33" x2="69" y2="33"/>
+                </g>
+
+                <g class="flow-kpi" transform="translate(136 392)">
+                  <rect width="88" height="46" rx="8"/>
+                  <text class="flow-kpi__label" x="14" y="17">MARGEM</text>
+                  <text class="flow-kpi__value" x="14" y="33">+18</text>
+                  <line class="flow-progress" x1="50" y1="33" x2="78" y2="33"/>
+                  <line class="flow-progress__fill" x1="50" y1="33" x2="72" y2="33"/>
+                </g>
+
+                <g class="flow-kpi" transform="translate(242 392)">
+                  <rect width="86" height="46" rx="8"/>
+                  <text class="flow-kpi__label" x="14" y="17">RISCO</text>
+                  <text class="flow-kpi__value" x="14" y="33">-32%</text>
+                  <line class="flow-progress" x1="52" y1="33" x2="76" y2="33"/>
+                  <line class="flow-progress__fill" x1="52" y1="33" x2="66" y2="33"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+            <div class="solutions-timeline" data-animate-on-scroll aria-label="Sequência de entrega das soluções BBA">
+            <div class="solutions-timeline__path" aria-hidden="true">
+              <div class="solutions-timeline__droplet"></div>
+            </div>
+
+            <div class="solutions-timeline__nodes">
+              <div class="solutions-step">
+                <span class="solutions-step__dot" aria-hidden="true"></span>
+                <article class="solutions-step__card">
+                  <span class="solutions-step__num">01</span>
+                  <h3>Diagnóstico</h3>
+                  <p>Mapeamento da estrutura atual, riscos trabalhistas, gargalos operacionais e prioridades de ação.</p>
+                </article>
+              </div>
+
+              <div class="solutions-step">
+                <span class="solutions-step__dot" aria-hidden="true"></span>
+                <article class="solutions-step__card">
+                  <span class="solutions-step__num">02</span>
+                  <h3>Metas &amp; KPIs</h3>
+                  <p>Indicadores claros para conectar folha, equipe, produtividade e resultado financeiro do negócio.</p>
+                </article>
+              </div>
+
+              <div class="solutions-step">
+                <span class="solutions-step__dot" aria-hidden="true"></span>
+                <article class="solutions-step__card">
+                  <span class="solutions-step__num">03</span>
+                  <h3>Estruturação</h3>
+                  <p>Organograma, responsabilidades, fluxos de decisão e governança para a operação escalar com controle.</p>
+                </article>
+              </div>
+
+              <div class="solutions-step">
+                <span class="solutions-step__dot" aria-hidden="true"></span>
+                <article class="solutions-step__card">
+                  <span class="solutions-step__num">04</span>
+                  <h3>Implantação Real</h3>
+                  <p>Políticas internas, compliance e rotina de gestão pronta para sair do papel e sustentar crescimento.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="solutions-grid">
+
+          <!-- Solução 1 -->
+          <article class="sol-card" data-animate-on-scroll>
+            <div class="sol-card__head">
+              <div class="sol-card__icon">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <h3>Diagnóstico Organizacional</h3>
+              <span class="sol-card__delivery">Entrega: até 10 dias úteis</span>
+            </div>
+            <div class="sol-card__body">
+              <div>
+                <span class="sol-card__what">O que fazemos</span>
+                <ul class="sol-card__list">
+                  <li>Avaliação da estrutura organizacional atual</li>
+                  <li>Revisão de cargos, funções e sobreposições</li>
+                  <li>Entrevistas com lideranças e colaboradores-chave</li>
+                  <li>Identificação de gargalos e pontos de centralização</li>
+                  <li>Mapeamento de riscos trabalhistas evidentes</li>
+                </ul>
+              </div>
+              <div class="sol-card__result">
+                <div class="sol-card__result-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <p><strong>Entregável</strong>Relatório executivo com diagnóstico e plano de ação priorizado por impacto e urgência.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Solução 2 -->
+          <article class="sol-card" data-animate-on-scroll>
+            <div class="sol-card__head">
+              <div class="sol-card__icon">
+                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <h3>Metas, KPIs e Incentivos</h3>
+              <span class="sol-card__delivery">Entrega: até 15 dias úteis</span>
+            </div>
+            <div class="sol-card__body">
+              <div>
+                <span class="sol-card__what">O que fazemos</span>
+                <ul class="sol-card__list">
+                  <li>Estruturação de indicadores por área e cargo</li>
+                  <li>Definição de metas individuais e coletivas</li>
+                  <li>Integração com objetivos financeiros da empresa</li>
+                  <li>Programas de incentivo variável e reconhecimento</li>
+                  <li>Dashboard de acompanhamento de performance</li>
+                </ul>
+              </div>
+              <div class="sol-card__result">
+                <div class="sol-card__result-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <p><strong>Entregável</strong>Modelo de metas, painel de KPIs e guia de aplicação para o gestor implantar no dia a dia.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Solução 3 -->
+          <article class="sol-card" data-animate-on-scroll>
+            <div class="sol-card__head">
+              <div class="sol-card__icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </div>
+              <h3>Estruturação Organizacional</h3>
+              <span class="sol-card__delivery">Entrega: até 20 dias úteis</span>
+            </div>
+            <div class="sol-card__body">
+              <div>
+                <span class="sol-card__what">O que fazemos</span>
+                <ul class="sol-card__list">
+                  <li>Organograma funcional atualizado e validado</li>
+                  <li>Matriz RACI de responsabilidades e aprovações</li>
+                  <li>Fluxos de decisão por processo crítico</li>
+                  <li>Descrição de cargos e perfis funcionais</li>
+                  <li>Plano de sucessão e redundância operacional</li>
+                </ul>
+              </div>
+              <div class="sol-card__result">
+                <div class="sol-card__result-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <p><strong>Entregável</strong>Estrutura documentada pronta para implantação: organograma, matriz e manual operacional.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Solução 4 -->
+          <article class="sol-card" data-animate-on-scroll>
+            <div class="sol-card__head">
+              <div class="sol-card__icon">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <h3>Políticas Internas e Compliance</h3>
+              <span class="sol-card__delivery">Entrega: até 15 dias úteis</span>
+            </div>
+            <div class="sol-card__body">
+              <div>
+                <span class="sol-card__what">O que fazemos</span>
+                <ul class="sol-card__list">
+                  <li>Código de conduta e cultura organizacional</li>
+                  <li>Política de benefícios, home office e jornada</li>
+                  <li>Regime disciplinar alinhado à CLT</li>
+                  <li>Procedimentos de onboarding e offboarding</li>
+                  <li>Revisão de contratos e cláusulas de risco</li>
+                </ul>
+              </div>
+              <div class="sol-card__result">
+                <div class="sol-card__result-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <p><strong>Entregável</strong>Manual de políticas revisado por ótica trabalhista, pronto para comunicação interna.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         BLOCO 05 — JORNADA / MÉTODO
+         ══════════════════════════════════ -->
+    <section id="metodo" class="journey-section section">
+      <div class="section__inner">
+        <header class="section-header method-header" data-animate-on-scroll>
+          <span class="eyebrow" style="color:var(--bba-gold-soft)">Como trabalhamos</span>
+          <h2 class="section-title" style="color:var(--bba-white)">Do diagnóstico à operação estruturada.</h2>
+          <p class="section-copy" style="color:rgba(255,255,255,.7)">Cada projeto avança em etapas curtas com entregável definido. Sem projeto que fica no ar, sem consultoria que nunca termina.</p>
+        </header>
+
+        <div class="journey-grid">
+          <article class="journey-step" data-animate-on-scroll>
+            <div class="journey-step__num">01</div>
+            <span class="journey-step__phase">Diagnóstico</span>
+            <h3>Entender o que realmente trava</h3>
+            <p>Mapeamos a operação atual: cargos, processos, riscos trabalhistas, centralização e gargalos.</p>
+            <div class="journey-step__delivery">
+              <span>Entregável</span>
+              <strong>Relatório executivo com prioridades classificadas por impacto e urgência.</strong>
+            </div>
+          </article>
+          <article class="journey-step" data-animate-on-scroll>
+            <div class="journey-step__num">02</div>
+            <span class="journey-step__phase">Desenho</span>
+            <h3>Estrutura certa para o tamanho da empresa</h3>
+            <p>Projetamos organograma, fluxos, metas e indicadores antes de implantar qualquer ferramenta ou processo.</p>
+            <div class="journey-step__delivery">
+              <span>Entregável</span>
+              <strong>Modelo organizacional validado com o sócio e as lideranças.</strong>
+            </div>
+          </article>
+          <article class="journey-step" data-animate-on-scroll>
+            <div class="journey-step__num">03</div>
+            <span class="journey-step__phase">Implantação</span>
+            <h3>Colocando em prática com a equipe real</h3>
+            <p>Implementamos em ciclos curtos, testando com as pessoas reais e ajustando onde a rotina apresenta resistência.</p>
+            <div class="journey-step__delivery">
+              <span>Entregável</span>
+              <strong>Processos rodando, metas ativas e políticas comunicadas à equipe.</strong>
+            </div>
+          </article>
+          <article class="journey-step" data-animate-on-scroll>
+            <div class="journey-step__num">04</div>
+            <span class="journey-step__phase">Acompanhamento</span>
+            <h3>Operação que evolui com o crescimento</h3>
+            <p>Revisamos indicadores, compliance e estrutura periodicamente para que a base sustente o crescimento.</p>
+            <div class="journey-step__delivery">
+              <span>Entregável</span>
+              <strong>Revisão trimestral de métricas, riscos e estrutura organizacional.</strong>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         BLOCO 06 — PARA QUEM É
+         ══════════════════════════════════ -->
+    <section class="section section--paper">
+      <div class="section__inner">
+        <div class="profiles-split" data-animate-on-scroll>
+          <div class="profiles-copy">
+            <header class="section-header" style="margin-bottom:32px">
+              <span class="eyebrow">Para quem é</span>
+              <h2 class="section-title">Você se reconhece aqui?</h2>
+              <p class="section-copy" style="font-size:15px">Selecione o perfil que melhor descreve o momento da sua empresa.</p>
+            </header>
+
+            <div class="profiles-selector" role="tablist" aria-label="Perfis de cliente BBA">
+              <button class="profiles-selector__btn is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-mei" data-profile="mei">
+                <span class="profiles-selector__num">01</span>
+                <span class="profiles-selector__label">
+                  <strong>MEI</strong>
+                  <span>Até 1 colaborador</span>
+                </span>
+                <span class="profiles-selector__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+                </span>
+              </button>
+
+              <button class="profiles-selector__btn" type="button" role="tab" aria-selected="false" aria-controls="panel-pequena" data-profile="pequena">
+                <span class="profiles-selector__num">02</span>
+                <span class="profiles-selector__label">
+                  <strong>Pequena Empresa</strong>
+                  <span>2 a 15 pessoas</span>
+                </span>
+                <span class="profiles-selector__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+                </span>
+              </button>
+
+              <button class="profiles-selector__btn" type="button" role="tab" aria-selected="false" aria-controls="panel-pme" data-profile="pme">
+                <span class="profiles-selector__num">03</span>
+                <span class="profiles-selector__label">
+                  <strong>PME em crescimento</strong>
+                  <span>15 a 50 pessoas</span>
+                </span>
+                <span class="profiles-selector__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="profiles-panels">
+            <div class="profiles-panel is-active" id="panel-mei" role="tabpanel">
+              <div class="profiles-panel__inner">
+                <div class="profiles-panel__left">
+                  <div class="profiles-panel__badge">MEI · Primeiro contratado</div>
+                  <p class="profiles-panel__scenario">Acabei de contratar alguém e não sei se estou fazendo tudo certo do ponto de vista legal.</p>
+                  <div class="profiles-panel__who">
+                    <span class="profiles-panel__who-dot"></span>
+                    <span>Microempreendedor individual em expansão</span>
+                  </div>
+                </div>
+                <div class="profiles-panel__right">
+                  <span class="profiles-panel__problem-label">O problema real</span>
+                  <div class="profiles-panel__problem">
+                    <h3>Admissão errada vira passivo trabalhista antes mesmo de crescer</h3>
+                    <p>Contrato inadequado, eSocial fora do prazo e registro incorreto acumulam riscos que só aparecem na rescisão ou na autuação.</p>
+                  </div>
+                  <span class="profiles-panel__solution-label">O que a BBA entrega</span>
+                  <ul class="profiles-panel__delivers">
+                    <li>Admissão correta e registro em conformidade com a CLT</li>
+                    <li>eSocial configurado e obrigações acessórias em dia</li>
+                    <li>Contrato de trabalho adequado ao perfil do colaborador</li>
+                    <li>Orientação sobre benefícios obrigatórios e opcionais</li>
+                  </ul>
+                  <a class="profiles-panel__cta" href="#contato">
+                    Fale com a BBA
+                    <svg viewBox="0 0 24 24"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="profiles-panel" id="panel-pequena" role="tabpanel">
+              <div class="profiles-panel__inner">
+                <div class="profiles-panel__left">
+                  <div class="profiles-panel__badge">Pequena Empresa · Sem estrutura</div>
+                  <p class="profiles-panel__scenario">Tenho 8 funcionários mas ainda faço tudo eu mesmo. Ninguém toma decisão sem me perguntar.</p>
+                  <div class="profiles-panel__who">
+                    <span class="profiles-panel__who-dot"></span>
+                    <span>Dono operacional refém da própria empresa</span>
+                  </div>
+                </div>
+                <div class="profiles-panel__right">
+                  <span class="profiles-panel__problem-label">O problema real</span>
+                  <div class="profiles-panel__problem">
+                    <h3>Time existe, mas a operação ainda depende do dono para funcionar</h3>
+                    <p>Sem metas definidas, sem responsabilidades claras e sem processos documentados, cada decisão volta para o sócio e a empresa não escala.</p>
+                  </div>
+                  <span class="profiles-panel__solution-label">O que a BBA entrega</span>
+                  <ul class="profiles-panel__delivers">
+                    <li>Organograma funcional e matriz de responsabilidades</li>
+                    <li>Metas e KPIs por cargo conectados ao resultado financeiro</li>
+                    <li>Fluxos de aprovação que reduzem a dependência do sócio</li>
+                    <li>DP e folha de pagamento sem erro e em conformidade</li>
+                  </ul>
+                  <a class="profiles-panel__cta" href="#contato">
+                    Fale com a BBA
+                    <svg viewBox="0 0 24 24"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="profiles-panel" id="panel-pme" role="tabpanel">
+              <div class="profiles-panel__inner">
+                <div class="profiles-panel__left">
+                  <div class="profiles-panel__badge">PME · Em crescimento</div>
+                  <p class="profiles-panel__scenario">A empresa cresce mas a margem não acompanha. Pessoas-chave que saem paralisam tudo.</p>
+                  <div class="profiles-panel__who">
+                    <span class="profiles-panel__who-dot"></span>
+                    <span>Gestão que cresceu mas ainda não se profissionalizou</span>
+                  </div>
+                </div>
+                <div class="profiles-panel__right">
+                  <span class="profiles-panel__problem-label">O problema real</span>
+                  <div class="profiles-panel__problem">
+                    <h3>Crescimento por headcount sem estrutura corrói margem e cria dependência</h3>
+                    <p>Contrata-se mais para resolver o que deveria ser resolvido com processo. Sem governança, cada saída de colaborador-chave vira crise.</p>
+                  </div>
+                  <span class="profiles-panel__solution-label">O que a BBA entrega</span>
+                  <ul class="profiles-panel__delivers">
+                    <li>Estruturação organizacional com plano de sucessão</li>
+                    <li>KPIs e metas integrados à DRE da empresa</li>
+                    <li>Políticas internas, compliance trabalhista e LGPD</li>
+                    <li>Decisões descentralizadas com controle preservado</li>
+                  </ul>
+                  <a class="profiles-panel__cta" href="#contato">
+                    Fale com a BBA
+                    <svg viewBox="0 0 24 24"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         BLOCO 07 — DIFERENCIAL BBA
+         ══════════════════════════════════ -->
+    <section class="section section--navy">
+      <div class="section__inner">
+        <div class="diff-split">
+          <div data-animate-on-scroll>
+            <header class="section-header" style="margin-bottom:36px">
+              <span class="eyebrow" style="color:var(--bba-gold-soft)">Diferencial BBA</span>
+              <h2 class="section-title" style="color:var(--bba-white); font-size:clamp(34px,4vw,60px)">Muito além do Departamento Pessoal.</h2>
+              <p class="section-copy">A maioria dos escritórios cuida da folha. A BBA integra RH, finanças e governança para ajudar empresas a crescer com estrutura real.</p>
+            </header>
+
+            <ul class="diff-list">
+              <li>
+                <div class="diff-list__icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                <div class="diff-list__text">
+                  <strong>RH integrado ao financeiro</strong>
+                  <span>As metas de equipe estão conectadas à margem do negócio. Headcount, folha e produtividade analisados juntos.</span>
+                </div>
+              </li>
+              <li>
+                <div class="diff-list__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="diff-list__text">
+                  <strong>25+ anos de experiência executiva</strong>
+                  <span>Não somos apenas um escritório de DP. Trazemos visão de CFO, COO e consultores seniores para a estrutura de pessoas.</span>
+                </div>
+              </li>
+              <li>
+                <div class="diff-list__icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                <div class="diff-list__text">
+                  <strong>Escala pensada para MEIs e PMEs</strong>
+                  <span>Sem metodologias de multinacional. Estrutura adequada ao tamanho, ao orçamento e ao momento real da empresa.</span>
+                </div>
+              </li>
+              <li>
+                <div class="diff-list__icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                <div class="diff-list__text">
+                  <strong>Compliance que não gera passivo</strong>
+                  <span>Atuamos preventivamente nos riscos trabalhistas, antes que se tornem autuações, reclamações ou contingências.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="diff-visual" data-animate-on-scroll aria-hidden="true">
+            <!-- Premium 4-frentes integration diagram -->
+            <svg viewBox="0 0 420 440" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:540px;height:auto;">
+              <defs>
+                <filter id="venn-glow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="8" result="blur"/>
+                  <feColorMatrix in="blur" type="matrix" values="1 0.8 0.2 0 0  0.8 0.6 0.1 0 0  0.1 0.1 0 0 0  0 0 0 0.45 0" result="c"/>
+                  <feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <filter id="center-glow" x="-60%" y="-60%" width="220%" height="220%">
+                  <feGaussianBlur stdDeviation="14" result="blur"/>
+                  <feColorMatrix in="blur" type="matrix" values="1 0.7 0.2 0 0  0.8 0.5 0.1 0 0  0 0 0 0 0  0 0 0 0.6 0" result="c"/>
+                  <feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <radialGradient id="rg-rh" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="rgba(24,54,100,0.82)"/>
+                  <stop offset="100%" stop-color="rgba(10,24,50,0.55)"/>
+                </radialGradient>
+                <radialGradient id="rg-fin" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="rgba(24,54,100,0.82)"/>
+                  <stop offset="100%" stop-color="rgba(10,24,50,0.55)"/>
+                </radialGradient>
+                <radialGradient id="rg-ti" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="rgba(24,54,100,0.82)"/>
+                  <stop offset="100%" stop-color="rgba(10,24,50,0.55)"/>
+                </radialGradient>
+                <radialGradient id="rg-gov" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="rgba(24,54,100,0.82)"/>
+                  <stop offset="100%" stop-color="rgba(10,24,50,0.55)"/>
+                </radialGradient>
+                <radialGradient id="rg-center" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="rgba(40,30,12,0.98)"/>
+                  <stop offset="100%" stop-color="rgba(20,16,6,0.95)"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Outer decorative rings -->
+              <circle cx="210" cy="220" r="195" stroke="rgba(185,149,79,.06)" stroke-width="1"/>
+              <circle cx="210" cy="220" r="178" stroke="rgba(185,149,79,.1)" stroke-width="1">
+                <animate attributeName="stroke-opacity" values="0.06;0.18;0.06" dur="4s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="210" cy="220" r="156" stroke="rgba(185,149,79,.07)" stroke-width="1" stroke-dasharray="4,8"/>
+
+              <!-- Connector lines from each circle to center -->
+              <line x1="210" y1="90" x2="210" y2="168" stroke="rgba(185,149,79,.35)" stroke-width="1.5" stroke-dasharray="4,4">
+                <animate attributeName="stroke-opacity" values="0.25;0.7;0.25" dur="2s" repeatCount="indefinite" begin="0s"/>
+              </line>
+              <line x1="345" y1="185" x2="258" y2="210" stroke="rgba(185,149,79,.35)" stroke-width="1.5" stroke-dasharray="4,4">
+                <animate attributeName="stroke-opacity" values="0.25;0.7;0.25" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+              </line>
+              <line x1="210" y1="350" x2="210" y2="272" stroke="rgba(185,149,79,.35)" stroke-width="1.5" stroke-dasharray="4,4">
+                <animate attributeName="stroke-opacity" values="0.25;0.7;0.25" dur="2s" repeatCount="indefinite" begin="1s"/>
+              </line>
+              <line x1="75" y1="185" x2="162" y2="210" stroke="rgba(185,149,79,.35)" stroke-width="1.5" stroke-dasharray="4,4">
+                <animate attributeName="stroke-opacity" values="0.25;0.7;0.25" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+              </line>
+
+              <!-- Animated flow dots on connectors -->
+              <circle r="4" fill="rgba(185,149,79,.85)" filter="url(#venn-glow)">
+                <animateMotion dur="1.6s" repeatCount="indefinite" begin="0s" path="M 210 90 L 210 168"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="1.6s" repeatCount="indefinite" begin="0s"/>
+              </circle>
+              <circle r="4" fill="rgba(185,149,79,.85)" filter="url(#venn-glow)">
+                <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.4s" path="M 345 185 L 258 210"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="1.6s" repeatCount="indefinite" begin="0.4s"/>
+              </circle>
+              <circle r="4" fill="rgba(185,149,79,.85)" filter="url(#venn-glow)">
+                <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.8s" path="M 210 350 L 210 272"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="1.6s" repeatCount="indefinite" begin="0.8s"/>
+              </circle>
+              <circle r="4" fill="rgba(185,149,79,.85)" filter="url(#venn-glow)">
+                <animateMotion dur="1.6s" repeatCount="indefinite" begin="1.2s" path="M 75 185 L 162 210"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="1.6s" repeatCount="indefinite" begin="1.2s"/>
+              </circle>
+
+              <!-- ── FRENTE 1: RH & PESSOAS — TOP ── -->
+              <circle cx="210" cy="82" r="70" fill="url(#rg-rh)" stroke="rgba(185,149,79,.42)" stroke-width="1.5"/>
+              <circle cx="210" cy="82" r="70" fill="none" stroke="rgba(185,149,79,.2)" stroke-width="1">
+                <animate attributeName="r" values="70;74;70" dur="3s" repeatCount="indefinite" begin="0s"/>
+                <animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite" begin="0s"/>
+              </circle>
+              <rect x="185" y="55" width="50" height="2" fill="rgba(185,149,79,.6)"/>
+              <text x="210" y="70" text-anchor="middle" fill="rgba(185,149,79,.9)" font-size="8" font-family="Helvetica" font-weight="700" letter-spacing="1.5">RH &amp; PESSOAS</text>
+              <text x="210" y="87" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="9.5" font-family="Helvetica">Folha · eSocial</text>
+              <text x="210" y="101" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="8.5" font-family="Helvetica">Metas · DP</text>
+
+              <!-- ── FRENTE 2: FINANÇAS — RIGHT ── -->
+              <circle cx="344" cy="200" r="70" fill="url(#rg-fin)" stroke="rgba(185,149,79,.42)" stroke-width="1.5"/>
+              <circle cx="344" cy="200" r="70" fill="none" stroke="rgba(185,149,79,.2)" stroke-width="1">
+                <animate attributeName="r" values="70;74;70" dur="3.2s" repeatCount="indefinite" begin="0.8s"/>
+                <animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="3.2s" repeatCount="indefinite" begin="0.8s"/>
+              </circle>
+              <rect x="319" y="173" width="50" height="2" fill="rgba(185,149,79,.6)"/>
+              <text x="344" y="188" text-anchor="middle" fill="rgba(185,149,79,.9)" font-size="8" font-family="Helvetica" font-weight="700" letter-spacing="1.5">FINANÇAS</text>
+              <text x="344" y="205" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="9.5" font-family="Helvetica">DRE · Caixa</text>
+              <text x="344" y="219" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="8.5" font-family="Helvetica">Budget · Margem</text>
+
+              <!-- ── FRENTE 3: GOVERNANÇA — BOTTOM ── -->
+              <circle cx="210" cy="358" r="70" fill="url(#rg-gov)" stroke="rgba(185,149,79,.42)" stroke-width="1.5"/>
+              <circle cx="210" cy="358" r="70" fill="none" stroke="rgba(185,149,79,.2)" stroke-width="1">
+                <animate attributeName="r" values="70;74;70" dur="3.4s" repeatCount="indefinite" begin="1.6s"/>
+                <animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="3.4s" repeatCount="indefinite" begin="1.6s"/>
+              </circle>
+              <rect x="185" y="331" width="50" height="2" fill="rgba(185,149,79,.6)"/>
+              <text x="210" y="346" text-anchor="middle" fill="rgba(185,149,79,.9)" font-size="8" font-family="Helvetica" font-weight="700" letter-spacing="1.5">GOVERNANÇA</text>
+              <text x="210" y="363" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="9.5" font-family="Helvetica">Compliance · Risco</text>
+              <text x="210" y="377" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="8.5" font-family="Helvetica">Controles · Políticas</text>
+
+              <!-- ── FRENTE 4: TI — LEFT ── -->
+              <circle cx="76" cy="200" r="70" fill="url(#rg-ti)" stroke="rgba(185,149,79,.42)" stroke-width="1.5"/>
+              <circle cx="76" cy="200" r="70" fill="none" stroke="rgba(185,149,79,.2)" stroke-width="1">
+                <animate attributeName="r" values="70;74;70" dur="3.6s" repeatCount="indefinite" begin="2.4s"/>
+                <animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="3.6s" repeatCount="indefinite" begin="2.4s"/>
+              </circle>
+              <rect x="51" y="173" width="50" height="2" fill="rgba(185,149,79,.6)"/>
+              <text x="76" y="188" text-anchor="middle" fill="rgba(185,149,79,.9)" font-size="8" font-family="Helvetica" font-weight="700" letter-spacing="1.5">TI &amp; TECH</text>
+              <text x="76" y="205" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="9.5" font-family="Helvetica">Automação · IA</text>
+              <text x="76" y="219" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="8.5" font-family="Helvetica">Dados · Sistemas</text>
+
+              <!-- ── CENTER HUB — BBA ── -->
+              <circle cx="210" cy="220" r="52" fill="url(#rg-center)" stroke="rgba(185,149,79,.65)" stroke-width="2" filter="url(#center-glow)"/>
+              <!-- inner ring breathing -->
+              <circle cx="210" cy="220" r="44" fill="none" stroke="rgba(185,149,79,.28)" stroke-width="1">
+                <animate attributeName="r" values="42;48;42" dur="2.8s" repeatCount="indefinite"/>
+                <animate attributeName="stroke-opacity" values="0.15;0.45;0.15" dur="2.8s" repeatCount="indefinite"/>
+              </circle>
+              <!-- corner accents -->
+              <path d="M 170 182 L 180 182 M 170 182 L 170 192" stroke="rgba(185,149,79,.7)" stroke-width="1.5"/>
+              <path d="M 250 182 L 240 182 M 250 182 L 250 192" stroke="rgba(185,149,79,.7)" stroke-width="1.5"/>
+              <path d="M 170 258 L 180 258 M 170 258 L 170 248" stroke="rgba(185,149,79,.5)" stroke-width="1"/>
+              <path d="M 250 258 L 240 258 M 250 258 L 250 248" stroke="rgba(185,149,79,.5)" stroke-width="1"/>
+              <text x="210" y="207" text-anchor="middle" fill="rgba(185,149,79,.95)" font-size="8.5" font-family="Helvetica" font-weight="700" letter-spacing="2">BBA</text>
+              <text x="210" y="224" text-anchor="middle" fill="rgba(255,255,255,.92)" font-size="12" font-family="Helvetica" font-weight="300">Integração</text>
+              <text x="210" y="240" text-anchor="middle" fill="rgba(255,255,255,.92)" font-size="12" font-family="Helvetica" font-weight="300">Total</text>
+
+              <!-- Orbit dot rotating around center -->
+              <circle r="5" fill="rgba(185,149,79,.9)" filter="url(#venn-glow)">
+                <animateMotion dur="6s" repeatCount="indefinite" begin="0s"
+                  path="M 0,-52 A 52,52 0 1,1 -0.01,-52"/>
+                <animateTransform attributeName="transform" type="translate" additive="sum"
+                  values="210 220" from="210 220" to="210 220"/>
+              </circle>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         BLOCO 08 — BENEFÍCIOS
+         ══════════════════════════════════ -->
+    <section class="section section--amber benefits-section">
+      <video class="benefits-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src="video_midjourneyv3.mp4" type="video/mp4">
+      </video>
+      <div class="section__inner">
+        <header class="section-header" style="max-width:640px; margin-bottom:48px" data-animate-on-scroll>
+          <span class="eyebrow" style="color:var(--bba-gold-soft)">O que muda na prática</span>
+          <h2 class="section-title" style="color:var(--bba-white); font-size:clamp(32px,3.8vw,56px)">Resultados que você sente no dia a dia.</h2>
+        </header>
+
+        <div class="benefits-grid" data-animate-on-scroll>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3>Menos riscos trabalhistas</h3>
+            <p>Processos de admissão, férias e rescisão corretos desde o início — antes que o erro vire passivo.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3>Mais clareza organizacional</h3>
+            <p>Cada pessoa sabe sua própra responsabilidade. Menos reunião para decidir o que já devia estar definido.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3>Equipes alinhadas ao resultado</h3>
+            <p>Metas e KPIs conectados à margem — o time caminha na direção certa.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Processos ágeis e eficientes</h3>
+            <p>Com responsabilidades claras, menos decisão sobe para o sócio. A empresa funciona com mais autonomia.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Crescimento sem explodir o custo</h3>
+            <p>Estrutura que escala por processo, não apenas por headcount. Mais resultado sem aumentar proporcionalmente a folha.</p>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-item__icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Decisões Estratégicas</h3>
+            <p>Processos documentados, aprovações estruturadas e equipe com autonomia. A empresa funciona mesmo quando você não está.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         BLOCO 09 — CTA FINAL
+         ══════════════════════════════════ -->
+    <section id="contato" class="section cta-final">
+      <div class="section__inner">
+        <div class="cta-split" data-animate-on-scroll>
+
+          <div>
+            <span class="cta-line">BBA · People &amp; Performance</span>
+            <h2 class="cta-headline">
+              Sua empresa está pronta para crescer com <em>pessoas, processos e metas</em> bem definidos?
+            </h2>
+            <p class="cta-sub">
+              Sem formulário longo. Sem proposta genérica. Uma conversa direta sobre o que trava a sua operação hoje — e como estruturar para o próximo nível.
+            </p>
+            <div class="cta-actions">
+              <a class="cta-btn-primary"
+                 href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20um%20diagn%C3%B3stico%20organizacional%20BBA"
+                 target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.554 4.122 1.526 5.855L0 24l6.335-1.496A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.812 9.812 0 0 1-5.012-1.374l-.36-.214-3.76.887.944-3.653-.234-.374A9.775 9.775 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+                </svg>
+                Quero organizar minha equipe
+              </a>
+              <a class="cta-btn-secondary" href="mailto:contato@bbabrazil.com.br">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Enviar e-mail
+              </a>
+              <p class="cta-note">Diagnóstico inicial · 45 minutos · 100% prático · Sem custo</p>
+            </div>
+          </div>
+
+          <div class="cta-contact">
+            <span class="cta-contact__label">Contato direto</span>
+            <ul class="cta-contact__list">
+              <li>
+                <small>WhatsApp</small>
+                <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">+55 (00) 00000-0000</a>
+              </li>
+              <li>
+                <small>E-mail</small>
+                <a href="mailto:contato@bbabrazil.com.br">contato@bbabrazil.com.br</a>
+              </li>
+              <li>
+                <small>Site institucional</small>
+                <a href="https://www.bbabrazil.com.br" target="_blank" rel="noopener">www.bbabrazil.com.br</a>
+              </li>
+              <li>
+                <small>Atendimento</small>
+                <span>Seg – Sex · 8h às 18h</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <strong>BBA Brazil</strong>
+        <span>Consultoria · Contabilidade · Tecnologia</span>
+      </div>
+      <nav class="site-footer__links" aria-label="Links do rodapé">
+        <a href="#problema">Problema</a>
+        <a href="#abordagem">Abordagem</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#metodo">Método</a>
+        <a href="#contato">Contato</a>
+        <a href="https://www.bbabrazil.com.br" target="_blank" rel="noopener">Site principal</a>
+      </nav>
+      <p class="site-footer__legal">© 2025 BBA Brazil · Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <script>
+    // Profiles interactive selector
+    (() => {
+      const btns = Array.from(document.querySelectorAll(".profiles-selector__btn"));
+      const panels = Array.from(document.querySelectorAll(".profiles-panel"));
+      if (!btns.length || !panels.length) return;
+
+      const activateProfile = (btn) => {
+        const target = btn.getAttribute("aria-controls");
+
+        btns.forEach((item) => {
+          const isActive = item === btn;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-selected", String(isActive));
+        });
+
+        panels.forEach((panel) => {
+          const isActive = panel.id === target;
+          panel.classList.toggle("is-active", isActive);
+          panel.setAttribute("aria-hidden", String(!isActive));
+        });
+      };
+
+      btns.forEach((btn, index) => {
+        btn.addEventListener("click", () => activateProfile(btn));
+        btn.addEventListener("keydown", (event) => {
+          if (!["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+
+          let nextIndex = index;
+          if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (index + 1) % btns.length;
+          if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (index - 1 + btns.length) % btns.length;
+          if (event.key === "Home") nextIndex = 0;
+          if (event.key === "End") nextIndex = btns.length - 1;
+
+          btns[nextIndex].focus();
+          activateProfile(btns[nextIndex]);
+        });
+      });
+
+      panels.forEach((panel) => panel.setAttribute("aria-hidden", String(!panel.classList.contains("is-active"))));
+    })();
+
+    // Animate on scroll
+    (() => {
+      const els = document.querySelectorAll("[data-animate-on-scroll]");
+      if (!("IntersectionObserver" in window)) {
+        els.forEach(el => el.classList.add("is-visible"));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.14 });
+      els.forEach(el => obs.observe(el));
+    })();
+  </script>
+
+</body>
+</html>
