@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -5347,132 +5347,3400 @@
 
     </section>
 
-    <section class="bba-section-02" id="como-funciona" style="background: #fff; overflow: hidden;">
-        <div class="bba-container">
-            <div class="core-main-grid" style="align-items: center;">
-                
-                <!-- LEFT SIDE: PREMIUM VISUAL -->
-                <div class="cr-media-col" style="grid-column: span 6; position: relative; min-height: 560px; display: flex; align-items: stretch; justify-content: flex-start; padding: 12px 24px 12px 0;">
-                    <div id="bbaSection02VideoLoop" style="position: relative; width: 100%; min-height: 520px; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 64px rgba(0, 58, 112, 0.08);">
-                        <video src="media/Video%20Se%C3%A7%C3%A3o%2002.mp4" autoplay muted loop playsinline data-loop-layer="active" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition: opacity 1.8s ease-in-out;"></video>
-                        <video src="media/Video%20Se%C3%A7%C3%A3o%2002.mp4" muted loop playsinline data-loop-layer="next" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 1.8s ease-in-out;"></video>
+    <style>
+        .bba-finance-diff {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            padding: clamp(86px, 9vw, 132px) 24px;
+            color: #ffffff;
+            background:
+                linear-gradient(180deg, rgba(2, 10, 24, 0.98) 0%, rgba(4, 20, 43, 0.98) 52%, rgba(2, 10, 24, 0.99) 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.18);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.16);
+        }
+
+        .bba-finance-diff::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 74px 74px;
+            mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+            opacity: 0.34;
+        }
+
+        .bba-finance-diff::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(115deg, rgba(212,175,55,0.11) 0%, transparent 27%, transparent 70%, rgba(61,198,184,0.11) 100%),
+                linear-gradient(90deg, rgba(2,10,24,0.74), rgba(2,10,24,0.18) 48%, rgba(2,10,24,0.76));
+            pointer-events: none;
+        }
+
+        .bba-finance-diff__shell {
+            width: min(1180px, 100%);
+            margin: 0 auto;
+        }
+
+        .bba-finance-diff__hero {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+            gap: clamp(42px, 6vw, 82px);
+            align-items: center;
+        }
+
+        .bba-finance-diff__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            color: #d4af37;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-diff__eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: linear-gradient(90deg, #d4af37, rgba(61,198,184,0.75));
+        }
+
+        .bba-finance-diff__title {
+            margin: 0;
+            max-width: 660px;
+            color: #ffffff;
+            font-size: clamp(38px, 5.2vw, 74px);
+            font-weight: 500;
+            line-height: 0.98;
+            letter-spacing: -0.035em;
+        }
+
+        .bba-finance-diff__title span {
+            color: #d4af37;
+        }
+
+        .bba-finance-diff__lead {
+            max-width: 610px;
+            margin: 24px 0 0;
+            color: rgba(255,255,255,0.73);
+            font-size: clamp(17px, 1.55vw, 21px);
+            line-height: 1.55;
+        }
+
+        .bba-finance-diff__proof {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 38px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.045);
+            backdrop-filter: blur(14px);
+        }
+
+        .bba-finance-diff__proof-item {
+            min-height: 94px;
+            padding: 18px 16px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .bba-finance-diff__proof-item:last-child {
+            border-right: 0;
+        }
+
+        .bba-finance-diff__proof-value {
+            display: block;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-diff__proof-label {
+            display: block;
+            margin-top: 9px;
+            color: rgba(255,255,255,0.58);
+            font-size: 13px;
+            line-height: 1.35;
+        }
+
+        .bba-finance-diff__panel {
+            position: relative;
+            min-height: 520px;
+            border: 1px solid rgba(212,175,55,0.26);
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.028)),
+                rgba(4, 16, 35, 0.82);
+            box-shadow: 0 34px 90px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            overflow: hidden;
+        }
+
+        .bba-finance-diff__panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, transparent, rgba(212,175,55,0.12), transparent);
+            transform: translateX(-120%);
+            animation: bbaFinanceScan 5.8s ease-in-out infinite;
+        }
+
+        .bba-finance-diff__panel-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(2, 10, 24, 0.58);
+        }
+
+        .bba-finance-diff__panel-kicker {
+            color: rgba(255,255,255,0.64);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-diff__panel-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #d4af37;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-diff__panel-status::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #3dc6b8;
+            box-shadow: 0 0 0 0 rgba(61,198,184,0.42);
+            animation: bbaFinancePulse 2.2s ease-out infinite;
+        }
+
+        .bba-finance-diff__screen {
+            position: relative;
+            display: grid;
+            grid-template-columns: 0.94fr 1.06fr;
+            gap: 18px;
+            padding: 22px;
+        }
+
+        .bba-finance-diff__stack {
+            display: grid;
+            gap: 14px;
+        }
+
+        .bba-finance-diff__metric,
+        .bba-finance-diff__ledger,
+        .bba-finance-diff__tax {
+            border: 1px solid rgba(255,255,255,0.11);
+            background: rgba(255,255,255,0.05);
+            padding: 18px;
+        }
+
+        .bba-finance-diff__metric small,
+        .bba-finance-diff__ledger small,
+        .bba-finance-diff__tax small {
+            display: block;
+            color: rgba(255,255,255,0.52);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-diff__metric strong {
+            display: block;
+            margin-top: 10px;
+            color: #ffffff;
+            font-size: clamp(30px, 3vw, 44px);
+            font-weight: 500;
+            letter-spacing: -0.04em;
+        }
+
+        .bba-finance-diff__metric span {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255,255,255,0.62);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .bba-finance-diff__bars {
+            display: grid;
+            align-items: end;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            height: 132px;
+            margin-top: 18px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.09);
+        }
+
+        .bba-finance-diff__bar {
+            position: relative;
+            min-height: 18px;
+            background: linear-gradient(180deg, rgba(212,175,55,0.95), rgba(61,198,184,0.62));
+            transform-origin: bottom;
+            animation: bbaFinanceBars 3.8s ease-in-out infinite;
+        }
+
+        .bba-finance-diff__bar:nth-child(1) { height: 48%; animation-delay: 0s; }
+        .bba-finance-diff__bar:nth-child(2) { height: 66%; animation-delay: .15s; }
+        .bba-finance-diff__bar:nth-child(3) { height: 42%; animation-delay: .3s; }
+        .bba-finance-diff__bar:nth-child(4) { height: 78%; animation-delay: .45s; }
+        .bba-finance-diff__bar:nth-child(5) { height: 58%; animation-delay: .6s; }
+
+        .bba-finance-diff__row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 14px;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.72);
+            font-size: 13px;
+        }
+
+        .bba-finance-diff__row:last-child {
+            border-bottom: 0;
+        }
+
+        .bba-finance-diff__row span:last-child {
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .bba-finance-diff__tax {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bba-finance-diff__tax strong {
+            display: block;
+            margin-top: 12px;
+            color: #d4af37;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .bba-finance-diff__tax p {
+            margin: 10px 0 0;
+            color: rgba(255,255,255,0.62);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .bba-finance-diff__integrations {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: clamp(42px, 5vw, 66px);
+        }
+
+        .bba-finance-diff__integrations::before {
+            content: "";
+            position: absolute;
+            top: 28px;
+            left: 8%;
+            right: 8%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.78), rgba(61,198,184,0.78), transparent);
+            transform-origin: left;
+            animation: bbaFinanceFlow 4.6s ease-in-out infinite;
+        }
+
+        .bba-finance-diff__card {
+            position: relative;
+            min-height: 256px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.055);
+            box-shadow: 0 20px 54px rgba(0,0,0,0.24);
+            backdrop-filter: blur(12px);
+            transition: transform .45s ease, border-color .45s ease, background .45s ease;
+        }
+
+        .bba-finance-diff__card::before {
+            content: attr(data-step);
+            position: relative;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+            width: 56px;
+            height: 56px;
+            margin-bottom: 28px;
+            color: #061224;
+            background: linear-gradient(135deg, #d4af37, #ead68f);
+            border: 1px solid rgba(255,255,255,0.34);
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            box-shadow: 0 0 34px rgba(212,175,55,0.24);
+        }
+
+        .bba-finance-diff__card::after {
+            content: "";
+            position: absolute;
+            top: 28px;
+            left: 80px;
+            right: 24px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(212,175,55,0.85), transparent);
+            opacity: 0.75;
+        }
+
+        .bba-finance-diff__card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212,175,55,0.36);
+            background: rgba(255,255,255,0.078);
+        }
+
+        .bba-finance-diff__card h3 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.14;
+            letter-spacing: -0.02em;
+        }
+
+        .bba-finance-diff__card p {
+            margin: 14px 0 0;
+            color: rgba(255,255,255,0.66);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .bba-finance-diff__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .bba-finance-diff__tag {
+            display: inline-flex;
+            align-items: center;
+            min-height: 26px;
+            padding: 0 10px;
+            border: 1px solid rgba(212,175,55,0.24);
+            color: rgba(255,255,255,0.7);
+            background: rgba(212,175,55,0.07);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        @keyframes bbaFinanceScan {
+            0%, 42% { transform: translateX(-120%); opacity: 0; }
+            52% { opacity: 1; }
+            78%, 100% { transform: translateX(120%); opacity: 0; }
+        }
+
+        @keyframes bbaFinancePulse {
+            0% { box-shadow: 0 0 0 0 rgba(61,198,184,0.42); }
+            70% { box-shadow: 0 0 0 12px rgba(61,198,184,0); }
+            100% { box-shadow: 0 0 0 0 rgba(61,198,184,0); }
+        }
+
+        @keyframes bbaFinanceBars {
+            0%, 100% { transform: scaleY(.88); filter: saturate(.9); }
+            50% { transform: scaleY(1); filter: saturate(1.12); }
+        }
+
+        @keyframes bbaFinanceFlow {
+            0%, 100% { transform: scaleX(.72); opacity: .45; }
+            50% { transform: scaleX(1); opacity: 1; }
+        }
+
+        @media (max-width: 980px) {
+            .bba-finance-diff__hero {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-finance-diff__panel {
+                min-height: auto;
+            }
+
+            .bba-finance-diff__integrations {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .bba-finance-diff__integrations::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .bba-finance-diff {
+                padding: 70px 18px;
+            }
+
+            .bba-finance-diff__proof,
+            .bba-finance-diff__screen,
+            .bba-finance-diff__integrations {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-finance-diff__proof-item {
+                border-right: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .bba-finance-diff__proof-item:last-child {
+                border-bottom: 0;
+            }
+
+            .bba-finance-diff__panel-top {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .bba-finance-diff__card {
+                min-height: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bba-finance-diff *,
+            .bba-finance-diff::before,
+            .bba-finance-diff::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+
+    <section class="bba-finance-diff" id="diferencial-bba" aria-label="Diferencial da BBA">
+        <div class="bba-finance-diff__shell">
+            <div class="bba-finance-diff__hero">
+                <div class="bba-finance-diff__copy">
+                    <span class="bba-finance-diff__eyebrow">Diferencial da BBA</span>
+                    <h2 class="bba-finance-diff__title">Muito além da <span>contabilidade comum.</span></h2>
+                    <p class="bba-finance-diff__lead">
+                        A maioria dos escritórios entrega guias. A BBA conecta contabilidade, fiscal, caixa,
+                        margem, folha e governança em uma leitura executiva para o dono decidir com controle real.
+                    </p>
+
+                    <div class="bba-finance-diff__proof" aria-label="Integrações da solução financeira BBA">
+                        <div class="bba-finance-diff__proof-item">
+                            <span class="bba-finance-diff__proof-value">DRE</span>
+                            <span class="bba-finance-diff__proof-label">Receita, margem e lucro em linguagem de decisão.</span>
+                        </div>
+                        <div class="bba-finance-diff__proof-item">
+                            <span class="bba-finance-diff__proof-value">Caixa</span>
+                            <span class="bba-finance-diff__proof-label">Entradas, saídas, compromissos e previsibilidade.</span>
+                        </div>
+                        <div class="bba-finance-diff__proof-item">
+                            <span class="bba-finance-diff__proof-value">Tributos</span>
+                            <span class="bba-finance-diff__proof-label">Risco fiscal tratado antes de virar passivo.</span>
+                        </div>
+                        <div class="bba-finance-diff__proof-item">
+                            <span class="bba-finance-diff__proof-value">Gestão</span>
+                            <span class="bba-finance-diff__proof-label">Rotina mensal para comandar a empresa com clareza.</span>
+                        </div>
                     </div>
                 </div>
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                        const loopFrame = document.getElementById("bbaSection02VideoLoop");
-                        if (!loopFrame) return;
-
-                        const videos = loopFrame.querySelectorAll("video");
-                        if (videos.length < 2) return;
-
-                        let activeVideo = videos[0];
-                        let nextVideo = videos[1];
-                        const blendSeconds = 1.8;
-                        const calmPlaybackRate = 0.68;
-                        let blending = false;
-
-                        videos.forEach((video) => {
-                            video.playbackRate = calmPlaybackRate;
-                        });
-
-                        const primeNextVideo = () => {
-                            nextVideo.playbackRate = calmPlaybackRate;
-                            nextVideo.currentTime = 0;
-                            nextVideo.play().then(() => {
-                                nextVideo.pause();
-                                nextVideo.currentTime = 0;
-                            }).catch(() => {});
-                        };
-
-                        activeVideo.playbackRate = calmPlaybackRate;
-                        activeVideo.play().catch(() => {});
-                        activeVideo.addEventListener("loadedmetadata", primeNextVideo, { once: true });
-
-                        const blendLoop = () => {
-                            if (blending || !activeVideo.duration) return;
-                            if (activeVideo.currentTime < activeVideo.duration - blendSeconds) return;
-
-                            blending = true;
-                            nextVideo.playbackRate = calmPlaybackRate;
-                            nextVideo.currentTime = 0;
-                            nextVideo.play().catch(() => {});
-                            nextVideo.style.opacity = "1";
-                            activeVideo.style.opacity = "0";
-
-                            window.setTimeout(() => {
-                                activeVideo.pause();
-                                activeVideo.currentTime = 0;
-                                const previousVideo = activeVideo;
-                                activeVideo = nextVideo;
-                                nextVideo = previousVideo;
-                                nextVideo.style.opacity = "0";
-                                blending = false;
-                            }, blendSeconds * 1000);
-                        };
-
-                        window.setInterval(blendLoop, 120);
-                    });
-                </script>
-
-                <!-- RIGHT SIDE: NARRATIVE & CARDS -->
-                <div class="core-text-col cr-text-col" style="padding-left: 48px;">
-                    <div class="bba-section-tag">A Engenharia da Escala</div>
-                    <h2 class="bba-section-title" style="margin-bottom: 32px; font-size: clamp(32px, 3.5vw, 48px);">Sua Empresa precisa ir além da contabilidade comum.</h2>
-                    
-                    <p class="body-lg-regular" style="color: #4B5563; margin-bottom: 24px;">
-                        A maioria das pequenas e médias empresas estagnam porque entregam seus números a escritórios que apenas olham pelo retrovisor.
-                    </p>
-                    <p class="body-lg-regular" style="color: #4B5563; margin-bottom: 48px;">
-                        O <strong>BBA Core</strong> rompe o modelo fragmentado. Integramos contabilidade de performance, inteligência tributária e tesouraria estratégica em um único ecossistema, garantindo o controle absoluto da sua operação.
-                    </p>
-                    
-                    <!-- ORIGINAL PREMIUM UI CARDS BELOW TEXT -->
-                    <div class="cr-cards-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        
-                        <!-- Card 1: Original Arquitetura Tributária -->
-                        <div class="cr-card-premium cr-card-1">
-                            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
-                                <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); display: flex; align-items: center; justify-content: center; color: #D4AF37;">
-                                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                <div class="bba-finance-diff__panel" aria-hidden="true">
+                    <div class="bba-finance-diff__panel-top">
+                        <span class="bba-finance-diff__panel-kicker">Painel executivo BBA Finance</span>
+                        <span class="bba-finance-diff__panel-status">Leitura integrada</span>
+                    </div>
+                    <div class="bba-finance-diff__screen">
+                        <div class="bba-finance-diff__stack">
+                            <div class="bba-finance-diff__metric">
+                                <small>Visão do mês</small>
+                                <strong>Controle</strong>
+                                <span>O número deixa de ser obrigação contábil e passa a orientar caixa, imposto e decisão.</span>
+                                <div class="bba-finance-diff__bars">
+                                    <span class="bba-finance-diff__bar"></span>
+                                    <span class="bba-finance-diff__bar"></span>
+                                    <span class="bba-finance-diff__bar"></span>
+                                    <span class="bba-finance-diff__bar"></span>
+                                    <span class="bba-finance-diff__bar"></span>
                                 </div>
-                                <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #fff;">Arquitetura Tributária</span>
                             </div>
-                            <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; margin-bottom: 12px;">
-                                <div style="width: 88%; height: 100%; background: linear-gradient(90deg, #D4AF37, #FFF2A8);"></div>
-                            </div>
-                            <p style="margin: 0; font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.4;">Otimização contínua de margens operacionais.</p>
                         </div>
 
-                        <!-- Card 2: Original Painel Executivo -->
-                        <div class="cr-card-premium cr-card-2">
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
-                                <div>
-                                    <span style="font-family: var(--font-sans); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.7);">Painel Executivo</span>
-                                    <div style="font-family: var(--font-primary); font-size: 24px; color: #fff; margin-top: 4px; line-height: 1.1;">Controle de Escala</div>
+                        <div class="bba-finance-diff__stack">
+                            <div class="bba-finance-diff__ledger">
+                                <small>Conexões críticas</small>
+                                <div class="bba-finance-diff__row">
+                                    <span>Faturamento e notas</span>
+                                    <span>Conferido</span>
                                 </div>
-                                <div style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.5); background: rgba(212, 175, 55, 0.1); display: flex; align-items: center; justify-content: center; color: #D4AF37;">
-                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                                <div class="bba-finance-diff__row">
+                                    <span>Folha, pró-labore e encargos</span>
+                                    <span>Alinhado</span>
+                                </div>
+                                <div class="bba-finance-diff__row">
+                                    <span>Impostos e calendário fiscal</span>
+                                    <span>Antecipado</span>
+                                </div>
+                                <div class="bba-finance-diff__row">
+                                    <span>Caixa e compromissos</span>
+                                    <span>Projetado</span>
                                 </div>
                             </div>
-                            <div style="display: flex; gap: 8px;">
-                                <div style="flex: 1; height: 32px; background: rgba(255,255,255,0.08); border-radius: 4px; display: flex; align-items: center; padding: 0 10px; border: 1px solid rgba(255,255,255,0.05);">
-                                    <span style="width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; margin-right: 8px; box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);"></span>
-                                    <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 600; color: #fff;">Conformidade</span>
-                                </div>
-                                <div style="flex: 1; height: 32px; background: rgba(255,255,255,0.08); border-radius: 4px; display: flex; align-items: center; padding: 0 10px; border: 1px solid rgba(255,255,255,0.05);">
-                                    <span style="width: 6px; height: 6px; border-radius: 50%; background: #60A5FA; margin-right: 8px; box-shadow: 0 0 6px rgba(96, 165, 250, 0.5);"></span>
-                                    <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 600; color: #fff;">Liquidez</span>
-                                </div>
+
+                            <div class="bba-finance-diff__tax">
+                                <small>O que muda para o dono</small>
+                                <strong>Menos susto. Mais comando.</strong>
+                                <p>As áreas deixam de operar separadas. A empresa passa a enxergar lucro, risco, caixa e prioridade no mesmo sistema de gestão.</p>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
+            </div>
+
+            <div class="bba-finance-diff__integrations">
+                <article class="bba-finance-diff__card" data-step="01">
+                    <h3>Finanças integradas ao negócio</h3>
+                    <p>DRE, fluxo de caixa e margem trabalham juntos para mostrar o que sustenta lucro, crescimento e retirada do sócio.</p>
+                    <div class="bba-finance-diff__tags">
+                        <span class="bba-finance-diff__tag">DRE</span>
+                        <span class="bba-finance-diff__tag">Caixa</span>
+                        <span class="bba-finance-diff__tag">Margem</span>
+                    </div>
+                </article>
+
+                <article class="bba-finance-diff__card" data-step="02">
+                    <h3>Visão executiva, não apenas operacional</h3>
+                    <p>A BBA leva leitura de CFO para a realidade de MEIs e PMEs, com decisões práticas e linguagem que o dono entende.</p>
+                    <div class="bba-finance-diff__tags">
+                        <span class="bba-finance-diff__tag">CFO</span>
+                        <span class="bba-finance-diff__tag">Indicadores</span>
+                    </div>
+                </article>
+
+                <article class="bba-finance-diff__card" data-step="03">
+                    <h3>Compliance que não gera passivo</h3>
+                    <p>Fiscal, trabalhista e societário são acompanhados de forma preventiva para reduzir autuações e surpresas caras.</p>
+                    <div class="bba-finance-diff__tags">
+                        <span class="bba-finance-diff__tag">Fiscal</span>
+                        <span class="bba-finance-diff__tag">Risco</span>
+                        <span class="bba-finance-diff__tag">Rotina</span>
+                    </div>
+                </article>
+
+                <article class="bba-finance-diff__card" data-step="04">
+                    <h3>Estrutura adequada ao momento da empresa</h3>
+                    <p>Sem excesso de complexidade. A solução acompanha a maturidade do negócio e prepara a base para crescer com segurança.</p>
+                    <div class="bba-finance-diff__tags">
+                        <span class="bba-finance-diff__tag">MEI</span>
+                        <span class="bba-finance-diff__tag">PME</span>
+                        <span class="bba-finance-diff__tag">Escala</span>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
+
+    <style>
+        .bba-finance-shift {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            padding: 112px 24px 118px;
+            color: #ffffff;
+            background:
+                linear-gradient(180deg, #020a18 0%, #061a32 46%, #020a18 100%);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(212,175,55,0.18);
+        }
+
+        .bba-finance-shift::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(255,255,255,0.028) 1px, transparent 1px),
+                linear-gradient(120deg, rgba(212,175,55,0.10), transparent 34%, rgba(61,198,184,0.10) 100%);
+            background-size: 82px 82px, 82px 82px, auto;
+            opacity: 0.72;
+            mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+        }
+
+        .bba-finance-shift::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(2,10,24,0.92) 0%, rgba(2,10,24,0.18) 48%, rgba(2,10,24,0.92) 100%),
+                linear-gradient(180deg, rgba(2,10,24,0.38), transparent 40%, rgba(2,10,24,0.42));
+            pointer-events: none;
+        }
+
+        .bba-finance-shift__shell {
+            width: min(1180px, 100%);
+            margin: 0 auto;
+        }
+
+        .bba-finance-shift__intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(310px, 420px);
+            gap: 48px;
+            align-items: end;
+        }
+
+        .bba-finance-shift__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            color: #d4af37;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-shift__eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: linear-gradient(90deg, #d4af37, rgba(61,198,184,0.82));
+        }
+
+        .bba-finance-shift__title {
+            max-width: 780px;
+            margin: 0;
+            color: #ffffff;
+            font-size: 64px;
+            font-weight: 500;
+            line-height: 0.98;
+            letter-spacing: 0;
+        }
+
+        .bba-finance-shift__title span {
+            color: #d4af37;
+        }
+
+        .bba-finance-shift__lead {
+            max-width: 680px;
+            margin: 24px 0 0;
+            color: rgba(255,255,255,0.72);
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+        .bba-finance-shift__signal {
+            position: relative;
+            padding: 24px;
+            border: 1px solid rgba(212,175,55,0.26);
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03)),
+                rgba(2,10,24,0.58);
+            box-shadow: 0 24px 72px rgba(0,0,0,0.28);
+            backdrop-filter: blur(14px);
+        }
+
+        .bba-finance-shift__signal::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-top: 2px solid rgba(212,175,55,0.82);
+            transform-origin: left;
+            animation: bbaShiftLine 4.4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .bba-finance-shift__signal-kicker {
+            display: block;
+            color: rgba(255,255,255,0.52);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-shift__signal-title {
+            display: block;
+            margin-top: 12px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.15;
+        }
+
+        .bba-finance-shift__signal-copy {
+            margin: 12px 0 0;
+            color: rgba(255,255,255,0.66);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .bba-finance-shift__signal-list {
+            display: grid;
+            gap: 10px;
+            margin: 20px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .bba-finance-shift__signal-list li {
+            display: grid;
+            grid-template-columns: 8px 1fr;
+            gap: 10px;
+            align-items: start;
+            color: rgba(255,255,255,0.74);
+            font-size: 13px;
+            line-height: 1.35;
+        }
+
+        .bba-finance-shift__signal-list li::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            margin-top: 5px;
+            border-radius: 999px;
+            background: #3dc6b8;
+            box-shadow: 0 0 18px rgba(61,198,184,0.62);
+        }
+
+        .bba-finance-shift__matrix {
+            position: relative;
+            display: grid;
+            gap: 14px;
+            margin-top: 56px;
+        }
+
+        .bba-finance-shift__head,
+        .bba-finance-shift__row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr);
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        .bba-finance-shift__head-cell {
+            padding: 14px 18px;
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.62);
+            background: rgba(255,255,255,0.04);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-shift__head-cell--bad {
+            border-color: rgba(255,255,255,0.10);
+        }
+
+        .bba-finance-shift__head-cell--good {
+            color: #d4af37;
+            border-color: rgba(212,175,55,0.28);
+            background: rgba(212,175,55,0.07);
+        }
+
+        .bba-finance-shift__bridge-head {
+            display: grid;
+            place-items: center;
+            color: rgba(255,255,255,0.52);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-shift__cell {
+            position: relative;
+            min-height: 112px;
+            padding: 22px 22px 22px 24px;
+            border: 1px solid rgba(255,255,255,0.11);
+            background: rgba(255,255,255,0.045);
+            overflow: hidden;
+            transition: transform .42s ease, border-color .42s ease, background .42s ease;
+        }
+
+        .bba-finance-shift__cell::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 3px;
+            background: rgba(255,255,255,0.18);
+        }
+
+        .bba-finance-shift__cell--bad {
+            color: rgba(255,255,255,0.66);
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.055), rgba(255,255,255,0.025)),
+                rgba(2,10,24,0.38);
+        }
+
+        .bba-finance-shift__cell--bad::before {
+            background: rgba(255,255,255,0.18);
+        }
+
+        .bba-finance-shift__cell--good {
+            border-color: rgba(212,175,55,0.25);
+            background:
+                linear-gradient(115deg, rgba(212,175,55,0.12), rgba(61,198,184,0.06)),
+                rgba(255,255,255,0.055);
+            box-shadow: 0 20px 58px rgba(0,0,0,0.22);
+        }
+
+        .bba-finance-shift__cell--good::before {
+            background: linear-gradient(180deg, #d4af37, #3dc6b8);
+            box-shadow: 0 0 22px rgba(212,175,55,0.36);
+        }
+
+        .bba-finance-shift__row:hover .bba-finance-shift__cell {
+            transform: translateY(-4px);
+        }
+
+        .bba-finance-shift__row:hover .bba-finance-shift__cell--good {
+            border-color: rgba(212,175,55,0.48);
+            background:
+                linear-gradient(115deg, rgba(212,175,55,0.18), rgba(61,198,184,0.09)),
+                rgba(255,255,255,0.075);
+        }
+
+        .bba-finance-shift__cell small {
+            display: block;
+            margin-bottom: 9px;
+            color: rgba(255,255,255,0.42);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-shift__cell strong {
+            display: block;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.28;
+        }
+
+        .bba-finance-shift__cell--good strong {
+            color: #ffffff;
+        }
+
+        .bba-finance-shift__cell p {
+            margin: 9px 0 0;
+            color: rgba(255,255,255,0.60);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .bba-finance-shift__bridge {
+            position: relative;
+            display: grid;
+            place-items: center;
+            min-height: 112px;
+        }
+
+        .bba-finance-shift__bridge::before {
+            content: "";
+            position: absolute;
+            top: -14px;
+            bottom: -14px;
+            left: 50%;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(212,175,55,0.78), rgba(61,198,184,0.78), transparent);
+        }
+
+        .bba-finance-shift__bridge::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 54px;
+            height: 1px;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.9), transparent);
+            animation: bbaShiftBridge 2.6s ease-in-out infinite;
+        }
+
+        .bba-finance-shift__marker {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(212,175,55,0.48);
+            border-radius: 999px;
+            color: #061224;
+            background: linear-gradient(135deg, #d4af37, #ead68f);
+            box-shadow: 0 0 0 0 rgba(212,175,55,0.28), 0 18px 44px rgba(0,0,0,0.3);
+            font-size: 18px;
+            font-weight: 800;
+            animation: bbaShiftPulse 2.8s ease-out infinite;
+        }
+
+        .bba-finance-shift__cadence {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 42px;
+        }
+
+        .bba-finance-shift__cadence-card {
+            position: relative;
+            padding: 22px;
+            border: 1px solid rgba(255,255,255,0.11);
+            background: rgba(255,255,255,0.045);
+            min-height: 152px;
+            overflow: hidden;
+        }
+
+        .bba-finance-shift__cadence-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent, rgba(212,175,55,0.10), transparent);
+            transform: translateX(-120%);
+            animation: bbaShiftSweep 6s ease-in-out infinite;
+        }
+
+        .bba-finance-shift__cadence-card:nth-child(2)::before {
+            animation-delay: .5s;
+        }
+
+        .bba-finance-shift__cadence-card:nth-child(3)::before {
+            animation-delay: 1s;
+        }
+
+        .bba-finance-shift__cadence-card span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(212,175,55,0.32);
+            color: #d4af37;
+            background: rgba(212,175,55,0.07);
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .bba-finance-shift__cadence-card h3 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1.22;
+        }
+
+        .bba-finance-shift__cadence-card p {
+            margin: 10px 0 0;
+            color: rgba(255,255,255,0.62);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        @keyframes bbaShiftLine {
+            0%, 100% { transform: scaleX(.28); opacity: .55; }
+            50% { transform: scaleX(1); opacity: 1; }
+        }
+
+        @keyframes bbaShiftBridge {
+            0%, 100% { width: 34px; opacity: .45; }
+            50% { width: 66px; opacity: 1; }
+        }
+
+        @keyframes bbaShiftPulse {
+            0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.3), 0 18px 44px rgba(0,0,0,0.3); }
+            70% { box-shadow: 0 0 0 13px rgba(212,175,55,0), 0 18px 44px rgba(0,0,0,0.3); }
+            100% { box-shadow: 0 0 0 0 rgba(212,175,55,0), 0 18px 44px rgba(0,0,0,0.3); }
+        }
+
+        @keyframes bbaShiftSweep {
+            0%, 46% { transform: translateX(-120%); opacity: 0; }
+            58% { opacity: 1; }
+            86%, 100% { transform: translateX(120%); opacity: 0; }
+        }
+
+        @media (max-width: 980px) {
+            .bba-finance-shift {
+                padding: 86px 20px 94px;
+            }
+
+            .bba-finance-shift__intro {
+                grid-template-columns: 1fr;
+                align-items: start;
+            }
+
+            .bba-finance-shift__title {
+                font-size: 48px;
+            }
+
+            .bba-finance-shift__head,
+            .bba-finance-shift__row {
+                grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
+                gap: 12px;
+            }
+
+            .bba-finance-shift__cell {
+                padding: 20px;
+            }
+
+            .bba-finance-shift__cadence {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .bba-finance-shift {
+                padding: 72px 18px 78px;
+            }
+
+            .bba-finance-shift__title {
+                font-size: 36px;
+            }
+
+            .bba-finance-shift__lead {
+                font-size: 16px;
+            }
+
+            .bba-finance-shift__head {
+                display: none;
+            }
+
+            .bba-finance-shift__row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 14px;
+                border: 1px solid rgba(255,255,255,0.10);
+                background: rgba(255,255,255,0.035);
+            }
+
+            .bba-finance-shift__bridge {
+                min-height: 54px;
+            }
+
+            .bba-finance-shift__bridge::before {
+                top: 50%;
+                bottom: auto;
+                left: 0;
+                right: 0;
+                width: auto;
+                height: 1px;
+                transform: translateY(-50%);
+            }
+
+            .bba-finance-shift__marker {
+                width: 42px;
+                height: 42px;
+                font-size: 16px;
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bba-finance-shift *,
+            .bba-finance-shift::before,
+            .bba-finance-shift::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+
+    <!-- BBA Shift: Premium Wave → Fluxo Executivo -->
+    <style>
+        /*
+         * A onda é um feixe de luz dourado concentrado.
+         * blur(5px) mantém o núcleo visível.
+         * box-shadow adiciona halo externo difuso.
+         * z-index: 3 faz a onda iluminar sobre o marcador →
+         */
+        .bba-shift-wave {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 48px;
+            height: 92px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse 22px 46px at center,
+                rgba(255, 228, 112, 1)    0%,
+                rgba(212, 175,  55, 0.90) 22%,
+                rgba(212, 175,  55, 0.48) 52%,
+                rgba(212, 175,  55, 0.10) 78%,
+                transparent 100%);
+            filter: blur(5px);
+            box-shadow: 0 0 22px 8px rgba(212,175,55,0.28);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 3;
+            will-change: transform, opacity;
+            transform: translateY(-50%) translateX(-24px);
+        }
+
+        @keyframes bbaShiftWaveTravel {
+            0%   { transform: translateY(-50%) translateX(-24px); opacity: 0; }
+            5%   { opacity: 0.92; }
+            82%  { opacity: 0.92; }
+            100% { transform: translateY(-50%) translateX(112px); opacity: 0; }
+        }
+
+        /* Transição rápida para que o glow do card seja perceptível */
+        .bba-finance-shift__cell--good {
+            transition: transform .42s ease,
+                        border-color .22s ease-in-out,
+                        background .42s ease,
+                        box-shadow .22s ease-in-out;
+        }
+
+        .bba-finance-shift__cell--good.bba-shift-arrive {
+            border-color: rgba(212,175,55,0.85) !important;
+            box-shadow: 0 20px 58px rgba(0,0,0,0.22),
+                        0 0 52px rgba(212,175,55,0.26),
+                        0 0 18px rgba(212,175,55,0.18),
+                        inset 0 0 28px rgba(212,175,55,0.09);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bba-shift-wave { display: none !important; }
+            .bba-finance-shift__cell--good.bba-shift-arrive {
+                transition: none !important;
+            }
+        }
+    </style>
+
+    <section class="bba-finance-shift" id="abordagem" aria-label="Do modelo cansativo para a postura de gente grande">
+        <div class="bba-finance-shift__shell">
+            <div class="bba-finance-shift__intro">
+                <div>
+                    <span class="bba-finance-shift__eyebrow">A transição que muda tudo</span>
+                    <h2 class="bba-finance-shift__title">Do modelo cansativo para a <span>postura de Gente Grande.</span></h2>
+                    <p class="bba-finance-shift__lead">
+                        A diferença entre uma contabilidade reativa e um conselho financeiro estratégico não é o tamanho da empresa. É a postura de quem cuida dos números, antecipa riscos e transforma dados em comando.
+                    </p>
+                </div>
+
+                <aside class="bba-finance-shift__signal" aria-label="Postura BBA Core">
+                    <span class="bba-finance-shift__signal-kicker">BBA Core Finance</span>
+                    <strong class="bba-finance-shift__signal-title">A operação passa a trabalhar para a decisão.</strong>
+                    <p class="bba-finance-shift__signal-copy">
+                        Menos cobrança no vencimento. Mais previsibilidade, rito mensal e clareza sobre lucro, caixa e imposto.
+                    </p>
+                    <ul class="bba-finance-shift__signal-list">
+                        <li>números conferidos antes da decisão;</li>
+                        <li>riscos tratados antes de virar passivo;</li>
+                        <li>dono olhando a empresa com visão executiva.</li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="bba-finance-shift__matrix">
+                <div class="bba-finance-shift__head" aria-hidden="true">
+                    <div class="bba-finance-shift__head-cell bba-finance-shift__head-cell--bad">Modelo cansativo</div>
+                    <div class="bba-finance-shift__bridge-head">Virada</div>
+                    <div class="bba-finance-shift__head-cell bba-finance-shift__head-cell--good">Método BBA Core</div>
+                </div>
+
+                <article class="bba-finance-shift__row">
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--bad">
+                        <small>Impostos</small>
+                        <strong>Guias chegam no vencimento e o dono apenas paga.</strong>
+                        <p>Sem leitura tributária, sem planejamento e sem conexão com margem ou caixa.</p>
+                    </div>
+                    <div class="bba-finance-shift__bridge" aria-hidden="true"><span class="bba-finance-shift__marker">→</span></div>
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--good">
+                        <small>Impostos sob comando</small>
+                        <strong>Calendário fiscal, análise preventiva e impacto no caixa antes da surpresa.</strong>
+                        <p>A empresa sabe o que vence, por que vence e como isso afeta a decisão do mês.</p>
+                    </div>
+                </article>
+
+                <article class="bba-finance-shift__row">
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--bad">
+                        <small>Contabilidade</small>
+                        <strong>Relatórios aparecem tarde e não ajudam a fechar bons negócios.</strong>
+                        <p>O número fica burocrático, invisível e distante da rotina comercial.</p>
+                    </div>
+                    <div class="bba-finance-shift__bridge" aria-hidden="true"><span class="bba-finance-shift__marker">→</span></div>
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--good">
+                        <small>Cultura gerencial</small>
+                        <strong>DRE, margem e folga de caixa viram leitura mensal de performance.</strong>
+                        <p>O dono enxerga onde ganha, onde perde e onde precisa ajustar antes de crescer.</p>
+                    </div>
+                </article>
+
+                <article class="bba-finance-shift__row">
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--bad">
+                        <small>Rotina</small>
+                        <strong>Equipe apagando incêndio entre papéis, cobranças e fornecedores.</strong>
+                        <p>O financeiro interno fica sobrecarregado e a gestão depende de esforço manual.</p>
+                    </div>
+                    <div class="bba-finance-shift__bridge" aria-hidden="true"><span class="bba-finance-shift__marker">→</span></div>
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--good">
+                        <small>Comitê integrado</small>
+                        <strong>Financeiro, fiscal e contábil atuam como uma única mesa de controle.</strong>
+                        <p>Menos retrabalho, mais clareza de responsabilidade e mais tempo para operar o negócio.</p>
+                    </div>
+                </article>
+
+                <article class="bba-finance-shift__row">
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--bad">
+                        <small>Risco</small>
+                        <strong>Passivo trabalhista, fiscal e societário acumulando nas sombras.</strong>
+                        <p>O problema só aparece quando já custa caro, trava crédito ou ameaça a operação.</p>
+                    </div>
+                    <div class="bba-finance-shift__bridge" aria-hidden="true"><span class="bba-finance-shift__marker">→</span></div>
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--good">
+                        <small>Blindagem de crescimento</small>
+                        <strong>Riscos mapeados para contratar, financiar e escalar com segurança.</strong>
+                        <p>A empresa cresce com base formal, controles e documentação que sustentam o próximo passo.</p>
+                    </div>
+                </article>
+
+                <article class="bba-finance-shift__row">
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--bad">
+                        <small>Decisão</small>
+                        <strong>Crescimento decidido no susto, sem projeção e sem margem calculada.</strong>
+                        <p>O dono vende mais, trabalha mais e ainda assim não sabe se está ganhando melhor.</p>
+                    </div>
+                    <div class="bba-finance-shift__bridge" aria-hidden="true"><span class="bba-finance-shift__marker">→</span></div>
+                    <div class="bba-finance-shift__cell bba-finance-shift__cell--good">
+                        <small>Mesa executiva</small>
+                        <strong>Reunião mensal com indicadores vivos para decidir com autoridade.</strong>
+                        <p>Preço, contratação, investimento, retirada e imposto passam pela mesma leitura estratégica.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="bba-finance-shift__cadence" aria-label="Cadência da postura BBA">
+                <article class="bba-finance-shift__cadence-card">
+                    <span>01</span>
+                    <h3>Diagnóstico antes da promessa</h3>
+                    <p>A BBA entende o cenário financeiro real antes de vender solução genérica.</p>
+                </article>
+                <article class="bba-finance-shift__cadence-card">
+                    <span>02</span>
+                    <h3>Rotina mensal de comando</h3>
+                    <p>Os números passam a ter dono, calendário, leitura e consequência.</p>
+                </article>
+                <article class="bba-finance-shift__cadence-card">
+                    <span>03</span>
+                    <h3>Empresa pronta para escalar</h3>
+                    <p>Crescer deixa de ser improviso e vira uma decisão sustentada por controle.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    /* BBA Shift — Fluxo Executivo Premium */
+    (function () {
+        var CYCLE    = 8500;   /* duração total do loop em ms         */
+        var WAVE_DUR = 1600;   /* percurso de cada onda em ms         */
+        var DELAYS   = [0, 350, 700, 1050, 1400]; /* delay por seta  */
+
+        function init() {
+            var bridges   = Array.from(document.querySelectorAll('.bba-finance-shift__bridge'));
+            var goodCells = Array.from(document.querySelectorAll('.bba-finance-shift__cell--good'));
+            if (!bridges.length || bridges.length !== goodCells.length) return;
+
+            /* Injeta elemento de onda dentro de cada bridge */
+            var waveEls = bridges.map(function (bridge) {
+                var el = document.createElement('span');
+                el.className = 'bba-shift-wave';
+                el.setAttribute('aria-hidden', 'true');
+                bridge.appendChild(el);
+                return el;
+            });
+
+            var timeouts = [];
+            var running  = false;
+
+            function clear() {
+                timeouts.forEach(clearTimeout);
+                timeouts = [];
+                waveEls.forEach(function (el) {
+                    el.style.animation = 'none';
+                    el.style.opacity   = '0';
+                });
+                goodCells.forEach(function (cell) {
+                    cell.classList.remove('bba-shift-arrive');
+                });
+            }
+
+            function fireWave(waveEl, goodCell, delay) {
+                var t = setTimeout(function () {
+                    /* Reinicia animação forçando reflow */
+                    waveEl.style.animation = 'none';
+                    void waveEl.offsetWidth;
+                    waveEl.style.animation =
+                        'bbaShiftWaveTravel ' + WAVE_DUR +
+                        'ms cubic-bezier(0.4,0,0.2,1) forwards';
+
+                    /* Glow no card BBA Core quando a onda chega */
+                    var t2 = setTimeout(function () {
+                        goodCell.classList.add('bba-shift-arrive');
+                        var t3 = setTimeout(function () {
+                            goodCell.classList.remove('bba-shift-arrive');
+                        }, 520);
+                        timeouts.push(t3);
+                    }, WAVE_DUR - 200);
+                    timeouts.push(t2);
+                }, delay);
+                timeouts.push(t);
+            }
+
+            function runCycle() {
+                bridges.forEach(function (bridge, i) {
+                    fireWave(waveEls[i], goodCells[i], DELAYS[i]);
+                });
+                var t = setTimeout(runCycle, CYCLE);
+                timeouts.push(t);
+            }
+
+            /* Só anima quando a seção está visível */
+            var section = document.querySelector('.bba-finance-shift');
+            if (!section) return;
+
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting && !running) {
+                            running = true;
+                            runCycle();
+                        } else if (!entry.isIntersecting && running) {
+                            running = false;
+                            clear();
+                        }
+                    });
+                }, { threshold: 0.1 });
+                io.observe(section);
+            } else {
+                runCycle();
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    }());
+    </script>
+
+    <style>
+        .bba-exec-panel {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 118px 24px 124px;
+            color: #ffffff;
+            background:
+                linear-gradient(180deg, #061424 0%, #081b31 48%, #05111f 100%);
+            border-top: 1px solid rgba(212,175,55,0.18);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .bba-exec-ticker {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            overflow: hidden;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background:
+                linear-gradient(90deg, rgba(5,17,31,0.98), rgba(8,27,49,0.92), rgba(5,17,31,0.98));
+            box-shadow: 0 18px 46px rgba(0,0,0,0.18);
+        }
+
+        .bba-exec-ticker::before,
+        .bba-exec-ticker::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 2;
+            width: 120px;
+            pointer-events: none;
+        }
+
+        .bba-exec-ticker::before {
+            left: 0;
+            background: linear-gradient(90deg, #061424, transparent);
+        }
+
+        .bba-exec-ticker::after {
+            right: 0;
+            background: linear-gradient(270deg, #061424, transparent);
+        }
+
+        .bba-exec-ticker__track {
+            display: flex;
+            width: max-content;
+            min-width: 200%;
+            animation: bbaExecTicker 34s linear infinite;
+        }
+
+        .bba-exec-ticker__group {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            padding: 18px 34px;
+            white-space: nowrap;
+        }
+
+        .bba-exec-ticker__item {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.48);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .bba-exec-ticker__item::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #d4af37;
+            box-shadow: 0 0 16px rgba(212,175,55,0.62);
+        }
+
+        .bba-exec-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+                radial-gradient(circle at 18% 8%, rgba(212,175,55,0.12), transparent 30%),
+                radial-gradient(circle at 86% 18%, rgba(61,198,184,0.11), transparent 28%);
+            background-size: 78px 78px, 78px 78px, auto, auto;
+            opacity: 0.74;
+            mask-image: linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+        }
+
+        .bba-exec-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(5,17,31,0.88), rgba(5,17,31,0.2) 48%, rgba(5,17,31,0.9)),
+                linear-gradient(180deg, rgba(255,255,255,0.02), transparent 36%, rgba(0,0,0,0.18));
+            pointer-events: none;
+        }
+
+        .bba-exec-panel__shell {
+            position: relative;
+            z-index: 2;
+            width: min(1180px, 100%);
+            margin: 0 auto;
+        }
+
+        .bba-exec-panel__head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+            gap: 44px;
+            align-items: end;
+            margin-bottom: 46px;
+        }
+
+        .bba-exec-panel__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            color: #d4af37;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .bba-exec-panel__eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: linear-gradient(90deg, #d4af37, rgba(61,198,184,0.86));
+        }
+
+        .bba-exec-panel__title {
+            max-width: 720px;
+            margin: 0;
+            color: #ffffff;
+            font-size: 64px;
+            font-weight: 500;
+            line-height: 0.98;
+            letter-spacing: 0;
+        }
+
+        .bba-exec-panel__title span {
+            color: #d4af37;
+        }
+
+        .bba-exec-panel__lead {
+            max-width: 660px;
+            margin: 24px 0 0;
+            color: rgba(255,255,255,0.7);
+            font-size: 18px;
+            line-height: 1.62;
+        }
+
+        .bba-exec-panel__status {
+            justify-self: end;
+            display: grid;
+            align-self: stretch;
+            align-content: space-between;
+            gap: 20px;
+            width: 100%;
+            min-height: 262px;
+            padding: 24px;
+            text-align: left;
+            border: 1px solid rgba(212,175,55,0.22);
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025)),
+                rgba(6,20,36,0.72);
+            box-shadow: 0 24px 68px rgba(0,0,0,0.24);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bba-exec-panel__status::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-top: 2px solid rgba(212,175,55,0.7);
+            transform-origin: left;
+            animation: bbaExecStatusLine 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .bba-exec-panel__status-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .bba-exec-panel__live {
+            justify-self: start;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            border: 1px solid rgba(102,187,106,0.32);
+            border-radius: 999px;
+            color: #78d67b;
+            background: rgba(78,191,105,0.12);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .bba-exec-panel__live::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #78d67b;
+            box-shadow: 0 0 0 0 rgba(120,214,123,0.42);
+            animation: bbaExecLivePulse 1.8s ease-out infinite;
+        }
+
+        .bba-exec-panel__updated {
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .bba-exec-panel__status-title {
+            display: block;
+            max-width: 320px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 760;
+            line-height: 1.12;
+            letter-spacing: -0.01em;
+        }
+
+        .bba-exec-panel__status-copy {
+            max-width: 320px;
+            margin: 10px 0 0;
+            color: rgba(255,255,255,0.62);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .bba-exec-panel__status-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .bba-exec-panel__status-metric {
+            min-height: 74px;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.09);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .bba-exec-panel__status-metric strong {
+            display: block;
+            color: var(--metric-color);
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .bba-exec-panel__status-metric span {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255,255,255,0.48);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            line-height: 1.25;
+            text-transform: uppercase;
+        }
+
+        .bba-exec-kpis {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .bba-exec-kpi {
+            position: relative;
+            min-height: 174px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.11);
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.028)),
+                rgba(6,20,36,0.84);
+            box-shadow: 0 22px 62px rgba(0,0,0,0.24);
+            overflow: hidden;
+            transition: transform .45s ease, border-color .45s ease, background .45s ease;
+        }
+
+        .bba-exec-kpi::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--kpi-color), transparent 78%);
+        }
+
+        .bba-exec-kpi::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent, rgba(255,255,255,0.08), transparent);
+            transform: translateX(-120%);
+            animation: bbaExecCardScan 7s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+            pointer-events: none;
+        }
+
+        .bba-exec-kpi:hover {
+            transform: translateY(-6px);
+            border-color: color-mix(in srgb, var(--kpi-color) 46%, rgba(255,255,255,0.12));
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.095), rgba(255,255,255,0.036)),
+                rgba(6,20,36,0.92);
+        }
+
+        .bba-exec-kpi--gold { --kpi-color: #d4af37; --delay: 0s; }
+        .bba-exec-kpi--cyan { --kpi-color: #55d4d6; --delay: .25s; }
+        .bba-exec-kpi--green { --kpi-color: #6bc76d; --delay: .5s; }
+        .bba-exec-kpi--red { --kpi-color: #ff5a5f; --delay: .75s; }
+
+        .bba-exec-kpi__label {
+            color: rgba(255,255,255,0.42);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .bba-exec-kpi__value {
+            display: block;
+            margin-top: 16px;
+            color: var(--kpi-color);
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .bba-exec-kpi__delta {
+            margin-top: 14px;
+            color: rgba(255,255,255,0.52);
+            font-size: 14px;
+            line-height: 1.35;
+        }
+
+        .bba-exec-kpi__delta strong {
+            color: #6bc76d;
+            font-weight: 800;
+        }
+
+        .bba-exec-kpi--red .bba-exec-kpi__delta strong {
+            color: #ff5a5f;
+        }
+
+        .bba-exec-kpi__bar {
+            position: absolute;
+            left: 24px;
+            right: 24px;
+            bottom: 24px;
+            height: 3px;
+            background: rgba(255,255,255,0.10);
+            overflow: hidden;
+        }
+
+        .bba-exec-kpi__bar span {
+            display: block;
+            width: var(--fill);
+            height: 100%;
+            background: var(--kpi-color);
+            transform-origin: left;
+            transform: scaleX(0);
+            opacity: .28;
+        }
+
+        .bba-exec-panel.is-visible .bba-exec-kpi__bar span {
+            animation: bbaExecBarGrow 1.4s ease both;
+        }
+
+        .bba-exec-dashboard {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.75fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .bba-exec-card {
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.11);
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025)),
+                rgba(6,20,36,0.82);
+            box-shadow: 0 24px 70px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+
+        .bba-exec-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-top: 1px solid rgba(212,175,55,0.22);
+            pointer-events: none;
+        }
+
+        .bba-exec-card--dre {
+            align-self: start;
+        }
+
+        .bba-exec-card__top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 24px 26px 0;
+        }
+
+        .bba-exec-card__title {
+            color: rgba(255,255,255,0.5);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .bba-exec-card__note {
+            color: rgba(255,255,255,0.48);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .bba-exec-bars {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 18px;
+            min-height: 214px;
+            padding: 30px 30px 18px;
+            align-items: end;
+        }
+
+        .bba-exec-month {
+            display: grid;
+            grid-template-rows: 1fr auto;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .bba-exec-month__bars {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(8px, 1fr));
+            gap: 7px;
+            align-items: end;
+            height: 152px;
+        }
+
+        .bba-exec-bar {
+            display: block;
+            height: var(--h);
+            min-height: 18px;
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            overflow: hidden;
+            transform-origin: bottom;
+            transform: scaleY(.96);
+            opacity: 1;
+            animation: bbaExecBarsPulse 3.8s ease-in-out infinite;
+            animation-delay: var(--d, 0s);
+        }
+
+        .bba-exec-bar::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.42), transparent 54%);
+            opacity: .34;
+            transform: translateY(-110%);
+            animation: bbaExecBarShine 3.6s ease-in-out infinite;
+            animation-delay: calc(var(--d, 0s) + .45s);
+        }
+
+        .bba-exec-panel.is-visible .bba-exec-bar {
+            animation:
+                bbaExecBarsRise 1.15s ease both,
+                bbaExecBarsPulse 3.8s ease-in-out infinite;
+            animation-delay: var(--d, 0s), calc(var(--d, 0s) + 1.18s);
+        }
+
+        .bba-exec-bar--revenue {
+            background: linear-gradient(180deg, #efd276, #d4af37);
+        }
+
+        .bba-exec-bar--expense {
+            background: rgba(134,154,174,0.38);
+        }
+
+        .bba-exec-bar--profit {
+            background: linear-gradient(180deg, #76e3e3, #55d4d6);
+        }
+
+        .bba-exec-month__label {
+            color: rgba(255,255,255,0.42);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .bba-exec-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 0 30px 18px;
+        }
+
+        .bba-exec-legend__item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.52);
+            font-size: 12px;
+        }
+
+        .bba-exec-legend__dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            background: var(--dot);
+        }
+
+        .bba-exec-dre-insights {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            padding: 0 30px 26px;
+        }
+
+        .bba-exec-dre-insight {
+            padding: 14px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.035);
+        }
+
+        .bba-exec-dre-insight strong {
+            display: block;
+            color: var(--insight-color);
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .bba-exec-dre-insight span {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255,255,255,0.48);
+            font-size: 11px;
+            line-height: 1.35;
+        }
+
+        .bba-exec-command-video {
+            position: relative;
+            min-height: clamp(300px, 28vw, 390px);
+            margin: 0 30px 30px;
+            overflow: hidden;
+            border: 1px solid rgba(212,175,55,0.18);
+            background:
+                linear-gradient(135deg, rgba(212,175,55,0.10), rgba(61,198,184,0.06)),
+                rgba(2,10,24,0.7);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+
+        .bba-exec-command-video video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            opacity: 0.96;
+            filter: saturate(1.12) contrast(1.04) brightness(1.04);
+        }
+
+        .bba-exec-command-video::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                linear-gradient(90deg, rgba(5,17,31,0.38), rgba(5,17,31,0.04) 54%, rgba(5,17,31,0.28)),
+                linear-gradient(180deg, rgba(5,17,31,0.16), rgba(5,17,31,0.24));
+            pointer-events: none;
+        }
+
+        .bba-exec-command-video::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 2;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, #55d4d6, transparent);
+            transform-origin: left;
+            animation: bbaExecStatusLine 4.6s ease-in-out infinite;
+        }
+
+        .bba-exec-command-video__content {
+            position: absolute;
+            bottom: 22px;
+            left: 22px;
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            min-height: 0;
+            padding: 9px 12px;
+            border: 1px solid rgba(212,175,55,0.28);
+            background: rgba(5,17,31,0.52);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .bba-exec-command-video__kicker {
+            color: #d4af37;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .bba-exec-side {
+            display: grid;
+            gap: 18px;
+        }
+
+        .bba-exec-donut {
+            padding: 24px 26px 28px;
+        }
+
+        .bba-exec-donut__stage {
+            position: relative;
+            display: grid;
+            place-items: center;
+            width: 148px;
+            height: 148px;
+            margin: 24px auto 20px;
+        }
+
+        .bba-exec-donut__svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .bba-exec-donut__track {
+            fill: none;
+            stroke: rgba(134,154,174,0.28);
+            stroke-width: 10;
+        }
+
+        .bba-exec-donut__fill {
+            fill: none;
+            stroke: #d4af37;
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 251.2;
+            stroke-dashoffset: 251.2;
+        }
+
+        .bba-exec-panel.is-visible .bba-exec-donut__fill {
+            animation: bbaExecDonut 1.8s ease forwards;
+        }
+
+        .bba-exec-donut__label {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            text-align: center;
+        }
+
+        .bba-exec-donut__label strong {
+            display: block;
+            color: #efd276;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .bba-exec-donut__label span {
+            display: block;
+            margin-top: 5px;
+            color: rgba(255,255,255,0.42);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .bba-exec-tax-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .bba-exec-tax-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            color: rgba(255,255,255,0.62);
+            font-size: 13px;
+        }
+
+        .bba-exec-tax-item:last-child {
+            border-bottom: 0;
+        }
+
+        .bba-exec-tax-item strong {
+            color: #ffffff;
+        }
+
+        .bba-exec-tax-name {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bba-exec-tax-name::before {
+            content: "";
+            width: 9px;
+            height: 9px;
+            border-radius: 3px;
+            background: var(--tax-color);
+        }
+
+        .bba-exec-lower {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .bba-exec-activity,
+        .bba-exec-score {
+            padding: 24px 26px;
+        }
+
+        .bba-exec-activity__list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .bba-exec-activity__item {
+            display: grid;
+            grid-template-columns: 34px minmax(0, 1fr) auto;
+            gap: 12px;
+            align-items: center;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .bba-exec-activity__item:last-child {
+            border-bottom: 0;
+        }
+
+        .bba-exec-activity__icon {
+            display: grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+            color: var(--activity-color);
+            background: rgba(255,255,255,0.04);
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .bba-exec-activity__text {
+            color: rgba(255,255,255,0.62);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .bba-exec-activity__text strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .bba-exec-activity__time {
+            color: rgba(255,255,255,0.38);
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .bba-exec-score__hero {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 18px;
+            align-items: center;
+            margin-top: 22px;
+            margin-bottom: 24px;
+        }
+
+        .bba-exec-score__number {
+            display: grid;
+            place-items: center;
+            width: 112px;
+            height: 112px;
+            border: 1px solid rgba(107,199,109,0.32);
+            border-radius: 50%;
+            color: #6bc76d;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(107,199,109,0.16), transparent 64%),
+                rgba(255,255,255,0.04);
+            box-shadow: 0 0 42px rgba(107,199,109,0.12);
+            font-size: 34px;
+            font-weight: 900;
+        }
+
+        .bba-exec-score__copy strong {
+            display: block;
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 1.15;
+        }
+
+        .bba-exec-score__copy span {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255,255,255,0.58);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .bba-exec-score__rows {
+            display: grid;
+            gap: 14px;
+        }
+
+        .bba-exec-score__row {
+            display: grid;
+            gap: 7px;
+        }
+
+        .bba-exec-score__meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            color: rgba(255,255,255,0.58);
+            font-size: 12px;
+        }
+
+        .bba-exec-score__meta strong {
+            color: var(--score-color);
+        }
+
+        .bba-exec-score__track {
+            height: 5px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.10);
+        }
+
+        .bba-exec-score__fill {
+            display: block;
+            width: var(--fill);
+            height: 100%;
+            background: var(--score-color);
+            transform-origin: left;
+            transform: scaleX(0);
+            opacity: .28;
+        }
+
+        .bba-exec-panel.is-visible .bba-exec-score__fill {
+            animation: bbaExecBarGrow 1.55s ease both;
+        }
+
+        .bba-exec-metrics {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .bba-exec-mini {
+            min-height: 132px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.10);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .bba-exec-mini__label {
+            color: rgba(255,255,255,0.42);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            line-height: 1.35;
+        }
+
+        .bba-exec-mini__value {
+            display: block;
+            margin-top: 15px;
+            color: var(--mini-color);
+            font-size: 24px;
+            font-weight: 850;
+            line-height: 1.08;
+        }
+
+        .bba-exec-mini__sub {
+            display: block;
+            margin-top: 10px;
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            line-height: 1.35;
+        }
+
+        .bba-exec-panel__close {
+            margin-top: 34px;
+            padding: 24px 28px;
+            border: 1px solid rgba(212,175,55,0.24);
+            background:
+                linear-gradient(90deg, rgba(212,175,55,0.09), rgba(61,198,184,0.06)),
+                rgba(255,255,255,0.035);
+            color: rgba(255,255,255,0.78);
+            font-size: 17px;
+            line-height: 1.55;
+        }
+
+        .bba-exec-panel__close strong {
+            color: #ffffff;
+        }
+
+        @keyframes bbaExecLivePulse {
+            0% { box-shadow: 0 0 0 0 rgba(120,214,123,0.42); }
+            70% { box-shadow: 0 0 0 12px rgba(120,214,123,0); }
+            100% { box-shadow: 0 0 0 0 rgba(120,214,123,0); }
+        }
+
+        @keyframes bbaExecTicker {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @keyframes bbaExecStatusLine {
+            0%, 100% { transform: scaleX(.24); opacity: .55; }
+            50% { transform: scaleX(1); opacity: 1; }
+        }
+
+        @keyframes bbaExecCardScan {
+            0%, 48% { transform: translateX(-120%); opacity: 0; }
+            58% { opacity: 1; }
+            82%, 100% { transform: translateX(120%); opacity: 0; }
+        }
+
+        @keyframes bbaExecBarGrow {
+            from { transform: scaleX(0); opacity: .28; }
+            to { transform: scaleX(1); opacity: 1; }
+        }
+
+        @keyframes bbaExecBarsRise {
+            from { transform: scaleY(0); opacity: .2; }
+            to { transform: scaleY(1); opacity: 1; }
+        }
+
+        @keyframes bbaExecBarsPulse {
+            0%, 100% { transform: scaleY(.92); filter: saturate(.94) brightness(.96); }
+            50% { transform: scaleY(1); filter: saturate(1.16) brightness(1.08); }
+        }
+
+        @keyframes bbaExecBarShine {
+            0%, 42% { transform: translateY(-110%); opacity: 0; }
+            58% { opacity: .42; }
+            86%, 100% { transform: translateY(110%); opacity: 0; }
+        }
+
+        @keyframes bbaExecDonut {
+            from { stroke-dashoffset: 251.2; }
+            to { stroke-dashoffset: 206; }
+        }
+
+        @media (max-width: 1100px) {
+            .bba-exec-kpis,
+            .bba-exec-metrics {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .bba-exec-dashboard,
+            .bba-exec-lower {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-exec-panel__status {
+                min-height: 0;
+            }
+
+            .bba-exec-dre-insights {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 780px) {
+            .bba-exec-panel {
+                padding: 104px 18px 84px;
+            }
+
+            .bba-exec-ticker__group {
+                gap: 24px;
+                padding: 16px 24px;
+            }
+
+            .bba-exec-ticker__item {
+                font-size: 10px;
+            }
+
+            .bba-exec-panel__head {
+                grid-template-columns: 1fr;
+                align-items: start;
+            }
+
+            .bba-exec-panel__status {
+                justify-self: start;
+                text-align: left;
+                padding: 20px;
+            }
+
+            .bba-exec-panel__status-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .bba-exec-panel__updated {
+                text-align: left;
+            }
+
+            .bba-exec-panel__status-grid,
+            .bba-exec-dre-insights {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-exec-panel__live {
+                justify-self: start;
+            }
+
+            .bba-exec-panel__title {
+                font-size: 40px;
+            }
+
+            .bba-exec-kpis,
+            .bba-exec-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-exec-bars {
+                gap: 10px;
+                padding: 30px 18px 18px;
+                overflow-x: auto;
+            }
+
+            .bba-exec-month {
+                min-width: 72px;
+            }
+
+            .bba-exec-card__top,
+            .bba-exec-activity,
+            .bba-exec-score,
+            .bba-exec-donut {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .bba-exec-command-video {
+                min-height: 280px;
+                margin: 0 18px 22px;
+            }
+
+            .bba-exec-command-video__content {
+                bottom: 16px;
+                left: 16px;
+            }
+
+            .bba-exec-card__top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .bba-exec-card__note {
+                white-space: normal;
+            }
+
+            .bba-exec-activity__item {
+                grid-template-columns: 34px minmax(0, 1fr);
+            }
+
+            .bba-exec-activity__time {
+                grid-column: 2;
+            }
+
+            .bba-exec-score__hero {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bba-exec-panel *,
+            .bba-exec-panel::before,
+            .bba-exec-panel::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .bba-exec-kpi__bar span,
+            .bba-exec-bar,
+            .bba-exec-score__fill {
+                transform: none !important;
+                opacity: 1 !important;
+            }
+
+            .bba-exec-bar::after {
+                display: none !important;
+            }
+
+            .bba-exec-donut__fill {
+                stroke-dashoffset: 206 !important;
+            }
+        }
+    </style>
+
+    <section class="bba-exec-panel" id="dashboard" aria-label="Painel Executivo BBA Finance">
+        <div class="bba-exec-ticker" aria-hidden="true">
+            <div class="bba-exec-ticker__track">
+                <div class="bba-exec-ticker__group">
+                    <span class="bba-exec-ticker__item">DRE em tempo real</span>
+                    <span class="bba-exec-ticker__item">Controle de escala</span>
+                    <span class="bba-exec-ticker__item">Conformidade fiscal</span>
+                    <span class="bba-exec-ticker__item">Gestão de liquidez</span>
+                    <span class="bba-exec-ticker__item">Fundamentos operacionais</span>
+                    <span class="bba-exec-ticker__item">Inteligência tributária</span>
+                    <span class="bba-exec-ticker__item">Tesouraria estratégica</span>
+                    <span class="bba-exec-ticker__item">Painel executivo vivo</span>
+                </div>
+                <div class="bba-exec-ticker__group">
+                    <span class="bba-exec-ticker__item">DRE em tempo real</span>
+                    <span class="bba-exec-ticker__item">Controle de escala</span>
+                    <span class="bba-exec-ticker__item">Conformidade fiscal</span>
+                    <span class="bba-exec-ticker__item">Gestão de liquidez</span>
+                    <span class="bba-exec-ticker__item">Fundamentos operacionais</span>
+                    <span class="bba-exec-ticker__item">Inteligência tributária</span>
+                    <span class="bba-exec-ticker__item">Tesouraria estratégica</span>
+                    <span class="bba-exec-ticker__item">Painel executivo vivo</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bba-exec-panel__shell">
+            <div class="bba-exec-panel__head">
+                <div>
+                    <span class="bba-exec-panel__eyebrow">Painel Executivo BBA</span>
+                    <h2 class="bba-exec-panel__title">Controle total. <span>Sem achismos.</span></h2>
+                    <p class="bba-exec-panel__lead">
+                        O cliente não contrata apenas uma contabilidade. Ele ganha uma sala de comando para enxergar receita, margem, caixa, tributos, riscos e obrigações em uma mesma leitura executiva.
+                    </p>
+                </div>
+                <div class="bba-exec-panel__status">
+                    <div class="bba-exec-panel__status-top">
+                        <span class="bba-exec-panel__live">Painel ao vivo</span>
+                        <span class="bba-exec-panel__updated">Jun 2025 · 09:42h</span>
+                    </div>
+                    <div>
+                        <strong class="bba-exec-panel__status-title">Leitura executiva pronta para decisão.</strong>
+                        <p class="bba-exec-panel__status-copy">Receita, margem, caixa, imposto e risco deixam de ser peças soltas e viram uma única rotina de comando.</p>
+                    </div>
+                    <div class="bba-exec-panel__status-grid" aria-label="Resumo executivo do painel">
+                        <div class="bba-exec-panel__status-metric" style="--metric-color: #6bc76d;">
+                            <strong>87</strong>
+                            <span>Score BBA</span>
+                        </div>
+                        <div class="bba-exec-panel__status-metric" style="--metric-color: #d4af37;">
+                            <strong>3,2</strong>
+                            <span>Meses caixa</span>
+                        </div>
+                        <div class="bba-exec-panel__status-metric" style="--metric-color: #55d4d6;">
+                            <strong>100%</strong>
+                            <span>Prazo fiscal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bba-exec-kpis" aria-label="KPIs executivos">
+                <article class="bba-exec-kpi bba-exec-kpi--gold">
+                    <span class="bba-exec-kpi__label">Receita mensal</span>
+                    <strong class="bba-exec-kpi__value" data-bba-count="147800" data-prefix="R$ ">R$ 147.800</strong>
+                    <p class="bba-exec-kpi__delta">vs. mês anterior <strong>+12,4%</strong></p>
+                    <div class="bba-exec-kpi__bar"><span style="--fill: 78%;"></span></div>
+                </article>
+
+                <article class="bba-exec-kpi bba-exec-kpi--cyan">
+                    <span class="bba-exec-kpi__label">Margem líquida</span>
+                    <strong class="bba-exec-kpi__value" data-bba-count="28" data-suffix="%">28%</strong>
+                    <p class="bba-exec-kpi__delta">meta: 22% <strong>acima</strong></p>
+                    <div class="bba-exec-kpi__bar"><span style="--fill: 63%;"></span></div>
+                </article>
+
+                <article class="bba-exec-kpi bba-exec-kpi--green">
+                    <span class="bba-exec-kpi__label">Caixa disponível</span>
+                    <strong class="bba-exec-kpi__value" data-bba-count="94300" data-prefix="R$ ">R$ 94.300</strong>
+                    <p class="bba-exec-kpi__delta">cobertura <strong>3,2 meses</strong></p>
+                    <div class="bba-exec-kpi__bar"><span style="--fill: 88%;"></span></div>
+                </article>
+
+                <article class="bba-exec-kpi bba-exec-kpi--red">
+                    <span class="bba-exec-kpi__label">Passivo fiscal</span>
+                    <strong class="bba-exec-kpi__value" data-bba-count="12400" data-prefix="R$ ">R$ 12.400</strong>
+                    <p class="bba-exec-kpi__delta">vs. período <strong>-34%</strong> eliminado</p>
+                    <div class="bba-exec-kpi__bar"><span style="--fill: 22%;"></span></div>
+                </article>
+            </div>
+
+            <div class="bba-exec-dashboard">
+                <article class="bba-exec-card bba-exec-card--dre">
+                    <div class="bba-exec-card__top">
+                        <h3 class="bba-exec-card__title">DRE — Receita vs despesa · últimos 6 meses</h3>
+                        <span class="bba-exec-card__note">margem e caixa caminhando juntos</span>
+                    </div>
+
+                    <div class="bba-exec-bars" aria-label="Gráfico de DRE dos últimos seis meses">
+                        <div class="bba-exec-month">
+                            <div class="bba-exec-month__bars">
+                                <span class="bba-exec-bar bba-exec-bar--revenue" style="--h: 64%; --d: .02s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--expense" style="--h: 48%; --d: .08s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--profit" style="--h: 18%; --d: .14s;"></span>
+                            </div>
+                            <span class="bba-exec-month__label">Jan</span>
+                        </div>
+                        <div class="bba-exec-month">
+                            <div class="bba-exec-month__bars">
+                                <span class="bba-exec-bar bba-exec-bar--revenue" style="--h: 70%; --d: .08s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--expense" style="--h: 52%; --d: .14s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--profit" style="--h: 22%; --d: .2s;"></span>
+                            </div>
+                            <span class="bba-exec-month__label">Fev</span>
+                        </div>
+                        <div class="bba-exec-month">
+                            <div class="bba-exec-month__bars">
+                                <span class="bba-exec-bar bba-exec-bar--revenue" style="--h: 67%; --d: .14s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--expense" style="--h: 47%; --d: .2s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--profit" style="--h: 24%; --d: .26s;"></span>
+                            </div>
+                            <span class="bba-exec-month__label">Mar</span>
+                        </div>
+                        <div class="bba-exec-month">
+                            <div class="bba-exec-month__bars">
+                                <span class="bba-exec-bar bba-exec-bar--revenue" style="--h: 76%; --d: .2s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--expense" style="--h: 55%; --d: .26s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--profit" style="--h: 28%; --d: .32s;"></span>
+                            </div>
+                            <span class="bba-exec-month__label">Abr</span>
+                        </div>
+                        <div class="bba-exec-month">
+                            <div class="bba-exec-month__bars">
+                                <span class="bba-exec-bar bba-exec-bar--revenue" style="--h: 82%; --d: .26s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--expense" style="--h: 57%; --d: .32s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--profit" style="--h: 32%; --d: .38s;"></span>
+                            </div>
+                            <span class="bba-exec-month__label">Mai</span>
+                        </div>
+                        <div class="bba-exec-month">
+                            <div class="bba-exec-month__bars">
+                                <span class="bba-exec-bar bba-exec-bar--revenue" style="--h: 88%; --d: .32s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--expense" style="--h: 60%; --d: .38s;"></span>
+                                <span class="bba-exec-bar bba-exec-bar--profit" style="--h: 36%; --d: .44s;"></span>
+                            </div>
+                            <span class="bba-exec-month__label">Jun</span>
+                        </div>
+                    </div>
+
+                    <div class="bba-exec-legend" aria-hidden="true">
+                        <span class="bba-exec-legend__item"><i class="bba-exec-legend__dot" style="--dot: #d4af37;"></i> Receita</span>
+                        <span class="bba-exec-legend__item"><i class="bba-exec-legend__dot" style="--dot: rgba(134,154,174,0.54);"></i> Despesa</span>
+                        <span class="bba-exec-legend__item"><i class="bba-exec-legend__dot" style="--dot: #55d4d6;"></i> Lucro</span>
+                    </div>
+
+                    <div class="bba-exec-dre-insights" aria-label="Leituras executivas do DRE">
+                        <div class="bba-exec-dre-insight" style="--insight-color: #d4af37;">
+                            <strong>+12,4%</strong>
+                            <span>receita mensal vs. mês anterior</span>
+                        </div>
+                        <div class="bba-exec-dre-insight" style="--insight-color: #55d4d6;">
+                            <strong>28%</strong>
+                            <span>margem líquida acompanhada</span>
+                        </div>
+                        <div class="bba-exec-dre-insight" style="--insight-color: #6bc76d;">
+                            <strong>R$ 38k</strong>
+                            <span>economia tributária acumulada</span>
+                        </div>
+                    </div>
+
+                    <div class="bba-exec-command-video" aria-label="Sala de comando financeira BBA">
+                        <video src="media/Video%20Se%C3%A7%C3%A3o%2002.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+                        <div class="bba-exec-command-video__content">
+                            <span class="bba-exec-command-video__kicker">Sala de comando BBA Finance</span>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="bba-exec-side">
+                    <article class="bba-exec-card bba-exec-donut">
+                        <div class="bba-exec-card__top" style="padding: 0;">
+                            <h3 class="bba-exec-card__title">Composição tributária</h3>
+                        </div>
+                        <div class="bba-exec-donut__stage">
+                            <svg class="bba-exec-donut__svg" viewBox="0 0 100 100" aria-hidden="true">
+                                <circle class="bba-exec-donut__track" cx="50" cy="50" r="40"></circle>
+                                <circle class="bba-exec-donut__fill" cx="50" cy="50" r="40"></circle>
+                            </svg>
+                            <div class="bba-exec-donut__label">
+                                <div>
+                                    <strong>18%</strong>
+                                    <span>carga</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bba-exec-tax-list">
+                            <div class="bba-exec-tax-item" style="--tax-color: #d4af37;"><span class="bba-exec-tax-name">IRPJ / CSLL</span><strong>8%</strong></div>
+                            <div class="bba-exec-tax-item" style="--tax-color: #55d4d6;"><span class="bba-exec-tax-name">PIS / COFINS</span><strong>6%</strong></div>
+                            <div class="bba-exec-tax-item" style="--tax-color: #6bc76d;"><span class="bba-exec-tax-name">ISS / ICMS</span><strong>4%</strong></div>
+                            <div class="bba-exec-tax-item" style="--tax-color: rgba(255,255,255,0.38);"><span class="bba-exec-tax-name">Redução vs. regime anterior</span><strong>9pp</strong></div>
+                        </div>
+                    </article>
+
+                    <article class="bba-exec-card bba-exec-score">
+                        <h3 class="bba-exec-card__title">Saúde financeira — Score BBA</h3>
+                        <div class="bba-exec-score__hero">
+                            <strong class="bba-exec-score__number">87</strong>
+                            <div class="bba-exec-score__copy">
+                                <strong>Empresa em zona de comando.</strong>
+                                <span>Conformidade, caixa e margem com leitura suficiente para decidir sem improviso.</span>
+                            </div>
+                        </div>
+                        <div class="bba-exec-score__rows">
+                            <div class="bba-exec-score__row" style="--score-color: #6bc76d;">
+                                <div class="bba-exec-score__meta"><span>Conformidade fiscal</span><strong>96%</strong></div>
+                                <div class="bba-exec-score__track"><span class="bba-exec-score__fill" style="--fill: 96%;"></span></div>
+                            </div>
+                            <div class="bba-exec-score__row" style="--score-color: #d4af37;">
+                                <div class="bba-exec-score__meta"><span>Previsibilidade de caixa</span><strong>81%</strong></div>
+                                <div class="bba-exec-score__track"><span class="bba-exec-score__fill" style="--fill: 81%;"></span></div>
+                            </div>
+                            <div class="bba-exec-score__row" style="--score-color: #55d4d6;">
+                                <div class="bba-exec-score__meta"><span>Otimização tributária</span><strong>74%</strong></div>
+                                <div class="bba-exec-score__track"><span class="bba-exec-score__fill" style="--fill: 74%;"></span></div>
+                            </div>
+                            <div class="bba-exec-score__row" style="--score-color: #ff5a5f;">
+                                <div class="bba-exec-score__meta"><span>Passivo oculto</span><strong>baixo risco</strong></div>
+                                <div class="bba-exec-score__track"><span class="bba-exec-score__fill" style="--fill: 22%;"></span></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="bba-exec-lower">
+                <article class="bba-exec-card bba-exec-activity">
+                    <h3 class="bba-exec-card__title">Alertas e movimentações</h3>
+                    <div class="bba-exec-activity__list">
+                        <div class="bba-exec-activity__item" style="--activity-color: #6bc76d;">
+                            <span class="bba-exec-activity__icon">OK</span>
+                            <span class="bba-exec-activity__text"><strong>DARF competência Jun/25</strong> pago com zero multa e guia conferida.</span>
+                            <span class="bba-exec-activity__time">Hoje 08:14</span>
+                        </div>
+                        <div class="bba-exec-activity__item" style="--activity-color: #d4af37;">
+                            <span class="bba-exec-activity__icon">!</span>
+                            <span class="bba-exec-activity__text"><strong>NF-e #1.843</strong> pendente de conciliação bancária, vencimento em 3 dias.</span>
+                            <span class="bba-exec-activity__time">Ontem</span>
+                        </div>
+                        <div class="bba-exec-activity__item" style="--activity-color: #55d4d6;">
+                            <span class="bba-exec-activity__icon">DRE</span>
+                            <span class="bba-exec-activity__text"><strong>Relatório gerencial</strong> disponível para reunião mensal de decisão.</span>
+                            <span class="bba-exec-activity__time">02 Jun</span>
+                        </div>
+                        <div class="bba-exec-activity__item" style="--activity-color: #6bc76d;">
+                            <span class="bba-exec-activity__icon">OK</span>
+                            <span class="bba-exec-activity__text"><strong>eSocial</strong> enviado sem divergências na competência atual.</span>
+                            <span class="bba-exec-activity__time">31 Mai</span>
+                        </div>
+                        <div class="bba-exec-activity__item" style="--activity-color: #ff5a5f;">
+                            <span class="bba-exec-activity__icon">R</span>
+                            <span class="bba-exec-activity__text"><strong>Passivo potencial</strong> identificado e encaminhado para análise preventiva.</span>
+                            <span class="bba-exec-activity__time">28 Mai</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="bba-exec-card bba-exec-activity">
+                    <h3 class="bba-exec-card__title">Decisões que o painel sustenta</h3>
+                    <div class="bba-exec-activity__list">
+                        <div class="bba-exec-activity__item" style="--activity-color: #d4af37;">
+                            <span class="bba-exec-activity__icon">01</span>
+                            <span class="bba-exec-activity__text"><strong>Contratar agora ou esperar?</strong> Caixa, folha e margem aparecem no mesmo raciocínio.</span>
+                            <span class="bba-exec-activity__time">gestão</span>
+                        </div>
+                        <div class="bba-exec-activity__item" style="--activity-color: #55d4d6;">
+                            <span class="bba-exec-activity__icon">02</span>
+                            <span class="bba-exec-activity__text"><strong>Qual regime tributário faz sentido?</strong> A análise considera operação, faturamento e risco.</span>
+                            <span class="bba-exec-activity__time">fiscal</span>
+                        </div>
+                        <div class="bba-exec-activity__item" style="--activity-color: #6bc76d;">
+                            <span class="bba-exec-activity__icon">03</span>
+                            <span class="bba-exec-activity__text"><strong>Quanto o sócio pode retirar?</strong> Pró-labore, distribuição e caixa deixam de competir.</span>
+                            <span class="bba-exec-activity__time">caixa</span>
+                        </div>
+                        <div class="bba-exec-activity__item" style="--activity-color: #d4af37;">
+                            <span class="bba-exec-activity__icon">04</span>
+                            <span class="bba-exec-activity__text"><strong>Vale financiar crescimento?</strong> O painel mostra capacidade, risco e impacto real.</span>
+                            <span class="bba-exec-activity__time">escala</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="bba-exec-metrics" aria-label="Métricas complementares do painel">
+                <div class="bba-exec-mini" style="--mini-color: #55d4d6;">
+                    <span class="bba-exec-mini__label">Regime tributário</span>
+                    <strong class="bba-exec-mini__value">Lucro Presumido</strong>
+                    <span class="bba-exec-mini__sub">otimizado BBA</span>
+                </div>
+                <div class="bba-exec-mini" style="--mini-color: #6bc76d;">
+                    <span class="bba-exec-mini__label">Obrigações no prazo</span>
+                    <strong class="bba-exec-mini__value">100%</strong>
+                    <span class="bba-exec-mini__sub">sem vencimento perdido</span>
+                </div>
+                <div class="bba-exec-mini" style="--mini-color: #d4af37;">
+                    <span class="bba-exec-mini__label">Economia tributária</span>
+                    <strong class="bba-exec-mini__value">R$ 38k</strong>
+                    <span class="bba-exec-mini__sub">acumulado 2025</span>
+                </div>
+                <div class="bba-exec-mini" style="--mini-color: #ffffff;">
+                    <span class="bba-exec-mini__label">Reuniões executivas</span>
+                    <strong class="bba-exec-mini__value">Mensal</strong>
+                    <span class="bba-exec-mini__sub">com painel vivo</span>
+                </div>
+                <div class="bba-exec-mini" style="--mini-color: #55d4d6;">
+                    <span class="bba-exec-mini__label">Documentos digitais</span>
+                    <strong class="bba-exec-mini__value">100%</strong>
+                    <span class="bba-exec-mini__sub">rastreáveis e organizados</span>
+                </div>
+                <div class="bba-exec-mini" style="--mini-color: #d4af37;">
+                    <span class="bba-exec-mini__label">SLA de resposta</span>
+                    <strong class="bba-exec-mini__value">24h</strong>
+                    <span class="bba-exec-mini__sub">em dias úteis</span>
+                </div>
+            </div>
+
+            <p class="bba-exec-panel__close">
+                <strong>O impacto não está só em ver gráficos bonitos.</strong> Está em transformar números em rotina de gestão: menos susto, mais previsibilidade e decisões financeiras tomadas com evidência.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const counters = document.querySelectorAll(".bba-exec-panel [data-bba-count]");
+            if (!counters.length) return;
+
+            const formatNumber = (value) => Math.round(value).toLocaleString("pt-BR");
+
+            const animateCounter = (el) => {
+                const target = Number(el.dataset.bbaCount || 0);
+                const prefix = el.dataset.prefix || "";
+                const suffix = el.dataset.suffix || "";
+                const duration = 1400;
+                const startTime = performance.now();
+
+                const tick = (now) => {
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = `${prefix}${formatNumber(target * eased)}${suffix}`;
+                    if (progress < 1) requestAnimationFrame(tick);
+                };
+
+                requestAnimationFrame(tick);
+            };
+
+            const panel = document.querySelector(".bba-exec-panel");
+
+            if (!("IntersectionObserver" in window)) {
+                if (panel) panel.classList.add("is-visible");
+                counters.forEach(animateCounter);
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const panel = entry.target;
+                    panel.classList.add("is-visible");
+                    panel.querySelectorAll("[data-bba-count]").forEach((counter) => {
+                        if (counter.dataset.counted === "true") return;
+                        counter.dataset.counted = "true";
+                        animateCounter(counter);
+                    });
+                    observer.unobserve(panel);
+                });
+            }, { threshold: 0.28 });
+
+            if (panel) observer.observe(panel);
+        });
+    </script>
+
+    <style>
+        .bba-finance-method {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 116px 24px 124px;
+            color: #07162b;
+            background: linear-gradient(180deg, #f7f4ed 0%, #ebe5d9 100%);
+            border-top: 1px solid rgba(7,22,43,0.08);
+            border-bottom: 1px solid rgba(7,22,43,0.10);
+        }
+
+        .bba-finance-method::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(90deg, rgba(7,22,43,0.045) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(7,22,43,0.04) 1px, transparent 1px);
+            background-size: 74px 74px;
+            mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+        }
+
+        .bba-finance-method::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 18% 18%, rgba(212,175,55,0.18), transparent 28%),
+                radial-gradient(circle at 88% 72%, rgba(61,198,184,0.14), transparent 30%),
+                linear-gradient(90deg, rgba(247,244,237,0.82), rgba(247,244,237,0.2) 48%, rgba(247,244,237,0.82));
+            pointer-events: none;
+        }
+
+        .bba-finance-method__shell {
+            width: min(1180px, 100%);
+            margin: 0 auto;
+        }
+
+        .bba-finance-method__head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+            gap: 54px;
+            align-items: end;
+            margin-bottom: 62px;
+        }
+
+        .bba-finance-method__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            color: #b48a31;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-method__eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: linear-gradient(90deg, #b48a31, #3aaea6);
+        }
+
+        .bba-finance-method__title {
+            max-width: 760px;
+            margin: 0;
+            color: #07162b;
+            font-size: clamp(42px, 5.2vw, 72px);
+            font-weight: 520;
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+        }
+
+        .bba-finance-method__title span {
+            color: #b48a31;
+        }
+
+        .bba-finance-method__lead {
+            max-width: 680px;
+            margin: 24px 0 0;
+            color: rgba(7,22,43,0.66);
+            font-size: 18px;
+            line-height: 1.62;
+        }
+
+        .bba-finance-method__brief {
+            position: relative;
+            padding: 24px;
+            border: 1px solid rgba(7,22,43,0.12);
+            background: linear-gradient(145deg, rgba(255,255,255,0.84), rgba(255,255,255,0.44));
+            box-shadow: 0 26px 70px rgba(7,22,43,0.10), inset 0 1px 0 rgba(255,255,255,0.76);
+            overflow: hidden;
+        }
+
+        .bba-finance-method__brief::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-top: 2px solid rgba(180,138,49,0.72);
+            transform-origin: left;
+            animation: bbaMethodLinePulse 4.8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .bba-finance-method__brief-kicker {
+            display: block;
+            color: rgba(7,22,43,0.46);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-method__brief-title {
+            display: block;
+            margin-top: 12px;
+            color: #07162b;
+            font-size: 24px;
+            font-weight: 760;
+            line-height: 1.12;
+        }
+
+        .bba-finance-method__brief-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .bba-finance-method__brief-item {
+            min-height: 82px;
+            padding: 13px;
+            border: 1px solid rgba(7,22,43,0.10);
+            background: rgba(255,255,255,0.48);
+        }
+
+        .bba-finance-method__brief-item strong {
+            display: block;
+            color: var(--method-color);
+            font-size: 23px;
+            line-height: 1;
+        }
+
+        .bba-finance-method__brief-item span {
+            display: block;
+            margin-top: 9px;
+            color: rgba(7,22,43,0.54);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.10em;
+            line-height: 1.25;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-method__path {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .bba-finance-method__path::before,
+        .bba-finance-method__path::after {
+            content: "";
+            position: absolute;
+            top: 42px;
+            left: 7%;
+            right: 7%;
+            height: 2px;
+            pointer-events: none;
+        }
+
+        .bba-finance-method__path::before {
+            background: rgba(7,22,43,0.11);
+        }
+
+        .bba-finance-method__path::after {
+            background: linear-gradient(90deg, #b48a31, #3aaea6, #b48a31);
+            transform-origin: left;
+            animation: bbaMethodFlow 5.2s ease-in-out infinite;
+        }
+
+        .bba-finance-method__step {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            align-content: start;
+            min-height: 430px;
+            padding: 26px;
+            border: 1px solid rgba(7,22,43,0.12);
+            background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.46));
+            box-shadow: 0 24px 66px rgba(7,22,43,0.08), inset 0 1px 0 rgba(255,255,255,0.72);
+            transition: transform .45s ease, border-color .45s ease, box-shadow .45s ease;
+            overflow: hidden;
+        }
+
+        .bba-finance-method__step::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent, rgba(180,138,49,0.10), transparent);
+            transform: translateX(-120%);
+            animation: bbaMethodSweep 7s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+            pointer-events: none;
+        }
+
+        .bba-finance-method__step:hover {
+            transform: translateY(-8px);
+            border-color: rgba(180,138,49,0.30);
+            box-shadow: 0 30px 82px rgba(7,22,43,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .bba-finance-method__node {
+            display: grid;
+            place-items: center;
+            width: 56px;
+            height: 56px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(180,138,49,0.34);
+            border-radius: 50%;
+            color: #07162b;
+            background: radial-gradient(circle at 50% 50%, rgba(180,138,49,0.22), rgba(255,255,255,0.78));
+            box-shadow: 0 0 0 0 rgba(180,138,49,0.22);
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0.10em;
+            animation: bbaMethodNodePulse 3.2s ease-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        .bba-finance-method__step h3 {
+            margin: 0;
+            color: #07162b;
+            font-size: 23px;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+        }
+
+        .bba-finance-method__step p {
+            margin: 16px 0 0;
+            color: rgba(7,22,43,0.62);
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .bba-finance-method__deliverable {
+            align-self: end;
+            margin-top: 24px;
+            padding: 16px;
+            border: 1px solid rgba(180,138,49,0.20);
+            background:
+                linear-gradient(135deg, rgba(180,138,49,0.10), rgba(58,174,166,0.08)),
+                rgba(255,255,255,0.48);
+        }
+
+        .bba-finance-method__deliverable strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #b48a31;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .bba-finance-method__deliverable span {
+            color: rgba(7,22,43,0.70);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .bba-finance-method__foot {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 24px;
+            align-items: center;
+            margin-top: 34px;
+            padding: 22px 24px;
+            border: 1px solid rgba(7,22,43,0.10);
+            background: rgba(255,255,255,0.54);
+            color: rgba(7,22,43,0.68);
+            box-shadow: 0 18px 54px rgba(7,22,43,0.07);
+        }
+
+        .bba-finance-method__foot strong {
+            color: #07162b;
+        }
+
+        .bba-finance-method__foot-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 40px;
+            padding: 0 16px;
+            border: 1px solid rgba(58,174,166,0.28);
+            color: #0f827b;
+            background: rgba(58,174,166,0.08);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .bba-finance-method__foot-badge::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3aaea6;
+            box-shadow: 0 0 0 0 rgba(58,174,166,0.42);
+            animation: bbaMethodNodePulse 2.4s ease-out infinite;
+        }
+
+        @keyframes bbaMethodFlow {
+            0%, 100% { transform: scaleX(.18); opacity: .55; }
+            50% { transform: scaleX(1); opacity: 1; }
+        }
+
+        @keyframes bbaMethodSweep {
+            0%, 52% { transform: translateX(-120%); opacity: 0; }
+            64% { opacity: 1; }
+            88%, 100% { transform: translateX(120%); opacity: 0; }
+        }
+
+        @keyframes bbaMethodNodePulse {
+            0% { box-shadow: 0 0 0 0 rgba(180,138,49,0.28); }
+            70% { box-shadow: 0 0 0 13px rgba(180,138,49,0); }
+            100% { box-shadow: 0 0 0 0 rgba(180,138,49,0); }
+        }
+
+        @keyframes bbaMethodLinePulse {
+            0%, 100% { transform: scaleX(.26); opacity: .55; }
+            50% { transform: scaleX(1); opacity: 1; }
+        }
+
+        @media (max-width: 1020px) {
+            .bba-finance-method__head {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-finance-method__path {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .bba-finance-method__path::before,
+            .bba-finance-method__path::after {
+                display: none;
+            }
+
+            .bba-finance-method__step {
+                min-height: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .bba-finance-method {
+                padding: 78px 18px 86px;
+            }
+
+            .bba-finance-method__path,
+            .bba-finance-method__brief-grid,
+            .bba-finance-method__foot {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-finance-method__step {
+                padding: 22px;
+            }
+
+            .bba-finance-method__foot-badge {
+                justify-self: start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bba-finance-method *,
+            .bba-finance-method::before,
+            .bba-finance-method::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+
+    <section class="bba-finance-method" id="metodo-bba-finance" aria-label="Como a BBA Finance trabalha">
+        <div class="bba-finance-method__shell">
+            <div class="bba-finance-method__head">
+                <div>
+                    <span class="bba-finance-method__eyebrow">Como trabalhamos</span>
+                    <h2 class="bba-finance-method__title">Do diagnóstico à <span>operação estruturada.</span></h2>
+                    <p class="bba-finance-method__lead">
+                        Depois que os números aparecem no painel, a BBA transforma diagnóstico em rotina: prioridades claras, processos financeiros, obrigações em dia e acompanhamento mensal sem consultoria infinita.
+                    </p>
+                </div>
+
+                <aside class="bba-finance-method__brief" aria-label="Resumo do método BBA Finance">
+                    <span class="bba-finance-method__brief-kicker">Roteiro de implantação</span>
+                    <strong class="bba-finance-method__brief-title">Cada etapa termina com entregável, decisão e próximo passo.</strong>
+                    <div class="bba-finance-method__brief-grid">
+                        <div class="bba-finance-method__brief-item" style="--method-color: #b48a31;">
+                            <strong>04</strong>
+                            <span>fases objetivas</span>
+                        </div>
+                        <div class="bba-finance-method__brief-item" style="--method-color: #3aaea6;">
+                            <strong>01</strong>
+                            <span>painel central</span>
+                        </div>
+                        <div class="bba-finance-method__brief-item" style="--method-color: #07162b;">
+                            <strong>30d</strong>
+                            <span>primeira cadência</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="bba-finance-method__path">
+                <article class="bba-finance-method__step" style="--delay: 0s;">
+                    <span class="bba-finance-method__node">01</span>
+                    <h3>Diagnóstico</h3>
+                    <p>Mapeamos impostos, fluxo de caixa, obrigações, documentos e pontos cegos que drenam tempo e dinheiro da operação.</p>
+                    <div class="bba-finance-method__deliverable">
+                        <strong>Entregável</strong>
+                        <span>Relatório executivo com prioridades classificadas por impacto e urgência financeira.</span>
+                    </div>
+                </article>
+
+                <article class="bba-finance-method__step" style="--delay: .22s;">
+                    <span class="bba-finance-method__node">02</span>
+                    <h3>Estruturação</h3>
+                    <p>Definimos regime tributário, processos contábeis, rotinas financeiras e painel de indicadores antes de implantar qualquer ferramenta.</p>
+                    <div class="bba-finance-method__deliverable">
+                        <strong>Entregável</strong>
+                        <span>Modelo financeiro validado com o sócio: DRE, fluxo de caixa e estrutura tributária.</span>
+                    </div>
+                </article>
+
+                <article class="bba-finance-method__step" style="--delay: .44s;">
+                    <span class="bba-finance-method__node">03</span>
+                    <h3>Implantação</h3>
+                    <p>Executamos em ciclos curtos: obrigações em dia, guias emitidas, folha organizada e painel funcionando com dados reais.</p>
+                    <div class="bba-finance-method__deliverable">
+                        <strong>Entregável</strong>
+                        <span>Operação contábil e fiscal rodando com indicadores ativos e documentação organizada.</span>
+                    </div>
+                </article>
+
+                <article class="bba-finance-method__step" style="--delay: .66s;">
+                    <span class="bba-finance-method__node">04</span>
+                    <h3>Acompanhamento</h3>
+                    <p>Reunião mensal com painel vivo, revisão tributária periódica e atuação preventiva. A empresa evolui, e a estrutura acompanha.</p>
+                    <div class="bba-finance-method__deliverable">
+                        <strong>Entregável</strong>
+                        <span>Revisão mensal de DRE, caixa, obrigações e oportunidades de otimização tributária.</span>
+                    </div>
+                </article>
+            </div>
+
+            <div class="bba-finance-method__foot">
+                <p><strong>O método existe para tirar o dono do improviso.</strong> A BBA não entrega apenas recomendação: organiza a operação financeira para que o painel, os impostos e as decisões caminhem juntos.</p>
+                <span class="bba-finance-method__foot-badge">implantação acompanhada</span>
+            </div>
+        </div>
+    </section>
+
+    
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -5654,111 +8922,7 @@
             goToSlide(0);
         });
     </script>
-    <!-- ================================
-     SECTION: BBA CORE CONTROL ROOM
-     ================================ -->
-    <style>
-        @media(max-width: 900px) {
-            .cr-media-col { grid-column: span 12 !important; min-height: 400px !important; order: -1; margin-bottom: 40px; padding: 0 !important; }
-            .cr-text-col { grid-column: span 12 !important; padding-left: 0 !important; }
-            .cr-cards-grid { grid-template-columns: 1fr !important; }
-        }
-
-        .cr-card-premium {
-            border-radius: 12px; 
-            padding: 24px; 
-            box-shadow: 0 16px 32px rgba(0, 58, 112, 0.15), 0 0 0 1px rgba(212, 175, 55, 0.2), inset 0 0 0 rgba(212, 175, 55, 0);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            /* Modern Independent Transforms */
-            translate: 0 0px;
-            scale: 1;
-            /* Continuous floating animation */
-            animation: crCardFloat 6s ease-in-out infinite;
-            /* Smooth transitions for hover */
-            transition: scale 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .cr-card-premium.cr-card-2 {
-            animation-delay: -3s;
-        }
-
-        @keyframes crCardFloat {
-            0%, 100% { translate: 0 0px; box-shadow: 0 16px 32px rgba(0, 58, 112, 0.15), 0 0 0 1px rgba(212, 175, 55, 0.2), inset 0 0 0 rgba(212, 175, 55, 0); }
-            50% { translate: 0 -12px; box-shadow: 0 24px 48px rgba(0, 58, 112, 0.25), 0 0 24px rgba(212, 175, 55, 0.15), inset 0 0 16px rgba(212, 175, 55, 0.08); }
-        }
-
-        /* Inner sweep animation - always running to give a "living" tech feel */
-        .cr-card-premium::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), rgba(255, 255, 255, 0.25), rgba(212, 175, 55, 0.1), transparent);
-            transform: skewX(-20deg);
-            z-index: -1;
-            pointer-events: none;
-            animation: crSheenSweep 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
-
-        .cr-card-premium.cr-card-2::before {
-            animation-delay: -2.5s;
-        }
-
-        @keyframes crSheenSweep {
-            0% { left: -100%; opacity: 0; }
-            10% { opacity: 1; }
-            50% { left: 200%; opacity: 0; }
-            100% { left: 200%; opacity: 0; }
-        }
-
-        /* Hover effect amplifies the life of the card */
-        .cr-card-premium:hover {
-            scale: 1.04;
-            /* Stronger glowing border on hover */
-            box-shadow: 0 32px 64px rgba(0, 58, 112, 0.4), 0 0 40px rgba(212, 175, 55, 0.35), inset 0 0 24px rgba(212, 175, 55, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.8) !important;
-        }
-
-        /* Dynamic background orb inside the card */
-        .cr-card-premium::after {
-            content: '';
-            position: absolute;
-            width: 150px; height: 150px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -2;
-            top: -50px; left: -50px;
-            pointer-events: none;
-            animation: crOrbMove 8s ease-in-out infinite alternate;
-        }
-
-        .cr-card-premium.cr-card-2::after {
-            background: radial-gradient(circle, rgba(0, 163, 255, 0.25) 0%, transparent 70%);
-            animation-delay: -4s;
-            animation-duration: 10s;
-        }
-
-        @keyframes crOrbMove {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(150px, 100px) scale(1.5); }
-        }
-
-        /* Ensure content stays above effects */
-        .cr-card-premium > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Specific Backgrounds */
-        .cr-card-1 {
-            background: linear-gradient(135deg, #003A70 0%, #001A33 100%);
-        }
-        
-        .cr-card-2 {
-            background: linear-gradient(135deg, #004D99 0%, #002B5E 100%);
-        }
-    </style>
-    <!-- END SECTION: BBA CORE CONTROL ROOM -->
+    
 
     <!-- PREMIUM SECTION TRANSITION -->
     <div style="width: 100%; height: 1px; background: linear-gradient(90deg, rgba(212,175,55,0.1), rgba(212,175,55,0.8), rgba(212,175,55,0.1)); position: relative; z-index: 10;"></div>
@@ -6209,7 +9373,7 @@
         }
     </style>
 
-    <section class="bba-premium-bento-section">
+    <section class="bba-premium-bento-section" hidden aria-hidden="true" style="display: none;">
         <div class="bba-bento-container">
             
             <div class="bba-bento-header">
@@ -6280,561 +9444,12 @@
 
         </div>
     </section>
-\n
-    <!-- 3. PODCASTS (PREMIUM REDESIGN) -->
-    <style>
-        .bba-insights-section {
-            background: linear-gradient(180deg, #001A33 0%, #002B5E 100%);
-            position: relative;
-            overflow: hidden;
-            padding: 120px 6%;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .bba-insights-section::before {
-            content: '';
-            position: absolute;
-            top: -20%; left: -10%; width: 50%; height: 50%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .bba-insights-section::after {
-            content: '';
-            position: absolute;
-            bottom: -20%; right: -10%; width: 60%; height: 60%;
-            background: radial-gradient(circle, rgba(0, 163, 255, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .bba-insights-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            margin-top: 64px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .bba-podcast-card-premium {
-            display: flex;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 28px;
-            gap: 40px;
-            align-items: center;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bba-podcast-card-premium::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--bba-gold, #D4AF37);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .bba-podcast-card-premium:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(212, 175, 55, 0.2);
-            transform: translateY(-6px);
-            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 58, 112, 0.5);
-        }
-
-        .bba-podcast-card-premium:hover::before {
-            opacity: 1;
-        }
-
-        .bba-pd-premium-thumb {
-            width: 220px;
-            height: 220px;
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
-            flex-shrink: 0;
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
-            background: #000;
-        }
-
-        .bba-pd-premium-thumb img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
-            filter: brightness(0.8) contrast(1.1);
-        }
-
-        .bba-podcast-card-premium:hover .bba-pd-premium-thumb img {
-            transform: scale(1.08);
-            filter: brightness(0.5) contrast(1.1);
-        }
-
-        .bba-pd-play-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1; /* Always visible as requested */
-            z-index: 2;
-        }
-
-        .bba-pd-play-btn-large {
-            width: 72px; height: 72px;
-            background: rgba(212, 175, 55, 0.95);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff;
-            transform: scale(0.9);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
-            /* Premium subtle pulse */
-            animation: bbaPlayPulse 3s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes bbaPlayPulse {
-            0% { box-shadow: 0 4px 16px rgba(212, 175, 55, 0.2); transform: scale(0.9); }
-            100% { box-shadow: 0 12px 32px rgba(212, 175, 55, 0.6); transform: scale(0.95); }
-        }
-
-        .bba-podcast-card-premium:hover .bba-pd-play-btn-large {
-            transform: scale(1.05);
-            background: rgba(212, 175, 55, 1);
-            animation: none; /* Stop pulse on hover to keep static glow */
-            box-shadow: 0 16px 40px rgba(212, 175, 55, 0.7);
-        }
-
-        .bba-pd-premium-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-right: 24px;
-        }
-
-        .bba-pd-premium-meta {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 16px;
-        }
-
-        .bba-pd-premium-category {
-            font-family: var(--font-sans);
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #D4AF37;
-            padding: 4px 12px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 100px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .bba-pd-premium-duration {
-            font-family: var(--font-sans);
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.6);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .bba-pd-premium-title {
-            font-family: var(--font-primary);
-            font-size: 32px;
-            color: #ffffff;
-            margin: 0 0 16px 0;
-            line-height: 1.2;
-            transition: color 0.3s ease;
-        }
-
-        .bba-podcast-card-premium:hover .bba-pd-premium-title {
-            color: #FFF2A8;
-        }
-
-        .bba-pd-premium-desc {
-            font-family: var(--font-sans);
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-            margin: 0 0 32px 0;
-            max-width: 95%;
-        }
-
-        .bba-waveform {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            height: 24px;
-            opacity: 0.4;
-            transition: opacity 0.4s ease;
-        }
-        .bba-waveform span {
-            display: block;
-            width: 3px;
-            background: #D4AF37;
-            border-radius: 2px;
-            animation: waveAnim 1.2s ease-in-out infinite alternate;
-            transform-origin: bottom;
-        }
-        .bba-waveform span:nth-child(1) { height: 40%; animation-delay: 0.0s; }
-        .bba-waveform span:nth-child(2) { height: 80%; animation-delay: 0.1s; }
-        .bba-waveform span:nth-child(3) { height: 60%; animation-delay: 0.2s; }
-        .bba-waveform span:nth-child(4) { height: 100%; animation-delay: 0.3s; }
-        .bba-waveform span:nth-child(5) { height: 50%; animation-delay: 0.4s; }
-        .bba-waveform span:nth-child(6) { height: 75%; animation-delay: 0.5s; }
-        .bba-waveform span:nth-child(7) { height: 30%; animation-delay: 0.6s; }
-
-        @keyframes waveAnim {
-            0% { transform: scaleY(0.4); }
-            100% { transform: scaleY(1); }
-        }
-
-        .bba-podcast-card-premium:hover .bba-waveform {
-            opacity: 1;
-        }
-
-        .bba-pd-premium-actions {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 20px;
-        }
-
-        .bba-listen-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #fff;
-            font-family: var(--font-sans);
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .bba-listen-btn svg {
-            transition: transform 0.3s ease;
-        }
-
-        .bba-listen-btn:hover {
-            color: #D4AF37;
-        }
-        .bba-listen-btn:hover svg {
-            transform: translateX(4px);
-        }
-
-        @media(max-width: 768px) {
-            .bba-podcast-card-premium {
-                flex-direction: column;
-                text-align: center;
-                padding: 32px 24px;
-                gap: 24px;
-            }
-            .bba-pd-premium-thumb {
-                width: 100%;
-                max-width: 280px;
-                height: 280px;
-            }
-            .bba-pd-premium-meta {
-                justify-content: center;
-            }
-            .bba-pd-premium-desc {
-                max-width: 100%;
-            }
-            .bba-pd-premium-actions {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .bba-pd-premium-content {
-                padding-right: 0;
-            }
-        }
-    </style>
-
-    <section class="bba-insights-section" id="podcasts">
-        <div class="bba-container">
-    <style>
-        .bba-globe-visual {
-            position: relative;
-            width: 100%;
-            height: 420px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .bba-globe-float {
-            animation: floatGlobe 10s ease-in-out infinite alternate;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            position: relative;
-            isolation: isolate;
-        }
-
-        @keyframes floatGlobe {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-15px); }
-        }
-
-        .bba-globe-video-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 420px;
-            aspect-ratio: 1 / 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            mix-blend-mode: screen;
-            z-index: 2;
-            -webkit-mask-image: radial-gradient(circle at center, black 54%, rgba(0, 0, 0, 0.72) 63%, transparent 74%);
-            mask-image: radial-gradient(circle at center, black 54%, rgba(0, 0, 0, 0.72) 63%, transparent 74%);
-            filter: drop-shadow(0 18px 34px rgba(212, 175, 55, 0.16));
-        }
-
-        .bba-globe-video-wrapper video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: contrast(1.18) brightness(1.03) saturate(1.06);
-            border-radius: 50%;
-        }
-
-        .bba-globe-glow-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 320px;
-            height: 320px;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background:
-                radial-gradient(circle, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.10) 38%, transparent 70%),
-                radial-gradient(circle, rgba(255, 245, 205, 0.10) 0%, transparent 48%);
-            pointer-events: none;
-            z-index: 1;
-            animation: pulseGlow 7s ease-in-out infinite alternate;
-        }
-
-        .bba-globe-float::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 18px;
-            width: min(62%, 260px);
-            height: 42px;
-            transform: translateX(-50%);
-            border-radius: 50%;
-            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.08) 44%, transparent 72%);
-            filter: blur(8px);
-            opacity: 0.72;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes pulseGlow {
-            0% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.95); }
-            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        }
-
-        @media(max-width: 900px) {
-            .bba-insights-header-grid { grid-template-columns: 1fr !important; gap: 32px !important; text-align: center !important; }
-            .bba-insights-header-grid .text-left { text-align: center !important; margin: 0 auto; }
-            .bba-globe-visual { display: none; }
-        }
-    </style>
-
-            <div class="bba-insights-header-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 2;">
-                <div class="text-left" style="text-align: left;">
-                    <div style="font-family: var(--font-primary); font-size: clamp(48px, 6vw, 80px); color: #D4AF37; line-height: 1; margin-bottom: 24px; font-weight: 400; letter-spacing: -0.02em;">BBA INSIGHTS SHOW</div>
-                    <h2 class="bba-section-title" style="color: #ffffff; font-size: clamp(32px, 4vw, 40px); margin-bottom: 24px; text-align: left;">Análises e Casos Executivos</h2>
-                    <p class="body-lg-regular" style="color: rgba(255,255,255,0.7); max-width: 500px; margin: 0; text-align: left;">
-                        Acompanhe as teses, táticas e debates do conselho BBA e especialistas convidados sobre como destravar valor na sua operação.
-                    </p>
-                </div>
-                
-                <!-- High-End 3D Holographic Video Visual -->
-                <div class="bba-globe-visual">
-                    <div class="bba-globe-float">
-                        <div class="bba-globe-glow-bg"></div>
-                        <div class="bba-globe-video-wrapper" id="bbaGlobeWrapper">
-                            <video id="bbaGlobeVid1" src="BBA%20Globe%20section%2004.mp4" autoplay loop muted playsinline></video>
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                        const globeVideo = document.getElementById("bbaGlobeVid1");
-                        if (!globeVideo) return;
-
-                        globeVideo.playbackRate = 0.55;
-                        globeVideo.play().catch(() => {});
-                    });
-                </script>
-            </div>
-
-            <div class="bba-insights-grid">
-                
-                <!-- Podcast 1 -->
-                <article class="bba-podcast-card-premium">
-                    <div class="bba-pd-premium-thumb">
-                        <img src="media/Imagem%2001%20-%20se%C3%A7%C3%A3o%2004.png" alt="Podcast Tax Planning" style="position:absolute; inset:0; width: 100%; height: 100%; object-fit: cover; object-position: center; image-rendering: auto; z-index: 0;">
-                        <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(0, 18, 36, 0.16) 0%, rgba(0, 18, 36, 0.42) 100%), radial-gradient(circle, transparent 45%, rgba(0,26,51,0.58) 150%); z-index: 1;"></div>
-                        <div class="bba-pd-play-overlay">
-                            <button class="bba-pd-play-btn-large">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 4px;">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="bba-pd-premium-content">
-                        <div class="bba-pd-premium-meta">
-                            <span class="bba-pd-premium-category">Planejamento Tributário</span>
-                            <span class="bba-pd-premium-duration">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                44:12
-                            </span>
-                        </div>
-                        
-                        <h3 class="bba-pd-premium-title">Sobrevivendo ao Custo Brasil de Forma Limpa</h3>
-                        <p class="bba-pd-premium-desc">No Episódio 18, abordamos como o BBA Core reorganiza o passivo fiscal e enxuga o eSocial de corporações familiares do setor de tecnologia industrial sem recorrer a medidas com alto risco em CARF.</p>
-                        
-                        <div class="bba-pd-premium-actions">
-                            <a href="#" class="bba-listen-btn">
-                                Ouvir Episódio
-                                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                            </a>
-                            <div class="bba-waveform">
-                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Podcast 2 -->
-                <article class="bba-podcast-card-premium">
-                    <div class="bba-pd-premium-thumb">
-                        <img src="media/Imagem%2002%20-%20Se%C3%A7%C3%A3o%2004.png" alt="Podcast M&A Equity" style="position:absolute; inset:0; width: 100%; height: 100%; object-fit: cover; object-position: center; image-rendering: auto; z-index: 0;">
-                        <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(0, 18, 36, 0.16) 0%, rgba(0, 18, 36, 0.42) 100%), radial-gradient(circle, transparent 45%, rgba(0,26,51,0.58) 150%); z-index: 1;"></div>
-                        <div class="bba-pd-play-overlay">
-                            <button class="bba-pd-play-btn-large">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 4px;">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="bba-pd-premium-content">
-                        <div class="bba-pd-premium-meta">
-                            <span class="bba-pd-premium-category">Gestão & Equity</span>
-                            <span class="bba-pd-premium-duration">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                38:15
-                            </span>
-                        </div>
-                        
-                        <h3 class="bba-pd-premium-title">Blindando a Apuração: Como atrair fundos e private equity</h3>
-                        <p class="bba-pd-premium-desc">Dissecamos os casos em que a fragilidade de dados contábeis destruiu captações (Deal Breakers). Ouça os debates liderados pelo conselho consultivo da BBA e diretores de M&A parceiros.</p>
-                        
-                        <div class="bba-pd-premium-actions">
-                            <a href="#" class="bba-listen-btn">
-                                Ouvir Episódio
-                                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                            </a>
-                            <div class="bba-waveform">
-                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
 
     
 
-        <!-- NOVO: BBA INFINITE Ticker / Letreiro -->
-    <style>
-        .bba-ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background: #000814;
-            border-top: 1px solid rgba(212,175,55,0.2);
-            border-bottom: 1px solid rgba(212,175,55,0.2);
-            padding: 24px 0;
-            display: flex;
-            align-items: center;
-        }
+    
 
-        .bba-ticker {
-            display: inline-block;
-            white-space: nowrap;
-            animation: bba-ticker-anim 40s linear infinite;
-        }
-
-        .bba-ticker-item {
-            display: inline-block;
-            font-family: var(--font-sans);
-            font-size: 14px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #ffffff;
-            margin-right: 48px;
-            display: inline-flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .bba-ticker-item span {
-            color: #D4AF37;
-        }
-
-        @keyframes bba-ticker-anim {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-    </style>
-
-    <div class="bba-ticker-wrap">
-        <div class="bba-ticker">
-            <!-- First half -->
-            <div class="bba-ticker-item"><span>//</span> INTELIGÊNCIA TRIBUTÁRIA</div>
-            <div class="bba-ticker-item"><span>//</span> FINANÇAS CORPORATIVAS</div>
-            <div class="bba-ticker-item"><span>//</span> M&A E EQUITY</div>
-            <div class="bba-ticker-item"><span>//</span> GOVERNANÇA EXECUTIVA</div>
-            <div class="bba-ticker-item"><span>//</span> TECNOLOGIA APLICADA</div>
-            <div class="bba-ticker-item"><span>//</span> CULTURA E RH</div>
-            <div class="bba-ticker-item"><span>//</span> CONTROLE DE RISCOS</div>
-            <div class="bba-ticker-item"><span>//</span> AUDITORIA PREVENTIVA</div>
-            <!-- Duplicated for seamless loop -->
-            <div class="bba-ticker-item"><span>//</span> INTELIGÊNCIA TRIBUTÁRIA</div>
-            <div class="bba-ticker-item"><span>//</span> FINANÇAS CORPORATIVAS</div>
-            <div class="bba-ticker-item"><span>//</span> M&A E EQUITY</div>
-            <div class="bba-ticker-item"><span>//</span> GOVERNANÇA EXECUTIVA</div>
-            <div class="bba-ticker-item"><span>//</span> TECNOLOGIA APLICADA</div>
-            <div class="bba-ticker-item"><span>//</span> CULTURA E RH</div>
-            <div class="bba-ticker-item"><span>//</span> CONTROLE DE RISCOS</div>
-            <div class="bba-ticker-item"><span>//</span> AUDITORIA PREVENTIVA</div>
-        </div>
-    </div>
+    
 
     <!-- CONSOLIDATED FINAL CTA BLOCK -->
     <style>
@@ -7512,7 +10127,7 @@
         }
     </style>
 
-    <section class="bba-section05" id="diagnostico">
+    <section class="bba-section05" id="diagnostico-old" hidden aria-hidden="true" style="display: none;">
         <div class="bba-section05-shell">
             <div class="bba-section05-hero">
                 <div class="bba-section05-copy">
@@ -7527,7 +10142,7 @@
                             Solicitar diagnóstico executivo
                             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
-                        <a href="#como-funciona" class="bba-section05-secondary">
+                        <a href="#metodo-bba-finance" class="bba-section05-secondary">
                             Entender a metodologia
                         </a>
                     </div>
@@ -7599,6 +10214,612 @@
         </div>
     </section>
 
+    <!-- FINAL CTA: EXECUTIVE CONVERSION -->
+    <style>
+        .bba-final-cta {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            min-height: 100vh;
+            padding: clamp(92px, 9vw, 138px) 6% 48px;
+            color: #ffffff;
+            background:
+                radial-gradient(circle at 13% 20%, rgba(212, 175, 55, 0.18), transparent 28%),
+                radial-gradient(circle at 84% 18%, rgba(67, 213, 205, 0.14), transparent 28%),
+                linear-gradient(180deg, #07111f 0%, #04101d 56%, #030914 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.16);
+        }
+
+        .bba-final-cta::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 88px 88px;
+            mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 88%, transparent 100%);
+        }
+
+        .bba-final-cta::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                linear-gradient(90deg, rgba(3, 9, 20, 0.82) 0%, rgba(3, 9, 20, 0.26) 48%, rgba(3, 9, 20, 0.88) 100%),
+                radial-gradient(circle at 50% 110%, rgba(0, 0, 0, 0.72), transparent 44%);
+        }
+
+        .bba-final-cta__shell {
+            width: min(1240px, 100%);
+            margin: 0 auto;
+        }
+
+        .bba-final-cta__main {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(360px, 470px);
+            gap: clamp(42px, 6vw, 86px);
+            align-items: center;
+        }
+
+        .bba-final-cta__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            color: #d4af37;
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .bba-final-cta__eyebrow::before {
+            content: "";
+            width: 42px;
+            height: 1px;
+            background: linear-gradient(90deg, #d4af37, #43d5cd);
+        }
+
+        .bba-final-cta__title {
+            max-width: 860px;
+            margin: 0;
+            font-family: var(--font-primary, Georgia, serif);
+            font-size: clamp(46px, 6.2vw, 86px);
+            font-weight: 520;
+            line-height: 0.96;
+            letter-spacing: -0.035em;
+            color: #ffffff;
+        }
+
+        .bba-final-cta__title span {
+            color: #d4af37;
+        }
+
+        .bba-final-cta__lead {
+            max-width: 690px;
+            margin: 26px 0 0;
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: clamp(17px, 1.4vw, 20px);
+            line-height: 1.68;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .bba-final-cta__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 38px;
+        }
+
+        .bba-final-cta__primary,
+        .bba-final-cta__secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 58px;
+            padding: 0 24px;
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+        }
+
+        .bba-final-cta__primary {
+            color: #06111f;
+            background: linear-gradient(135deg, #f0d56b 0%, #d4af37 58%, #b8892e 100%);
+            box-shadow: 0 24px 62px rgba(212, 175, 55, 0.26);
+        }
+
+        .bba-final-cta__secondary {
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.045);
+        }
+
+        .bba-final-cta__primary:hover,
+        .bba-final-cta__secondary:hover {
+            transform: translateY(-4px);
+        }
+
+        .bba-final-cta__primary:hover {
+            box-shadow: 0 32px 74px rgba(212, 175, 55, 0.34);
+        }
+
+        .bba-final-cta__secondary:hover {
+            border-color: rgba(67, 213, 205, 0.56);
+            background: rgba(67, 213, 205, 0.08);
+        }
+
+        .bba-final-cta__note {
+            margin: 18px 0 0;
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: 13px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.52);
+        }
+
+        .bba-final-panel {
+            position: relative;
+            overflow: hidden;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035)),
+                rgba(4, 16, 29, 0.82);
+            box-shadow: 0 40px 110px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.13);
+        }
+
+        .bba-final-panel::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, #43d5cd, #d4af37);
+            transform-origin: left;
+            animation: bbaFinalLine 4.8s ease-in-out infinite;
+        }
+
+        .bba-final-panel::after {
+            content: "";
+            position: absolute;
+            inset: -30% -20%;
+            background: linear-gradient(105deg, transparent 28%, rgba(255, 255, 255, 0.11) 48%, transparent 68%);
+            transform: translateX(-70%);
+            animation: bbaFinalScan 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .bba-final-panel__top,
+        .bba-final-panel__status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .bba-final-panel__kicker {
+            display: block;
+            color: rgba(255, 255, 255, 0.48);
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .bba-final-panel__title {
+            display: block;
+            margin-top: 10px;
+            color: #ffffff;
+            font-family: var(--font-primary, Georgia, serif);
+            font-size: 28px;
+            line-height: 1.08;
+        }
+
+        .bba-final-panel__status {
+            justify-content: flex-start;
+            min-height: 34px;
+            padding: 0 12px;
+            color: #7ee08b;
+            border: 1px solid rgba(126, 224, 139, 0.22);
+            background: rgba(126, 224, 139, 0.08);
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .bba-final-panel__status::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #7ee08b;
+            box-shadow: 0 0 0 0 rgba(126, 224, 139, 0.45);
+            animation: bbaFinalPulse 2.4s ease-out infinite;
+        }
+
+        .bba-final-panel__metrics {
+            display: grid;
+            gap: 18px;
+            margin-top: 34px;
+        }
+
+        .bba-final-panel__metric {
+            display: grid;
+            grid-template-columns: 112px minmax(0, 1fr) 44px;
+            gap: 14px;
+            align-items: center;
+            font-family: var(--font-sans, Arial, sans-serif);
+            color: rgba(255, 255, 255, 0.74);
+            font-size: 13px;
+        }
+
+        .bba-final-panel__bar {
+            height: 7px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .bba-final-panel__bar span {
+            display: block;
+            width: var(--value);
+            height: 100%;
+            background: linear-gradient(90deg, var(--color), rgba(255, 255, 255, 0.72));
+            transform-origin: left;
+            animation: bbaFinalBar 1.4s cubic-bezier(0.2, 0.75, 0.2, 1) both, bbaFinalGlow 4s ease-in-out infinite;
+        }
+
+        .bba-final-panel__value {
+            color: #ffffff;
+            text-align: right;
+            font-weight: 800;
+        }
+
+        .bba-final-panel__outcomes {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .bba-final-panel__outcome {
+            min-height: 112px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.045);
+        }
+
+        .bba-final-panel__outcome strong {
+            display: block;
+            color: #d4af37;
+            font-family: var(--font-primary, Georgia, serif);
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .bba-final-panel__outcome span {
+            display: block;
+            margin-top: 12px;
+            color: rgba(255, 255, 255, 0.64);
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            line-height: 1.35;
+            text-transform: uppercase;
+        }
+
+        .bba-final-cta__proof {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 52px;
+        }
+
+        .bba-final-cta__proof-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 188px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.045);
+            transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+        }
+
+        .bba-final-cta__proof-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 24px;
+            width: 44px;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, #43d5cd);
+        }
+
+        .bba-final-cta__proof-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212, 175, 55, 0.32);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .bba-final-cta__proof-number {
+            display: block;
+            margin-bottom: 24px;
+            color: rgba(212, 175, 55, 0.78);
+            font-family: var(--font-primary, Georgia, serif);
+            font-size: 36px;
+            line-height: 1;
+        }
+
+        .bba-final-cta__proof-card h3 {
+            margin: 0 0 12px;
+            color: #ffffff;
+            font-family: var(--font-primary, Georgia, serif);
+            font-size: 24px;
+            line-height: 1.12;
+        }
+
+        .bba-final-cta__proof-card p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.64);
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .bba-final-cta__contact {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 24px;
+            align-items: center;
+            margin-top: 44px;
+            padding: 22px 0 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .bba-final-cta__contact p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.58);
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .bba-final-cta__contact strong {
+            color: #ffffff;
+        }
+
+        .bba-final-cta__links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 14px;
+        }
+
+        .bba-final-cta__links a {
+            color: rgba(255, 255, 255, 0.74);
+            font-family: var(--font-sans, Arial, sans-serif);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.25s ease;
+        }
+
+        .bba-final-cta__links a:hover {
+            color: #d4af37;
+        }
+
+        @keyframes bbaFinalLine {
+            0%, 100% { transform: scaleX(0.22); opacity: 0.55; }
+            50% { transform: scaleX(1); opacity: 1; }
+        }
+
+        @keyframes bbaFinalScan {
+            0%, 48% { transform: translateX(-70%); opacity: 0; }
+            58% { opacity: 1; }
+            78%, 100% { transform: translateX(70%); opacity: 0; }
+        }
+
+        @keyframes bbaFinalPulse {
+            0% { box-shadow: 0 0 0 0 rgba(126, 224, 139, 0.45); }
+            70% { box-shadow: 0 0 0 12px rgba(126, 224, 139, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(126, 224, 139, 0); }
+        }
+
+        @keyframes bbaFinalBar {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes bbaFinalGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.32); }
+        }
+
+        @media (max-width: 1080px) {
+            .bba-final-cta__main,
+            .bba-final-cta__contact {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-final-cta__links {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 780px) {
+            .bba-final-cta {
+                padding: 82px 22px 40px;
+            }
+
+            .bba-final-cta__proof,
+            .bba-final-panel__outcomes {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-final-panel {
+                padding: 22px;
+            }
+
+            .bba-final-panel__top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .bba-final-cta__actions {
+                flex-direction: column;
+            }
+
+            .bba-final-cta__primary,
+            .bba-final-cta__secondary {
+                width: 100%;
+                padding: 0 18px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .bba-final-cta__title {
+                font-size: clamp(40px, 13vw, 58px);
+            }
+
+            .bba-final-panel__metric {
+                grid-template-columns: 92px minmax(0, 1fr) 38px;
+                gap: 10px;
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bba-final-cta *,
+            .bba-final-cta::before,
+            .bba-final-cta::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+
+    <section class="bba-final-cta" id="diagnostico" aria-label="Fale com a BBA Finance">
+        <div class="bba-final-cta__shell">
+            <div class="bba-final-cta__main">
+                <div class="bba-final-cta__copy">
+                    <span class="bba-final-cta__eyebrow">Próximo passo</span>
+                    <h2 class="bba-final-cta__title">Sua empresa não precisa de uma contabilidade. <span>que trabalhe a favor das suas finanças.</span></h2>
+                    <p class="bba-final-cta__lead">
+                        Em uma conversa executiva, a BBA entende onde sua operação perde margem, tempo e previsibilidade. A partir disso, você recebe uma leitura clara do cenário e o caminho para estruturar contabilidade, fiscal, caixa, indicadores e decisões em uma única rotina.
+                    </p>
+
+                    <div class="bba-final-cta__actions">
+                        <a class="bba-final-cta__primary" href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20estruturar%20a%20opera%C3%A7%C3%A3o%20financeira%20da%20minha%20empresa%20com%20a%20BBA" target="_blank" rel="noopener">
+                            Quero falar com a BBA
+                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                        <a class="bba-final-cta__secondary" href="mailto:contato@bbabrazil.com.br?subject=Diagn%C3%B3stico%20BBA%20Finance">
+                            Enviar e-mail
+                        </a>
+                    </div>
+
+                    <p class="bba-final-cta__note">Sem formulário longo. Sem proposta genérica. Primeiro, entendemos a operação e apontamos o que precisa ser organizado.</p>
+                </div>
+
+                <aside class="bba-final-panel" aria-label="Resumo do diagnóstico BBA Finance">
+                    <div class="bba-final-panel__top">
+                        <div>
+                            <span class="bba-final-panel__kicker">Diagnóstico executivo</span>
+                            <strong class="bba-final-panel__title">O que entra na mesa da primeira conversa.</strong>
+                        </div>
+                        <span class="bba-final-panel__status">análise ativa</span>
+                    </div>
+
+                    <div class="bba-final-panel__metrics" aria-label="Indicadores analisados pela BBA">
+                        <div class="bba-final-panel__metric">
+                            <span>Caixa</span>
+                            <div class="bba-final-panel__bar"><span style="--value: 82%; --color: #d4af37;"></span></div>
+                            <strong class="bba-final-panel__value">82%</strong>
+                        </div>
+                        <div class="bba-final-panel__metric">
+                            <span>Tributos</span>
+                            <div class="bba-final-panel__bar"><span style="--value: 68%; --color: #43d5cd;"></span></div>
+                            <strong class="bba-final-panel__value">68%</strong>
+                        </div>
+                        <div class="bba-final-panel__metric">
+                            <span>Obrigações</span>
+                            <div class="bba-final-panel__bar"><span style="--value: 74%; --color: #7ee08b;"></span></div>
+                            <strong class="bba-final-panel__value">74%</strong>
+                        </div>
+                        <div class="bba-final-panel__metric">
+                            <span>Margem</span>
+                            <div class="bba-final-panel__bar"><span style="--value: 58%; --color: #ffcf5a;"></span></div>
+                            <strong class="bba-final-panel__value">58%</strong>
+                        </div>
+                    </div>
+
+                    <div class="bba-final-panel__outcomes">
+                        <div class="bba-final-panel__outcome">
+                            <strong>01</strong>
+                            <span>clareza do cenário</span>
+                        </div>
+                        <div class="bba-final-panel__outcome">
+                            <strong>02</strong>
+                            <span>risco financeiro mapeado</span>
+                        </div>
+                        <div class="bba-final-panel__outcome">
+                            <strong>03</strong>
+                            <span>rota de implantação</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="bba-final-cta__proof" aria-label="O que a BBA entrega na conversa inicial">
+                <article class="bba-final-cta__proof-card">
+                    <span class="bba-final-cta__proof-number">01</span>
+                    <h3>Leitura sem achismo.</h3>
+                    <p>A conversa parte dos sinais reais: caixa, tributos, obrigações, margem, documentos e gargalos que travam a rotina.</p>
+                </article>
+
+                <article class="bba-final-cta__proof-card">
+                    <span class="bba-final-cta__proof-number">02</span>
+                    <h3>Prioridade antes de ferramenta.</h3>
+                    <p>A BBA mostra o que precisa ser organizado primeiro, o que gera risco e o que melhora previsibilidade no curto prazo.</p>
+                </article>
+
+                <article class="bba-final-cta__proof-card">
+                    <span class="bba-final-cta__proof-number">03</span>
+                    <h3>Plano para operar melhor.</h3>
+                    <p>Você sai com uma rota clara para transformar contabilidade, fiscal e financeiro em sistema de gestão para a empresa crescer.</p>
+                </article>
+            </div>
+
+            <div class="bba-final-cta__contact">
+                <p><strong>BBA Finance</strong> para empresas que querem sair do improviso e tomar decisões com números, rotina e governança financeira.</p>
+                <div class="bba-final-cta__links">
+                    <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp</a>
+                    <a href="mailto:contato@bbabrazil.com.br">contato@bbabrazil.com.br</a>
+                    <a href="https://www.bbabrazil.com.br" target="_blank" rel="noopener">Site principal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
 
 </html>
+
+
