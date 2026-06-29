@@ -1339,7 +1339,7 @@
             /* Deep navy fallback */
             color: #ffffff;
             margin-top: -100px;
-            padding: 48px 24px 18px 24px;
+            padding: 48px 24px 64px 24px;
             overflow: hidden;
             z-index: 10;
         }
@@ -1932,7 +1932,7 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 14px;
             padding-top: 0px;
             margin-top: 0;
         }
@@ -1958,12 +1958,12 @@
 
         .bba-eco-main-title {
             color: #ffffff;
-            font-size: clamp(2.3rem, 3.8vw, 4rem);
+            font-size: clamp(2.15rem, 3.15vw, 3.45rem);
             font-weight: 400;
-            line-height: 0.98;
-            letter-spacing: -0.055em;
+            line-height: 1.02;
+            letter-spacing: -0.045em;
             margin: 0;
-            max-width: 11ch;
+            max-width: min(100%, 560px);
         }
 
         .bba-eco-main-title strong {
@@ -1985,11 +1985,11 @@
 
         .bba-eco-proof {
             display: grid;
-            grid-template-columns: 142px 1fr;
-            gap: 16px;
+            grid-template-columns: 118px 1fr;
+            gap: 14px;
             align-items: stretch;
-            padding: 18px;
-            border-radius: 28px;
+            padding: 14px;
+            border-radius: 22px;
             background: rgba(255, 255, 255, 0.72);
             border: 1px solid rgba(15, 23, 35, 0.07);
             box-shadow: 0 18px 40px rgba(15, 24, 35, 0.05);
@@ -1998,13 +1998,13 @@
         .bba-eco-proof-side {
             display: grid;
             align-content: space-between;
-            gap: 16px;
-            padding-right: 18px;
+            gap: 12px;
+            padding-right: 14px;
             border-right: 1px solid rgba(15, 23, 35, 0.08);
         }
 
         .bba-eco-proof-number {
-            font-size: 42px;
+            font-size: 36px;
             line-height: 0.92;
             letter-spacing: -0.06em;
             color: var(--bba-blue);
@@ -2015,14 +2015,14 @@
         }
 
         .bba-eco-proof-copy {
-            font-size: 13px;
-            line-height: 1.55;
+            font-size: 12.5px;
+            line-height: 1.48;
             color: #555b65;
         }
 
         .bba-eco-proof-visual {
             position: relative;
-            min-height: 240px;
+            min-height: 168px;
             border-radius: 22px;
             overflow: hidden;
             background: linear-gradient(135deg, rgba(0, 58, 112, 0.08) 0%, rgba(0, 58, 112, 0.02) 100%);
@@ -2132,7 +2132,7 @@
         .bba-eco-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
+            gap: 12px;
         }
 
         .bba-eco-grid-3 {
@@ -2143,12 +2143,12 @@
 
         .bba-eco-card {
             position: relative;
-            border-radius: 26px;
+            border-radius: 22px;
             background: rgba(255, 255, 255, 0.78);
             border: 1px solid rgba(15, 23, 35, 0.08);
-            padding: 20px 18px 18px 18px;
+            padding: 17px 16px 15px 16px;
             display: grid;
-            gap: 16px;
+            gap: 11px;
             overflow: hidden;
             box-shadow: 0 16px 36px rgba(15, 24, 35, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -2202,16 +2202,16 @@
 
         .bba-eco-card-title {
             margin: 0;
-            font-size: 18px;
-            line-height: 1.04;
+            font-size: 17px;
+            line-height: 1.08;
             letter-spacing: -0.04em;
             color: #121924;
         }
 
         .bba-eco-card-desc {
             margin: 0;
-            font-size: 13px;
-            line-height: 1.56;
+            font-size: 12.5px;
+            line-height: 1.48;
             color: #575c65;
         }
 
@@ -2319,14 +2319,14 @@
             }
 
             .bba-eco-main-title {
-                max-width: 12ch;
+                max-width: min(100%, 620px);
             }
         }
 
         @media (max-width: 820px) {
             .bba-eco-root {
                 margin-top: -78px;
-                padding: 64px 18px 110px 18px;
+                padding: 64px 18px 88px 18px;
             }
 
             .bba-eco-root::before {
@@ -2402,13 +2402,15 @@
             }
 
             .bba-eco-proof-visual {
-                min-height: 220px;
+                min-height: 156px;
             }
         }
 
         @media (max-width: 640px) {
             .bba-eco-main-title {
-                font-size: 42px;
+                max-width: 100%;
+                font-size: 38px;
+                line-height: 1.04;
             }
 
             .bba-eco-main-desc {
@@ -2466,16 +2468,16 @@
    ============================================================== */
         .bba-eco-result-block {
             position: relative;
-            min-height: 560px;
-            border-radius: 26px;
+            min-height: 458px;
+            border-radius: 24px;
             background:
                 radial-gradient(circle at 80% 20%, rgba(0, 58, 112, 0.08), transparent 40%),
                 radial-gradient(circle at 20% 90%, rgba(212, 175, 55, 0.12), transparent 45%),
                 linear-gradient(135deg, #ffffff 0%, #f4f2ee 100%);
             border: 1px solid rgba(0, 58, 112, 0.06);
             box-shadow: 0 16px 48px rgba(15, 24, 35, 0.04), inset 0 1px 0 rgba(255, 255, 255, 1);
-            margin-top: 24px;
-            padding: 48px 36px;
+            margin-top: 10px;
+            padding: 34px 30px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -2500,9 +2502,9 @@
         /* The vertical connection line */
         .bba-result-path {
             position: absolute;
-            top: 61px;
-            height: 380px;
-            left: 38px;
+            top: 46px;
+            height: 330px;
+            left: 32px;
             width: 2px;
             background: linear-gradient(180deg, rgba(0, 58, 112, 0.1), rgba(212, 175, 55, 0.5), rgba(0, 58, 112, 0.8));
             z-index: 1;
@@ -2547,13 +2549,13 @@
             z-index: 2;
             display: flex;
             flex-direction: column;
-            gap: 28px;
+            gap: 18px;
         }
 
         .bba-result-node {
             display: flex;
             align-items: flex-start;
-            gap: 24px;
+            gap: 18px;
             position: relative;
             transition: transform 0.3s ease;
         }
@@ -2639,7 +2641,7 @@
             flex-direction: column;
             gap: 4px;
             background: rgba(255, 255, 255, 0.64);
-            padding: 12px 18px;
+            padding: 10px 16px;
             border-radius: 12px;
             border: 1px solid rgba(0, 0, 0, 0.03);
             width: 100%;
@@ -2759,7 +2761,7 @@
         }
 
         .bba-result-title {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
             color: #121924;
             letter-spacing: -0.02em;
@@ -2772,23 +2774,23 @@
         }
 
         .bba-result-desc {
-            font-size: 13px;
+            font-size: 12.5px;
             color: #5F6775;
-            line-height: 1.45;
+            line-height: 1.4;
             margin: 0;
         }
 
         @media (max-width: 820px) {
             .bba-eco-result-block {
                 min-height: auto;
-                padding: 32px 24px;
-                margin-bottom: 24px;
+                padding: 28px 22px;
+                margin-bottom: 0;
             }
 
             .bba-result-path {
-                left: 30px;
-                top: 45px;
-                height: 396px;
+                left: 26px;
+                top: 40px;
+                height: calc(100% - 92px);
             }
         }
 
@@ -2810,13 +2812,30 @@
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 16px;
-                margin-bottom: 72px;
+                margin-bottom: 0;
             }
 
             .bba-eco-content {
                 grid-column: 2;
                 grid-row: 1 / span 2;
                 margin-top: 0;
+                align-self: stretch;
+                height: 100%;
+                min-height: 100%;
+            }
+
+            .bba-eco-result-block {
+                flex: 1 1 auto;
+                min-height: 640px;
+            }
+
+            .bba-result-nodes {
+                flex: 1 1 auto;
+                justify-content: space-between;
+            }
+
+            .bba-result-path {
+                height: calc(100% - 112px);
             }
         }
 
@@ -3887,6 +3906,440 @@
                 right: 16px;
                 top: 14px;
                 opacity: 0.06;
+            }
+        }
+
+        /* =========================================
+           SECTION 04: BBA HOMEPAGE FINAL CTA
+           ========================================= */
+        .bba-finale {
+            position: relative;
+            min-height: 100vh;
+            padding: clamp(92px, 9vw, 136px) 24px 38px;
+            color: #ffffff;
+            background: #030811;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .bba-finale::before {
+            content: '';
+            position: absolute;
+            inset: 22px;
+            z-index: 1;
+            border: 1px solid rgba(227, 210, 173, 0.12);
+            border-radius: 34px;
+            pointer-events: none;
+        }
+
+        .bba-finale::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 86px 86px;
+            mask-image: radial-gradient(circle at 48% 38%, rgba(0, 0, 0, 0.86), transparent 82%);
+            pointer-events: none;
+            opacity: 0.68;
+        }
+
+        .bba-finale__bg-video {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 62% center;
+            filter: saturate(0.95) contrast(1.08) brightness(0.64);
+            transform: scale(1.02);
+        }
+
+        .bba-finale__shade {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(185, 149, 79, 0.18), transparent 30%),
+                radial-gradient(circle at 88% 8%, rgba(139, 181, 228, 0.12), transparent 30%),
+                linear-gradient(90deg, rgba(3, 8, 17, 0.88) 0%, rgba(3, 8, 17, 0.74) 44%, rgba(3, 8, 17, 0.52) 100%),
+                linear-gradient(180deg, rgba(3, 8, 17, 0.1) 0%, rgba(3, 8, 17, 0.92) 100%);
+            pointer-events: none;
+        }
+
+        .bba-finale__shell {
+            position: relative;
+            z-index: 2;
+            width: min(1320px, 100%);
+            margin: 0 auto;
+            display: grid;
+            gap: clamp(26px, 4vw, 44px);
+        }
+
+        .bba-finale__hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.74fr);
+            gap: clamp(28px, 5vw, 74px);
+            align-items: end;
+        }
+
+        .bba-finale__copy {
+            display: grid;
+            gap: 24px;
+            max-width: 820px;
+        }
+
+        .bba-finale__eyebrow,
+        .bba-finale__contact-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            width: fit-content;
+            color: #e3d2ad;
+            font-size: 12px;
+            font-weight: 850;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .bba-finale__eyebrow::before,
+        .bba-finale__contact-label::before {
+            content: '';
+            width: 38px;
+            height: 1px;
+            background: linear-gradient(90deg, #b9954f, rgba(185, 149, 79, 0.14));
+        }
+
+        .bba-finale__title {
+            margin: 0;
+            max-width: 980px;
+            color: #ffffff;
+            font-size: clamp(48px, 6.6vw, 104px);
+            font-weight: 330;
+            line-height: 0.94;
+            letter-spacing: 0;
+        }
+
+        .bba-finale__lead {
+            margin: 0;
+            max-width: 760px;
+            color: rgba(255, 255, 255, 0.74);
+            font-size: clamp(17px, 1.45vw, 21px);
+            line-height: 1.68;
+        }
+
+        .bba-finale__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .bba-finale__primary,
+        .bba-finale__secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 54px;
+            padding: 0 24px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 850;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+        }
+
+        .bba-finale__primary {
+            gap: 10px;
+            background: #ffffff;
+            color: #061326;
+            border: 1px solid rgba(255, 255, 255, 0.86);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
+        }
+
+        .bba-finale__primary svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.25s ease;
+        }
+
+        .bba-finale__secondary {
+            color: #ffffff;
+            border: 1px solid rgba(227, 210, 173, 0.26);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .bba-finale__primary:hover,
+        .bba-finale__secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .bba-finale__primary:hover svg {
+            transform: translateX(4px);
+        }
+
+        .bba-finale__secondary:hover {
+            border-color: rgba(185, 149, 79, 0.58);
+            color: #e3d2ad;
+        }
+
+        .bba-finale__note {
+            max-width: 520px;
+            margin: -6px 0 0;
+            color: rgba(255, 255, 255, 0.52);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .bba-finale__contact-card {
+            position: relative;
+            display: grid;
+            gap: 24px;
+            padding: clamp(24px, 3vw, 34px);
+            border-radius: 8px;
+            border: 1px solid rgba(227, 210, 173, 0.18);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04)),
+                rgba(5, 12, 24, 0.78);
+            box-shadow:
+                0 26px 70px rgba(0, 0, 0, 0.32),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            overflow: hidden;
+        }
+
+        .bba-finale__contact-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(227, 210, 173, 0.055) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(227, 210, 173, 0.04) 1px, transparent 1px);
+            background-size: 52px 52px;
+            mask-image: linear-gradient(180deg, #000, transparent 92%);
+            pointer-events: none;
+        }
+
+        .bba-finale__contact-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bba-finale__contact-card h3 {
+            margin: 0;
+            color: #ffffff;
+            font-size: clamp(26px, 2.6vw, 38px);
+            font-weight: 360;
+            line-height: 1.08;
+            letter-spacing: 0;
+        }
+
+        .bba-finale__contact-list {
+            display: grid;
+            gap: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bba-finale__contact-list li {
+            display: grid;
+            gap: 7px;
+            padding: 17px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bba-finale__contact-list small {
+            color: rgba(227, 210, 173, 0.72);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .bba-finale__contact-list a,
+        .bba-finale__contact-list span {
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 16px;
+            line-height: 1.35;
+            text-decoration: none;
+        }
+
+        .bba-finale__contact-list a:hover {
+            color: #e3d2ad;
+        }
+
+        .bba-finale__proof {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .bba-finale__proof-card {
+            min-height: 172px;
+            padding: 22px;
+            border-radius: 8px;
+            border: 1px solid rgba(227, 210, 173, 0.14);
+            background: rgba(255, 255, 255, 0.065);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .bba-finale__proof-card span {
+            display: block;
+            margin-bottom: 18px;
+            color: #e3d2ad;
+            font-size: 12px;
+            font-weight: 850;
+            letter-spacing: 0.16em;
+        }
+
+        .bba-finale__proof-card h3 {
+            margin: 0 0 10px;
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 520;
+            line-height: 1.14;
+            letter-spacing: 0;
+        }
+
+        .bba-finale__proof-card p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 14px;
+            line-height: 1.62;
+        }
+
+        .bba-finale__copyright {
+            margin: -12px 0 0;
+            color: rgba(255, 255, 255, 0.48);
+            font-size: 13px;
+            line-height: 1.5;
+            letter-spacing: 0;
+        }
+
+        .bba-finale__footer {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 18px 28px;
+            align-items: end;
+            padding-top: 28px;
+            border-top: 1px solid rgba(227, 210, 173, 0.16);
+        }
+
+        .bba-finale__brand {
+            display: grid;
+            gap: 8px;
+        }
+
+        .bba-finale__brand strong {
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .bba-finale__brand span,
+        .bba-finale__legal {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.54);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .bba-finale__footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 12px 18px;
+        }
+
+        .bba-finale__footer-nav a {
+            color: rgba(255, 255, 255, 0.64);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.25s ease;
+        }
+
+        .bba-finale__footer-nav a:hover {
+            color: #e3d2ad;
+        }
+
+        .bba-finale__legal {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 1180px) {
+            .bba-finale__hero {
+                grid-template-columns: 1fr;
+                align-items: start;
+            }
+
+            .bba-finale__copy {
+                max-width: 980px;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .bba-finale {
+                min-height: auto;
+                padding: 82px 18px 32px;
+            }
+
+            .bba-finale::before {
+                inset: 12px;
+                border-radius: 24px;
+            }
+
+            .bba-finale__proof,
+            .bba-finale__footer {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-finale__footer-nav {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .bba-finale__title {
+                font-size: clamp(42px, 13vw, 64px);
+            }
+
+            .bba-finale__actions,
+            .bba-finale__primary,
+            .bba-finale__secondary {
+                width: 100%;
+            }
+
+            .bba-finale__contact-card,
+            .bba-finale__proof-card {
+                padding: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bba-finale__bg-video {
+                display: none;
             }
         }
 
