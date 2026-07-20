@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/home.html"
+    },
+    {
       "source": "/bba-tech",
       "destination": "/bba-tech.html"
     }

@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en-US" class="js progressive-image no-reduced-motion">
+
+<head>
+    <meta charset="utf-8">
+    <title>BBA | Consultoria Empresarial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <!-- Apple-inspired typography & layouts -->
+    <link href="./assets/css/fonts_861a2ff04d8a.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="./assets/css/main_0cd286fbb449.css" rel="stylesheet" type="text/css" />
+    <link href="./assets/css/globalheader_d08709482e48.css" rel="stylesheet" type="text/css" />
+
+    <!-- External assets from provided templates -->
+    <script src="https://unpkg.com/lucide@0.260.0/dist/lucide.min.js"></script>
+
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/home-s02.css">
+    <style>
+        .bba-home-system {
+            position: relative;
+            overflow: hidden;
+            z-index: 5;
+            padding: clamp(76px, 8vw, 126px) 24px 122px;
+            background:
+                linear-gradient(180deg, #f5f1e8 0%, #ffffff 42%, #f7f8fa 100%);
+            color: #0f1f35;
+            border-top: 1px solid rgba(212, 175, 55, 0.24);
+        }
+
+        .bba-home-system::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(0, 58, 112, 0.055) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(0, 58, 112, 0.04) 1px, transparent 1px);
+            background-size: 86px 86px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.34), transparent 58%);
+            pointer-events: none;
+        }
+
+        .bba-home-system::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 180px;
+            background: linear-gradient(180deg, rgba(247, 248, 250, 0) 0%, rgba(3, 8, 17, 0.08) 100%);
+            pointer-events: none;
+        }
+
+        .bba-home-system__shell {
+            position: relative;
+            z-index: 1;
+            width: min(1240px, 100%);
+            margin: 0 auto;
+        }
+
+        .bba-home-system__intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.78fr);
+            gap: clamp(36px, 6vw, 86px);
+            align-items: center;
+            margin-bottom: clamp(48px, 7vw, 82px);
+        }
+
+        .bba-home-system__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+            color: #8b6f1f;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .bba-home-system__eyebrow::before {
+            content: '';
+            width: 34px;
+            height: 1px;
+            background: #d4af37;
+        }
+
+        .bba-home-system__title {
+            max-width: 820px;
+            margin: 0;
+            color: #003a70;
+            font-size: clamp(40px, 5.4vw, 76px);
+            font-weight: 350;
+            line-height: 1.07;
+            letter-spacing: 0;
+        }
+
+        .bba-home-system__title strong {
+            display: block;
+            color: #0b1f38;
+            font-weight: 720;
+        }
+
+        .bba-home-system__lead {
+            max-width: 760px;
+            margin: 28px 0 0;
+            color: #4f5e70;
+            font-size: clamp(18px, 1.7vw, 22px);
+            line-height: 1.58;
+            letter-spacing: 0;
+        }
+
+        .bba-home-system__lead strong {
+            color: #102741;
+            font-weight: 700;
+        }
+
+        .bba-home-system__statement {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 34px;
+            max-width: 780px;
+        }
+
+        .bba-home-system__statement-item {
+            min-height: 96px;
+            padding: 18px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(0, 58, 112, 0.1);
+            box-shadow: 0 18px 38px rgba(12, 31, 54, 0.07);
+        }
+
+        .bba-home-system__statement-item span {
+            display: block;
+            margin-bottom: 8px;
+            color: #003a70;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .bba-home-system__statement-item p {
+            margin: 0;
+            color: #425267;
+            font-size: 15px;
+            line-height: 1.45;
+        }
+
+        .bba-system-board {
+            position: relative;
+            padding: 28px;
+            border-radius: 8px;
+            background:
+                linear-gradient(180deg, rgba(8, 28, 52, 0.98) 0%, rgba(3, 12, 26, 0.99) 100%);
+            color: #ffffff;
+            border: 1px solid rgba(212, 175, 55, 0.26);
+            box-shadow: 0 34px 90px rgba(9, 25, 47, 0.34);
+        }
+
+        .bba-system-board__top {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: flex-start;
+            padding-bottom: 22px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .bba-system-board__label {
+            display: block;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .bba-system-board__title {
+            display: block;
+            margin-top: 7px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .bba-system-board__seal {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 92px;
+            height: 36px;
+            padding: 0 14px;
+            border-radius: 999px;
+            background: rgba(212, 175, 55, 0.12);
+            color: #f1d777;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0;
+            border: 1px solid rgba(212, 175, 55, 0.28);
+        }
+
+        .bba-system-board__lines {
+            display: grid;
+            gap: 12px;
+            padding: 22px 0;
+        }
+
+        .bba-system-board__line {
+            display: grid;
+            grid-template-columns: 42px 1fr auto;
+            gap: 14px;
+            align-items: center;
+            padding: 16px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.055);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bba-system-board__line svg {
+            width: 22px;
+            height: 22px;
+            color: #d4af37;
+        }
+
+        .bba-system-board__line strong {
+            display: block;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 720;
+            line-height: 1.2;
+        }
+
+        .bba-system-board__line span {
+            display: block;
+            margin-top: 4px;
+            color: rgba(255, 255, 255, 0.66);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .bba-system-board__status {
+            color: rgba(241, 215, 119, 0.92);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .bba-system-board__footer {
+            margin: 0;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .bba-home-system__map {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: clamp(42px, 6vw, 72px);
+        }
+
+        .bba-system-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 310px;
+            padding: 24px;
+            border-radius: 8px;
+            background: #ffffff;
+            border: 1px solid rgba(0, 58, 112, 0.1);
+            box-shadow: 0 20px 46px rgba(10, 31, 55, 0.08);
+        }
+
+        .bba-system-card__icon {
+            display: inline-flex;
+            width: 42px;
+            height: 42px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+            border-radius: 8px;
+            background: #f2efe5;
+            color: #003a70;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .bba-system-card__icon svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .bba-system-card__index {
+            color: #8b6f1f;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .bba-system-card h3 {
+            margin: 12px 0 14px;
+            color: #0f243c;
+            font-size: 23px;
+            line-height: 1.18;
+            font-weight: 740;
+            letter-spacing: 0;
+        }
+
+        .bba-system-card p {
+            margin: 0;
+            color: #5d6876;
+            font-size: 15.5px;
+            line-height: 1.58;
+        }
+
+        .bba-system-card__result {
+            margin-top: auto;
+            padding-top: 20px;
+            color: #003a70;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .bba-home-system__bridge {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 42px;
+            align-items: center;
+            margin: 0 auto -86px;
+            padding: clamp(34px, 5vw, 56px);
+            border-radius: 8px;
+            background:
+                linear-gradient(135deg, #061326 0%, #002850 48%, #003a70 100%);
+            color: #ffffff;
+            border: 1px solid rgba(212, 175, 55, 0.26);
+            box-shadow: 0 34px 90px rgba(4, 16, 33, 0.38);
+        }
+
+        .bba-home-system__bridge h3 {
+            max-width: 800px;
+            margin: 0;
+            color: #ffffff;
+            font-size: clamp(28px, 3.2vw, 44px);
+            font-weight: 680;
+            line-height: 1.16;
+            letter-spacing: 0;
+        }
+
+        .bba-home-system__bridge p {
+            max-width: 760px;
+            margin: 16px 0 0;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 17px;
+            line-height: 1.58;
+        }
+
+        .bba-home-system__bridge .bba-hero__button {
+            margin-top: 24px;
+            background: #ffffff;
+            color: #003a70;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+        }
+
+        .bba-home-system__bridge .bba-hero__button:hover {
+            background: #f8f3df;
+            color: #002850;
+            border-color: #d4af37;
+        }
+
+        .bba-home-system__bridge .bba-hero__button svg {
+            width: 18px;
+            height: 18px;
+            margin-left: 8px;
+        }
+
+        .bba-home-system__bridge-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 116px);
+            gap: 10px;
+        }
+
+        .bba-home-system__metric {
+            min-height: 104px;
+            padding: 16px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .bba-home-system__metric strong {
+            display: block;
+            color: #f1d777;
+            font-size: 22px;
+            line-height: 1.1;
+        }
+
+        .bba-home-system__metric span {
+            display: block;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 12px;
+            line-height: 1.35;
+        }
+
+        @media (max-width: 1060px) {
+            .bba-home-system__intro,
+            .bba-home-system__bridge {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-home-system__map {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .bba-home-system__bridge-metrics {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 720px) {
+            .bba-home-system {
+                padding: 70px 18px 110px;
+            }
+
+            .bba-home-system__statement,
+            .bba-home-system__map,
+            .bba-home-system__bridge-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .bba-system-board {
+                padding: 20px;
+            }
+
+            .bba-system-board__top {
+                flex-direction: column;
+            }
+
+            .bba-system-board__line {
+                grid-template-columns: 34px 1fr;
+            }
+
+            .bba-system-board__status {
+                grid-column: 2;
+            }
+
+            .bba-system-card {
+                min-height: auto;
+            }
+
+            .bba-home-system__bridge {
+                padding: 30px 22px;
+                margin-bottom: -58px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Ambient Lights -->
+    <div class="ambient-light"></div>
+    <div class="ambient-light-2"></div>
+    <div class="ambient-light-3"></div>
+
+    <!-- Hero Section (BBA Premium Hero4) -->
+    <section class="bba-hero" id="bba-top">
+        <!-- Background Video -->
+        <video class="bba-hero__video" autoplay muted loop playsinline webkit-playsinline="true" preload="auto"
+            disablepictureinpicture>
+            <source src="media/bba_home_hero_pedestals_clean.mp4" type="video/mp4">
+        </video>
+
+        <!-- Transparent Overlay -->
+        <div class="bba-hero__overlay"></div>
+
+        <!-- Premium Header Navigation -->
+        <header class="bba-hero__header">
+            <nav class="bba-hero__nav">
+                <a href="#quem-somos" class="bba-hero__nav-link">Quem Somos</a>
+
+<div class="bba-dropdown">
+    <a href="#servicos" class="bba-hero__nav-link">Serviços</a>
+
+    <div class="bba-dropdown-content">
+        <a href="bba-finance.html">
+            Contabilidade, Financeiro, Tributário e Societário
+        </a>
+
+        <a href="bba_governanca.html">
+            Governança
+        </a>
+
+        <a href="/bba-tech">
+            Tecnologia da Informação
+        </a>
+
+        <a href="bba-people-performance.html">
+            Recursos Humanos
+        </a>
+    </div>
+</div>
+
+<a href="#login" class="bba-hero__nav-link">login</a>
+            </nav>
+        </header>
+
+        <!-- Content (Moved Left and Pushed Further Down) -->
+        <div class="bba-hero__content slide-up-fade">
+            <h1 class="bba-hero__headline">
+                Você trabalha, vende e cresce<br>
+                mas sua empresa ainda não acompanha esse ritmo.
+            </h1>
+            <p class="bba-hero__subheadline">
+                A BBA atua ao seu lado para organizar sua empresa e gerar resultado.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===================================== -->
+    <!-- SECTION 02: BBA OPERATING SYSTEM      -->
+    <!-- ===================================== -->
+
+    <section class="s02" id="sistema-bba" aria-labelledby="s02-title">
+        <div class="s02__split">
+            <div class="s02__left scroll-reveal" style="transition-delay: 0s;">
+                <span class="s02__eyebrow">Para MEIs, Pequenas e Médias Empresas</span>
+                <h2 class="s02__title" id="s02-title">
+                    O problema não é crescer.
+                    <strong>É sustentar o crescimento.</strong>
+                </h2>
+
+                <p class="s02__lead">
+                    Caixa conversa com a rotina, tecnologia acompanha o volume,
+                    RH é eficiente e a governança é clara.
+                    <strong>A BBA conecta essas frentes para transformar crescimento em gestão.</strong>
+                </p>
+
+                <div class="s02__pills" aria-label="Resultados do sistema BBA">
+                    <span class="s02__pill">Menos improviso</span>
+                    <span class="s02__pill">Mais leitura</span>
+                    <span class="s02__pill">Mais direção</span>
+                </div>
+
+                <a href="#bba-eco-root" class="s02__cta">
+                    Como funciona na prática
+                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                </a>
+
+                <div class="s02__radar" aria-label="Radar BBA para diagnóstico executivo">
+                    <div class="s02__radar-sweep" aria-hidden="true"></div>
+                    <div class="s02__radar-grid" aria-hidden="true"></div>
+                    <div class="s02__radar-content">
+                        <span class="s02__radar-kicker">Radar BBA</span>
+                        <strong>A BBA organiza o que está disperso.</strong>
+                        <p>Raio-X executivo para identificar gargalos em finanças, recursos humanos, tecnologia e governança.</p>
+                        <a href="radar_bba_appv18.html" class="s02__radar-btn">
+                            Fazer Raio-X da minha Empresa
+                            <i data-lucide="arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="s02__right scroll-reveal" style="transition-delay: 0.12s;">
+                <div class="s02__card" aria-label="Sistema operacional BBA">
+                    <svg class="s02__svg" viewBox="0 0 360 450" focusable="false" aria-hidden="true">
+                        <g class="s02-flow-core" transform="translate(26 28)">
+                            <rect width="308" height="78" rx="8" />
+                            <text class="s02-brand" x="20" y="26">BBA</text>
+                            <text class="s02-main" x="20" y="49">Operating System</text>
+                            <line x1="192" y1="18" x2="192" y2="60" stroke="rgba(227,210,173,.18)" stroke-width="1" />
+                            <text class="s02-meta" x="254" y="24">diagnosticar</text>
+                            <text class="s02-arrow" x="254" y="35">↓</text>
+                            <text class="s02-meta" x="254" y="47">estruturar</text>
+                            <text class="s02-arrow" x="254" y="58">↓</text>
+                            <text class="s02-meta" x="254" y="70">executar</text>
+                        </g>
+
+                        <g class="s02-flow-stage">
+                            <text x="52" y="116">diagnóstico</text>
+                            <text x="132" y="116">metas</text>
+                            <text x="214" y="116">estrutura</text>
+                            <text x="294" y="116">implantação</text>
+                            <line x1="52" y1="126" x2="294" y2="126" />
+                            <circle cx="52" cy="126" r="2.6" />
+                            <circle cx="132" cy="126" r="2.6" />
+                            <circle cx="214" cy="126" r="2.6" />
+                            <circle cx="294" cy="126" r="2.6" />
+                        </g>
+
+                        <line class="s02-flow-spine" x1="62" y1="158" x2="62" y2="331" />
+
+                        <path class="s02-flow-link s02-flow-link--gold" d="M62 166 H104" />
+                        <path class="s02-flow-link" d="M62 221 H104" />
+                        <path class="s02-flow-link" d="M62 276 H104" />
+                        <path class="s02-flow-link s02-flow-link--gold" d="M62 331 H104" />
+
+                        <path class="s02-flow-mover" d="M62 166 H104" />
+                        <path class="s02-flow-mover s02-flow-mover--2" d="M62 221 H104" />
+                        <path class="s02-flow-mover s02-flow-mover--3" d="M62 276 H104" />
+                        <path class="s02-flow-mover s02-flow-mover--4" d="M62 331 H104" />
+
+                        <circle cx="62" cy="166" r="4" fill="rgba(185,149,79,.88)" />
+                        <circle cx="62" cy="221" r="4" fill="rgba(227,210,173,.52)" />
+                        <circle cx="62" cy="276" r="4" fill="rgba(227,210,173,.52)" />
+                        <circle cx="62" cy="331" r="4" fill="rgba(185,149,79,.88)" />
+
+                        <g class="s02-flow-node" transform="translate(104 146)">
+                            <rect width="218" height="40" rx="8" />
+                            <text class="s02-flow-node__num" x="14" y="17">01</text>
+                            <text class="s02-flow-node__label" x="42" y="17">Finanças</text>
+                            <text class="s02-flow-node__meta" x="42" y="31">Caixa, margem e fiscal</text>
+                            <line class="s02-progress-track" x1="174" y1="17" x2="204" y2="17" />
+                            <line class="s02-progress-fill" x1="174" y1="17" x2="198" y2="17" />
+                        </g>
+
+                        <g class="s02-flow-node" transform="translate(104 201)">
+                            <rect width="218" height="40" rx="8" />
+                            <text class="s02-flow-node__num" x="14" y="17">02</text>
+                            <text class="s02-flow-node__label" x="42" y="17">Recursos Humanos</text>
+                            <text class="s02-flow-node__meta" x="42" y="31">Equipe e performance</text>
+                            <line class="s02-progress-track" x1="174" y1="17" x2="204" y2="17" />
+                            <line class="s02-progress-fill" x1="174" y1="17" x2="188" y2="17" />
+                        </g>
+
+                        <g class="s02-flow-node" transform="translate(104 256)">
+                            <rect width="218" height="40" rx="8" />
+                            <text class="s02-flow-node__num" x="14" y="17">03</text>
+                            <text class="s02-flow-node__label" x="42" y="17">Tecnologia</text>
+                            <text class="s02-flow-node__meta" x="42" y="31">Dados e automação</text>
+                            <line class="s02-progress-track" x1="174" y1="17" x2="204" y2="17" />
+                            <line class="s02-progress-fill" x1="174" y1="17" x2="200" y2="17" />
+                        </g>
+
+                        <g class="s02-flow-node" transform="translate(104 311)">
+                            <rect width="218" height="40" rx="8" />
+                            <text class="s02-flow-node__num" x="14" y="17">04</text>
+                            <text class="s02-flow-node__label" x="42" y="17">Governança</text>
+                            <text class="s02-flow-node__meta" x="42" y="31">Controles e decisão</text>
+                            <line class="s02-progress-track" x1="174" y1="17" x2="204" y2="17" />
+                            <line class="s02-progress-fill" x1="174" y1="17" x2="194" y2="17" />
+                        </g>
+
+                        <g class="s02-flow-kpi" transform="translate(32 392)">
+                            <rect width="86" height="46" rx="8" />
+                            <text class="s02-kpi-label" x="14" y="17">CAIXA</text>
+                            <text class="s02-kpi-value s02-kpi-value--green" x="14" y="33">BASE</text>
+                            <line class="s02-progress-track" x1="50" y1="33" x2="76" y2="33" />
+                            <line class="s02-progress-fill" x1="50" y1="33" x2="69" y2="33" />
+                        </g>
+
+                        <g class="s02-flow-kpi" transform="translate(136 392)">
+                            <rect width="88" height="46" rx="8" />
+                            <text class="s02-kpi-label" x="14" y="17">MARGEM</text>
+                            <text class="s02-kpi-value s02-kpi-value--gold" x="14" y="33">FOCO</text>
+                            <line class="s02-progress-track" x1="52" y1="33" x2="78" y2="33" />
+                            <line class="s02-progress-fill" x1="52" y1="33" x2="72" y2="33" />
+                        </g>
+
+                        <g class="s02-flow-kpi" transform="translate(242 392)">
+                            <rect width="86" height="46" rx="8" />
+                            <text class="s02-kpi-label" x="14" y="17">RISCO</text>
+                            <text class="s02-kpi-value s02-kpi-value--blue" x="14" y="33">MAPA</text>
+                            <line class="s02-progress-track" x1="52" y1="33" x2="76" y2="33" />
+                            <line class="s02-progress-fill" x1="52" y1="33" x2="64" y2="33" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="s02__cards-row" aria-label="As quatro frentes da BBA">
+            <article class="s02__frente scroll-reveal" style="transition-delay: 0.05s;">
+                <span class="s02__frente-index">01 / BBA Finanças</span>
+                <h3>Números que viram decisão.</h3>
+                <p>Contabilidade, financeiro, fiscal e societário para o empresário enxergar margem e proteger caixa.</p>
+                <span class="s02__frente-tag">Caixa legível</span>
+            </article>
+
+            <article class="s02__frente scroll-reveal" style="transition-delay: 0.1s;">
+                <span class="s02__frente-index">02 / BBA Recursos Humanos</span>
+                <h3>Pessoas alinhadas à performance.</h3>
+                <p>RH, rotinas trabalhistas, liderança e cadência de gestão para que o time acompanhe a ambição.</p>
+                <span class="s02__frente-tag">Ritmo de execução</span>
+            </article>
+
+            <article class="s02__frente scroll-reveal" style="transition-delay: 0.15s;">
+                <span class="s02__frente-index">03 / BBA Tecnologia</span>
+                <h3>Operação menos manual, mais inteligente.</h3>
+                <p>Automação, sistemas e dados para reduzir falhas, acelerar rotinas e criar base real para escala.</p>
+                <span class="s02__frente-tag">Processo executável</span>
+            </article>
+
+            <article class="s02__frente scroll-reveal" style="transition-delay: 0.2s;">
+                <span class="s02__frente-index">04 / BBA Governança</span>
+                <h3>Estrutura para proteger o crescimento.</h3>
+                <p>Controles, papéis, processos e ritos decisórios para diminuir risco e sustentar continuidade.</p>
+                <span class="s02__frente-tag">Decisão sustentada</span>
+            </article>
+        </div>
+
+        <div class="s02__marquee-slot" id="s02-marquee-slot" aria-label="Integração do ecossistema BBA"></div>
+
+        <div class="s02__bridge scroll-reveal" style="transition-delay: 0.25s;">
+            <div>
+                <span class="s02__bridge-kicker">Próximo passo para MEIs e PMEs</span>
+                <h3>Crescer com controle, sem virar refém da operação.</h3>
+                <p>
+                    A BBA organiza o essencial primeiro: caixa, impostos, processos e prioridades. Sem burocracia
+                    desnecessária, com uma rotina de gestão que cabe no tamanho da sua empresa.
+                </p>
+                <a href="radar_bba_appv18.html" id="btn-raiox" class="s02__bridge-btn">
+                    Começar pelo Raio-X
+                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <div class="s02__bridge-metrics" aria-label="Prioridades para MEIs e PMEs">
+                <div class="s02__metric"><strong>Caixa</strong><span>enxergar entradas, saídas e margem</span></div>
+                <div class="s02__metric"><strong>Rotina</strong><span>tirar decisões do improviso diário</span></div>
+                <div class="s02__metric"><strong>Decisão</strong><span>priorizar o que destrava crescimento</span></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- SECTION 03: BBA Integrated Ecosystem -->
+    <section class="bba-eco-root" id="bba-eco-root">
+        <!-- CINEMATIC FULL-WIDTH BACKGROUND -->
+        <div class="bba-eco-video-bg">
+            <div class="bba-eco-video-container">
+                <video autoplay muted loop playsinline disablepictureinpicture aria-hidden="true">
+                    <source src="media/abstract_background_subtle_bba.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="bba-eco-video-overlay"></div>
+        </div>
+
+        <div class="bba-eco-shell">
+            <div class="bba-eco-visual slide-up-fade">
+                <div class="bba-eco-visual-kicker">
+                    <span class="bba-eco-visual-label">Ecossistema executivo BBA</span>
+                    <span class="bba-eco-visual-chip">Arquitetura viva de performance</span>
+                </div>
+
+                <div class="bba-eco-orbit-frame">
+                    <svg class="bba-eco-connectors" id="bba-eco-connectors" viewBox="0 0 100 100"
+                        preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                            <marker id="bba-eco-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3.5"
+                                orient="auto">
+                                <path d="M0 0L7 3.5L0 7" fill="none" stroke="rgba(0, 58, 112, 0.22)" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                            </marker>
+                        </defs>
+                    </svg>
+                    <div class="bba-orbit-center">
+                        <div class="bba-eco-core">
+                            <div class="bba-eco-core-top">
+                                <span class="bba-eco-core-mark">BBA Command Core</span>
+                            </div>
+                            <div>
+                                <h3 class="bba-eco-core-title">Gestão para sustentar crescimento</h3>
+                                <p class="bba-eco-core-copy">Quatro frentes conectadas para transformar informação
+                                    dispersa em controle, rotina e decisão.</p>
+                            </div>
+                            <div class="bba-eco-core-footer">
+                                Finanças, Recursos Humanos, Tecnologia e Governança operando como um sistema único.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bba-orbit-ring" id="bba-orbit-ring"></div>
+                </div>
+
+                <div class="bba-eco-visual-footer">
+                    <div class="bba-eco-stat">
+                        <span class="bba-eco-stat-value">360º</span>
+                        <span class="bba-eco-stat-label">Cobertura estratégica</span>
+                        <span class="bba-eco-stat-copy">Leitura integrada de capital, operação e riscos.</span>
+                    </div>
+                    <div class="bba-eco-stat">
+                        <span class="bba-eco-stat-value">04</span>
+                        <span class="bba-eco-stat-label">Pilares BBA</span>
+                        <span class="bba-eco-stat-copy">Finanças, RH, Tecnologia e Governança.</span>
+                    </div>
+                    <div class="bba-eco-stat">
+                        <span class="bba-eco-stat-value">1</span>
+                        <span class="bba-eco-stat-label">Visão executiva</span>
+                        <span class="bba-eco-stat-copy">Uma mesa de decisão com menos ruído e mais velocidade
+                            estratégica.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bba-eco-content">
+                <div class="bba-eco-badge">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    <span>O sistema integrado BBA</span>
+                </div>
+
+                <h2 class="bba-eco-main-title slide-up-fade">
+                    Crescer é uma conquista.
+                    <strong>Continuar crescendo exige gestão.</strong>
+                </h2>
+
+                <div class="bba-eco-proof slide-up-fade">
+                    <div class="bba-eco-proof-side">
+                        <strong class="bba-eco-proof-number">+valor</strong>
+                        <p class="bba-eco-proof-copy">Você não precisa implantar uma estrutura de multinacional. Mas
+                            também não pode continuar administrando como quando a empresa era pequena. É exatamente
+                            nesse momento que a BBA atua.</p>
+                    </div>
+                    <div class="bba-eco-proof-visual" aria-hidden="true">
+                        <span class="bba-eco-proof-visual-image"></span>
+                    </div>
+                </div>
+
+                <div class="bba-eco-grid">
+                    <article class="bba-eco-card slide-up-fade" style="transition-delay: 0.05s;">
+                        <div class="bba-eco-card-head">
+                            <span class="bba-eco-card-index">01 / BBA Finanças</span>
+                        </div>
+                        <h3 class="bba-eco-card-title">Base financeira sólida para crescer com segurança.</h3>
+                        <p class="bba-eco-card-desc">Contabilidade, controladoria e gestão fiscal organizadas para
+                            sustentar o
+                            crescimento com consistência, conformidade contábil, tributária e controle.</p>
+                    </article>
+
+                    <article class="bba-eco-card slide-up-fade" style="transition-delay: 0.1s;">
+                        <div class="bba-eco-card-head">
+                            <span class="bba-eco-card-index">02 / BBA Recursos Humanos</span>
+                        </div>
+                        <h3 class="bba-eco-card-title">Pessoas alinhadas ao ritmo da empresa.</h3>
+                        <p class="bba-eco-card-desc">Rotinas trabalhistas, liderança, papéis e performance para que o
+                            time acompanhe a ambição do negócio sem improviso.</p>
+                    </article>
+
+                    <article class="bba-eco-card slide-up-fade" style="transition-delay: 0.15s;">
+                        <div class="bba-eco-card-head">
+                            <span class="bba-eco-card-index">03 / BBA Tecnologia</span>
+                        </div>
+                        <h3 class="bba-eco-card-title">Operação menos manual, mais inteligente.</h3>
+                        <p class="bba-eco-card-desc">Sistemas, automação e dados estruturados para reduzir falhas,
+                            acelerar rotinas e dar mais visibilidade à gestão.</p>
+                    </article>
+
+                    <article class="bba-eco-card slide-up-fade" style="transition-delay: 0.2s;">
+                        <div class="bba-eco-card-head">
+                            <span class="bba-eco-card-index">04 / BBA Governança</span>
+                        </div>
+                        <h3 class="bba-eco-card-title">Estrutura para proteger o crescimento.</h3>
+                        <p class="bba-eco-card-desc">Controles, processos, responsabilidades e ritos decisórios para
+                            diminuir risco e sustentar continuidade.</p>
+                    </article>
+                </div>
+
+                <!-- NEW VISUAL RESULT BLOCK (STRATEGY TO IMPACT) -->
+                <div class="bba-eco-result-block slide-up-fade" style="transition-delay: 0.25s;">
+                    <div class="bba-result-path">
+                        <div class="bba-result-droplet"></div>
+                    </div>
+                    <div class="bba-result-nodes">
+
+                        <div class="bba-result-node">
+                            <div class="bba-result-dot"></div>
+                            <div class="bba-result-content">
+                                <span class="bba-result-step">01</span>
+                                <h4 class="bba-result-title">Estratégia</h4>
+                                <p class="bba-result-desc">Mapeamento do cenário atual e definição clara da direção e
+                                    metas de crescimento.</p>
+                            </div>
+                        </div>
+
+                        <div class="bba-result-node">
+                            <div class="bba-result-dot"></div>
+                            <div class="bba-result-content">
+                                <span class="bba-result-step">02</span>
+                                <h4 class="bba-result-title">Estrutura</h4>
+                                <p class="bba-result-desc">Sistematização da operação, aplicando governança e bases
+                                    sólidas.</p>
+                            </div>
+                        </div>
+
+                        <div class="bba-result-node">
+                            <div class="bba-result-dot"></div>
+                            <div class="bba-result-content">
+                                <span class="bba-result-step">03</span>
+                                <h4 class="bba-result-title">Decisão</h4>
+                                <p class="bba-result-desc">Uso de inteligência e dados refinados para escolhas
+                                    executivas rápidas e precisas.</p>
+                            </div>
+                        </div>
+
+                        <div class="bba-result-node">
+                            <div class="bba-result-dot"></div>
+                            <div class="bba-result-content">
+                                <span class="bba-result-step">04</span>
+                                <h4 class="bba-result-title">Impacto Real</h4>
+                                <p class="bba-result-desc">Resultados maximizados, crescimento blindado e aumento
+                                    efetivo de valuation.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BBA Intelligence Panel: 4 pilares -->
+            <div class="bba-eco-grid-3">
+                <div class="bba-intel-panel slide-up-fade" style="transition-delay: 0.25s;">
+                    <div class="bba-intel-kicker">BBA INTELLIGENCE</div>
+                    <h3 class="bba-intel-title">Quatro frentes.<br><strong>Uma gestão mais clara.</strong></h3>
+
+                    <div class="bba-intel-chart">
+                        <!-- Finanças -->
+                        <div class="bba-intel-bar-group">
+                            <div class="bba-intel-bar-wrapper">
+                                <div class="bba-intel-bar bar-1"></div>
+                            </div>
+                            <span class="bba-intel-bar-label">Finanças</span>
+                        </div>
+                        <!-- Recursos Humanos -->
+                        <div class="bba-intel-bar-group">
+                            <div class="bba-intel-bar-wrapper">
+                                <div class="bba-intel-bar bar-2"></div>
+                            </div>
+                            <span class="bba-intel-bar-label">Recursos Humanos</span>
+                        </div>
+                        <!-- Tecnologia -->
+                        <div class="bba-intel-bar-group">
+                            <div class="bba-intel-bar-wrapper">
+                                <div class="bba-intel-bar bar-3"></div>
+                            </div>
+                            <span class="bba-intel-bar-label">Tecnologia</span>
+                        </div>
+                        <!-- Governança -->
+                        <div class="bba-intel-bar-group">
+                            <div class="bba-intel-bar-wrapper">
+                                <div class="bba-intel-bar bar-4"></div>
+                            </div>
+                            <span class="bba-intel-bar-label">Governança</span>
+                        </div>
+                    </div>
+
+                    <div class="bba-intel-footer">
+                        <p class="bba-intel-desc">A BBA conecta as frentes essenciais para que a empresa cresça com
+                            mais controle, menos improviso e melhor capacidade de decisão.</p>
+                        <span class="bba-intel-metric">4 pilares integrados</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- AMBIENT INTELLIGENCE LAYER (ULTRA-PREMIUM) -->
+        <div class="bba-eco-marquee-band" id="bba-ecosystem-marquee">
+            <div class="bba-eco-marquee-micro">Integração do Ecossistema BBA</div>
+
+            <div class="bba-eco-marquee-viewport">
+                <!-- Edge Fades -->
+                <div class="bba-eco-marquee-fade-left"></div>
+                <div class="bba-eco-marquee-fade-right"></div>
+
+                <div class="bba-eco-marquee-track">
+                    <!-- Group 1 -->
+                    <div class="bba-eco-marquee-group">
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                            Finanças
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="M9 12l2 2 4-4"></path>
+                            </svg>
+                            Recursos Humanos
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <line x1="9" y1="1" x2="9" y2="4"></line>
+                                <line x1="15" y1="1" x2="15" y2="4"></line>
+                                <line x1="9" y1="20" x2="9" y2="23"></line>
+                                <line x1="15" y1="20" x2="15" y2="23"></line>
+                                <line x1="20" y1="9" x2="23" y2="9"></line>
+                                <line x1="20" y1="14" x2="23" y2="14"></line>
+                                <line x1="1" y1="9" x2="4" y2="9"></line>
+                                <line x1="1" y1="14" x2="4" y2="14"></line>
+                            </svg>
+                            Tecnologia
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            Governança
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            Recursos Humanos
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                            Finanças
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                    </div>
+                    <!-- Group 2 (Exact Duplicate for Seamless Loop) -->
+                    <div class="bba-eco-marquee-group">
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                            Finanças
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="M9 12l2 2 4-4"></path>
+                            </svg>
+                            Recursos Humanos
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <line x1="9" y1="1" x2="9" y2="4"></line>
+                                <line x1="15" y1="1" x2="15" y2="4"></line>
+                                <line x1="9" y1="20" x2="9" y2="23"></line>
+                                <line x1="15" y1="20" x2="15" y2="23"></line>
+                                <line x1="20" y1="9" x2="23" y2="9"></line>
+                                <line x1="20" y1="14" x2="23" y2="14"></line>
+                                <line x1="1" y1="9" x2="4" y2="9"></line>
+                                <line x1="1" y1="14" x2="4" y2="14"></line>
+                            </svg>
+                            Tecnologia
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            Governança
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            Recursos Humanos
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                        <div class="bba-eco-marquee-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                            Finanças
+                        </div>
+                        <span class="bba-eco-marquee-sep"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)" stroke="none"></circle>
+                                <line x1="12" y1="4" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="20"></line>
+                                <line x1="4" y1="12" x2="8" y2="12"></line>
+                                <line x1="16" y1="12" x2="20" y2="12"></line>
+                            </svg></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- SECTION 04: BBA Executive Finale -->
+    <section class="bba-finale slide-up-fade" id="contato" aria-label="Contato BBA">
+        <video class="bba-finale__bg-video" autoplay muted loop playsinline webkit-playsinline="true"
+            preload="metadata" aria-hidden="true">
+            <source src="media/bba_video1.mp4" type="video/mp4">
+        </video>
+        <div class="bba-finale__shade" aria-hidden="true"></div>
+
+        <div class="bba-finale__shell">
+            <div class="bba-finale__hero">
+                <div class="bba-finale__copy">
+                    <span class="bba-finale__eyebrow">Próximo passo</span>
+                    <h2 class="bba-finale__title">
+                        Crescer com mais controle começa por uma conversa.
+                    </h2>
+                    <p class="bba-finale__lead">
+                        Se a empresa vende mais, contrata mais e decide no improviso, a BBA organiza as quatro frentes
+                        essenciais para transformar crescimento em gestão: finanças, recursos humanos, tecnologia e
+                        governança.
+                    </p>
+
+                    <div class="bba-finale__actions">
+                        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20BBA%20sobre%20a%20gest%C3%A3o%20da%20minha%20empresa"
+                            class="bba-finale__secondary" target="_blank" rel="noopener">
+                            Falar com a BBA
+                        </a>
+                    </div>
+
+                    <p class="bba-finale__note">
+                        Diagnóstico inicial direto. Sem formulário longo. Sem proposta genérica antes de entender a
+                        operação.
+                    </p>
+                </div>
+
+                <aside class="bba-finale__contact-card" aria-label="Contato direto BBA">
+                    <span class="bba-finale__contact-label">Contato direto</span>
+                    <h3>Vamos entender onde a gestão está travando o crescimento.</h3>
+
+                    <ul class="bba-finale__contact-list">
+                        <li>
+                            <small>WhatsApp</small>
+                            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">+55 (00) 00000-0000</a>
+                        </li>
+                        <li>
+                            <small>E-mail</small>
+                            <a href="mailto:contato@bbabrazil.com.br">contato@bbabrazil.com.br</a>
+                        </li>
+                        <li>
+                            <small>Site institucional</small>
+                            <a href="https://www.bbabrazil.com.br" target="_blank" rel="noopener">www.bbabrazil.com.br</a>
+                        </li>
+                        <li>
+                            <small>Atendimento</small>
+                            <span>Seg - Sex · 8h às 18h</span>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="bba-finale__proof" aria-label="Como começa a conversa com a BBA">
+                <article class="bba-finale__proof-card">
+                    <span>01</span>
+                    <h3>Leitura do cenário</h3>
+                    <p>Entendemos caixa, rotina, time, sistemas e controles para enxergar onde a empresa perde energia.</p>
+                </article>
+
+                <article class="bba-finale__proof-card">
+                    <span>02</span>
+                    <h3>Prioridade executiva</h3>
+                    <p>Definimos o que precisa ser organizado primeiro para reduzir improviso e ganhar previsibilidade.</p>
+                </article>
+
+                <article class="bba-finale__proof-card">
+                    <span>03</span>
+                    <h3>Rota de implantação</h3>
+                    <p>Você sai com clareza sobre como transformar crescimento em uma rotina de gestão sustentável.</p>
+                </article>
+            </div>
+
+            <p class="bba-finale__copyright">BBA 2025 - Todos os Direitos Reservados</p>
+        </div>
+    </section>
+
+    <script src="./assets/js/main.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const botaoRaioX = document.getElementById('btn-raiox');
+
+    if (botaoRaioX) {
+        botaoRaioX.addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location.href = '/radar_bba_appv18.html';
+        });
+    }
+});
+</script>
+</body>
+</html>
