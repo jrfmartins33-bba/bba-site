@@ -4423,3 +4423,20 @@
 .bba-eco-root .bba-eco-core-mark {
     color: #e3d2ad;
 }
+
+/* Subtle radar sweep behind the central card and orbiting pillars. */
+.bba-eco-root .bba-eco-orbit-frame::before {
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg 285deg,
+        rgba(0, 102, 204, 0.025) 315deg,
+        rgba(0, 102, 204, 0.09) 355deg,
+        transparent 360deg
+    );
+    animation: aurasweep 12s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+    .bba-eco-root .bba-eco-orbit-frame::before {
+        animation: none;
+    }
+}
