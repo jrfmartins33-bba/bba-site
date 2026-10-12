@@ -4400,3 +4400,26 @@
             transform: translateX(-50%) translateY(0);
             pointer-events: auto;
         }
+
+/* Central management card: explicit contrast and restrained brand colors. */
+.bba-eco-root .bba-eco-core {
+    background: #10243a;
+    border-color: #c5a059;
+    box-shadow: 0 20px 48px rgba(8, 17, 32, 0.24);
+    animation: none;
+}
+.bba-eco-root .bba-eco-core::after,
+.bba-eco-root .bba-eco-core-top::before {
+    display: none;
+}
+.bba-eco-root .bba-eco-core-title {
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+}
+.bba-eco-root .bba-eco-core-copy,
+.bba-eco-root .bba-eco-core-footer {
+    color: #e2e8f0;
+}
+.bba-eco-root .bba-eco-core-mark {
+    color: #e3d2ad;
+}
