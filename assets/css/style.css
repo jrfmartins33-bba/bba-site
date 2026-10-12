@@ -4400,3 +4400,48 @@
             transform: translateX(-50%) translateY(0);
             pointer-events: auto;
         }
+
+/* Central management card: explicit contrast and restrained brand colors. */
+.bba-eco-root .bba-eco-core {
+    background: #10243a;
+    border-color: #c5a059;
+    box-shadow: 0 20px 48px rgba(8, 17, 32, 0.24);
+    animation: none;
+}
+.bba-eco-root .bba-eco-core::after,
+.bba-eco-root .bba-eco-core-top::before {
+    display: none;
+}
+.bba-eco-root .bba-eco-core-title {
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+}
+.bba-eco-root .bba-eco-core-copy,
+.bba-eco-root .bba-eco-core-footer {
+    color: #e2e8f0;
+}
+.bba-eco-root .bba-eco-core-mark {
+    color: #e3d2ad;
+}
+
+/* Subtle radar sweep behind the central card and orbiting pillars. */
+.bba-eco-root .bba-eco-orbit-frame::before {
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg 285deg,
+        rgba(0, 102, 204, 0.025) 315deg,
+        rgba(0, 102, 204, 0.09) 355deg,
+        transparent 360deg
+    );
+    animation: aurasweep 12s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+    .bba-eco-root .bba-eco-orbit-frame::before {
+        animation: none;
+    }
+}
+
+/* Small vertical crop correction; retain original image size and reveal. */
+.bba-eco-root .bba-eco-proof-visual-image {
+    background-position: 62% 32%;
+}
