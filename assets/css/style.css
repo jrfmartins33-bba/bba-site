@@ -4440,3 +4440,10 @@
         animation: none;
     }
 }
+
+/* Keep the portrait's head within the visible photo frame. */
+.bba-eco-root .bba-eco-proof-visual-image {
+    inset: 0;
+    background-position: 62% top;
+    transform-origin: 62% top;
+}
