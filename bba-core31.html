@@ -552,7 +552,7 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 4px 20px rgba(0, 58, 112, 0.4);
-            cursor: default;
+            cursor: var(--bba-cursor, default);
         }
 
         .bba-hero__subheadline:hover {
@@ -3081,7 +3081,7 @@
             align-items: center;
             height: 100%;
             position: relative;
-            cursor: default;
+            cursor: var(--bba-cursor, default);
         }
 
         .bba-intel-bar-wrapper {
@@ -5015,6 +5015,7 @@
 
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/bba-cursor.css">
 </head>
 
 <body>

@@ -1,0 +1,13 @@
+/* Ponteiro da marca: seta dourada da BBA (ponta em 2,2). */
+:root {
+  --bba-cursor: url("/assets/cursors/bba-cursor.svg") 2 2, url("/assets/cursors/bba-cursor-32.png") 2 2, default;
+}
+html {
+  cursor: var(--bba-cursor);
+}
+/* Campos de texto mantêm o cursor de digitação. */
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]),
+textarea,
+[contenteditable="true"] {
+  cursor: text;
+}

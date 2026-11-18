@@ -705,7 +705,7 @@
         transform var(--bba-medium) var(--bba-ease),
         border-color var(--bba-medium) var(--bba-ease),
         background var(--bba-medium) var(--bba-ease);
-      cursor: default;
+      cursor: var(--bba-cursor, default);
     }
     .symptom-card::before {
       content: "";
@@ -2909,6 +2909,7 @@
       }
     }
   </style>
+    <link rel="stylesheet" href="/assets/css/bba-cursor.css">
 </head>
 <body>
 
